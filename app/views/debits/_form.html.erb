@@ -1,0 +1,53 @@
+<%= form_for(@debit) do |f| %>
+  <% if @debit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@debit.errors.count, "error") %> prohibited this debit from being saved:</h2>
+
+      <ul>
+      <% @debit.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :item_purchased %><br />
+    <%= f.text_area :item_purchased %>
+  </div>
+  <div class="field">
+    <%= f.label :categoryID %><br />
+    <%= f.text_field :categoryID %>
+  </div>
+  <div class="field">
+    <%= f.label :reason %><br />
+    <%= f.text_area :reason %>
+  </div>
+  <div class="field">
+    <%= f.label :nunber_of_consumers %><br />
+    <%= f.text_field :nunber_of_consumers %>
+  </div>
+  <div class="field">
+    <%= f.label :names_of_consumers %><br />
+    <%= f.text_area :names_of_consumers %>
+  </div>
+  <div class="field">
+    <%= f.label :date_purchased %><br />
+    <%= f.text_field :date_purchased %>
+  </div>
+  <div class="field">
+    <%= f.label :accountID %><br />
+    <%= f.text_field :accountID %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br />
+    <%= f.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :reimbursement_date %><br />
+    <%= f.text_field :reimbursement_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

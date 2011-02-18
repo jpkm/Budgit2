@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Year:</b>
+  <%= @account.year %>
+</p>
+
+<p>
+  <b>Clubid:</b>
+  <%= @account.clubID %>
+</p>
+
+
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>

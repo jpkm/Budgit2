@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  categoryID: 1
+  date: 1
+  accountID: 1
+  amount: 1
+
+two:
+  categoryID: 1
+  date: 1
+  accountID: 1
+  amount: 1

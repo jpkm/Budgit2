@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Item purchased:</b>
+  <%= @debit.item_purchased %>
+</p>
+
+<p>
+  <b>Categoryid:</b>
+  <%= @debit.categoryID %>
+</p>
+
+<p>
+  <b>Reason:</b>
+  <%= @debit.reason %>
+</p>
+
+<p>
+  <b>Nunber of consumers:</b>
+  <%= @debit.nunber_of_consumers %>
+</p>
+
+<p>
+  <b>Names of consumers:</b>
+  <%= @debit.names_of_consumers %>
+</p>
+
+<p>
+  <b>Date purchased:</b>
+  <%= @debit.date_purchased %>
+</p>
+
+<p>
+  <b>Accountid:</b>
+  <%= @debit.accountID %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @debit.amount %>
+</p>
+
+<p>
+  <b>Reimbursement date:</b>
+  <%= @debit.reimbursement_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_debit_path(@debit) %> |
+<%= link_to 'Back', debits_path %>

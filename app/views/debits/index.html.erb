@@ -1,0 +1,39 @@
+<h1>Listing debits</h1>
+
+<table>
+  <tr>
+    <th>Item purchased</th>
+    <th>Categoryid</th>
+    <th>Reason</th>
+    <th>Nunber of consumers</th>
+    <th>Names of consumers</th>
+    <th>Date purchased</th>
+    <th>Accountid</th>
+    <th>Amount</th>
+    <th>Reimbursement date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @debits.each do |debit| %>
+  <tr>
+    <td><%= debit.item_purchased %></td>
+    <td><%= debit.categoryID %></td>
+    <td><%= debit.reason %></td>
+    <td><%= debit.nunber_of_consumers %></td>
+    <td><%= debit.names_of_consumers %></td>
+    <td><%= debit.date_purchased %></td>
+    <td><%= debit.accountID %></td>
+    <td><%= debit.amount %></td>
+    <td><%= debit.reimbursement_date %></td>
+    <td><%= link_to 'Show', debit %></td>
+    <td><%= link_to 'Edit', edit_debit_path(debit) %></td>
+    <td><%= link_to 'Destroy', debit, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Debit', new_debit_path %>

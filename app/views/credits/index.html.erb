@@ -1,0 +1,29 @@
+<h1>Listing credits</h1>
+
+<table>
+  <tr>
+    <th>Categoryid</th>
+    <th>Date</th>
+    <th>Accountid</th>
+    <th>Amount</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @credits.each do |credit| %>
+  <tr>
+    <td><%= credit.categoryID %></td>
+    <td><%= credit.date %></td>
+    <td><%= credit.accountID %></td>
+    <td><%= credit.amount %></td>
+    <td><%= link_to 'Show', credit %></td>
+    <td><%= link_to 'Edit', edit_credit_path(credit) %></td>
+    <td><%= link_to 'Destroy', credit, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Credit', new_credit_path %>

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Active:</b>
+  <%= @debit_category.active %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @debit_category.category %>
+</p>
+
+
+<%= link_to 'Edit', edit_debit_category_path(@debit_category) %> |
+<%= link_to 'Back', debit_categories_path %>

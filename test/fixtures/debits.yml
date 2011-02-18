@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  item_purchased: MyText
+  categoryID: 1
+  reason: MyText
+  nunber_of_consumers: 1
+  names_of_consumers: MyText
+  date_purchased: 1
+  accountID: 1
+  amount: 1
+  reimbursement_date: 1
+
+two:
+  item_purchased: MyText
+  categoryID: 1
+  reason: MyText
+  nunber_of_consumers: 1
+  names_of_consumers: MyText
+  date_purchased: 1
+  accountID: 1
+  amount: 1
+  reimbursement_date: 1

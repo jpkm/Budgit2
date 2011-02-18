@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  roleID: 1
+  clubID: 1
+  user_andrewID: MyString
+  active: false
+
+two:
+  roleID: 1
+  clubID: 1
+  user_andrewID: MyString
+  active: false

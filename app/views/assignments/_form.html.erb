@@ -1,0 +1,35 @@
+<%= form_for(@assignment) do |f| %>
+  <% if @assignment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
+
+      <ul>
+      <% @assignment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Role %><br />
+	<%= f.collection_select :roleID, Role.all, :id, :name, :prompt => "Select ..." %>
+  </div>
+  <div class="field">
+    <%= f.label :Club %><br />
+	<%= f.collection_select :clubID, Club.all, :id, :name, :prompt => "Select ..." %>
+    <%#= f.text_field :clubID %>
+  </div>
+  <div class="field">
+    <%= f.label :AndrewID %><br />
+	<%= f.collection_select :username, User.all, :id, :username, :prompt => "Select ..." %>
+    <%#= f.text_field :user_andrewID %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br />
+    <%= f.check_box :active %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

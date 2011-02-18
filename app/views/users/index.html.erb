@@ -1,0 +1,30 @@
+<h1>Your User Info</h1>
+
+<p>
+  <b>First name:</b>
+  <%=h current_user.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%=h current_user.last_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h current_user.email %>
+</p>
+
+<!-- <p>
+  <b>Active:</b>
+  <%#=h current_user.active %>
+</p> -->
+
+<p>
+  <b>Role:</b>
+  <%#=h current_user.role %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(current_user) %> |
+<%= link_to 'New user', new_user_path %>
