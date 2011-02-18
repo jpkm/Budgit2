@@ -790,3 +790,43 @@ ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticit
 Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
 Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
 Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-18 23:21:24 +0300
+  Processing by HomeController#index as HTML
+  [1m[36mSQL (17.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered home/_personal.html.erb (14.0ms)
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered home/index.html.erb within layouts/application (310.0ms)
+Completed 200 OK in 334ms (Views: 317.0ms | ActiveRecord: 17.0ms)
+
+
+Started GET "/debit_categories" for 127.0.0.1 at 2011-02-18 23:21:29 +0300
+  Processing by DebitCategoriesController#index as HTML
+  [1m[36mDebitCategory Load (1.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories"[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debit_categories/index.html.erb within layouts/application (51.0ms)
+Completed 200 OK in 93ms (Views: 74.0ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/debit_categories/1" for 127.0.0.1 at 2011-02-18 23:21:32 +0300
+  Processing by DebitCategoriesController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDebitCategory Load (0.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories" WHERE ("debit_categories"."id" = 1) LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  DELETE FROM "debit_categories" WHERE ("debit_categories"."id" = 1)
+Redirected to http://localhost:3000/debit_categories
+Completed 302 Found in 182ms
+
+
+Started GET "/debit_categories" for 127.0.0.1 at 2011-02-18 23:21:33 +0300
+  Processing by DebitCategoriesController#index as HTML
+  [1m[36mDebitCategory Load (0.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories"[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debit_categories/index.html.erb within layouts/application (44.0ms)
+Completed 200 OK in 85ms (Views: 68.0ms | ActiveRecord: 0.0ms)
