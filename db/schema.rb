@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110217072154) do
+ActiveRecord::Schema.define(:version => 20110218195711) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "year"
@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(:version => 20110217072154) do
   end
 
   create_table "debit_categories", :force => true do |t|
-    t.boolean  "active"
     t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -2,8 +2,7 @@
 
 <table>
   <tr>
-    <th>Active</th>
-    <th>Type</th>
+    <th>Category</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,11 +10,10 @@
 
 <% @debit_categories.each do |debit_category| %>
   <tr>
-    <td><%= debit_category.active %></td>
     <td><%= debit_category.category %></td>
     <td><%= link_to 'Show', debit_category %></td>
     <td><%= link_to 'Edit', edit_debit_category_path(debit_category) %></td>
-    <td><%= link_to 'Destroy', debit_category, :confirm => 'Are you sure?', :method => :destroy %></td>
+    <td><%= link_to 'Destroy', debit_category, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

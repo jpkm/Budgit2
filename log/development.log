@@ -1,0 +1,792 @@
+  [1m[36mSQL (1293.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (729.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (324.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to CreateClubs (20110215072001)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "clubs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215072001')
+Migrating to CreateAssignments (20110215093055)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "assignments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "roleID" integer, "clubID" integer, "username" varchar(255), "active" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215093055')
+Migrating to CreateAccounts (20110215093322)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "year" integer, "clubID" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215093322')
+Migrating to CreateDebits (20110215094251)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "debits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "item_purchased" text, "categoryID" integer, "reason" text, "nunber_of_consumers" integer, "names_of_consumers" text, "date_purchased" integer, "accountID" integer, "amount" integer, "reimbursement_date" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215094251')
+Migrating to CreateRoles (20110215094723)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "active" boolean, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215094723')
+Migrating to CreateDebitCategories (20110215145830)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "debit_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "active" boolean, "category" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215145830')
+Migrating to CreateCredits (20110215150335)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "credits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "categoryID" integer, "date" integer, "accountID" integer, "amount" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215150335')
+Migrating to CreateCreditCategories (20110215150544)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "credit_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "active" boolean, "category" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215150544')
+Migrating to CreateUsers (20110215175505)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "middle_name" varchar(255), "last_name" varchar(255), "username" varchar(255), "email" varchar(255), "password_hash" varchar(255), "password_salt" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215175505')
+Migrating to AddDefaultUser (20110217072154)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."username" = 'dad') LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE ("users"."email" = 'dad@andrew.edu.com') LIMIT 1[0m
+  [1m[35mAREL (2.0ms)[0m  INSERT INTO "users" ("first_name", "middle_name", "last_name", "username", "email", "password_hash", "password_salt", "created_at", "updated_at") VALUES ('dad', 'a', 'd', 'dad', 'dad@andrew.edu.com', '$2a$10$E046Ye5jam55wBlJNXFGY.DTErdQhEzXyVKi5LAhuV8i0Xqje/Uta', '$2a$10$E046Ye5jam55wBlJNXFGY.', '2011-02-18 19:27:43.788247', '2011-02-18 19:27:43.788247')
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110217072154')[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("accounts")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("assignments")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("clubs")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("credit_categories")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("credits")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("debit_categories")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("debits")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("roles")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-18 22:28:40 +0300
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_home_index_html_erb__734456168_30660708_594489549 at c:/Users/Yazan/Desktop/67-373/app/views/home/index.html.erb:7)
+Rendered home/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 46ms (Views: 46.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-02-18 22:28:53 +0300
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4rg4otqIMTbY+8bGn2ncBCfPRrX8xZTjMbm1rTB9VOI=", "login"=>"dad", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'dad') LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 430ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-18 22:28:54 +0300
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered home/_personal.html.erb (14.0ms)
+Rendered partials/_navigation.html.erb (4.0ms)
+Rendered home/index.html.erb within layouts/application (79.0ms)
+Completed 200 OK in 105ms (Views: 105.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/credit_categories" for 127.0.0.1 at 2011-02-18 22:29:06 +0300
+  Processing by CreditCategoriesController#index as HTML
+  [1m[35mCreditCategory Load (1.0ms)[0m  SELECT "credit_categories".* FROM "credit_categories"
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered credit_categories/index.html.erb within layouts/application (48.0ms)
+Completed 200 OK in 108ms (Views: 89.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/credit_categories/new" for 127.0.0.1 at 2011-02-18 22:29:09 +0300
+  Processing by CreditCategoriesController#new as HTML
+Rendered credit_categories/_form.html.erb (112.0ms)
+Rendered credit_categories/new.html.erb within layouts/application (129.0ms)
+Completed   in 180ms
+
+ActionView::Template::Error (undefined method `type' for #<CreditCategory:0x3743430>):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :type %><br />
+    20:     <%= f.text_field :type %>
+    21:   </div>
+    22:   <div class="actions">
+    23:     <%= f.submit %>
+  app/views/credit_categories/_form.html.erb:20:in `block in _app_views_credit_categories__form_html_erb__33105312_28622784_888615182'
+  app/views/credit_categories/_form.html.erb:1:in `_app_views_credit_categories__form_html_erb__33105312_28622784_888615182'
+  app/views/credit_categories/new.html.erb:3:in `_app_views_credit_categories_new_html_erb___1031854343_28655832_594489549'
+  app/controllers/credit_categories_controller.rb:29:in `new'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (25.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (45.0ms)
+
+
+Started GET "/credits" for 127.0.0.1 at 2011-02-18 22:29:38 +0300
+  Processing by CreditsController#index as HTML
+Completed   in 18ms
+
+SyntaxError (c:/Users/Yazan/Desktop/67-373/app/models/credit.rb:2: syntax error, unexpected ':', expecting keyword_end
+	belongs_to :credit_category :foreign_key => "type"
+	                             ^):
+  app/controllers/credits_controller.rb:5:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.0ms)
+
+
+Started GET "/debit_categories" for 127.0.0.1 at 2011-02-18 22:29:43 +0300
+  Processing by DebitCategoriesController#index as HTML
+  [1m[35mDebitCategory Load (1.0ms)[0m  SELECT "debit_categories".* FROM "debit_categories"
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debit_categories/index.html.erb within layouts/application (45.0ms)
+Completed 200 OK in 129ms (Views: 88.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/debit_categories/new" for 127.0.0.1 at 2011-02-18 22:29:45 +0300
+  Processing by DebitCategoriesController#new as HTML
+Rendered debit_categories/_form.html.erb (8.0ms)
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debit_categories/new.html.erb within layouts/application (77.0ms)
+Completed 200 OK in 128ms (Views: 106.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/debit_categories/new" for 127.0.0.1 at 2011-02-18 22:29:55 +0300
+  Processing by DebitCategoriesController#new as HTML
+Rendered debit_categories/_form.html.erb (7.0ms)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debit_categories/new.html.erb within layouts/application (60.0ms)
+Completed 200 OK in 107ms (Views: 86.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/debit_categories" for 127.0.0.1 at 2011-02-18 22:30:03 +0300
+  Processing by DebitCategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4rg4otqIMTbY+8bGn2ncBCfPRrX8xZTjMbm1rTB9VOI=", "debit_category"=>{"active"=>"1", "category"=>"pretty good pizza"}, "commit"=>"Create Debit category"}
+WARNING: Can't mass-assign protected attributes: active
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "debit_categories" ("active", "category", "created_at", "updated_at") VALUES (NULL, 'pretty good pizza', '2011-02-18 19:30:03.663247', '2011-02-18 19:30:03.663247')
+Redirected to http://localhost:3000/debit_categories/1
+Completed 302 Found in 244ms
+
+
+Started GET "/debit_categories/1" for 127.0.0.1 at 2011-02-18 22:30:04 +0300
+  Processing by DebitCategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDebitCategory Load (1.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories" WHERE ("debit_categories"."id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debit_categories/show.html.erb within layouts/application (82.0ms)
+Completed 200 OK in 131ms (Views: 109.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/debits" for 127.0.0.1 at 2011-02-18 22:30:07 +0300
+  Processing by DebitsController#index as HTML
+  [1m[36mDebit Load (1.0ms)[0m  [1mSELECT "debits".* FROM "debits"[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debits/index.html.erb within layouts/application (50.0ms)
+Completed 200 OK in 173ms (Views: 91.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/debit_categories" for 127.0.0.1 at 2011-02-18 22:30:10 +0300
+  Processing by DebitCategoriesController#index as HTML
+  [1m[36mDebitCategory Load (1.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories"[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debit_categories/index.html.erb within layouts/application (57.0ms)
+Completed 200 OK in 104ms (Views: 85.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/debit_categories/1" for 127.0.0.1 at 2011-02-18 22:30:15 +0300
+
+ActionController::RoutingError (No route matches "/debit_categories/1"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/debit_categories" for 127.0.0.1 at 2011-02-18 22:30:22 +0300
+  Processing by DebitCategoriesController#index as HTML
+  [1m[36mDebitCategory Load (1.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories"[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered debit_categories/index.html.erb within layouts/application (80.0ms)
+Completed 200 OK in 126ms (Views: 106.0ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/debit_categories/1" for 127.0.0.1 at 2011-02-18 22:30:30 +0300
+
+ActionController::RoutingError (No route matches "/debit_categories/1"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (2.0ms)
+
+
+Started GET "/debit_categories/1" for 127.0.0.1 at 2011-02-18 22:30:41 +0300
+  Processing by DebitCategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDebitCategory Load (1.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories" WHERE ("debit_categories"."id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debit_categories/show.html.erb within layouts/application (81.0ms)
+Completed 200 OK in 128ms (Views: 105.0ms | ActiveRecord: 2.0ms)
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (356.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (76.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to CreateClubs (20110215072001)
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "clubs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215072001')
+Migrating to CreateAssignments (20110215093055)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "assignments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "roleID" integer, "clubID" integer, "username" varchar(255), "active" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215093055')
+Migrating to CreateAccounts (20110215093322)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "year" integer, "clubID" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215093322')
+Migrating to CreateDebits (20110215094251)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "debits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "item_purchased" text, "categoryID" integer, "reason" text, "nunber_of_consumers" integer, "names_of_consumers" text, "date_purchased" integer, "accountID" integer, "amount" integer, "reimbursement_date" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215094251')
+Migrating to CreateRoles (20110215094723)
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "active" boolean, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215094723')
+Migrating to CreateDebitCategories (20110215145830)
+  [1m[36mSQL (11.0ms)[0m  [1mCREATE TABLE "debit_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "active" boolean, "category" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215145830')
+Migrating to CreateCredits (20110215150335)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "credits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "categoryID" integer, "date" integer, "accountID" integer, "amount" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215150335')
+Migrating to CreateCreditCategories (20110215150544)
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "credit_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "active" boolean, "category" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215150544')
+Migrating to CreateUsers (20110215175505)
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "middle_name" varchar(255), "last_name" varchar(255), "username" varchar(255), "email" varchar(255), "password_hash" varchar(255), "password_salt" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215175505')
+Migrating to AddDefaultUser (20110217072154)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."username" = 'dad') LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE ("users"."email" = 'dad@andrew.edu.com') LIMIT 1[0m
+  [1m[35mAREL (2.0ms)[0m  INSERT INTO "users" ("first_name", "middle_name", "last_name", "username", "email", "password_hash", "password_salt", "created_at", "updated_at") VALUES ('dad', 'a', 'd', 'dad', 'dad@andrew.edu.com', '$2a$10$MeScbCGzZe489Li6rrkwx.48IcsbwYLYrjpJtZl7.U.LegDdbraxq', '$2a$10$MeScbCGzZe489Li6rrkwx.', '2011-02-18 19:33:02.904499', '2011-02-18 19:33:02.904499')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110217072154')[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("accounts")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("assignments")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("clubs")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("credit_categories")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("credits")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("debit_categories")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("debits")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("roles")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-18 22:33:28 +0300
+  Processing by HomeController#index as HTML
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered home/_personal.html.erb (54.0ms)
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered home/index.html.erb within layouts/application (326.0ms)
+Completed 200 OK in 352ms (Views: 350.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/debit_categories" for 127.0.0.1 at 2011-02-18 22:33:36 +0300
+  Processing by DebitCategoriesController#index as HTML
+  [1m[36mDebitCategory Load (1.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories"[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debit_categories/index.html.erb within layouts/application (69.0ms)
+Completed 200 OK in 117ms (Views: 98.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/debit_categories/new" for 127.0.0.1 at 2011-02-18 22:33:52 +0300
+  Processing by DebitCategoriesController#new as HTML
+Rendered debit_categories/_form.html.erb (11.0ms)
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (4.0ms)
+Rendered debit_categories/new.html.erb within layouts/application (69.0ms)
+Completed 200 OK in 114ms (Views: 94.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/debit_categories" for 127.0.0.1 at 2011-02-18 22:34:00 +0300
+  Processing by DebitCategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4rg4otqIMTbY+8bGn2ncBCfPRrX8xZTjMbm1rTB9VOI=", "debit_category"=>{"active"=>"0", "category"=>"zaid"}, "commit"=>"Create Debit category"}
+WARNING: Can't mass-assign protected attributes: active
+  [1m[35mAREL (2.0ms)[0m  INSERT INTO "debit_categories" ("active", "category", "created_at", "updated_at") VALUES (NULL, 'zaid', '2011-02-18 19:34:00.672804', '2011-02-18 19:34:00.672804')
+Redirected to http://localhost:3000/debit_categories/1
+Completed 302 Found in 213ms
+
+
+Started GET "/debit_categories/1" for 127.0.0.1 at 2011-02-18 22:34:01 +0300
+  Processing by DebitCategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDebitCategory Load (0.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories" WHERE ("debit_categories"."id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debit_categories/show.html.erb within layouts/application (75.0ms)
+Completed 200 OK in 121ms (Views: 98.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/debit_categories" for 127.0.0.1 at 2011-02-18 22:34:07 +0300
+  Processing by DebitCategoriesController#index as HTML
+  [1m[36mDebitCategory Load (1.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories"[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debit_categories/index.html.erb within layouts/application (56.0ms)
+Completed 200 OK in 125ms (Views: 81.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/debit_categories/1" for 127.0.0.1 at 2011-02-18 22:34:17 +0300
+  Processing by DebitCategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDebitCategory Load (1.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories" WHERE ("debit_categories"."id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (4.0ms)
+Rendered debit_categories/show.html.erb within layouts/application (57.0ms)
+Completed 200 OK in 103ms (Views: 82.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/debit_categories" for 127.0.0.1 at 2011-02-18 22:34:53 +0300
+  Processing by DebitCategoriesController#index as HTML
+  [1m[36mDebitCategory Load (1.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories"[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debit_categories/index.html.erb within layouts/application (75.0ms)
+Completed 200 OK in 120ms (Views: 100.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/debit_categories/new" for 127.0.0.1 at 2011-02-18 22:34:59 +0300
+  Processing by DebitCategoriesController#new as HTML
+Rendered debit_categories/_form.html.erb (8.0ms)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered debit_categories/new.html.erb within layouts/application (60.0ms)
+Completed 200 OK in 106ms (Views: 85.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/debit_categories" for 127.0.0.1 at 2011-02-18 22:35:04 +0300
+  Processing by DebitCategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4rg4otqIMTbY+8bGn2ncBCfPRrX8xZTjMbm1rTB9VOI=", "debit_category"=>{"active"=>"1", "category"=>"Zaid"}, "commit"=>"Create Debit category"}
+WARNING: Can't mass-assign protected attributes: active
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "debit_categories" ("active", "category", "created_at", "updated_at") VALUES (NULL, 'Zaid', '2011-02-18 19:35:04.769470', '2011-02-18 19:35:04.769470')
+Redirected to http://localhost:3000/debit_categories/2
+Completed 302 Found in 198ms
+
+
+Started GET "/debit_categories/2" for 127.0.0.1 at 2011-02-18 22:35:05 +0300
+  Processing by DebitCategoriesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mDebitCategory Load (1.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories" WHERE ("debit_categories"."id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (4.0ms)
+Rendered debit_categories/show.html.erb within layouts/application (55.0ms)
+Completed 200 OK in 102ms (Views: 80.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/debit_categories" for 127.0.0.1 at 2011-02-18 22:35:07 +0300
+  Processing by DebitCategoriesController#index as HTML
+  [1m[36mDebitCategory Load (3.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories"[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debit_categories/index.html.erb within layouts/application (87.0ms)
+Completed 200 OK in 162ms (Views: 134.0ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/debit_categories/2" for 127.0.0.1 at 2011-02-18 22:35:10 +0300
+
+ActionController::RoutingError (No route matches "/debit_categories/2"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/debit_categories/1" for 127.0.0.1 at 2011-02-18 22:35:29 +0300
+  Processing by DebitCategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDebitCategory Load (0.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories" WHERE ("debit_categories"."id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debit_categories/show.html.erb within layouts/application (55.0ms)
+Completed 200 OK in 100ms (Views: 81.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/debit_categories" for 127.0.0.1 at 2011-02-18 22:35:33 +0300
+  Processing by DebitCategoriesController#index as HTML
+  [1m[36mDebitCategory Load (1.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories"[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debit_categories/index.html.erb within layouts/application (79.0ms)
+Completed 200 OK in 123ms (Views: 105.0ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/debit_categories/2" for 127.0.0.1 at 2011-02-18 22:36:07 +0300
+
+ActionController::RoutingError (No route matches "/debit_categories/2"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateClubs (20110215072001)
+Migrating to CreateAssignments (20110215093055)
+Migrating to CreateAccounts (20110215093322)
+Migrating to CreateDebits (20110215094251)
+Migrating to CreateRoles (20110215094723)
+Migrating to CreateDebitCategories (20110215145830)
+Migrating to CreateCredits (20110215150335)
+Migrating to CreateCreditCategories (20110215150544)
+Migrating to CreateUsers (20110215175505)
+Migrating to AddDefaultUser (20110217072154)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("accounts")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("assignments")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("clubs")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("credit_categories")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("credits")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("debit_categories")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("debits")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("roles")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("users")
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-18 22:43:23 +0300
+  Processing by HomeController#index as HTML
+  [1m[36mSQL (2.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered home/_personal.html.erb (41.0ms)
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered home/index.html.erb within layouts/application (325.0ms)
+Completed 200 OK in 351ms (Views: 348.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/debit_categories" for 127.0.0.1 at 2011-02-18 22:43:28 +0300
+  Processing by DebitCategoriesController#index as HTML
+  [1m[36mDebitCategory Load (1.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories"[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered debit_categories/index.html.erb within layouts/application (56.0ms)
+Completed 200 OK in 147ms (Views: 82.0ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/debit_categories/2" for 127.0.0.1 at 2011-02-18 22:43:33 +0300
+
+ActionController::RoutingError (No route matches "/debit_categories/2"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (119.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (87.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to CreateClubs (20110215072001)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "clubs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215072001')
+Migrating to CreateAssignments (20110215093055)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "assignments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "roleID" integer, "clubID" integer, "username" varchar(255), "active" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215093055')
+Migrating to CreateAccounts (20110215093322)
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "year" integer, "clubID" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215093322')
+Migrating to CreateDebits (20110215094251)
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "debits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "item_purchased" text, "categoryID" integer, "reason" text, "nunber_of_consumers" integer, "names_of_consumers" text, "date_purchased" integer, "accountID" integer, "amount" integer, "reimbursement_date" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215094251')
+Migrating to CreateRoles (20110215094723)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "active" boolean, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215094723')
+Migrating to CreateCredits (20110215150335)
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "credits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "categoryID" integer, "date" integer, "accountID" integer, "amount" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215150335')
+Migrating to CreateCreditCategories (20110215150544)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "credit_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "active" boolean, "category" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215150544')
+Migrating to CreateUsers (20110215175505)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "middle_name" varchar(255), "last_name" varchar(255), "username" varchar(255), "email" varchar(255), "password_hash" varchar(255), "password_salt" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215175505')
+Migrating to AddDefaultUser (20110217072154)
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."username" = 'dad') LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE ("users"."email" = 'dad@andrew.edu.com') LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "users" ("first_name", "middle_name", "last_name", "username", "email", "password_hash", "password_salt", "created_at", "updated_at") VALUES ('dad', 'a', 'd', 'dad', 'dad@andrew.edu.com', '$2a$10$LrPb13jOyw/kCh6Aoi12IeGdY95cwKW/day7OvB29zRTHx7urOxKS', '$2a$10$LrPb13jOyw/kCh6Aoi12Ie', '2011-02-18 19:54:52.515405', '2011-02-18 19:54:52.515405')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110217072154')[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("accounts")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("assignments")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("clubs")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("credit_categories")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("credits")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("debits")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("roles")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (2.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateClubs (20110215072001)
+Migrating to CreateAssignments (20110215093055)
+Migrating to CreateAccounts (20110215093322)
+Migrating to CreateDebits (20110215094251)
+Migrating to CreateRoles (20110215094723)
+Migrating to CreateCredits (20110215150335)
+Migrating to CreateCreditCategories (20110215150544)
+Migrating to CreateUsers (20110215175505)
+Migrating to AddDefaultUser (20110217072154)
+Migrating to CreateDebitCategories (20110218195711)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "debit_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "category" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110218195711')
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("accounts")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("assignments")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("clubs")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("credit_categories")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("credits")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("debit_categories")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("debits")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("roles")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("users")
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-18 23:00:44 +0300
+  Processing by HomeController#index as HTML
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered home/_personal.html.erb (37.0ms)
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered home/index.html.erb within layouts/application (332.0ms)
+Completed 200 OK in 357ms (Views: 356.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/debit_categories" for 127.0.0.1 at 2011-02-18 23:00:50 +0300
+  Processing by DebitCategoriesController#index as HTML
+  [1m[36mDebitCategory Load (1.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories"[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debit_categories/index.html.erb within layouts/application (48.0ms)
+Completed 200 OK in 114ms (Views: 73.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/debit_categories/new" for 127.0.0.1 at 2011-02-18 23:00:51 +0300
+  Processing by DebitCategoriesController#new as HTML
+Rendered debit_categories/_form.html.erb (9.0ms)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debit_categories/new.html.erb within layouts/application (60.0ms)
+Completed 200 OK in 104ms (Views: 86.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/debit_categories" for 127.0.0.1 at 2011-02-18 23:00:55 +0300
+  Processing by DebitCategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4rg4otqIMTbY+8bGn2ncBCfPRrX8xZTjMbm1rTB9VOI=", "debit_category"=>{"category"=>"zaid"}, "commit"=>"Create Debit category"}
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "debit_categories" ("category", "created_at", "updated_at") VALUES ('zaid', '2011-02-18 20:00:55.152147', '2011-02-18 20:00:55.152147')
+Redirected to http://localhost:3000/debit_categories/1
+Completed 302 Found in 184ms
+
+
+Started GET "/debit_categories/1" for 127.0.0.1 at 2011-02-18 23:00:55 +0300
+  Processing by DebitCategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDebitCategory Load (1.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories" WHERE ("debit_categories"."id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (4.0ms)
+Rendered debit_categories/show.html.erb within layouts/application (75.0ms)
+Completed 200 OK in 121ms (Views: 101.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/debit_categories" for 127.0.0.1 at 2011-02-18 23:00:57 +0300
+  Processing by DebitCategoriesController#index as HTML
+  [1m[36mDebitCategory Load (1.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories"[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debit_categories/index.html.erb within layouts/application (59.0ms)
+Completed 200 OK in 125ms (Views: 84.0ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/debit_categories/1" for 127.0.0.1 at 2011-02-18 23:01:00 +0300
+  Processing by DebitCategoriesController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Completed   in 0ms
+
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.0ms)
+
+
+Started GET "/credit_categories" for 127.0.0.1 at 2011-02-18 23:01:16 +0300
+  Processing by CreditCategoriesController#index as HTML
+  [1m[36mCreditCategory Load (1.0ms)[0m  [1mSELECT "credit_categories".* FROM "credit_categories"[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (4.0ms)
+Rendered credit_categories/index.html.erb within layouts/application (45.0ms)
+Completed 200 OK in 93ms (Views: 73.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/credit_categories/new" for 127.0.0.1 at 2011-02-18 23:01:18 +0300
+  Processing by CreditCategoriesController#new as HTML
+Rendered credit_categories/_form.html.erb (55.0ms)
+Rendered credit_categories/new.html.erb within layouts/application (61.0ms)
+Completed   in 108ms
+
+ActionView::Template::Error (undefined method `type' for #<CreditCategory:0x3392d18>):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :type %><br />
+    20:     <%= f.text_field :type %>
+    21:   </div>
+    22:   <div class="actions">
+    23:     <%= f.submit %>
+  app/views/credit_categories/_form.html.erb:20:in `block in _app_views_credit_categories__form_html_erb__103154391_26866704_1029760780'
+  app/views/credit_categories/_form.html.erb:1:in `_app_views_credit_categories__form_html_erb__103154391_26866704_1029760780'
+  app/views/credit_categories/new.html.erb:3:in `_app_views_credit_categories_new_html_erb___243447741_26878428__490404980'
+  app/controllers/credit_categories_controller.rb:29:in `new'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (20.0ms)
+
+
+Started GET "/roles" for 127.0.0.1 at 2011-02-18 23:01:23 +0300
+  Processing by RolesController#index as HTML
+  [1m[36mRole Load (1.0ms)[0m  [1mSELECT "roles".* FROM "roles"[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered roles/index.html.erb within layouts/application (76.0ms)
+Completed 200 OK in 121ms (Views: 102.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/roles/new" for 127.0.0.1 at 2011-02-18 23:01:25 +0300
+  Processing by RolesController#new as HTML
+Rendered roles/_form.html.erb (9.0ms)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered roles/new.html.erb within layouts/application (77.0ms)
+Completed 200 OK in 123ms (Views: 103.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/roles" for 127.0.0.1 at 2011-02-18 23:01:28 +0300
+  Processing by RolesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4rg4otqIMTbY+8bGn2ncBCfPRrX8xZTjMbm1rTB9VOI=", "role"=>{"active"=>"0", "name"=>"shit"}, "commit"=>"Create Role"}
+  [1m[35mAREL (2.0ms)[0m  INSERT INTO "roles" ("active", "name", "created_at", "updated_at") VALUES ('f', 'shit', '2011-02-18 20:01:28.384047', '2011-02-18 20:01:28.384047')
+Redirected to http://localhost:3000/roles/1
+Completed 302 Found in 99ms
+
+
+Started GET "/roles/1" for 127.0.0.1 at 2011-02-18 23:01:28 +0300
+  Processing by RolesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRole Load (0.0ms)[0m  [1mSELECT "roles".* FROM "roles" WHERE ("roles"."id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered roles/show.html.erb within layouts/application (54.0ms)
+Completed 200 OK in 100ms (Views: 80.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/roles" for 127.0.0.1 at 2011-02-18 23:01:30 +0300
+  Processing by RolesController#index as HTML
+  [1m[36mRole Load (0.0ms)[0m  [1mSELECT "roles".* FROM "roles"[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered roles/index.html.erb within layouts/application (78.0ms)
+Completed 200 OK in 121ms (Views: 103.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/roles/1" for 127.0.0.1 at 2011-02-18 23:01:33 +0300
+  Processing by RolesController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Completed   in 0ms
+
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.0ms)
