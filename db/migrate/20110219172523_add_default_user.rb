@@ -18,4 +18,3 @@ class AddDefaultUser < ActiveRecord::Migration
   end
 end
 
-end
