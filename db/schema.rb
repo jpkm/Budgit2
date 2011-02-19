@@ -10,19 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110218195711) do
+ActiveRecord::Schema.define(:version => 20110219172523) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "year"
-    t.integer  "clubID"
+    t.integer  "club_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "assignments", :force => true do |t|
-    t.integer  "roleID"
-    t.integer  "clubID"
-    t.string   "username"
+    t.integer  "role_id"
+    t.integer  "club_id"
+    t.string   "user_id"
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -42,15 +42,16 @@ ActiveRecord::Schema.define(:version => 20110218195711) do
   end
 
   create_table "credits", :force => true do |t|
-    t.integer  "categoryID"
+    t.integer  "credit_category_id"
     t.integer  "date"
-    t.integer  "accountID"
+    t.integer  "account_id"
     t.integer  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "debit_categories", :force => true do |t|
+    t.boolean  "active"
     t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -58,12 +59,12 @@ ActiveRecord::Schema.define(:version => 20110218195711) do
 
   create_table "debits", :force => true do |t|
     t.text     "item_purchased"
-    t.integer  "categoryID"
+    t.integer  "debit_category_id"
     t.text     "reason"
     t.integer  "nunber_of_consumers"
     t.text     "names_of_consumers"
     t.integer  "date_purchased"
-    t.integer  "accountID"
+    t.integer  "account_id"
     t.integer  "amount"
     t.integer  "reimbursement_date"
     t.datetime "created_at"
@@ -83,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20110218195711) do
     t.string   "last_name"
     t.string   "username"
     t.string   "email"
+    t.string   "password"
     t.string   "password_hash"
     t.string   "password_salt"
     t.datetime "created_at"

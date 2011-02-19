@@ -2211,3 +2211,496 @@ Migrating to CreateCreditCategories (20110215150544)
   [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "credit_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "active" boolean, "category" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
   [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215150544')
 Migrating to CreateUsers (20110215175505)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (10.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to CreateClubs (20110215072001)
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TABLE "clubs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215072001')
+Migrating to CreateAssignments (20110215093055)
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TABLE "assignments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role_id" integer, "club_id" integer, "user_id" varchar(255), "active" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215093055')
+Migrating to CreateAccounts (20110215093322)
+  [1m[36mSQL (0.0ms)[0m  [1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "year" integer, "club_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215093322')
+Migrating to CreateDebits (20110215094251)
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "debits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "item_purchased" text, "debit_category_id" integer, "reason" text, "nunber_of_consumers" integer, "names_of_consumers" text, "date_purchased" integer, "account_id" integer, "amount" integer, "reimbursement_date" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215094251')
+Migrating to CreateRoles (20110215094723)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "active" boolean, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215094723')
+Migrating to CreateDebitCategories (20110215145830)
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "debit_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "active" boolean, "category" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215145830')
+Migrating to CreateCredits (20110215150335)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "credits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "credit_category_id" integer, "date" integer, "account_id" integer, "amount" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215150335')
+Migrating to CreateCreditCategories (20110215150544)
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "credit_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "active" boolean, "category" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215150544')
+Migrating to CreateUsers (20110215175505)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "middle_name" varchar(255), "last_name" varchar(255), "username" varchar(255), "email" varchar(255), "password" varchar(255), "password_hash" varchar(255), "password_salt" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215175505')
+Migrating to AddDefaultUser (20110219172523)
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."username" = 'dad') LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE ("users"."email" = 'dad@andrew.edu.com') LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "users" ("first_name", "middle_name", "last_name", "username", "email", "password", "password_hash", "password_salt", "created_at", "updated_at") VALUES ('dad', 'a', 'd', 'dad', 'dad@andrew.edu.com', 'budgit', '$2a$10$8DSBE0UVNQ8HoJNAO6jpGOpfuCU7OJIbxQRwkjg4UX4/PBYKMnGBK', '$2a$10$8DSBE0UVNQ8HoJNAO6jpGO', '2011-02-19 17:32:03.686645', '2011-02-19 17:32:03.686645')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110219172523')[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("accounts")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("assignments")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("clubs")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("credit_categories")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("credits")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("debit_categories")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("debits")[0m
+  [1m[35mSQL (1.0ms)[0m  PRAGMA index_list("roles")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-19 20:33:30 +0300
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_home_index_html_erb___671062589_25032384_193206500 at c:/Users/jp/desktop/Budgit2/app/views/home/index.html.erb:7)
+Rendered home/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 38ms (Views: 37.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-02-19 20:33:41 +0300
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6Mh3NRCWYjXiY/j4GoYTwf123eSQAjcumsseO9bFLJk=", "login"=>"dad", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'dad') LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 456ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-19 20:33:42 +0300
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered home/_personal.html.erb (11.0ms)
+Rendered partials/_navigation.html.erb (4.0ms)
+Rendered home/index.html.erb within layouts/application (182.0ms)
+Completed 200 OK in 206ms (Views: 206.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/accounts" for 127.0.0.1 at 2011-02-19 20:33:56 +0300
+  Processing by AccountsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Account> at c:/Users/jp/desktop/Budgit2/app/models/account.rb:15)
+  [1m[35mAccount Load (1.0ms)[0m  SELECT "accounts".* FROM "accounts"
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered accounts/index.html.erb within layouts/application (71.0ms)
+Completed 200 OK in 137ms (Views: 98.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assignments" for 127.0.0.1 at 2011-02-19 20:34:00 +0300
+  Processing by AssignmentsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Assignment> at c:/Users/jp/desktop/Budgit2/app/models/assignment.rb:14)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Assignment> at c:/Users/jp/desktop/Budgit2/app/models/assignment.rb:16)
+  [1m[35mAssignment Load (1.0ms)[0m  SELECT "assignments".* FROM "assignments"
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered assignments/index.html.erb within layouts/application (45.0ms)
+Completed 200 OK in 108ms (Views: 70.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assignments/new" for 127.0.0.1 at 2011-02-19 20:34:03 +0300
+  Processing by AssignmentsController#new as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Assignment> at c:/Users/jp/desktop/Budgit2/app/models/assignment.rb:14)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Assignment> at c:/Users/jp/desktop/Budgit2/app/models/assignment.rb:16)
+  [1m[35mRole Load (0.0ms)[0m  SELECT "roles".* FROM "roles"
+Rendered assignments/_form.html.erb (89.0ms)
+Rendered assignments/new.html.erb within layouts/application (97.0ms)
+Completed   in 141ms
+
+ActionView::Template::Error (undefined method `roleID' for #<Assignment:0x30a6f20>):
+    13: 
+    14:   <div class="field">
+    15:     <%= f.label :Role %><br />
+    16: 	<%= f.collection_select :roleID, Role.all, :id, :name, :prompt => "Select ..." %>
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :Club %><br />
+  app/views/assignments/_form.html.erb:16:in `block in _app_views_assignments__form_html_erb___732902768_25104012_142236716'
+  app/views/assignments/_form.html.erb:1:in `_app_views_assignments__form_html_erb___732902768_25104012_142236716'
+  app/views/assignments/new.html.erb:3:in `_app_views_assignments_new_html_erb__702572862_25131024_193206500'
+  app/controllers/assignments_controller.rb:29:in `new'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (18.0ms)
+
+
+Started GET "/assignments/new" for 127.0.0.1 at 2011-02-19 20:36:24 +0300
+  Processing by AssignmentsController#new as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Assignment> at c:/Users/jp/desktop/Budgit2/app/models/assignment.rb:14)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Assignment> at c:/Users/jp/desktop/Budgit2/app/models/assignment.rb:16)
+  [1m[36mRole Load (0.0ms)[0m  [1mSELECT "roles".* FROM "roles"[0m
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Club> at c:/Users/jp/desktop/Budgit2/app/models/club.rb:14)
+Creating scope :all. Overwriting existing method Club.all.
+  [1m[35mClub Load (0.0ms)[0m  SELECT "clubs".* FROM "clubs" ORDER BY name
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Rendered assignments/_form.html.erb (127.0ms)
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered assignments/new.html.erb within layouts/application (152.0ms)
+Completed 200 OK in 195ms (Views: 177.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/assignments" for 127.0.0.1 at 2011-02-19 20:36:36 +0300
+  Processing by AssignmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6Mh3NRCWYjXiY/j4GoYTwf123eSQAjcumsseO9bFLJk=", "assignment"=>{"role_id"=>"", "club_id"=>"", "user_id"=>"1", "active"=>"0"}, "commit"=>"Create Assignment"}
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Assignment> at c:/Users/jp/desktop/Budgit2/app/models/assignment.rb:14)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Assignment> at c:/Users/jp/desktop/Budgit2/app/models/assignment.rb:16)
+WARNING: Can't mass-assign protected attributes: active
+  [1m[36mRole Load (0.0ms)[0m  [1mSELECT "roles".* FROM "roles"[0m
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Club> at c:/Users/jp/desktop/Budgit2/app/models/club.rb:14)
+Creating scope :all. Overwriting existing method Club.all.
+  [1m[35mClub Load (1.0ms)[0m  SELECT "clubs".* FROM "clubs" ORDER BY name
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Rendered assignments/_form.html.erb (133.0ms)
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered assignments/new.html.erb within layouts/application (157.0ms)
+Completed 200 OK in 212ms (Views: 181.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/debits" for 127.0.0.1 at 2011-02-19 20:36:56 +0300
+  Processing by DebitsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+  [1m[36mDebit Load (1.0ms)[0m  [1mSELECT "debits".* FROM "debits" ORDER BY debit_id[0m
+SQLite3::SQLException: no such column: debit_id: SELECT "debits".* FROM "debits" ORDER BY debit_id
+Rendered debits/index.html.erb within layouts/application (3.0ms)
+Completed   in 48ms
+
+ActionView::Template::Error (SQLite3::SQLException: no such column: debit_id: SELECT "debits".* FROM "debits" ORDER BY debit_id):
+    16:     <th></th>
+    17:   </tr>
+    18: 
+    19: <% @debits.each do |debit| %>
+    20:   <tr>
+    21:     <td><%= debit.item_purchased %></td>
+    22:     <td><%= debit.categoryID %></td>
+  app/views/debits/index.html.erb:19:in `_app_views_debits_index_html_erb__1038393885_23272380_193206500'
+  app/controllers/debits_controller.rb:7:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  [1m[35mDebit Load (0.0ms)[0m  SELECT "debits".* FROM "debits" ORDER BY debit_id
+SQLite3::SQLException: no such column: debit_id: SELECT "debits".* FROM "debits" ORDER BY debit_id
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (27.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (42.0ms)
+
+
+Started GET "/debits" for 127.0.0.1 at 2011-02-19 20:38:42 +0300
+  Processing by DebitsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+  [1m[36mDebit Load (1.0ms)[0m  [1mSELECT "debits".* FROM "debits" ORDER BY debit_id[0m
+SQLite3::SQLException: no such column: debit_id: SELECT "debits".* FROM "debits" ORDER BY debit_id
+Rendered debits/index.html.erb within layouts/application (2.0ms)
+Completed   in 44ms
+
+ActionView::Template::Error (SQLite3::SQLException: no such column: debit_id: SELECT "debits".* FROM "debits" ORDER BY debit_id):
+    16:     <th></th>
+    17:   </tr>
+    18: 
+    19: <% @debits.each do |debit| %>
+    20:   <tr>
+    21:     <td><%= debit.item_purchased %></td>
+    22:     <td><%= debit.category_id %></td>
+  app/views/debits/index.html.erb:19:in `_app_views_debits_index_html_erb__1038393885_26275020_193206500'
+  app/controllers/debits_controller.rb:7:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  [1m[35mDebit Load (0.0ms)[0m  SELECT "debits".* FROM "debits" ORDER BY debit_id
+SQLite3::SQLException: no such column: debit_id: SELECT "debits".* FROM "debits" ORDER BY debit_id
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (17.0ms)
+
+
+Started GET "/debits" for 127.0.0.1 at 2011-02-19 20:40:05 +0300
+  Processing by DebitsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+  [1m[36mDebit Load (0.0ms)[0m  [1mSELECT "debits".* FROM "debits" ORDER BY debit_id[0m
+SQLite3::SQLException: no such column: debit_id: SELECT "debits".* FROM "debits" ORDER BY debit_id
+Rendered debits/index.html.erb within layouts/application (2.0ms)
+Completed   in 43ms
+
+ActionView::Template::Error (SQLite3::SQLException: no such column: debit_id: SELECT "debits".* FROM "debits" ORDER BY debit_id):
+    16:     <th></th>
+    17:   </tr>
+    18: 
+    19: <% @debits.each do |debit| %>
+    20:   <tr>
+    21:     <td><%= debit.item_purchased %></td>
+    22:     <td><%= debit.category_id %></td>
+  app/views/debits/index.html.erb:19:in `_app_views_debits_index_html_erb__1038393885_25294164_193206500'
+  app/controllers/debits_controller.rb:7:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  [1m[35mDebit Load (1.0ms)[0m  SELECT "debits".* FROM "debits" ORDER BY debit_id
+SQLite3::SQLException: no such column: debit_id: SELECT "debits".* FROM "debits" ORDER BY debit_id
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (18.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-19 20:40:17 +0300
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_home_index_html_erb___671062589_25828896_193206500 at c:/Users/jp/desktop/Budgit2/app/views/home/index.html.erb:7)
+Rendered home/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 29ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-02-19 20:40:24 +0300
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XL4u9QMLU9uCyCM5hI2Ak9A+LrltJZRMaFqgm+7HV0M=", "login"=>"dad", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = 'dad') LIMIT 1[0m
+Rendered sessions/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 171ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-02-19 20:40:29 +0300
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XL4u9QMLU9uCyCM5hI2Ak9A+LrltJZRMaFqgm+7HV0M=", "login"=>"dad", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'dad') LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 118ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-19 20:40:29 +0300
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered home/_personal.html.erb (11.0ms)
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered home/index.html.erb within layouts/application (77.0ms)
+Completed 200 OK in 102ms (Views: 100.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/clubs" for 127.0.0.1 at 2011-02-19 20:40:33 +0300
+  Processing by ClubsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Club> at c:/Users/jp/desktop/Budgit2/app/models/club.rb:14)
+Creating scope :all. Overwriting existing method Club.all.
+  [1m[35mClub Load (1.0ms)[0m  SELECT "clubs".* FROM "clubs" ORDER BY name
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered clubs/index.html.erb within layouts/application (43.0ms)
+Completed 200 OK in 86ms (Views: 67.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/roles" for 127.0.0.1 at 2011-02-19 20:40:35 +0300
+  Processing by RolesController#index as HTML
+  [1m[35mRole Load (0.0ms)[0m  SELECT "roles".* FROM "roles"
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (10.0ms)
+Rendered roles/index.html.erb within layouts/application (80.0ms)
+Completed 200 OK in 140ms (Views: 120.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/accounts" for 127.0.0.1 at 2011-02-19 20:40:36 +0300
+  Processing by AccountsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Account> at c:/Users/jp/desktop/Budgit2/app/models/account.rb:15)
+  [1m[35mAccount Load (1.0ms)[0m  SELECT "accounts".* FROM "accounts"
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (24.0ms)
+Rendered accounts/index.html.erb within layouts/application (64.0ms)
+Completed 200 OK in 107ms (Views: 88.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/debits" for 127.0.0.1 at 2011-02-19 20:40:37 +0300
+  Processing by DebitsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+  [1m[35mDebit Load (1.0ms)[0m  SELECT "debits".* FROM "debits" ORDER BY debit_id
+SQLite3::SQLException: no such column: debit_id: SELECT "debits".* FROM "debits" ORDER BY debit_id
+Rendered debits/index.html.erb within layouts/application (3.0ms)
+Completed   in 65ms
+
+ActionView::Template::Error (SQLite3::SQLException: no such column: debit_id: SELECT "debits".* FROM "debits" ORDER BY debit_id):
+    16:     <th></th>
+    17:   </tr>
+    18: 
+    19: <% @debits.each do |debit| %>
+    20:   <tr>
+    21:     <td><%= debit.item_purchased %></td>
+    22:     <td><%= debit.category_id %></td>
+  app/views/debits/index.html.erb:19:in `_app_views_debits_index_html_erb__1038393885_26869908_193206500'
+  app/controllers/debits_controller.rb:7:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  [1m[36mDebit Load (0.0ms)[0m  [1mSELECT "debits".* FROM "debits" ORDER BY debit_id[0m
+SQLite3::SQLException: no such column: debit_id: SELECT "debits".* FROM "debits" ORDER BY debit_id
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (17.0ms)
+
+
+Started GET "/debit_categories" for 127.0.0.1 at 2011-02-19 20:40:41 +0300
+  Processing by DebitCategoriesController#index as HTML
+  [1m[35mDebitCategory Load (0.0ms)[0m  SELECT "debit_categories".* FROM "debit_categories"
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered debit_categories/index.html.erb within layouts/application (42.0ms)
+Completed 200 OK in 80ms (Views: 66.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/credits" for 127.0.0.1 at 2011-02-19 20:40:44 +0300
+  Processing by CreditsController#index as HTML
+  [1m[35mCredit Load (1.0ms)[0m  SELECT "credits".* FROM "credits"
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered credits/index.html.erb within layouts/application (65.0ms)
+Completed 200 OK in 104ms (Views: 89.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/credit_categories" for 127.0.0.1 at 2011-02-19 20:40:48 +0300
+  Processing by CreditCategoriesController#index as HTML
+  [1m[35mCreditCategory Load (0.0ms)[0m  SELECT "credit_categories".* FROM "credit_categories"
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (0.0ms)
+Rendered credit_categories/index.html.erb within layouts/application (40.0ms)
+Completed 200 OK in 80ms (Views: 60.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2011-02-19 20:40:54 +0300
+  Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-19 20:40:54 +0300
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_home_index_html_erb___671062589_25098192_193206500 at c:/Users/jp/desktop/Budgit2/app/views/home/index.html.erb:7)
+Rendered home/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 31ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-02-19 20:41:01 +0300
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XL4u9QMLU9uCyCM5hI2Ak9A+LrltJZRMaFqgm+7HV0M=", "login"=>"dad", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'dad') LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 139ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-19 20:41:01 +0300
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered home/_personal.html.erb (11.0ms)
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered home/index.html.erb within layouts/application (77.0ms)
+Completed 200 OK in 100ms (Views: 99.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/debits" for 127.0.0.1 at 2011-02-19 20:41:06 +0300
+  Processing by DebitsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+  [1m[35mDebit Load (1.0ms)[0m  SELECT "debits".* FROM "debits" ORDER BY debit_id
+SQLite3::SQLException: no such column: debit_id: SELECT "debits".* FROM "debits" ORDER BY debit_id
+Rendered debits/index.html.erb within layouts/application (2.0ms)
+Completed   in 46ms
+
+ActionView::Template::Error (SQLite3::SQLException: no such column: debit_id: SELECT "debits".* FROM "debits" ORDER BY debit_id):
+    16:     <th></th>
+    17:   </tr>
+    18: 
+    19: <% @debits.each do |debit| %>
+    20:   <tr>
+    21:     <td><%= debit.item_purchased %></td>
+    22:     <td><%= debit.category_id %></td>
+  app/views/debits/index.html.erb:19:in `_app_views_debits_index_html_erb__1038393885_23784384_193206500'
+  app/controllers/debits_controller.rb:7:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+  [1m[36mDebit Load (1.0ms)[0m  [1mSELECT "debits".* FROM "debits" ORDER BY debit_id[0m
+SQLite3::SQLException: no such column: debit_id: SELECT "debits".* FROM "debits" ORDER BY debit_id
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (18.0ms)
+
+
+Started GET "/debits" for 127.0.0.1 at 2011-02-19 20:53:35 +0300
+  Processing by DebitsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+  [1m[35mDebit Load (1.0ms)[0m  SELECT "debits".* FROM "debits" ORDER BY debit_id
+SQLite3::SQLException: no such column: debit_id: SELECT "debits".* FROM "debits" ORDER BY debit_id
+Rendered debits/index.html.erb within layouts/application (2.0ms)
+Completed   in 48ms
+
+ActionView::Template::Error (SQLite3::SQLException: no such column: debit_id: SELECT "debits".* FROM "debits" ORDER BY debit_id):
+    16:     <th></th>
+    17:   </tr>
+    18: 
+    19: <% @debits.each do |debit| %>
+    20:   <tr>
+    21:     <td><%= debit.item_purchased %></td>
+    22:     <td><%= debit.category_id %></td>
+  app/views/debits/index.html.erb:19:in `_app_views_debits_index_html_erb__1038393885_24945228_193206500'
+  app/controllers/debits_controller.rb:7:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+  [1m[36mDebit Load (0.0ms)[0m  [1mSELECT "debits".* FROM "debits" ORDER BY debit_id[0m
+SQLite3::SQLException: no such column: debit_id: SELECT "debits".* FROM "debits" ORDER BY debit_id
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (17.0ms)
+
+
+Started GET "/debits" for 127.0.0.1 at 2011-02-19 20:54:44 +0300
+  Processing by DebitsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+  [1m[35mDebit Load (0.0ms)[0m  SELECT "debits".* FROM "debits" ORDER BY debit_id
+SQLite3::SQLException: no such column: debit_id: SELECT "debits".* FROM "debits" ORDER BY debit_id
+Rendered debits/index.html.erb within layouts/application (2.0ms)
+Completed   in 42ms
+
+ActionView::Template::Error (SQLite3::SQLException: no such column: debit_id: SELECT "debits".* FROM "debits" ORDER BY debit_id):
+    16:     <th></th>
+    17:   </tr>
+    18: 
+    19: <% @debits.each do |debit| %>
+    20:   <tr>
+    21:     <td><%= debit.item_purchased %></td>
+    22:     <td><%= debit.category_id %></td>
+  app/views/debits/index.html.erb:19:in `_app_views_debits_index_html_erb__1038393885_24170676_193206500'
+  app/controllers/debits_controller.rb:7:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  [1m[36mDebit Load (1.0ms)[0m  [1mSELECT "debits".* FROM "debits" ORDER BY debit_id[0m
+SQLite3::SQLException: no such column: debit_id: SELECT "debits".* FROM "debits" ORDER BY debit_id
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (17.0ms)
