@@ -3,7 +3,7 @@ class Assignment < ActiveRecord::Base
 	
 	#Relationships
 	belongs_to :club
-	belongs_to :role
+	belongs_to :role, :through => roleID
 	belongs_to :user
 	
 	#Validations

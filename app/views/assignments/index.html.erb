@@ -2,9 +2,9 @@
 
 <table>
   <tr>
-    <th>Roleid</th>
-    <th>Clubid</th>
-    <th>User andrewid</th>
+    <th>Role</th>
+    <th>Club</th>
+    <th>User</th>
     <th>Active</th>
     <th></th>
     <th></th>
@@ -13,9 +13,9 @@
 
 <% @assignments.each do |assignment| %>
   <tr>
-    <td><%= assignment.roleID %></td>
-    <td><%= assignment.clubID %></td>
-    <td><%= assignment.user_andrewID %></td>
+    <td><%= assignment.role.name %></td>
+    <td><%= assignment.club.name %></td>
+    <td><%= assignment.username %></td>
     <td><%= assignment.active %></td>
     <td><%= link_to 'Show', assignment %></td>
     <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>

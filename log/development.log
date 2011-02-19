@@ -830,3 +830,394 @@ Started GET "/debit_categories" for 127.0.0.1 at 2011-02-18 23:21:33 +0300
 Rendered partials/_navigation.html.erb (3.0ms)
 Rendered debit_categories/index.html.erb within layouts/application (44.0ms)
 Completed 200 OK in 85ms (Views: 68.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-19 09:42:40 +0300
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_home_index_html_erb___485316584_25011912__640386731 at c:/Users/jp/desktop/Budgit2/app/views/home/index.html.erb:7)
+Rendered home/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 56ms (Views: 56.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-02-19 09:42:51 +0300
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5B1hx/yBUBjDgXz9+65H3wnDrfBNwP3c/GfnIlBlLJE=", "login"=>"dad", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'dad') LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 333ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-19 09:42:52 +0300
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered home/_personal.html.erb (9.0ms)
+Rendered partials/_navigation.html.erb (4.0ms)
+Rendered home/index.html.erb within layouts/application (209.0ms)
+Completed 200 OK in 232ms (Views: 231.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/roles" for 127.0.0.1 at 2011-02-19 09:42:57 +0300
+  Processing by RolesController#index as HTML
+  [1m[35mRole Load (1.0ms)[0m  SELECT "roles".* FROM "roles"
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered roles/index.html.erb within layouts/application (44.0ms)
+Completed 200 OK in 85ms (Views: 71.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/roles/1" for 127.0.0.1 at 2011-02-19 09:43:00 +0300
+  Processing by RolesController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRole Load (0.0ms)[0m  SELECT "roles".* FROM "roles" WHERE ("roles"."id" = 1) LIMIT 1
+  [1m[36mAREL (1.0ms)[0m  [1mDELETE FROM "roles" WHERE ("roles"."id" = 1)[0m
+Redirected to http://localhost:3000/roles
+Completed 302 Found in 54ms
+
+
+Started GET "/roles" for 127.0.0.1 at 2011-02-19 09:43:00 +0300
+  Processing by RolesController#index as HTML
+  [1m[35mRole Load (1.0ms)[0m  SELECT "roles".* FROM "roles"
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered roles/index.html.erb within layouts/application (58.0ms)
+Completed 200 OK in 96ms (Views: 83.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/roles/new" for 127.0.0.1 at 2011-02-19 09:43:02 +0300
+  Processing by RolesController#new as HTML
+Rendered roles/_form.html.erb (23.0ms)
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered roles/new.html.erb within layouts/application (106.0ms)
+Completed 200 OK in 147ms (Views: 132.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/roles" for 127.0.0.1 at 2011-02-19 09:43:08 +0300
+  Processing by RolesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5B1hx/yBUBjDgXz9+65H3wnDrfBNwP3c/GfnIlBlLJE=", "role"=>{"active"=>"1", "name"=>"Faculty Advisor"}, "commit"=>"Create Role"}
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "roles" ("active", "name", "created_at", "updated_at") VALUES ('t', 'Faculty Advisor', '2011-02-19 06:43:08.727656', '2011-02-19 06:43:08.727656')[0m
+Redirected to http://localhost:3000/roles/2
+Completed 302 Found in 109ms
+
+
+Started GET "/roles/2" for 127.0.0.1 at 2011-02-19 09:43:08 +0300
+  Processing by RolesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mRole Load (1.0ms)[0m  SELECT "roles".* FROM "roles" WHERE ("roles"."id" = 2) LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered roles/show.html.erb within layouts/application (63.0ms)
+Completed 200 OK in 105ms (Views: 89.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/roles" for 127.0.0.1 at 2011-02-19 09:43:12 +0300
+  Processing by RolesController#index as HTML
+  [1m[35mRole Load (1.0ms)[0m  SELECT "roles".* FROM "roles"
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered roles/index.html.erb within layouts/application (45.0ms)
+Completed 200 OK in 85ms (Views: 70.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/roles/new" for 127.0.0.1 at 2011-02-19 09:43:15 +0300
+  Processing by RolesController#new as HTML
+Rendered roles/_form.html.erb (6.0ms)
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered roles/new.html.erb within layouts/application (70.0ms)
+Completed 200 OK in 112ms (Views: 97.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/roles" for 127.0.0.1 at 2011-02-19 09:43:25 +0300
+  Processing by RolesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5B1hx/yBUBjDgXz9+65H3wnDrfBNwP3c/GfnIlBlLJE=", "role"=>{"active"=>"1", "name"=>"Club Leader"}, "commit"=>"Create Role"}
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "roles" ("active", "name", "created_at", "updated_at") VALUES ('t', 'Club Leader', '2011-02-19 06:43:25.490692', '2011-02-19 06:43:25.490692')[0m
+Redirected to http://localhost:3000/roles/3
+Completed 302 Found in 32ms
+
+
+Started GET "/roles/3" for 127.0.0.1 at 2011-02-19 09:43:25 +0300
+  Processing by RolesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mRole Load (0.0ms)[0m  SELECT "roles".* FROM "roles" WHERE ("roles"."id" = 3) LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered roles/show.html.erb within layouts/application (41.0ms)
+Completed 200 OK in 81ms (Views: 66.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/roles" for 127.0.0.1 at 2011-02-19 09:43:28 +0300
+  Processing by RolesController#index as HTML
+  [1m[35mRole Load (1.0ms)[0m  SELECT "roles".* FROM "roles"
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered roles/index.html.erb within layouts/application (44.0ms)
+Completed 200 OK in 106ms (Views: 70.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/clubs" for 127.0.0.1 at 2011-02-19 09:43:31 +0300
+  Processing by ClubsController#index as HTML
+  [1m[35mClub Load (1.0ms)[0m  SELECT "clubs".* FROM "clubs"
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered clubs/index.html.erb within layouts/application (40.0ms)
+Completed 200 OK in 87ms (Views: 68.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/clubs/new" for 127.0.0.1 at 2011-02-19 09:43:33 +0300
+  Processing by ClubsController#new as HTML
+Rendered clubs/_form.html.erb (0.0ms)
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (10.0ms)
+Rendered clubs/new.html.erb within layouts/application (50.0ms)
+Completed 200 OK in 130ms (Views: 110.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/clubs" for 127.0.0.1 at 2011-02-19 09:43:37 +0300
+  Processing by ClubsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5B1hx/yBUBjDgXz9+65H3wnDrfBNwP3c/GfnIlBlLJE=", "club"=>{"name"=>"Gaming Club"}, "commit"=>"Create Club"}
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "clubs" ("name", "created_at", "updated_at") VALUES ('Gaming Club', '2011-02-19 06:43:37.905959', '2011-02-19 06:43:37.905959')[0m
+Redirected to http://localhost:3000/clubs/1
+Completed 302 Found in 34ms
+
+
+Started GET "/clubs/1" for 127.0.0.1 at 2011-02-19 09:43:37 +0300
+  Processing by ClubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mClub Load (1.0ms)[0m  SELECT "clubs".* FROM "clubs" WHERE ("clubs"."id" = 1) LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (25.0ms)
+Rendered clubs/show.html.erb within layouts/application (67.0ms)
+Completed 200 OK in 111ms (Views: 92.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/debit_categories" for 127.0.0.1 at 2011-02-19 09:43:40 +0300
+  Processing by DebitCategoriesController#index as HTML
+  [1m[35mDebitCategory Load (0.0ms)[0m  SELECT "debit_categories".* FROM "debit_categories"
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (10.0ms)
+Rendered debit_categories/index.html.erb within layouts/application (40.0ms)
+Completed 200 OK in 100ms (Views: 70.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/debit_categories/new" for 127.0.0.1 at 2011-02-19 09:43:42 +0300
+  Processing by DebitCategoriesController#new as HTML
+Rendered debit_categories/_form.html.erb (5.0ms)
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debit_categories/new.html.erb within layouts/application (50.0ms)
+Completed 200 OK in 91ms (Views: 76.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/debit_categories" for 127.0.0.1 at 2011-02-19 09:43:47 +0300
+  Processing by DebitCategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5B1hx/yBUBjDgXz9+65H3wnDrfBNwP3c/GfnIlBlLJE=", "debit_category"=>{"category"=>"Food"}, "commit"=>"Create Debit category"}
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "debit_categories" ("category", "created_at", "updated_at") VALUES ('Food', '2011-02-19 06:43:47.482861', '2011-02-19 06:43:47.482861')[0m
+Redirected to http://localhost:3000/debit_categories/2
+Completed 302 Found in 50ms
+
+
+Started GET "/debit_categories/2" for 127.0.0.1 at 2011-02-19 09:43:47 +0300
+  Processing by DebitCategoriesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mDebitCategory Load (0.0ms)[0m  SELECT "debit_categories".* FROM "debit_categories" WHERE ("debit_categories"."id" = 2) LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered debit_categories/show.html.erb within layouts/application (40.0ms)
+Completed 200 OK in 101ms (Views: 66.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-02-19 09:43:50 +0300
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered users/index.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 68ms (Views: 47.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-02-19 09:43:52 +0300
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (9.0ms)
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered users/new.html.erb within layouts/application (53.0ms)
+Completed 200 OK in 139ms (Views: 95.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2011-02-19 09:44:17 +0300
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5B1hx/yBUBjDgXz9+65H3wnDrfBNwP3c/GfnIlBlLJE=", "user"=>{"username"=>"jp", "first_name"=>"jp", "middle_name"=>"k", "last_name"=>"menniti", "email"=>"jmenniti@andrew.cmu.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Submit"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."username" = 'jp') LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE ("users"."email" = 'jmenniti@andrew.cmu.edu') LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "users" ("first_name", "middle_name", "last_name", "username", "email", "password_hash", "password_salt", "created_at", "updated_at") VALUES ('jp', 'k', 'menniti', 'jp', 'jmenniti@andrew.cmu.edu', '$2a$10$GuW5jw8cLMhggZNTo9J7/uYsyDLyRcDIFRTpEU16zpaLnxSlhy5yK', '$2a$10$GuW5jw8cLMhggZNTo9J7/u', '2011-02-19 06:44:17.734466', '2011-02-19 06:44:17.734466')
+Redirected to http://localhost:3000/
+Completed 302 Found in 198ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-19 09:44:17 +0300
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered home/_personal.html.erb (9.0ms)
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered home/index.html.erb within layouts/application (88.0ms)
+Completed 200 OK in 111ms (Views: 110.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assignments" for 127.0.0.1 at 2011-02-19 09:44:21 +0300
+  Processing by AssignmentsController#index as HTML
+  [1m[35mAssignment Load (1.0ms)[0m  SELECT "assignments".* FROM "assignments"
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered assignments/index.html.erb within layouts/application (37.0ms)
+Completed 200 OK in 103ms (Views: 69.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assignments/new" for 127.0.0.1 at 2011-02-19 09:44:23 +0300
+  Processing by AssignmentsController#new as HTML
+  [1m[35mRole Load (0.0ms)[0m  SELECT "roles".* FROM "roles"
+  [1m[36mClub Load (0.0ms)[0m  [1mSELECT "clubs".* FROM "clubs"[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users"
+Rendered assignments/_form.html.erb (130.0ms)
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered assignments/new.html.erb within layouts/application (176.0ms)
+Completed 200 OK in 240ms (Views: 201.0ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/assignments" for 127.0.0.1 at 2011-02-19 09:44:37 +0300
+  Processing by AssignmentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5B1hx/yBUBjDgXz9+65H3wnDrfBNwP3c/GfnIlBlLJE=", "assignment"=>{"roleID"=>"3", "clubID"=>"1", "username"=>"2", "active"=>"1"}, "commit"=>"Create Assignment"}
+WARNING: Can't mass-assign protected attributes: active
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "assignments" ("roleID", "clubID", "username", "active", "created_at", "updated_at") VALUES (3, 1, '2', NULL, '2011-02-19 06:44:37.383082', '2011-02-19 06:44:37.383082')
+Redirected to http://localhost:3000/assignments/1
+Completed 302 Found in 37ms
+
+
+Started GET "/assignments/1" for 127.0.0.1 at 2011-02-19 09:44:37 +0300
+  Processing by AssignmentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAssignment Load (1.0ms)[0m  [1mSELECT "assignments".* FROM "assignments" WHERE ("assignments"."id" = 1) LIMIT 1[0m
+Rendered assignments/show.html.erb within layouts/application (85.0ms)
+Completed   in 133ms
+
+ActionView::Template::Error (undefined method `user_andrewID' for #<Assignment:0x2b62dc8>):
+    12: 
+    13: <p>
+    14:   <b>User andrewid:</b>
+    15:   <%= @assignment.user_andrewID %>
+    16: </p>
+    17: 
+    18: <p>
+  app/views/assignments/show.html.erb:15:in `_app_views_assignments_show_html_erb___907483427_22724556__640386731'
+  app/controllers/assignments_controller.rb:18:in `show'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (22.0ms)
+
+
+Started GET "/assignments/1" for 127.0.0.1 at 2011-02-19 09:49:26 +0300
+  Processing by AssignmentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mAssignment Load (1.0ms)[0m  SELECT "assignments".* FROM "assignments" WHERE ("assignments"."id" = 1) LIMIT 1
+Rendered assignments/show.html.erb within layouts/application (1.0ms)
+Completed   in 45ms
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    2: 
+    3: <p>
+    4:   <b>Role:</b>
+    5:   <%= @assignment.role.name %>
+    6: </p>
+    7: 
+    8: <p>
+  app/views/assignments/show.html.erb:5:in `_app_views_assignments_show_html_erb___907483427_21297636__640386731'
+  app/controllers/assignments_controller.rb:18:in `show'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (22.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (58.0ms)
+
+
+Started GET "/assignments" for 127.0.0.1 at 2011-02-19 09:50:29 +0300
+  Processing by AssignmentsController#index as HTML
+  [1m[36mAssignment Load (1.0ms)[0m  [1mSELECT "assignments".* FROM "assignments"[0m
+Rendered assignments/index.html.erb within layouts/application (8.0ms)
+Completed   in 50ms
+
+ActionView::Template::Error (undefined method `user_andrewID' for #<Assignment:0x3573f90>):
+    15:   <tr>
+    16:     <td><%= assignment.roleID %></td>
+    17:     <td><%= assignment.clubID %></td>
+    18:     <td><%= assignment.user_andrewID %></td>
+    19:     <td><%= assignment.active %></td>
+    20:     <td><%= link_to 'Show', assignment %></td>
+    21:     <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
+  app/views/assignments/index.html.erb:18:in `block in _app_views_assignments_index_html_erb___538372778_27832704__640386731'
+  app/views/assignments/index.html.erb:14:in `each'
+  app/views/assignments/index.html.erb:14:in `_app_views_assignments_index_html_erb___538372778_27832704__640386731'
+  app/controllers/assignments_controller.rb:7:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.0ms)
+
+
+Started GET "/assignments" for 127.0.0.1 at 2011-02-19 09:51:12 +0300
+  Processing by AssignmentsController#index as HTML
+  [1m[35mAssignment Load (1.0ms)[0m  SELECT "assignments".* FROM "assignments"
+Rendered assignments/index.html.erb within layouts/application (1.0ms)
+Completed   in 44ms
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    13: 
+    14: <% @assignments.each do |assignment| %>
+    15:   <tr>
+    16:     <td><%= assignment.role.name %></td>
+    17:     <td><%= assignment.club.name %></td>
+    18:     <td><%= assignment.username %></td>
+    19:     <td><%= assignment.active %></td>
+  app/views/assignments/index.html.erb:16:in `block in _app_views_assignments_index_html_erb___538372778_24617460__640386731'
+  app/views/assignments/index.html.erb:14:in `each'
+  app/views/assignments/index.html.erb:14:in `_app_views_assignments_index_html_erb___538372778_24617460__640386731'
+  app/controllers/assignments_controller.rb:7:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (20.0ms)
+
+
+Started GET "/assignments" for 127.0.0.1 at 2011-02-19 09:52:23 +0300
+  Processing by AssignmentsController#index as HTML
+Completed   in 12ms
+
+SyntaxError (c:/Users/jp/desktop/Budgit2/app/models/assignment.rb:6: syntax error, unexpected ':', expecting keyword_end
+	belongs_to :role :through => roleID
+	                  ^):
+  app/controllers/assignments_controller.rb:5:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.0ms)
+
+
+Started GET "/assignments" for 127.0.0.1 at 2011-02-19 09:52:39 +0300
+  Processing by AssignmentsController#index as HTML
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Completed   in 16ms
+
+NameError (undefined local variable or method `roleID' for #<Class:0x2fb2408>):
+  app/models/assignment.rb:6:in `<class:Assignment>'
+  app/models/assignment.rb:1:in `<top (required)>'
+  app/controllers/assignments_controller.rb:5:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.0ms)

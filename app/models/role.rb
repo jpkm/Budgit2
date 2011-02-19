@@ -1,4 +1,5 @@
 class Role < ActiveRecord::Base
+	attr_accessible :name
 	
 	#Relationships
 	has_many :assignments
