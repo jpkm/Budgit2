@@ -4,7 +4,7 @@ class CreateDebits < ActiveRecord::Migration
       t.text :item_purchased
       t.integer :debit_category_id
       t.text :reason
-      t.integer :nunber_of_consumers
+      t.integer :number_of_consumers
       t.text :names_of_consumers
       t.integer :date_purchased
       t.integer :account_id
