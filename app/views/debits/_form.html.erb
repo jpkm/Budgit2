@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :category %><br />
-	<%= f.collection_select :debit_category_id, Debit_categories.all, :id, :name, :prompt => "Select ..." %>
+	<%= f.collection_select :debit_category_id, DebitCategory.all, :id, :category, :prompt => "Select ..." %>
     <%#= f.text_field :debit_category_id %>
   </div>
   <div class="field">

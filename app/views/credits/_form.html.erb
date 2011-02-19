@@ -12,16 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :categoryID %><br />
-    <%= f.text_field :categoryID %>
+    <%= f.label :category_category %><br />
+	<%= f.collection_select :credit_category_id, Credit_Category.all, :id, :name, :prompt => "Select ..." %>
+    <%#= f.text_field :credit_category_id %>
   </div>
   <div class="field">
     <%= f.label :date %><br />
     <%= f.text_field :date %>
   </div>
   <div class="field">
-    <%= f.label :accountID %><br />
-    <%= f.text_field :accountID %>
+    <%= f.label :account %><br />
+    <%= f.text_field :account_id %>
   </div>
   <div class="field">
     <%= f.label :amount %><br />
