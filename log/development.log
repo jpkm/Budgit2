@@ -1221,3 +1221,140 @@ NameError (undefined local variable or method `roleID' for #<Class:0x2fb2408>):
 Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
 Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
 Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-19 10:02:14 +0300
+  Processing by HomeController#index as HTML
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered home/_personal.html.erb (10.0ms)
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered home/index.html.erb within layouts/application (269.0ms)
+Completed 200 OK in 293ms (Views: 291.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-19 10:02:39 +0300
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_home_index_html_erb__278122067_24960072__602396880 at c:/Users/jp/desktop/Budgit2/app/views/home/index.html.erb:7)
+Rendered home/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 29ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-02-19 10:02:47 +0300
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JC05p0zBPCjO/pTnFPLaXlpEyB9UvbRvpRo5V5I9qrk=", "login"=>"dad", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = 'dad') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 146ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-19 10:02:47 +0300
+  Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered home/_personal.html.erb (9.0ms)
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered home/index.html.erb within layouts/application (51.0ms)
+Completed 200 OK in 74ms (Views: 74.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-19 10:03:43 +0300
+
+ActionController::RoutingError (No route matches "/"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-19 10:03:51 +0300
+
+ActionController::RoutingError (No route matches "/"):
+  
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-19 10:03:57 +0300
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered home/_personal.html.erb (29.0ms)
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered home/index.html.erb within layouts/application (93.0ms)
+Completed 200 OK in 116ms (Views: 115.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-19 10:04:42 +0300
+  Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered home/_personal.html.erb (10.0ms)
+Rendered partials/_navigation.html.erb (71.0ms)
+Rendered home/index.html.erb within layouts/application (120.0ms)
+Completed   in 144ms
+
+ActionView::Template::Error (undefined local variable or method `home_path' for #<#<Class:0x349d778>:0x3460980>):
+    17:         <li><% link_to 'Logout', { :controller => :sessions, :action => :destroy } %>
+    18: 		<%= link_to 'logout', logout_path %>
+    19: 		</li>
+    20: 		<%= link_to 'home', home_path %> 
+    21: 	</ul>
+    22: 	<p>&nbsp;</p>
+    23: </div> <!-- end of side_nav div -->
+  app/views/partials/_navigation.html.erb:20:in `_app_views_partials__navigation_html_erb___575778337_14116620__889281956'
+  app/views/layouts/application.html.erb:14:in `_app_views_layouts_application_html_erb___910875501_27455496__602396880'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (16.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-19 10:04:57 +0300
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered home/_personal.html.erb (10.0ms)
+Rendered partials/_navigation.html.erb (8.0ms)
+Rendered home/index.html.erb within layouts/application (55.0ms)
+Completed   in 115ms
+
+ActionView::Template::Error (undefined method `home_path' for #<#<Class:0x1ce3cf0>:0x2c57448>):
+    17:         <li><% link_to 'Logout', { :controller => :sessions, :action => :destroy } %>
+    18: 		<%= link_to 'logout', logout_path %>
+    19: 		</li>
+    20: 		<%= link_to 'home', home_path('index') %> 
+    21: 	</ul>
+    22: 	<p>&nbsp;</p>
+    23: </div> <!-- end of side_nav div -->
+  app/views/partials/_navigation.html.erb:20:in `_app_views_partials__navigation_html_erb___575778337_24118548__889281956'
+  app/views/layouts/application.html.erb:14:in `_app_views_layouts_application_html_erb___910875501_28297488__602396880'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (17.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-19 10:05:15 +0300
+  Processing by HomeController#index as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered home/_personal.html.erb (9.0ms)
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered home/index.html.erb within layouts/application (73.0ms)
+Completed 200 OK in 95ms (Views: 94.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assignments" for 127.0.0.1 at 2011-02-19 10:05:19 +0300
+  Processing by AssignmentsController#index as HTML
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Completed   in 33ms
+
+NameError (undefined local variable or method `roleID' for #<Class:0x34a8c20>):
+  app/models/assignment.rb:6:in `<class:Assignment>'
+  app/models/assignment.rb:1:in `<top (required)>'
+  app/controllers/assignments_controller.rb:5:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.0ms)
