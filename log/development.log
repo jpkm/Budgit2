@@ -3944,3 +3944,55 @@ Rendered debits/_form.html.erb (65.0ms)
 Rendered partials/_navigation.html.erb (3.0ms)
 Rendered debits/new.html.erb within layouts/application (115.0ms)
 Completed 200 OK in 160ms (Views: 141.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/debits/new" for 127.0.0.1 at 2011-02-19 22:19:13 +0300
+  Processing by DebitsController#new as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:DebitCategory> at c:/Users/jp/desktop/Budgit2/app/models/debit_category.rb:10)
+Creating scope :all. Overwriting existing method DebitCategory.all.
+  [1m[36mDebitCategory Load (1.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories" ORDER BY id ASC[0m
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Account> at c:/Users/jp/desktop/Budgit2/app/models/account.rb:15)
+  [1m[35mAccount Load (1.0ms)[0m  SELECT "accounts".* FROM "accounts"
+Rendered debits/_form.html.erb (308.0ms)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debits/new.html.erb within layouts/application (359.0ms)
+Completed 200 OK in 421ms (Views: 380.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/credits" for 127.0.0.1 at 2011-02-19 22:19:51 +0300
+  Processing by CreditsController#index as HTML
+  [1m[36mCredit Load (0.0ms)[0m  [1mSELECT "credits".* FROM "credits"[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered credits/index.html.erb within layouts/application (41.0ms)
+Completed 200 OK in 80ms (Views: 65.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/credits/new" for 127.0.0.1 at 2011-02-19 22:19:59 +0300
+  Processing by CreditsController#new as HTML
+  [1m[36mCreditCategory Load (0.0ms)[0m  [1mSELECT "credit_categories".* FROM "credit_categories"[0m
+Rendered credits/_form.html.erb (30.0ms)
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (10.0ms)
+Rendered credits/new.html.erb within layouts/application (80.0ms)
+Completed 200 OK in 140ms (Views: 110.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/credits/new" for 127.0.0.1 at 2011-02-19 22:20:59 +0300
+  Processing by CreditsController#new as HTML
+  [1m[36mCreditCategory Load (0.0ms)[0m  [1mSELECT "credit_categories".* FROM "credit_categories"[0m
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Account> at c:/Users/jp/desktop/Budgit2/app/models/account.rb:15)
+  [1m[35mAccount Load (1.0ms)[0m  SELECT "accounts".* FROM "accounts"
+Rendered credits/_form.html.erb (78.0ms)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered credits/new.html.erb within layouts/application (125.0ms)
+Completed 200 OK in 165ms (Views: 148.0ms | ActiveRecord: 1.0ms)

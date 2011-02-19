@@ -38,7 +38,8 @@
   </div>
   <div class="field">
     <%= f.label :account_id %><br />
-    <%= f.text_field :account_id %>
+	<%= f.collection_select :account_id, Account.all, :id, :name, :prompt => "Select ..." %>
+    <%#= f.text_field :account_id %>
   </div>
   <div class="field">
     <%= f.label :amount %><br />
