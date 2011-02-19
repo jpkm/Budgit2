@@ -1966,3 +1966,41 @@ Migrating to CreateCreditCategories (20110215150544)
 Migrating to CreateUsers (20110215175505)
 Migrating to AddDefaultUser (20110217072154)
   [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateClubs (20110215072001)
+Migrating to CreateAssignments (20110215093055)
+Migrating to CreateAccounts (20110215093322)
+Migrating to CreateDebits (20110215094251)
+Migrating to CreateRoles (20110215094723)
+Migrating to CreateDebitCategories (20110215145830)
+Migrating to CreateCredits (20110215150335)
+Migrating to CreateCreditCategories (20110215150544)
+Migrating to CreateUsers (20110215175505)
+Migrating to AddDefaultUser (20110217072154)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateClubs (20110215072001)
+Migrating to CreateAssignments (20110215093055)
+Migrating to CreateAccounts (20110215093322)
+Migrating to CreateDebits (20110215094251)
+Migrating to CreateRoles (20110215094723)
+Migrating to CreateDebitCategories (20110215145830)
+Migrating to CreateCredits (20110215150335)
+Migrating to CreateCreditCategories (20110215150544)
+Migrating to CreateUsers (20110215175505)
+Migrating to AddDefaultUser (20110217072154)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
