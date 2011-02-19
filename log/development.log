@@ -2926,3 +2926,473 @@ DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope
 Rendered partials/_navigation.html.erb (2.0ms)
 Rendered debits/index.html.erb within layouts/application (42.0ms)
 Completed 200 OK in 81ms (Views: 65.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-19 21:22:59 +0300
+  Processing by HomeController#index as HTML
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered home/_personal.html.erb (12.0ms)
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered home/index.html.erb within layouts/application (285.0ms)
+Completed 200 OK in 309ms (Views: 306.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/debits" for 127.0.0.1 at 2011-02-19 21:23:07 +0300
+  Processing by DebitsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+  [1m[36mDebit Load (1.0ms)[0m  [1mSELECT "debits".* FROM "debits"[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered debits/index.html.erb within layouts/application (42.0ms)
+Completed 200 OK in 123ms (Views: 68.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/debits/new" for 127.0.0.1 at 2011-02-19 21:23:13 +0300
+  Processing by DebitsController#new as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+Rendered debits/_form.html.erb (19.0ms)
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debits/new.html.erb within layouts/application (98.0ms)
+Completed 200 OK in 146ms (Views: 125.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/debits" for 127.0.0.1 at 2011-02-19 21:23:24 +0300
+  Processing by DebitsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+  [1m[35mDebit Load (0.0ms)[0m  SELECT "debits".* FROM "debits"
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debits/index.html.erb within layouts/application (41.0ms)
+Completed 200 OK in 83ms (Views: 66.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/debits" for 127.0.0.1 at 2011-02-19 21:23:31 +0300
+  Processing by DebitsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+  [1m[35mDebit Load (0.0ms)[0m  SELECT "debits".* FROM "debits" ORDER BY debit.id
+SQLite3::SQLException: no such column: debit.id: SELECT "debits".* FROM "debits" ORDER BY debit.id
+Rendered debits/index.html.erb within layouts/application (44.0ms)
+Completed   in 87ms
+
+ActionView::Template::Error (SQLite3::SQLException: no such column: debit.id: SELECT "debits".* FROM "debits" ORDER BY debit.id):
+    16:     <th></th>
+    17:   </tr>
+    18: 
+    19: <% @debits.each do |debit| %>
+    20:   <tr>
+    21:     <td><%= debit.item_purchased %></td>
+    22:     <td><%= debit.debit_category_id %></td>
+  app/views/debits/index.html.erb:19:in `_app_views_debits_index_html_erb___131019297_26861148_404868457'
+  app/controllers/debits_controller.rb:7:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+  [1m[36mDebit Load (0.0ms)[0m  [1mSELECT "debits".* FROM "debits" ORDER BY debit.id[0m
+SQLite3::SQLException: no such column: debit.id: SELECT "debits".* FROM "debits" ORDER BY debit.id
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (18.0ms)
+
+
+Started GET "/debits" for 127.0.0.1 at 2011-02-19 21:24:00 +0300
+  Processing by DebitsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+  [1m[35mDebit Load (1.0ms)[0m  SELECT "debits".* FROM "debits" ORDER BY debit.account_id
+SQLite3::SQLException: no such column: debit.account_id: SELECT "debits".* FROM "debits" ORDER BY debit.account_id
+Rendered debits/index.html.erb within layouts/application (4.0ms)
+Completed   in 58ms
+
+ActionView::Template::Error (SQLite3::SQLException: no such column: debit.account_id: SELECT "debits".* FROM "debits" ORDER BY debit.account_id):
+    16:     <th></th>
+    17:   </tr>
+    18: 
+    19: <% @debits.each do |debit| %>
+    20:   <tr>
+    21:     <td><%= debit.item_purchased %></td>
+    22:     <td><%= debit.debit_category_id %></td>
+  app/views/debits/index.html.erb:19:in `_app_views_debits_index_html_erb___131019297_24913320_404868457'
+  app/controllers/debits_controller.rb:7:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  [1m[36mDebit Load (1.0ms)[0m  [1mSELECT "debits".* FROM "debits" ORDER BY debit.account_id[0m
+SQLite3::SQLException: no such column: debit.account_id: SELECT "debits".* FROM "debits" ORDER BY debit.account_id
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (19.0ms)
+
+
+Started GET "/debits" for 127.0.0.1 at 2011-02-19 21:24:12 +0300
+  Processing by DebitsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+  [1m[35mDebit Load (0.0ms)[0m  SELECT "debits".* FROM "debits" ORDER BY debit.account
+SQLite3::SQLException: no such column: debit.account: SELECT "debits".* FROM "debits" ORDER BY debit.account
+Rendered debits/index.html.erb within layouts/application (1.0ms)
+Completed   in 44ms
+
+ActionView::Template::Error (SQLite3::SQLException: no such column: debit.account: SELECT "debits".* FROM "debits" ORDER BY debit.account):
+    16:     <th></th>
+    17:   </tr>
+    18: 
+    19: <% @debits.each do |debit| %>
+    20:   <tr>
+    21:     <td><%= debit.item_purchased %></td>
+    22:     <td><%= debit.debit_category_id %></td>
+  app/views/debits/index.html.erb:19:in `_app_views_debits_index_html_erb___131019297_24524460_404868457'
+  app/controllers/debits_controller.rb:7:in `index'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  [1m[36mDebit Load (0.0ms)[0m  [1mSELECT "debits".* FROM "debits" ORDER BY debit.account[0m
+SQLite3::SQLException: no such column: debit.account: SELECT "debits".* FROM "debits" ORDER BY debit.account
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (18.0ms)
+
+
+Started GET "/debits" for 127.0.0.1 at 2011-02-19 21:24:22 +0300
+  Processing by DebitsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+  [1m[35mDebit Load (0.0ms)[0m  SELECT "debits".* FROM "debits"
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered debits/index.html.erb within layouts/application (63.0ms)
+Completed 200 OK in 106ms (Views: 88.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-02-19 21:24:29 +0300
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered users/index.html.erb within layouts/application (25.0ms)
+Completed 200 OK in 77ms (Views: 51.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assignments" for 127.0.0.1 at 2011-02-19 21:24:39 +0300
+  Processing by AssignmentsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Assignment> at c:/Users/jp/desktop/Budgit2/app/models/assignment.rb:14)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Assignment> at c:/Users/jp/desktop/Budgit2/app/models/assignment.rb:16)
+  [1m[36mAssignment Load (1.0ms)[0m  [1mSELECT "assignments".* FROM "assignments"[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered assignments/index.html.erb within layouts/application (43.0ms)
+Completed 200 OK in 107ms (Views: 69.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assignments/new" for 127.0.0.1 at 2011-02-19 21:24:41 +0300
+  Processing by AssignmentsController#new as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Assignment> at c:/Users/jp/desktop/Budgit2/app/models/assignment.rb:14)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Assignment> at c:/Users/jp/desktop/Budgit2/app/models/assignment.rb:16)
+  [1m[36mRole Load (0.0ms)[0m  [1mSELECT "roles".* FROM "roles"[0m
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Club> at c:/Users/jp/desktop/Budgit2/app/models/club.rb:14)
+Creating scope :all. Overwriting existing method Club.all.
+  [1m[35mClub Load (0.0ms)[0m  SELECT "clubs".* FROM "clubs" ORDER BY name
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Rendered assignments/_form.html.erb (144.0ms)
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered assignments/new.html.erb within layouts/application (193.0ms)
+Completed 200 OK in 242ms (Views: 220.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/roles" for 127.0.0.1 at 2011-02-19 21:24:59 +0300
+  Processing by RolesController#index as HTML
+  [1m[36mRole Load (1.0ms)[0m  [1mSELECT "roles".* FROM "roles"[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered roles/index.html.erb within layouts/application (44.0ms)
+Completed 200 OK in 85ms (Views: 71.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/roles/new" for 127.0.0.1 at 2011-02-19 21:25:01 +0300
+  Processing by RolesController#new as HTML
+Rendered roles/_form.html.erb (6.0ms)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered roles/new.html.erb within layouts/application (124.0ms)
+Completed 200 OK in 168ms (Views: 151.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/roles" for 127.0.0.1 at 2011-02-19 21:25:08 +0300
+  Processing by RolesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XL4u9QMLU9uCyCM5hI2Ak9A+LrltJZRMaFqgm+7HV0M=", "role"=>{"active"=>"1", "name"=>"Faculty Advisor"}, "commit"=>"Create Role"}
+WARNING: Can't mass-assign protected attributes: active
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "roles" ("active", "name", "created_at", "updated_at") VALUES (NULL, 'Faculty Advisor', '2011-02-19 18:25:08.918157', '2011-02-19 18:25:08.918157')
+Redirected to http://localhost:3000/roles/1
+Completed 302 Found in 319ms
+
+
+Started GET "/roles/1" for 127.0.0.1 at 2011-02-19 21:25:09 +0300
+  Processing by RolesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRole Load (0.0ms)[0m  [1mSELECT "roles".* FROM "roles" WHERE ("roles"."id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered roles/show.html.erb within layouts/application (79.0ms)
+Completed 200 OK in 123ms (Views: 105.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/debit_categories" for 127.0.0.1 at 2011-02-19 21:25:19 +0300
+  Processing by DebitCategoriesController#index as HTML
+  [1m[36mDebitCategory Load (1.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories"[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered debit_categories/index.html.erb within layouts/application (43.0ms)
+Completed 200 OK in 84ms (Views: 69.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/debit_categories/new" for 127.0.0.1 at 2011-02-19 21:25:21 +0300
+  Processing by DebitCategoriesController#new as HTML
+Rendered debit_categories/_form.html.erb (62.0ms)
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debit_categories/new.html.erb within layouts/application (112.0ms)
+Completed 200 OK in 155ms (Views: 138.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/debit_categories" for 127.0.0.1 at 2011-02-19 21:25:25 +0300
+  Processing by DebitCategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XL4u9QMLU9uCyCM5hI2Ak9A+LrltJZRMaFqgm+7HV0M=", "debit_category"=>{"category"=>"Food"}, "commit"=>"Create Debit category"}
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "debit_categories" ("active", "category", "created_at", "updated_at") VALUES (NULL, 'Food', '2011-02-19 18:25:26.002134', '2011-02-19 18:25:26.002134')
+Redirected to http://localhost:3000/debit_categories/1
+Completed 302 Found in 33ms
+
+
+Started GET "/debit_categories/1" for 127.0.0.1 at 2011-02-19 21:25:26 +0300
+  Processing by DebitCategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDebitCategory Load (1.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories" WHERE ("debit_categories"."id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered debit_categories/show.html.erb within layouts/application (70.0ms)
+Completed 200 OK in 112ms (Views: 94.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/debit_categories" for 127.0.0.1 at 2011-02-19 21:25:28 +0300
+  Processing by DebitCategoriesController#index as HTML
+  [1m[36mDebitCategory Load (1.0ms)[0m  [1mSELECT "debit_categories".* FROM "debit_categories"[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debit_categories/index.html.erb within layouts/application (55.0ms)
+Completed 200 OK in 122ms (Views: 106.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/debits" for 127.0.0.1 at 2011-02-19 21:25:31 +0300
+  Processing by DebitsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+  [1m[36mDebit Load (0.0ms)[0m  [1mSELECT "debits".* FROM "debits"[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (4.0ms)
+Rendered debits/index.html.erb within layouts/application (50.0ms)
+Completed 200 OK in 116ms (Views: 75.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/debits/new" for 127.0.0.1 at 2011-02-19 21:25:33 +0300
+  Processing by DebitsController#new as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+Rendered debits/_form.html.erb (12.0ms)
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debits/new.html.erb within layouts/application (84.0ms)
+Completed 200 OK in 129ms (Views: 110.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/debits/new" for 127.0.0.1 at 2011-02-19 21:34:17 +0300
+  Processing by DebitsController#new as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+Rendered debits/_form.html.erb (63.0ms)
+Rendered debits/new.html.erb within layouts/application (73.0ms)
+Completed   in 119ms
+
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::Debit_Categories):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :category %><br />
+    20: 	<%= f.collection_select :debit_category_id, Debit_Categories.all, :id, :name, :prompt => "Select ..." %>
+    21:     <%= f.text_field :debit_category_id %>
+    22:   </div>
+    23:   <div class="field">
+  app/views/debits/_form.html.erb:20:in `block in _app_views_debits__form_html_erb__1036393342_23160600_894522158'
+  app/views/debits/_form.html.erb:1:in `_app_views_debits__form_html_erb__1036393342_23160600_894522158'
+  app/views/debits/new.html.erb:3:in `_app_views_debits_new_html_erb___568782_23171520_404868457'
+  app/controllers/debits_controller.rb:29:in `new'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (19.0ms)
+
+
+Started GET "/debits/new" for 127.0.0.1 at 2011-02-19 21:35:01 +0300
+  Processing by DebitsController#new as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+Rendered debits/_form.html.erb (38.0ms)
+Rendered debits/new.html.erb within layouts/application (46.0ms)
+Completed   in 92ms
+
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::Debit_Categories):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :category %><br />
+    20: 	<%= f.collection_select :debit_category_id, Debit_Categories.all, :id, :name, :prompt => "Select ..." %>
+    21:     <%#= f.text_field :debit_category_id %>
+    22:   </div>
+    23:   <div class="field">
+  app/views/debits/_form.html.erb:20:in `block in _app_views_debits__form_html_erb__1036393342_25966296_894522158'
+  app/views/debits/_form.html.erb:1:in `_app_views_debits__form_html_erb__1036393342_25966296_894522158'
+  app/views/debits/new.html.erb:3:in `_app_views_debits_new_html_erb___568782_25988016_404868457'
+  app/controllers/debits_controller.rb:29:in `new'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (22.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (39.0ms)
+
+
+Started GET "/debits/new" for 127.0.0.1 at 2011-02-19 21:36:20 +0300
+  Processing by DebitsController#new as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+Rendered debits/_form.html.erb (37.0ms)
+Rendered debits/new.html.erb within layouts/application (46.0ms)
+Completed   in 112ms
+
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::Categories):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :category %><br />
+    20: 	<%= f.collection_select :debit_category_id, Categories.all, :id, :name, :prompt => "Select ..." %>
+    21:     <%#= f.text_field :debit_category_id %>
+    22:   </div>
+    23:   <div class="field">
+  app/views/debits/_form.html.erb:20:in `block in _app_views_debits__form_html_erb__1036393342_26186484_894522158'
+  app/views/debits/_form.html.erb:1:in `_app_views_debits__form_html_erb__1036393342_26186484_894522158'
+  app/views/debits/new.html.erb:3:in `_app_views_debits_new_html_erb___568782_26200752_404868457'
+  app/controllers/debits_controller.rb:29:in `new'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (24.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (39.0ms)
+
+
+Started GET "/debits/new" for 127.0.0.1 at 2011-02-19 21:36:33 +0300
+  Processing by DebitsController#new as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+Rendered debits/_form.html.erb (37.0ms)
+Rendered debits/new.html.erb within layouts/application (43.0ms)
+Completed   in 108ms
+
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::Debit_categories):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :category %><br />
+    20: 	<%= f.collection_select :debit_category_id, Debit_categories.all, :id, :name, :prompt => "Select ..." %>
+    21:     <%#= f.text_field :debit_category_id %>
+    22:   </div>
+    23:   <div class="field">
+  app/views/debits/_form.html.erb:20:in `block in _app_views_debits__form_html_erb__1036393342_27171780_894522158'
+  app/views/debits/_form.html.erb:1:in `_app_views_debits__form_html_erb__1036393342_27171780_894522158'
+  app/views/debits/new.html.erb:3:in `_app_views_debits_new_html_erb___568782_27736812_404868457'
+  app/controllers/debits_controller.rb:29:in `new'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (17.0ms)
+
+
+Started GET "/debits/new" for 127.0.0.1 at 2011-02-19 21:38:14 +0300
+  Processing by DebitsController#new as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+Rendered debits/_form.html.erb (57.0ms)
+Rendered debits/new.html.erb within layouts/application (65.0ms)
+Completed   in 111ms
+
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::Debit_categories):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :category %><br />
+    20: 	<%= f.collection_select :debit_category_id, Debit_categories.all, :id, :name, :prompt => "Select ..." %>
+    21:     <%#= f.text_field :debit_category_id %>
+    22:   </div>
+    23:   <div class="field">
+  app/views/debits/_form.html.erb:20:in `block in _app_views_debits__form_html_erb__1036393342_23730900_894522158'
+  app/views/debits/_form.html.erb:1:in `_app_views_debits__form_html_erb__1036393342_23730900_894522158'
+  app/views/debits/new.html.erb:3:in `_app_views_debits_new_html_erb___568782_23767032_404868457'
+  app/controllers/debits_controller.rb:29:in `new'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (17.0ms)
+
+
+Started GET "/debits/new" for 127.0.0.1 at 2011-02-19 21:40:08 +0300
+  Processing by DebitsController#new as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+Rendered debits/_form.html.erb (39.0ms)
+Rendered debits/new.html.erb within layouts/application (47.0ms)
+Completed   in 95ms
+
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::Debit_categories):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :category %><br />
+    20: 	<%= f.collection_select :debit_category_id, Debit_categories.all, :id, :name, :prompt => "Select ..." %>
+    21:     <%#= f.text_field :debit_category_id %>
+    22:   </div>
+    23:   <div class="field">
+  app/views/debits/_form.html.erb:20:in `block in _app_views_debits__form_html_erb__1036393342_25236732_894522158'
+  app/views/debits/_form.html.erb:1:in `_app_views_debits__form_html_erb__1036393342_25236732_894522158'
+  app/views/debits/new.html.erb:3:in `_app_views_debits_new_html_erb___568782_25250016_404868457'
+  app/controllers/debits_controller.rb:29:in `new'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (17.0ms)
+
+
+Started GET "/debits" for 127.0.0.1 at 2011-02-19 21:40:12 +0300
+  Processing by DebitsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+  [1m[35mDebit Load (1.0ms)[0m  SELECT "debits".* FROM "debits" ORDER BY id
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered debits/index.html.erb within layouts/application (83.0ms)
+Completed 200 OK in 123ms (Views: 105.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/debits" for 127.0.0.1 at 2011-02-19 21:40:16 +0300
+  Processing by DebitsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+  [1m[35mDebit Load (0.0ms)[0m  SELECT "debits".* FROM "debits" ORDER BY id
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (25.0ms)
+Rendered debits/index.html.erb within layouts/application (66.0ms)
+Completed 200 OK in 107ms (Views: 90.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/debits" for 127.0.0.1 at 2011-02-19 21:40:19 +0300
+  Processing by DebitsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+  [1m[35mDebit Load (1.0ms)[0m  SELECT "debits".* FROM "debits" ORDER BY id
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debits/index.html.erb within layouts/application (44.0ms)
+Completed 200 OK in 106ms (Views: 67.0ms | ActiveRecord: 2.0ms)
