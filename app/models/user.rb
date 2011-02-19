@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
     BCrypt::Engine.hash_secret(pass, password_salt)
   end
 
-  private
+  #private
 
   def prepare_password
     unless password.blank?

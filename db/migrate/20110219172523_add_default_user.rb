@@ -7,9 +7,8 @@ class AddDefaultUser < ActiveRecord::Migration
 	dad.last_name = "d"
 	dad.email = "dad@andrew.edu.com"
 	dad.password = "abcd"
-	#dad.password = "budgit"
-	#dad.password_confirmation = "budgit"
-	#dad.role = "admin"
+	dad.password = "budgit"
+	dad.password_confirmation = "budgit"
 	dad.save!
   end
 
@@ -17,4 +16,6 @@ class AddDefaultUser < ActiveRecord::Migration
 	dad = User.find(:all, :conditions => ["username = ?", "dad"])
 	User.delete dad
   end
+end
+
 end
