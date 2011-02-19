@@ -1,4 +1,6 @@
 Budgit::Application.routes.draw do
+  get "home/index"
+
   resources :debit_categories
 
   resources :dabit_categories
