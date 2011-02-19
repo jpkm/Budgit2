@@ -1,7 +1,9 @@
 class Credit < ActiveRecord::Base
-	belongs_to :credit_category :foreign_key => "type"
+	attr_accessible :credit_category_id, :date, :account_id, :amount
+
+	belongs_to :credit_category
 	belongs_to :account
 	
-	validates_numericality_of :categoryID, :date, :accountID, :amount
+	validates_numericality_of :category_id, :date, :account_id, :amount
 	
 end

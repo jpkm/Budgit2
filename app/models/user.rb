@@ -1,11 +1,12 @@
 class User < ActiveRecord::Base
   # new columns need to be added here to be writable through mass assignment
   attr_accessible :username, :email, :password, :password_confirmation, :first_name, :middle_name, :last_name
-  attr_accessor :password
   before_save :prepare_password
 
   #Relationships
   has_many :assignments
+  has_many :roles, :through => :assignments
+  has_many :clubs, :through => :assignments
   
   #Validations
   validates_presence_of :username
@@ -34,4 +35,18 @@ class User < ActiveRecord::Base
       self.password_hash = encrypt_password(password)
     end
   end
+  
+   # get user name
+   def name
+    last_name + ", " + first_name
+   end
+	
+	# checks if user assignments are admin  
+	def is_admin?
+		if self.assignment.role == "admin"
+			return true
+		false
+		end
+	end
+   
 end

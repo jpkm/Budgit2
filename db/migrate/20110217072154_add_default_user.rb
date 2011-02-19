@@ -8,6 +8,7 @@ class AddDefaultUser < ActiveRecord::Migration
 	dad.email = "dad@andrew.edu.com"
 	dad.password = "budgit"
 	dad.password_confirmation = "budgit"
+	dad.role = admin
 	dad.save!
   end
 

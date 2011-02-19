@@ -1,9 +1,9 @@
 class CreateCredits < ActiveRecord::Migration
   def self.up
     create_table :credits do |t|
-      t.integer :categoryID
+      t.integer :credit_category_id
       t.integer :date
-      t.integer :accountID
+      t.integer :account_id
       t.integer :amount
 
       t.timestamps
