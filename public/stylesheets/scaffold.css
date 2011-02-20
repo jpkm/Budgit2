@@ -54,3 +54,22 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
+
+/*	General table stuff for datagrid css class */
+
+table.datagrid {
+	font: 90% Verdana, Arial, Helvetica, sans-serif;
+	color: black;
+	text-align: left;
+	border-collapse: collapse;
+        width: 100%;
+}
+
+table.datagrid a {
+	text-decoration: none;
+}
+
+table.datagrid a:hover {
+	text-decoration: underline;
+	color: blue;       
+}

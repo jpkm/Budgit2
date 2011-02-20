@@ -1,0 +1,15 @@
+<h2> Your Assignments </h2>
+
+<table class="datagrid">
+  <thead class="datagrid">
+    <th>Club</th>
+    <th>Role</th>
+  </thead>
+
+<% for assignment in @assignments_for_user %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+    <td><%= link_to(h(assignment.role), role_path(assignment.role_id)) %></td>
+   <td><%= link_to(h(assignment.club.name), club_path(assignment.club_id)) %></td>
+  </tr>
+<% end %>
+</table>
