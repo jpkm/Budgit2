@@ -6,7 +6,7 @@ class Debit < ActiveRecord::Base
 	belongs_to :debit_category
 	
 	#Validations
-	validates_presence_of :item_purchased, :reason
+	validates_presence_of :item_purchased, :reason, :debit_category_id
 	validates_numericality_of :category_id, :date_purchased, :account_id, :amount
 	
 	#Named Scopes

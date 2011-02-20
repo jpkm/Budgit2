@@ -18,7 +18,6 @@
   <div class="field">
     <%= f.label :category %><br />
 	<%= f.collection_select :debit_category_id, DebitCategory.all, :id, :category, :prompt => "Select ..." %>
-    <%#= f.text_field :debit_category_id %>
   </div>
   <div class="field">
     <%= f.label :reason %><br />

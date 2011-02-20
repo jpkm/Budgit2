@@ -21,7 +21,7 @@ namespace :db do
     end
     
     # Step 3: add some clubs to work with (just six for now)
-    clubs = %w[BookManager ChoreTracker Proverbs Arbeit Creamery Friends]
+    clubs = %railw[BookManager ChoreTracker Proverbs Arbeit Creamery Friends]
     clubs.each do |club|
       c = Club.new
       c.name = club
