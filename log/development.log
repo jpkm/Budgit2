@@ -5972,3 +5972,38 @@ ActiveRecord::MultiparameterAssignmentErrors (1 error(s) on assignment of multip
 Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.0ms)
 Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.0ms)
 Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-20 15:01:59 +0300
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_home_index_html_erb___919266072_25724508_779676220 at c:/Users/jp/desktop/Budgit2/app/views/home/index.html.erb:7)
+Rendered home/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 29ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-02-20 15:02:13 +0300
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wSvjLOZ2Pj9C2QJO4Y+WqL9tKavacJm9rPM5hIebZSk=", "login"=>"budgit", "password"=>"[FILTERED]", "commit"=>"Log in"}
+Completed   in 21ms
+
+ActiveRecord::StatementInvalid (Could not find table 'users'):
+  app/models/user.rb:22:in `authenticate'
+  app/controllers/sessions_controller.rb:8:in `create'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-02-20 15:04:16 +0300
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wSvjLOZ2Pj9C2QJO4Y+WqL9tKavacJm9rPM5hIebZSk=", "login"=>"budgit", "password"=>"[FILTERED]", "commit"=>"Log in"}
+Completed   in 21ms
+
+ActiveRecord::StatementInvalid (Could not find table 'users'):
+  app/models/user.rb:22:in `authenticate'
+  app/controllers/sessions_controller.rb:8:in `create'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.0ms)

@@ -1,9 +1,4 @@
-body { background-color: black; color: #333; }
-
-#body {
-	margin:0 10px;
-	padding:5px;
-}
+body { background-color: #fff; color: #333; }
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -17,305 +12,45 @@ pre {
   font-size: 11px;
 }
 
-a { color: #000;
-    text-decoration: none;}
-/*a:visited { color: #666; }*/
-a:hover { color: black;
-           text-decoration: underline;}
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
 
-/*a:link {
-	color: #0033ff;
-	text-decoration:none;
-}*/
-
-.smtext {
-	font-size:80%;
+div.field, div.actions {
+  margin-bottom: 10px;
 }
 
-.fieldWithErrors {
+#notice {
+  color: green;
+}
+
+.field_with_errors {
   padding: 2px;
   background-color: red;
   display: table;
 }
 
-#errorExplanation {
-  width: 400px;
+#error_explanation {
+  width: 450px;
   border: 2px solid red;
   padding: 7px;
-  padding-bottom: 12px;
+  padding-bottom: 0;
   margin-bottom: 20px;
   background-color: #f0f0f0;
 }
 
-#errorExplanation h2 {
+#error_explanation h2 {
   text-align: left;
   font-weight: bold;
   padding: 5px 5px 5px 15px;
   font-size: 12px;
   margin: -7px;
+  margin-bottom: 0px;
   background-color: #c00;
   color: #fff;
 }
 
-#errorExplanation p {
-  color: #333;
-  margin-bottom: 0;
-  padding: 5px;
-}
-
-#errorExplanation ul li {
+#error_explanation ul li {
   font-size: 12px;
   list-style: square;
-}
-
-#wrap {
-background-color:white;
-position:relative;
-margin: 0 auto;
-width: 900px;
-padding: 10px;
-font-family: verdana;
-font-size: large;
-color: 	black;
-}
-
-#bugtracker{
-    text-align: right;
-    float: right;
-}
-
-#header {
- margin-bottom:20px;
-}
-
-#header a{color: #1C87BB;}
-
-#footer {
-text-align:center;
-color: black;
-font-style:italic;
-font-size:10px;
-}
-
-#footer a{
-text-align:center;
-color: #1C87BB;
-font-style:italic;
-
-}
-
-#side_nav {
-background-color: #1C9BDE;
-font-size:120%;
-padding:5px;
-}
-
-#nav {
-	margin-right:5px;
-	margin-left:5px;
-        text-align: right;
-        vertical-align: baseline;
-	margin-top: 5px;
-	height:15px;
-        font-size: 11px;
-}
-
-
-#notice {
-	color: #00AB56;
-	text-align: center;
-	font-style:italic;
-}
-
-#login{
-	color: black;
-	text-align: center;	
-}
-
-/*	General table stuff for datagrid css class */
-
-table.datagrid {
-	font: 90% Verdana, Arial, Helvetica, sans-serif;
-	color: black;
-	text-align: left;
-	border-collapse: collapse;
-        width: 100%;
-}
-
-table.datagrid a {
-	text-decoration: none;
-}
-table.datagrid a:hover {
-	text-decoration: underline;
-	color: blue;
-        
-}
-
-/*	Time to deal with Table Caption and Header Row  */
-
-caption.datagrid {
-	height: 45px;
-	line-height: 44px;
-	color: #000000;/**/
-	font-weight: bold;
-	text-align: center;
-	width: 100%;
-	margin: 0;
-	padding: 0;
-}
-thead.datagrid th {
-	font-size: 105%;
-	color: /* #EEC900; #FFD700;*/ white;
-	background-color: /*#FFD700; #6B8E23*/#6B8E23;
-	height: 28px;
-	font-weight: bold;
-	padding: 10px;
-}
-thead.datagrid th:hover {
-	/* background-color: nothing changes right now */
-
-}
-td {
-	padding:0 5px;
-}
-
-/*	TR elements handled here (main rows only)  */
-
-.dg_list_line_odd {
-	font: 90% Verdana, Arial, Helvetica, sans-serif;
-	color: #000000;
-	text-align: left;
-	vertical-align: top;
-	line-height: 2.5;
-	padding: 3px;
-}
-.dg_list_line_even {
-	font: 90% Verdana, Arial, Helvetica, sans-serif;
-	color: #000000;
-	text-align: left;
-	vertical-align: top;
-	line-height: 2.5;
-	background-color: #9ACD32;
-	padding: 3px;
-}
-.dg_list_line_even img {
-	vertical-align: top;
-	padding: 5px 0px 3px 8px;
-}
-.dg_list_line_odd img {
-	vertical-align: top;
-	padding: 5px 0px 3px 8px;
-}
-.dg_list_line_odd:hover {
-	background-color: #B5CEFF;
-	color: #0033ff;
-}
-.dg_list_line_odd:hover a {
-	background-color: #B5CEFF;
-	color: blue;
-	text-decoration: underline;
-}
-.dg_list_line_even:hover {
-	background-color: #B5CEFF;
-	color: #0033ff;
-}
-.dg_list_line_even:hover a {
-	background-color: #B5CEFF;
-	color: blue;
-	text-decoration: underline;
-}
-
-/*	TR elements handled here (alt rows only)  */
-
-tr.dg {
-	line-height: 2;
-	padding: 2px;
-}
-tr.dgalt,th.dgalt,td.dgalt {
-	padding: .75em;
-}
-tr.dgalt:hover {
-	background-color: #FFFF99;
-	color: #0033ff;
-}
-tr.dgalt:hover a {
-	text-decoration: underline;
-	color: #0033ff;
-	background-color: #FFFF99;
-}
-
-/*	table foot elements handled here  */
-
-tfoot.datagrid tr {
-	/* background-color: nothing set at this time */
-}
-tfoot.datagrid td, tfoot.datagrid th{
-	color: #000;
-	border: 0px;
-}
-
-/********** SIDE NAV ********/
-
-#side_nav h3 {
-	padding: 8px 3px 8px 3px;
-	margin: 5px 5px 5px 5px;
-	color: #000;
-	font-size: 130%;
-	border-bottom-width:1px;
-    border-bottom-color:#000;
-    border-bottom-style:solid;
-}
-
-#side_nav ul {
-	width: 200px;
-	padding: 0px;
-	list-style:none;
-	margin:0 3px 0 5px;
-	font-weight:bold;
-	color: #fff;
-}
-
-#side_nav li {
-	font-size: 110%;
-	list-style-type: none;
-	line-height:2;
-	padding:0 15px 0 15px;
-	color: #fff;
-}
-
-#side_nav a {
-	color: #fff;
-	text-decoration: none;
-}
-
-#side_nav a:link, #side_nav a:visited {
-	color: #fff;
-	text-decoration: none;
-}
-
-#side_nav a:hover {
-	text-decoration:underline;
-}
-
-#side_nav li:hover ul {
-	left: 15px;
-}
-
-#side_nav li ul {
-	padding:0 6px 6px 0;
-}
-
-#side_nav li ul li {
-	font-size:85%;
-	padding:0;
-	margin-left:15px;
-}
-
-#side_nav li ul li a, #side_nav li ul li a:link, #side_nav li ul li a:visited {
-	text-decoration: none;
-}
-
-
-#side_nav li ul li:hover a {
-	text-decoration: underline;
 }
