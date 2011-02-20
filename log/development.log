@@ -4841,3 +4841,379 @@ Rendered debits/_form.html.erb (56.0ms)
 Rendered partials/_navigation.html.erb (3.0ms)
 Rendered debits/new.html.erb within layouts/application (127.0ms)
 Completed 200 OK in 193ms (Views: 153.0ms | ActiveRecord: 1.0ms)
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateClubs (20110215072001)
+Migrating to CreateAssignments (20110215093055)
+Migrating to CreateAccounts (20110215093322)
+Migrating to CreateDebits (20110215094251)
+Migrating to CreateRoles (20110215094723)
+Migrating to CreateDebitCategories (20110215145830)
+Migrating to CreateCredits (20110215150335)
+Migrating to CreateCreditCategories (20110215150544)
+Migrating to CreateUsers (20110215175505)
+Migrating to AddDefaultUser (20110219172523)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("accounts")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("assignments")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("clubs")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("credit_categories")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("credits")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("debit_categories")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("debits")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("roles")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (7.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (5.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to CreateClubs (20110215072001)
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "clubs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215072001')
+Migrating to CreateAssignments (20110215093055)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "assignments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role_id" integer, "club_id" integer, "user_id" varchar(255), "active" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215093055')
+Migrating to CreateAccounts (20110215093322)
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "year" integer, "club_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215093322')
+Migrating to CreateDebits (20110215094251)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "debits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "item_purchased" text, "debit_category_id" integer, "reason" text, "number_of_consumers" integer, "names_of_consumers" text, "date_purchased" integer, "account_id" integer, "amount" integer, "reimbursement_date" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215094251')
+Migrating to CreateRoles (20110215094723)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "active" boolean, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215094723')
+Migrating to CreateDebitCategories (20110215145830)
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "debit_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "active" boolean, "category" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215145830')
+Migrating to CreateCredits (20110215150335)
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "credits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "credit_category_id" integer, "date" datetime, "account_id" integer, "amount" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215150335')
+Migrating to CreateCreditCategories (20110215150544)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "credit_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "active" boolean, "category" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215150544')
+Migrating to CreateUsers (20110215175505)
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "middle_name" varchar(255), "last_name" varchar(255), "username" varchar(255), "email" varchar(255), "password" varchar(255), "password_hash" varchar(255), "password_salt" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215175505')
+Migrating to AddDefaultUser (20110219172523)
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."username" = 'dad') LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE ("users"."email" = 'dad@andrew.edu.com') LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "users" ("first_name", "middle_name", "last_name", "username", "email", "password", "password_hash", "password_salt", "created_at", "updated_at") VALUES ('dad', 'a', 'd', 'dad', 'dad@andrew.edu.com', 'budgit', '$2a$10$UhJ8HeC8OFPOEQJqrFRBuuXTGx3WSGMKtM96tyysarkXDEMYLt/g2', '$2a$10$UhJ8HeC8OFPOEQJqrFRBuu', '2011-02-20 08:05:59.464184', '2011-02-20 08:05:59.464184')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110219172523')[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("accounts")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("assignments")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("clubs")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("credit_categories")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("credits")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("debit_categories")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("debits")[0m
+  [1m[35mSQL (1.0ms)[0m  PRAGMA index_list("roles")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-20 11:06:28 +0300
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_home_index_html_erb__930330547_25248012__904820515 at c:/Users/jp/desktop/Budgit2/app/views/home/index.html.erb:7)
+Rendered home/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 28ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-02-20 11:06:42 +0300
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Mnebj5ChKzfD4CR0BVE62+Xt1Yqx0wUPZBdrmnU1beI=", "login"=>"dad", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'dad') LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 340ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-20 11:06:42 +0300
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered home/_personal.html.erb (10.0ms)
+Rendered partials/_navigation.html.erb (57.0ms)
+Rendered home/index.html.erb within layouts/application (197.0ms)
+Completed   in 217ms
+
+ActionView::Template::Error (undefined method `home_path' for #<#<Class:0x2dcd7e8>:0x2d815e8>):
+    17:         <li><% link_to 'Logout', { :controller => :sessions, :action => :destroy } %>
+    18: 		<%= link_to 'logout', logout_path %>
+    19: 		</li>
+    20: 		<%= link_to 'home', home_path('index') %> 
+    21: 	</ul>
+    22: 	<p>&nbsp;</p>
+    23: </div> <!-- end of side_nav div -->
+  app/views/partials/_navigation.html.erb:20:in `_app_views_partials__navigation_html_erb__832651566_25208784_993184750'
+  app/views/layouts/application.html.erb:14:in `_app_views_layouts_application_html_erb___876274887_23840064__904820515'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (17.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-20 12:49:18 +0300
+  Processing by HomeController#index as HTML
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered home/_personal.html.erb (11.0ms)
+Rendered partials/_navigation.html.erb (49.0ms)
+Rendered home/index.html.erb within layouts/application (335.0ms)
+Completed   in 358ms
+
+ActionView::Template::Error (undefined local variable or method `home_index' for #<#<Class:0x3152b38>:0x3150f18>):
+    17:         <li><% link_to 'Logout', { :controller => :sessions, :action => :destroy } %>
+    18: 		<%= link_to 'logout', logout_path %>
+    19: 		</li>
+    20: 		<%= link_to 'home', home_index %> 
+    21: 	</ul>
+    22: 	<p>&nbsp;</p>
+    23: </div> <!-- end of side_nav div -->
+  app/views/partials/_navigation.html.erb:20:in `_app_views_partials__navigation_html_erb__78435277_24167496__478076040'
+  app/views/layouts/application.html.erb:14:in `_app_views_layouts_application_html_erb___484371061_25850508__959979294'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (16.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-20 12:50:29 +0300
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered home/_personal.html.erb (10.0ms)
+ERROR: compiling _app_views_partials__navigation_html_erb__78435277_23133048__478076040 RAISED c:/Users/jp/desktop/Budgit2/app/views/partials/_navigation.html.erb:22: unknown regexp option - p
+c:/Users/jp/desktop/Budgit2/app/views/partials/_navigation.html.erb:23: syntax error, unexpected '<'
+</div> <!-- end of side_nav div -->
+ ^
+c:/Users/jp/desktop/Budgit2/app/views/partials/_navigation.html.erb:23: unterminated regexp meets end of file
+Function body:           def _app_views_partials__navigation_html_erb__78435277_23133048__478076040(local_assigns)
+            _old_virtual_path, @_virtual_path = @_virtual_path, "partials/_navigation";_old_output_buffer = @output_buffer;navigation = local_assigns[:navigation];;@output_buffer = ActionView::OutputBuffer.new;@output_buffer.safe_concat('<div id="nav">
+      
+	<h3>User Links:</h3>
+     
+        
+	<ul>
+	<!-- OPTIONS FOR EVERYONE but i thought this was just for faculty -->
+		<li>');@output_buffer.append= ( link_to 'user',  users_path(@user) );@output_buffer.safe_concat('</li>
+        <li>');@output_buffer.append= ( link_to 'clubs', clubs_path );@output_buffer.safe_concat('</li>
+        <li>');@output_buffer.append= ( link_to 'assignments', assignments_path );@output_buffer.safe_concat('</li>
+        <li>');@output_buffer.append= ( link_to 'roles', roles_path );@output_buffer.safe_concat('</li>
+        <li>');@output_buffer.append= ( link_to 'accounts', accounts_path );@output_buffer.safe_concat('</li>
+        <li>');@output_buffer.append= ( link_to 'debits', debits_path );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('		<li>');@output_buffer.append= ( link_to 'debits types', debit_categories_path );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('		<li>');@output_buffer.append= ( link_to 'credits', credits_path );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('		<li>');@output_buffer.append= ( link_to 'credit types', credit_categories_path );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('        <li>'); link_to 'Logout', { :controller => :sessions, :action => :destroy } ;@output_buffer.safe_concat('
+');@output_buffer.safe_concat('		');@output_buffer.append= ( link_to 'logout', logout_path );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('		</li>
+		');@output_buffer.append= ( link_to 'home', :controller => 'home", :action => "index" );@output_buffer.safe_concat(' 
+');@output_buffer.safe_concat('	</ul>
+	<p>&nbsp;</p>
+</div> <!-- end of side_nav div -->
+
+
+');@output_buffer.to_s
+          ensure
+            @_virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+Backtrace: c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/template.rb:255:in `module_eval'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/template.rb:255:in `compile'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/template.rb:134:in `block in render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications.rb:54:in `instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/template.rb:127:in `render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/render/partials.rb:333:in `render_partial'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/render/partials.rb:262:in `block in render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `block in instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/render/partials.rb:260:in `render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/render/partials.rb:378:in `_render_partial'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/render/rendering.rb:22:in `render'
+c:/Users/jp/desktop/Budgit2/app/views/layouts/application.html.erb:14:in `_app_views_layouts_application_html_erb___484371061_27989376__959979294'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/template.rb:135:in `block in render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications.rb:54:in `instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/template.rb:127:in `render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/render/layouts.rb:80:in `_render_layout'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/render/rendering.rb:62:in `block in _render_template'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `block in instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/render/rendering.rb:56:in `_render_template'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_view/render/rendering.rb:26:in `render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:114:in `_render_template'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:108:in `render_to_body'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/renderers.rb:47:in `render_to_body'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/compatibility.rb:55:in `render_to_body'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:101:in `render_to_string'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:92:in `render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/rendering.rb:17:in `render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+c:/Ruby192/lib/ruby/1.9.1/benchmark.rb:309:in `realtime'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.3/lib/active_record/railties/controller_runtime.rb:15:in `cleanup_view_runtime'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:39:in `render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/base.rb:151:in `process_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/rendering.rb:11:in `process_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:430:in `_run__990802314__process_action__633542341__callbacks'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:409:in `_run_process_action_callbacks'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:93:in `run_callbacks'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/callbacks.rb:17:in `process_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `block in instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/notifications.rb:52:in `instrument'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/rescue.rb:17:in `process_action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/base.rb:120:in `process'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/abstract_controller/rendering.rb:40:in `process'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal.rb:138:in `dispatch'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_controller/metal.rb:178:in `block in action'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:62:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:62:in `dispatch'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:27:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.13/lib/rack/mount/route_set.rb:148:in `block in call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:93:in `block in recognize'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:68:in `optimized_each'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.13/lib/rack/mount/code_generation.rb:92:in `recognize'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-mount-0.6.13/lib/rack/mount/route_set.rb:139:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/routing/route_set.rb:492:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/head.rb:14:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/methodoverride.rb:24:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/flash.rb:182:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/cookies.rb:295:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:32:in `block in call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:12:in `cache'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:31:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/connection_pool.rb:353:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:46:in `block in call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/sendfile.rb:107:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/railties-3.0.3/lib/rails/rack/logger.rb:13:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/runtime.rb:17:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/lock.rb:11:in `block in call'
+<internal:prelude>:10:in `synchronize'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/static.rb:30:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/railties-3.0.3/lib/rails/application.rb:168:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/railties-3.0.3/lib/rails/application.rb:77:in `method_missing'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/railties-3.0.3/lib/rails/rack/log_tailer.rb:14:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/content_length.rb:13:in `call'
+c:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.2.1/lib/rack/handler/webrick.rb:52:in `service'
+c:/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+c:/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+c:/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+Rendered partials/_navigation.html.erb (1.0ms)
+Rendered home/index.html.erb within layouts/application (57.0ms)
+Completed   in 80ms
+
+ActionView::Template::Error (c:/Users/jp/desktop/Budgit2/app/views/partials/_navigation.html.erb:22: unknown regexp option - p
+c:/Users/jp/desktop/Budgit2/app/views/partials/_navigation.html.erb:23: syntax error, unexpected '<'
+</div> <!-- end of side_nav div -->
+ ^
+c:/Users/jp/desktop/Budgit2/app/views/partials/_navigation.html.erb:23: unterminated regexp meets end of file):
+    19: 		</li>
+    20: 		<%= link_to 'home', :controller => 'home", :action => "index" %> 
+    21: 	</ul>
+    22: 	<p>&nbsp;</p>
+    23: </div> <!-- end of side_nav div -->
+    24: 
+    25: 
+  app/views/layouts/application.html.erb:14:in `_app_views_layouts_application_html_erb___484371061_27989376__959979294'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (23.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (36.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-20 12:50:51 +0300
+  Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered home/_personal.html.erb (10.0ms)
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered home/index.html.erb within layouts/application (78.0ms)
+Completed 200 OK in 103ms (Views: 103.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2011-02-20 12:50:57 +0300
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered home/_personal.html.erb (11.0ms)
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered home/index.html.erb within layouts/application (96.0ms)
+Completed 200 OK in 120ms (Views: 119.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/accounts" for 127.0.0.1 at 2011-02-20 12:50:59 +0300
+  Processing by AccountsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Account> at c:/Users/jp/desktop/Budgit2/app/models/account.rb:15)
+  [1m[35mAccount Load (1.0ms)[0m  SELECT "accounts".* FROM "accounts"
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered accounts/index.html.erb within layouts/application (43.0ms)
+Completed 200 OK in 106ms (Views: 69.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2011-02-20 12:51:01 +0300
+  Processing by HomeController#index as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered home/_personal.html.erb (12.0ms)
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered home/index.html.erb within layouts/application (79.0ms)
+Completed 200 OK in 103ms (Views: 101.0ms | ActiveRecord: 1.0ms)

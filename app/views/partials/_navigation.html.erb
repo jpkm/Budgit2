@@ -17,7 +17,7 @@
         <li><% link_to 'Logout', { :controller => :sessions, :action => :destroy } %>
 		<%= link_to 'logout', logout_path %>
 		</li>
-		<%= link_to 'home', home_path('index') %> 
+		<%= link_to 'home', :controller => 'home', :action => "index" %> 
 	</ul>
 	<p>&nbsp;</p>
 </div> <!-- end of side_nav div -->
