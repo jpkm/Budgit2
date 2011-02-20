@@ -9,7 +9,7 @@ class CreateDebits < ActiveRecord::Migration
       t.integer :date_purchased
       t.integer :account_id
       t.integer :amount
-      t.integer :reimbursement_date
+      t.datetime :reimbursement_date
 
       t.timestamps
     end

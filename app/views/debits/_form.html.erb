@@ -34,20 +34,23 @@
   </div>
   <div class="field">
     <%= f.label :date_purchased %><br />
-    <%= f.text_field :date_purchased %>
+	<%= f.date_select :date_purchased, :order => [:month, :day, :year] %>
+    <%#= f.text_field :date_purchased %>
   </div>
   <div class="field">
     <%= f.label :account_id %><br />
-	<%= f.collection_select :account_id, Account.all, :id, :name, :prompt => "Select ..." %>
-    <%#= f.text_field :account_id %>
+	<%= f.hidden_field :account_id, :value => @account_id %>
+	<%#= f.collection_select :account_id, Account.all, :id, :name, :prompt => "Select ..." %>
   </div>
   <div class="field">
     <%= f.label :amount %><br />
     <%= f.text_field :amount %>
   </div>
+ <!-- if statement to check if user is Student Affairs Advisor -->
   <div class="field">
     <%= f.label :reimbursement_date %><br />
-    <%= f.text_field :reimbursement_date %>
+     <%= f.date_select :reimbursement_date, :order => [:month, :day, :year] %>
+	<%#= f.text_field :reimbursement_date %>
   </div>
   <div class="actions">
     <%= f.submit %>
