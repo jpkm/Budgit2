@@ -14,9 +14,9 @@ namespace :db do
     
     # Step 2: add some Role to work with (small set for now...)
     roles = %w[Faculty Student_Affairs System_Admin Club_Leader VP_of_Finance]
-    roles.sort.each do |source|
-      r = Source.new
-      r.name = source
+    roles.sort.each do |role|
+      r = Role.new
+      r.name = role
       r.save!
     end
     
@@ -44,7 +44,7 @@ namespace :db do
     # Step 4: add 20 users to the system and assign
     User.populate 20 do |user|
       user.first_name = Faker::Name.first_name
-	  user.middle_name = Faker::Name.middle_name
+	  #user.middle_name = Faker::Name.middle_name
       user.last_name = Faker::Name.last_name
       user.email = Faker::Internet.email
       user.username = "#{user.first_name}_#{user.last_name}"

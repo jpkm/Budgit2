@@ -34,6 +34,8 @@ GEM
     cancan (1.5.1)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    faker (0.9.5)
+      i18n (~> 0.4)
     i18n (0.5.0)
     mail (2.2.14)
       activesupport (>= 2.3.6)
@@ -44,6 +46,7 @@ GEM
     mocha (0.9.12)
     nifty-generators (0.4.5)
     polyglot (0.3.1)
+    populator (1.0.0)
     rack (1.2.1)
     rack-mount (0.6.13)
       rack (>= 1.0.0)
@@ -76,8 +79,10 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby
   cancan
+  faker
   mocha
   nifty-generators
+  populator
   rails (= 3.0.3)
   sqlite3-ruby
   will_paginate

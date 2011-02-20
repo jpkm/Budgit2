@@ -6007,3 +6007,291 @@ ActiveRecord::StatementInvalid (Could not find table 'users'):
 Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
 Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.0ms)
 Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-20 15:05:15 +0300
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_home_index_html_erb__331203493_25112004_1006141657 at c:/Users/jp/desktop/Budgit2/app/views/home/index.html.erb:7)
+Rendered home/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 29ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-02-20 15:05:32 +0300
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fhbGF8r2sjFUu7Alf3mdGzZZq5EQ4ucuowiHmM9reh4=", "login"=>"dad ", "password"=>"[FILTERED]", "commit"=>"Log in"}
+Completed   in 21ms
+
+ActiveRecord::StatementInvalid (Could not find table 'users'):
+  app/models/user.rb:22:in `authenticate'
+  app/controllers/sessions_controller.rb:8:in `create'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.0ms)
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (6.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (5.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to CreateClubs (20110215072001)
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "clubs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215072001')
+Migrating to CreateAssignments (20110215093055)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "assignments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role_id" integer, "club_id" integer, "user_id" varchar(255), "active" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215093055')
+Migrating to CreateAccounts (20110215093322)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "year" integer, "club_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215093322')
+Migrating to CreateDebits (20110215094251)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "debits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "item_purchased" text, "debit_category_id" integer, "reason" text, "number_of_consumers" integer, "names_of_consumers" text, "date_purchased" date, "account_id" integer, "amount" integer, "reimbursement_date" date, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215094251')
+Migrating to CreateRoles (20110215094723)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "active" boolean, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215094723')
+Migrating to CreateDebitCategories (20110215145830)
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "debit_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "active" boolean, "category" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215145830')
+Migrating to CreateCredits (20110215150335)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "credits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "credit_category_id" integer, "date" datetime, "account_id" integer, "amount" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215150335')
+Migrating to CreateCreditCategories (20110215150544)
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "credit_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "active" boolean, "category" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215150544')
+Migrating to CreateUsers (20110215175505)
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "middle_name" varchar(255), "last_name" varchar(255), "username" varchar(255), "email" varchar(255), "password" varchar(255), "password_hash" varchar(255), "password_salt" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110215175505')
+Migrating to AddDefaultUser (20110219172523)
+  [1m[36mSQL (15.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."username" = 'dad') LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE ("users"."email" = 'dad@andrew.edu.com') LIMIT 1[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "users" ("first_name", "middle_name", "last_name", "username", "email", "password", "password_hash", "password_salt", "created_at", "updated_at") VALUES ('dad', 'a', 'd', 'dad', 'dad@andrew.edu.com', 'budgit', '$2a$10$Ku4F2Wnol8lici4IFonNReVPcmHARtBe8tr3QyvNim9n1HfBtNALi', '$2a$10$Ku4F2Wnol8lici4IFonNRe', '2011-02-20 12:06:39.064740', '2011-02-20 12:06:39.064740')
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110219172523')[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("accounts")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("assignments")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("clubs")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("credit_categories")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("credits")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("debit_categories")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("debits")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("roles")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-02-20 15:07:36 +0300
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fhbGF8r2sjFUu7Alf3mdGzZZq5EQ4ucuowiHmM9reh4=", "login"=>"dad ", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'dad ') LIMIT 1
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."email" = 'dad ') LIMIT 1[0m
+Rendered sessions/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 293ms (Views: 28.0ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-02-20 15:08:00 +0300
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fhbGF8r2sjFUu7Alf3mdGzZZq5EQ4ucuowiHmM9reh4=", "login"=>"dad ", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'dad ') LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."email" = 'dad ') LIMIT 1[0m
+Rendered sessions/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 59ms (Views: 29.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-02-20 15:08:06 +0300
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fhbGF8r2sjFUu7Alf3mdGzZZq5EQ4ucuowiHmM9reh4=", "login"=>"dad ", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'dad ') LIMIT 1
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."email" = 'dad ') LIMIT 1[0m
+Rendered sessions/new.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 50ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-02-20 15:08:14 +0300
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fhbGF8r2sjFUu7Alf3mdGzZZq5EQ4ucuowiHmM9reh4=", "login"=>"dad", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'dad') LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 138ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-20 15:08:14 +0300
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered home/_personal.html.erb (11.0ms)
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered home/index.html.erb within layouts/application (59.0ms)
+Completed 200 OK in 83ms (Views: 82.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/index" for 127.0.0.1 at 2011-02-20 15:08:16 +0300
+  Processing by HomeController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered home/_personal.html.erb (11.0ms)
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered home/index.html.erb within layouts/application (78.0ms)
+Completed 200 OK in 102ms (Views: 102.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/debits" for 127.0.0.1 at 2011-02-20 15:08:28 +0300
+  Processing by DebitsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+  [1m[36mDebit Load (1.0ms)[0m  [1mSELECT "debits".* FROM "debits" ORDER BY id ASC[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debits/index.html.erb within layouts/application (65.0ms)
+Completed 200 OK in 128ms (Views: 89.0ms | ActiveRecord: 1.0ms)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Assignment> at c:/Users/jp/desktop/Budgit2/app/models/assignment.rb:14)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Assignment> at c:/Users/jp/desktop/Budgit2/app/models/assignment.rb:16)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:DebitCategory> at c:/Users/jp/desktop/Budgit2/app/models/debit_category.rb:10)
+Creating scope :all. Overwriting existing method DebitCategory.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Club> at c:/Users/jp/desktop/Budgit2/app/models/club.rb:14)
+Creating scope :all. Overwriting existing method Club.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Account> at c:/Users/jp/desktop/Budgit2/app/models/account.rb:15)
+  [1m[36mAREL (1.0ms)[0m  [1mDELETE FROM "assignments" WHERE 1=1[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "debits" WHERE 1=1
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "credits" WHERE 1=1[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "debit_categories" WHERE 1=1
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "credit_categories" WHERE 1=1[0m
+  [1m[35mAREL (6.0ms)[0m  DELETE FROM "users" WHERE 1=1
+  [1m[36mAREL (1.0ms)[0m  [1mDELETE FROM "roles" WHERE 1=1[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "clubs" WHERE 1=1
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "accounts" WHERE 1=1[0m
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Assignment> at c:/Users/jp/desktop/Budgit2/app/models/assignment.rb:14)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Assignment> at c:/Users/jp/desktop/Budgit2/app/models/assignment.rb:16)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:DebitCategory> at c:/Users/jp/desktop/Budgit2/app/models/debit_category.rb:10)
+Creating scope :all. Overwriting existing method DebitCategory.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Club> at c:/Users/jp/desktop/Budgit2/app/models/club.rb:14)
+Creating scope :all. Overwriting existing method Club.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Account> at c:/Users/jp/desktop/Budgit2/app/models/account.rb:15)
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "assignments" WHERE 1=1[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "debits" WHERE 1=1
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "credits" WHERE 1=1[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "debit_categories" WHERE 1=1
+  [1m[36mAREL (1.0ms)[0m  [1mDELETE FROM "credit_categories" WHERE 1=1[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "users" WHERE 1=1
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "roles" WHERE 1=1[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "clubs" WHERE 1=1
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "accounts" WHERE 1=1[0m
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Assignment> at c:/Users/jp/desktop/Budgit2/app/models/assignment.rb:14)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Assignment> at c:/Users/jp/desktop/Budgit2/app/models/assignment.rb:16)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:DebitCategory> at c:/Users/jp/desktop/Budgit2/app/models/debit_category.rb:10)
+Creating scope :all. Overwriting existing method DebitCategory.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Club> at c:/Users/jp/desktop/Budgit2/app/models/club.rb:14)
+Creating scope :all. Overwriting existing method Club.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Account> at c:/Users/jp/desktop/Budgit2/app/models/account.rb:15)
+  [1m[36mAREL (1.0ms)[0m  [1mDELETE FROM "assignments" WHERE 1=1[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "debits" WHERE 1=1
+  [1m[36mAREL (1.0ms)[0m  [1mDELETE FROM "credits" WHERE 1=1[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "debit_categories" WHERE 1=1
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "credit_categories" WHERE 1=1[0m
+  [1m[35mAREL (1.0ms)[0m  DELETE FROM "users" WHERE 1=1
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "roles" WHERE 1=1[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "clubs" WHERE 1=1
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "accounts" WHERE 1=1[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "roles" ("active", "name", "created_at", "updated_at") VALUES (NULL, 'Club_Leader', '2011-02-20 12:20:26.811926', '2011-02-20 12:20:26.811926')[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "roles" ("active", "name", "created_at", "updated_at") VALUES (NULL, 'Faculty', '2011-02-20 12:20:26.894930', '2011-02-20 12:20:26.894930')
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "roles" ("active", "name", "created_at", "updated_at") VALUES (NULL, 'Student_Affairs', '2011-02-20 12:20:26.901931', '2011-02-20 12:20:26.901931')[0m
+  [1m[35mAREL (0.0ms)[0m  INSERT INTO "roles" ("active", "name", "created_at", "updated_at") VALUES (NULL, 'System_Admin', '2011-02-20 12:20:26.908931', '2011-02-20 12:20:26.908931')
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "roles" ("active", "name", "created_at", "updated_at") VALUES (NULL, 'VP_of_Finance', '2011-02-20 12:20:26.915931', '2011-02-20 12:20:26.915931')[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "clubs" ("name", "created_at", "updated_at") VALUES ('BookManager', '2011-02-20 12:20:26.925932', '2011-02-20 12:20:26.925932')
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "clubs" ("name", "created_at", "updated_at") VALUES ('ChoreTracker', '2011-02-20 12:20:26.933932', '2011-02-20 12:20:26.933932')[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "clubs" ("name", "created_at", "updated_at") VALUES ('Proverbs', '2011-02-20 12:20:26.942933', '2011-02-20 12:20:26.942933')
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "clubs" ("name", "created_at", "updated_at") VALUES ('Arbeit', '2011-02-20 12:20:26.951934', '2011-02-20 12:20:26.951934')[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "clubs" ("name", "created_at", "updated_at") VALUES ('Creamery', '2011-02-20 12:20:26.959934', '2011-02-20 12:20:26.959934')
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "clubs" ("name", "created_at", "updated_at") VALUES ('Friends', '2011-02-20 12:20:26.967934', '2011-02-20 12:20:26.967934')[0m
+  [1m[35mUser Last ID (0.0ms)[0m  SELECT id FROM "users" ORDER BY id DESC
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Assignment> at c:/Users/jp/desktop/Budgit2/app/models/assignment.rb:14)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Assignment> at c:/Users/jp/desktop/Budgit2/app/models/assignment.rb:16)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:DebitCategory> at c:/Users/jp/desktop/Budgit2/app/models/debit_category.rb:10)
+Creating scope :all. Overwriting existing method DebitCategory.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Club> at c:/Users/jp/desktop/Budgit2/app/models/club.rb:14)
+Creating scope :all. Overwriting existing method Club.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Account> at c:/Users/jp/desktop/Budgit2/app/models/account.rb:15)
+  [1m[36mAREL (1.0ms)[0m  [1mDELETE FROM "assignments" WHERE 1=1[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "debits" WHERE 1=1
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "credits" WHERE 1=1[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "debit_categories" WHERE 1=1
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "credit_categories" WHERE 1=1[0m
+  [1m[35mAREL (0.0ms)[0m  DELETE FROM "users" WHERE 1=1
+  [1m[36mAREL (5.0ms)[0m  [1mDELETE FROM "roles" WHERE 1=1[0m
+  [1m[35mAREL (5.0ms)[0m  DELETE FROM "clubs" WHERE 1=1
+  [1m[36mAREL (0.0ms)[0m  [1mDELETE FROM "accounts" WHERE 1=1[0m
+  [1m[35mSQL (0.0ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "roles" ("active", "name", "created_at", "updated_at") VALUES (NULL, 'Club_Leader', '2011-02-20 12:21:22.610117', '2011-02-20 12:21:22.610117')[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "roles" ("active", "name", "created_at", "updated_at") VALUES (NULL, 'Faculty', '2011-02-20 12:21:22.694122', '2011-02-20 12:21:22.694122')
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "roles" ("active", "name", "created_at", "updated_at") VALUES (NULL, 'Student_Affairs', '2011-02-20 12:21:22.702122', '2011-02-20 12:21:22.702122')[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "roles" ("active", "name", "created_at", "updated_at") VALUES (NULL, 'System_Admin', '2011-02-20 12:21:22.709123', '2011-02-20 12:21:22.709123')
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "roles" ("active", "name", "created_at", "updated_at") VALUES (NULL, 'VP_of_Finance', '2011-02-20 12:21:22.717123', '2011-02-20 12:21:22.717123')[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "clubs" ("name", "created_at", "updated_at") VALUES ('BookManager', '2011-02-20 12:21:22.728124', '2011-02-20 12:21:22.728124')
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "clubs" ("name", "created_at", "updated_at") VALUES ('ChoreTracker', '2011-02-20 12:21:22.739124', '2011-02-20 12:21:22.739124')[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "clubs" ("name", "created_at", "updated_at") VALUES ('Proverbs', '2011-02-20 12:21:22.748125', '2011-02-20 12:21:22.748125')
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "clubs" ("name", "created_at", "updated_at") VALUES ('Arbeit', '2011-02-20 12:21:22.755125', '2011-02-20 12:21:22.755125')[0m
+  [1m[35mAREL (1.0ms)[0m  INSERT INTO "clubs" ("name", "created_at", "updated_at") VALUES ('Creamery', '2011-02-20 12:21:22.763126', '2011-02-20 12:21:22.763126')
+  [1m[36mAREL (1.0ms)[0m  [1mINSERT INTO "clubs" ("name", "created_at", "updated_at") VALUES ('Friends', '2011-02-20 12:21:22.771126', '2011-02-20 12:21:22.771126')[0m
+  [1m[35mUser Last ID (1.0ms)[0m  SELECT id FROM "users" ORDER BY id DESC
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-20 15:21:55 +0300
+  Processing by HomeController#index as HTML
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered home/index.html.erb within layouts/application (290.0ms)
+Completed   in 313ms
+
+ActionView::Template::Error (Couldn't find User with ID=1):
+    1: <% if logged_in? %>
+    2:       <%= render :partial => "personal" %>
+    3: <% else %>
+    4:       <div id= "login">
+  lib/controller_authentication.rb:24:in `current_user'
+  lib/controller_authentication.rb:28:in `logged_in?'
+  app/views/home/index.html.erb:1:in `_app_views_home_index_html_erb___667694184_27984900__315587719'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (17.0ms)
