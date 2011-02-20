@@ -6630,3 +6630,76 @@ NoMethodError (undefined method `category_id' for #<Debit:0x366f738>):
 Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
 Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (27.0ms)
 Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (40.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-20 15:35:09 +0300
+  Processing by HomeController#index as HTML
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_home_index_html_erb__287212321_27125172_1018465102 at c:/Users/jp/desktop/Budgit2/app/views/home/index.html.erb:7)
+Rendered home/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 32ms (Views: 32.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-02-20 15:35:21 +0300
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MebsoBrfR5pmRaRA05CdmrmrdErYQ7g3tIG/PZ9LXLY=", "login"=>"dad", "password"=>"[FILTERED]", "commit"=>"Log in"}
+  [1m[36mSQL (0.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'dad') LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 352ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-02-20 15:35:21 +0300
+  Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered home/_personal.html.erb (33.0ms)
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered home/index.html.erb within layouts/application (81.0ms)
+Completed 200 OK in 106ms (Views: 105.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/debits" for 127.0.0.1 at 2011-02-20 15:35:23 +0300
+  Processing by DebitsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+  [1m[35mDebit Load (0.0ms)[0m  SELECT "debits".* FROM "debits" ORDER BY id ASC
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (2.0ms)
+Rendered debits/index.html.erb within layouts/application (42.0ms)
+Completed 200 OK in 122ms (Views: 67.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/debits/new" for 127.0.0.1 at 2011-02-20 15:35:25 +0300
+  Processing by DebitsController#new as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:DebitCategory> at c:/Users/jp/desktop/Budgit2/app/models/debit_category.rb:10)
+Creating scope :all. Overwriting existing method DebitCategory.all.
+  [1m[35mDebitCategory Load (10.0ms)[0m  SELECT "debit_categories".* FROM "debit_categories" ORDER BY id ASC
+Rendered debits/_form.html.erb (211.0ms)
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered partials/_navigation.html.erb (3.0ms)
+Rendered debits/new.html.erb within layouts/application (262.0ms)
+Completed 200 OK in 307ms (Views: 276.0ms | ActiveRecord: 11.0ms)
+
+
+Started POST "/debits" for 127.0.0.1 at 2011-02-20 15:35:31 +0300
+  Processing by DebitsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MebsoBrfR5pmRaRA05CdmrmrdErYQ7g3tIG/PZ9LXLY=", "debit"=>{"item_purchased"=>"", "debit_category_id"=>"", "reason"=>"", "number_of_consumers"=>"", "names_of_consumers"=>"", "date_purchased(2i)"=>"2", "date_purchased(3i)"=>"20", "date_purchased(1i)"=>"2011", "account_id"=>"", "amount"=>"", "reimbursement_date(2i)"=>"2", "reimbursement_date(3i)"=>"20", "reimbursement_date(1i)"=>"2011"}, "commit"=>"Create Debit"}
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:14)
+Creating scope :all. Overwriting existing method Debit.all.
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Debit> at c:/Users/jp/desktop/Budgit2/app/models/debit.rb:16)
+WARNING: Can't mass-assign protected attributes: amount
+Completed   in 32ms
+
+NoMethodError (undefined method `category_id' for #<Debit:0x308b470>):
+  app/controllers/debits_controller.rb:46:in `block in create'
+  app/controllers/debits_controller.rb:45:in `create'
+
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (45.0ms)
+Rendered c:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (59.0ms)
