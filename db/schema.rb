@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20110219172523) do
 
   create_table "credits", :force => true do |t|
     t.integer  "credit_category_id"
-    t.integer  "date"
+    t.datetime "date"
     t.integer  "account_id"
     t.integer  "amount"
     t.datetime "created_at"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(:version => 20110219172523) do
     t.integer  "date_purchased"
     t.integer  "account_id"
     t.integer  "amount"
-    t.integer  "reimbursement_date"
+    t.datetime "reimbursement_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
