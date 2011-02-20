@@ -2,23 +2,25 @@
 
 <p>
   <b>Role:</b>
-  <%= @assignment.role %>
+  <%= @assignment.role.name %>
 </p>
 
 <p>
   <b>Club:</b>
-  <%= @assignment.club %>
+  <%= @assignment.club.name %>
 </p>
 
 <p>
-  <b>User andrewid:</b>
-  <%= @assignment.username %>
+  <b>User:</b>
+  <%= @assignment.user.name %>
 </p>
 
+<!--
 <p>
   <b>Active:</b>
   <%= @assignment.active %>
 </p>
+-->
 
 
 <%= link_to 'Edit', edit_assignment_path(@assignment) %> |

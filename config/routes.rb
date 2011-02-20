@@ -14,7 +14,6 @@ Budgit::Application.routes.draw do
   match 'login' => 'sessions#new', :as => :login
   
   root :to => 'home#index'
-  #root :controller => 'home', :action => 'index'
   
   resources :sessions
 

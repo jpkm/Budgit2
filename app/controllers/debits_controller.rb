@@ -25,7 +25,7 @@ class DebitsController < ApplicationController
   # GET /debits/new.xml
   def new
     @debit = Debit.new
-
+	
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @debit }
