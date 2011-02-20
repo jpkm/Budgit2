@@ -5,6 +5,7 @@
         
 	<ul>
 	<!-- OPTIONS FOR EVERYONE but i thought this was just for faculty -->
+		</li><%= link_to 'home', :controller => 'home', :action => "index" %></li> 
 		<li><%= link_to 'user',  users_path(@user) %></li>
         <li><%= link_to 'clubs', clubs_path %></li>
         <li><%= link_to 'assignments', assignments_path %></li>
@@ -15,9 +16,7 @@
 		<li><%= link_to 'credits', credits_path %>
 		<li><%= link_to 'credit types', credit_categories_path %>
         <li><% link_to 'Logout', { :controller => :sessions, :action => :destroy } %>
-		<%= link_to 'logout', logout_path %>
-		</li>
-		<%= link_to 'home', :controller => 'home', :action => "index" %> 
+		<%= link_to 'logout', logout_path %></li>
 	</ul>
 	<p>&nbsp;</p>
 </div> <!-- end of side_nav div -->
