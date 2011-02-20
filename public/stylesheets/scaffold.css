@@ -73,3 +73,106 @@ table.datagrid a:hover {
 	text-decoration: underline;
 	color: blue;       
 }
+
+/*	Time to deal with Table Caption and Header Row  */
+
+caption.datagrid {
+	height: 45px;
+	line-height: 44px;
+	color: #000000;/**/
+	font-weight: bold;
+	text-align: center;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+thead.datagrid th {
+	font-size: 105%;
+	color: /* #EEC900; #FFD700;*/ white;
+	background-color: /*#FFD700; #6B8E23*/#6B8E23;
+	height: 28px;
+	font-weight: bold;
+	padding: 10px;
+}
+thead.datagrid th:hover {
+	/* background-color: nothing changes right now */
+
+}
+td {
+	padding:0 5px;
+}
+
+/*	TR elements handled here (main rows only)  */
+
+.dg_list_line_odd {
+	font: 90% Verdana, Arial, Helvetica, sans-serif;
+	color: #000000;
+	text-align: left;
+	vertical-align: top;
+	line-height: 2.5;
+	padding: 3px;
+}
+.dg_list_line_even {
+	font: 90% Verdana, Arial, Helvetica, sans-serif;
+	color: #000000;
+	text-align: left;
+	vertical-align: top;
+	line-height: 2.5;
+	background-color: #9ACD32;
+	padding: 3px;
+}
+.dg_list_line_even img {
+	vertical-align: top;
+	padding: 5px 0px 3px 8px;
+}
+.dg_list_line_odd img {
+	vertical-align: top;
+	padding: 5px 0px 3px 8px;
+}
+.dg_list_line_odd:hover {
+	background-color: #B5CEFF;
+	color: #0033ff;
+}
+.dg_list_line_odd:hover a {
+	background-color: #B5CEFF;
+	color: blue;
+	text-decoration: underline;
+}
+.dg_list_line_even:hover {
+	background-color: #B5CEFF;
+	color: #0033ff;
+}
+.dg_list_line_even:hover a {
+	background-color: #B5CEFF;
+	color: blue;
+	text-decoration: underline;
+}
+
+/*	TR elements handled here (alt rows only)  */
+
+tr.dg {
+	line-height: 2;
+	padding: 2px;
+}
+tr.dgalt,th.dgalt,td.dgalt {
+	padding: .75em;
+}
+tr.dgalt:hover {
+	background-color: #FFFF99;
+	color: #0033ff;
+}
+tr.dgalt:hover a {
+	text-decoration: underline;
+	color: #0033ff;
+	background-color: #FFFF99;
+}
+
+/*	table foot elements handled here  */
+
+tfoot.datagrid tr {
+	/* background-color: nothing set at this time */
+}
+tfoot.datagrid td, tfoot.datagrid th{
+	color: #000;
+	border: 0px;
+}

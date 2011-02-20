@@ -1,10 +1,18 @@
 class HomeController < ApplicationController
+	layout "application"
+	
   def index
+	if logged_in?
+		# list of assignments for the user
+		@assignment_for_user = Assignment.for_user(current_user.id).all
+	end
+  end
   
-  # list of assignments for the user
-  @assignment_for_user = Assignment.for_user(current_user.id).all
-  
-  
+  def show
+	if logged_in?
+		# list of assignments for the user
+		@assignment_for_user = Assignment.for_user(current_user.id).all
+	end
   end
 
 end
