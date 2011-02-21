@@ -21,7 +21,7 @@ namespace :db do
     end
     
     # Step 3: add some clubs to work with (just six for now)
-    clubs = %railw[BookManager ChoreTracker Proverbs Arbeit Creamery Friends]
+    clubs = %w[BookManager ChoreTracker Proverbs Arbeit Creamery Friends]
     clubs.each do |club|
       c = Club.new
       c.name = club
@@ -44,13 +44,10 @@ namespace :db do
     # Step 4: add 20 users to the system and assign
     User.populate 20 do |user|
       user.first_name = Faker::Name.first_name
-	  #user.middle_name = Faker::Name.middle_name
+	  user.middle_name = Faker::Name.first_name
       user.last_name = Faker::Name.last_name
       user.email = Faker::Internet.email
       user.username = "#{user.first_name}_#{user.last_name}"
-      user.crypted_password = rand(10**10).to_s.rjust(10,'0')
-      user.active = true
-      user.role = %w["faculty", "advisor", "club leader", "maglis"] #user.is_faculty = false
       user.created_at = Time.now
       user.updated_at = Time.now
       
@@ -66,12 +63,19 @@ namespace :db do
     Debit.populate 100 do |debit|
       debit.account_id = Account.all.map{|a| a.id}
       debit.reason = Faker::Company.catch_phrase
-      debit.number_of_consumers = rand(1) + 2
-	  debit.name_of_consumers = User.all.map{|u| u.name} 
+      #debit.number_of_consumers = rand(1) + 2
+	  #debit.name_of_consumers = User.all.map{|u| u.name} 
 	  debit.item_purchased = Faker::Company.catch_phrase
 	  debit.date_purchased = 1.month.ago..2.days.ago
-	  reimbursed = rand(4) + 2
-      debit.reimbursement_date = reimbursement.months.from_now
-    end  
+	  debit.amount = rand(3) + 2
+      #debit.reimbursement_date = reimbursement.months.from_now
+    end 
+
+	# Step 5: add some debits and assign them to account
+    Account.populate 10 do |account|
+      account.year = 1.month.ago..2.days.ago
+	  account.club_id = Club.all.map{|c| c.id}
+	end 
+	
   end
 end

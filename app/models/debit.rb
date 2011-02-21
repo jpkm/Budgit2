@@ -1,5 +1,5 @@
 class Debit < ActiveRecord::Base
-	attr_accessible :item_purchased, :debit_category_id, :reason, :number_of_consumers, :names_of_consumers, :date_purchased, :account_id, :reimbursement_date
+	attr_accessible :item_purchased, :debit_category_id, :reason, :number_of_consumers, :name_of_consumers, :date_purchased, :account_id, :reimbursement_date
 
 	#Relationships
 	belongs_to :account
