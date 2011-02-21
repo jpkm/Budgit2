@@ -14,7 +14,7 @@
 <% @assignments.each do |assignment| %>
   <tr>
     <td><%= assignment.role.name %></td>
-    <td><%= assignment.club %></td>
+    <td><%= assignment.club.name %></td>
     <td><%= assignment.user.name %></td>
     <td><%#= assignment.active %></td>
     <td><%= link_to 'Show', assignment %></td>
