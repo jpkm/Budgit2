@@ -63,7 +63,15 @@ namespace :db do
 	  account.club_id = Club.all.map{|c| c.id}
 	end 
 	
-    # Step 6: add some debits and assign them to account
+	# Step 6: add some debitcategories to work with 
+    debitcategories = %w[Food Decoration Equipement Other]
+    debitcategories.each do |category|
+      dc = DebitCategory.new
+      dc.category = category
+      dc.save!
+    end
+	
+    # Step 7: add some debits and assign them to account
     Debit.populate 100 do |debit|
       debit.account_id = Account.all.map{|a| a.id}
       debit.reason = Faker::Company.catch_phrase
@@ -77,16 +85,15 @@ namespace :db do
     end 
 	
 	
-	# Step 7: add some debitcategories to work with 
-    debitcategories = %w[Food Decoration Equipement Other]
-    debitcategories.each do |category|
-      dc = DebitCategory.new
-      dc.category = category
-      dc.save!
+	# Step 8: add some creditcategories to work with 
+    creditcategories = %w[Inital Special Other]
+    creditcategories.each do |category|
+      cc = CreditCategory.new
+      cc.category = category
+      cc.save!
     end
 	
-
-	# Step 8: add some credits and assign them to account
+	# Step 9: add some credits and assign them to account
     Credit.populate 50 do |credit|
       credit.account_id = Account.all.map{|a| a.id}
 	  credit.credit_category_id = CreditCategory.all.map{|cc| cc.id}
@@ -94,13 +101,7 @@ namespace :db do
 	  credit.amount = rand(10*10) + 2
     end 
 	
-	# Step 9: add some creditcategories to work with 
-    creditcategories = %w[Inital Special Other]
-    creditcategories.each do |category|
-      cc = CreditCategory.new
-      cc.category = category
-      cc.save!
-    end
+	
 	
 
 	

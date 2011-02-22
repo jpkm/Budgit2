@@ -1,10 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @club.name %>
-</p>
 
+<table>
+  <tr valign="top">
+    <td width="300">
+		<h2><%= @club.name %>'s Profile:</h2>	
+    </td>
+  </tr>
+</table>
 
 <%= link_to 'Edit', edit_club_path(@club) %> |
 <%= link_to 'Back', clubs_path %>

@@ -1,4 +1,5 @@
 class CreditCategoriesController < ApplicationController
+	before_filter :login_required
   # GET /credit_categories
   # GET /credit_categories.xml
   def index

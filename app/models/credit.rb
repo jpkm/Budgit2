@@ -2,7 +2,7 @@ class Credit < ActiveRecord::Base
 	attr_accessible :credit_category_id, :date, :account_id, :amount
 
 	# Relationships
-	belongs_to :creditcategory
+	belongs_to :credit_category
 	belongs_to :account
 	
 	# Validations

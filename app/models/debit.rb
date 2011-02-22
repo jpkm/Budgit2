@@ -3,7 +3,7 @@ class Debit < ActiveRecord::Base
 
 	#Relationships
 	belongs_to :account
-	belongs_to :debitcategory
+	belongs_to :debit_category
 	
 	#Validations
 	validates_presence_of :item_purchased, :reason, :debit_category_id

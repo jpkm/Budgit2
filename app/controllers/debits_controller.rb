@@ -1,8 +1,9 @@
 class DebitsController < ApplicationController
+	before_filter :login_required
   # GET /debits
   # GET /debits.xml
   def index
-    @debits = Debit.all
+    @debits = Debit.all.paginate :pgae => params[:page], :per_page => 5
 
     respond_to do |format|
       format.html # index.html.erb

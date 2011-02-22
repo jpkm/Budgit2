@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :login_required, :except => [:new, :create]
+	layout "application"
+	before_filter :login_required, :except => [:new, :create]
   #include AuthenicatedSystem 
   
   def new

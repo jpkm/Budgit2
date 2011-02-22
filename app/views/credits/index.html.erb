@@ -13,7 +13,7 @@
 
 <% @credits.each do |credit| %>
   <tr>
-    <td><%= credit.credit_category_id %></td>
+    <td><%= credit.credit_category.category %></td>
     <td><%= credit.date %></td>
     <td><%= credit.account.club.name %></td>
     <td><%= credit.amount %></td>

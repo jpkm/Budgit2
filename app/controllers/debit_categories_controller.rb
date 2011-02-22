@@ -1,4 +1,5 @@
 class DebitCategoriesController < ApplicationController
+	before_filter :login_required
   # GET /debit_categories
   # GET /debit_categories.xml
   def index

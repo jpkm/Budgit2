@@ -1,4 +1,5 @@
 class AssignmentsController < ApplicationController
+	before_filter :login_required
   # GET /assignments
   # GET /assignments.xml
   def index
