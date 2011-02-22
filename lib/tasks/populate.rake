@@ -61,6 +61,7 @@ namespace :db do
     Account.populate 7 do |account|
       account.year = 1.month.ago..2.days.ago
 	  account.club_id = Club.all.map{|c| c.id}
+	  account.active = true
 	end 
 	
 	# Step 6: add some debitcategories to work with 

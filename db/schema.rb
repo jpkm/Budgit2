@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 20110219172523) do
   create_table "accounts", :force => true do |t|
     t.integer  "year"
     t.integer  "club_id"
+    t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

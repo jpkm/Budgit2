@@ -3,7 +3,8 @@ class CreateAccounts < ActiveRecord::Migration
     create_table :accounts do |t|
       t.integer :year
       t.integer :club_id
-
+	  t.boolean :active
+	  
       t.timestamps
     end
   end
