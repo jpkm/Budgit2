@@ -12,14 +12,14 @@
     <th>Amount</th>
     <th>Reimbursement Date</th>
     <th></th>
-    <th></th>
+    <th></th
     <th></th>
   </tr>
 
 <% @debits.each do |debit| %>
   <tr>
     <td><%= debit.item_purchased %></td>
-    <td><%= debit.debit_category_id %></td>
+    <td><%= debit.debitcategory %></td>
     <td><%= debit.reason %></td>
     <td><%= debit.number_of_consumers %></td>
     <td><%= debit.names_of_consumers %></td>
