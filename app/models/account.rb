@@ -1,5 +1,5 @@
 class Account < ActiveRecord::Base
-	attr_accessible :club_id, :year
+	attr_accessible :club_id, :year, :active
 
 	#Relationships
 	belongs_to :club
@@ -15,4 +15,5 @@ class Account < ActiveRecord::Base
 	# get all accounts for a particular club_id
 	named_scope :for_club, lambda { |club_id| { :conditions => ['club_id = ?', club_id] } }
 	
+	named_scope :is_active, :conditions => ['active = ?', "true"]
 end
