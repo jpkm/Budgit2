@@ -10,6 +10,63 @@
   <%= @account.club.name %>
 </p>
 
+<p>DEBITS</p>
+<table class = "datagrid">
+	<thread class = "datagrid"
+		<th>Item purchased</th>
+		<th>Category</th>
+		<th>Reason</th>
+		<th>Date Purchased</th>
+		<th>Account</th>
+		<th>Amount</th>
+		<th>Reimbursement Date</th>
+		<th>Number of consumers</th>
+		<th>Names of consumers</th>
+	</thread>
+
+<% @debits.each do |debit| %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+	<td><%= debit.item_purchased %></td>
+    <td><%= link_to debit.debit_category.category, debit_category_path(debit.debit_category) %></td>
+    <td><%= debit.reason %></td>
+    <td><%= debit.date_purchased %></td>
+    <td><%= link_to debit.account.club.name, account_path(debit.account)%>&nbsp;<%= debit.account.year %></td>
+    <td><%= debit.amount %></td>
+    <td><%= debit.reimbursement_date %></td>
+    <td><%= debit.number_of_consumers %></td>
+    <td><%= debit.names_of_consumers %></td>
+	<td align="center">
+	<%= link_to(image_tag("edit_dg.gif", :border => 0), edit_debit_path(debit))%>&nbsp;
+	<%= link_to(image_tag("delete_dg.gif", :border => 0), debit_path(debit), :confirm => 'delete?', :method => :delete) %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<p>CREDITS</p>
+<table class = "datagrid">
+	<thread class = "datagrid"
+		<th>Category</th>
+		<th>Date </th>
+		<th>Account</th>
+		<th>Amount</th>
+	</thread>
+
+<% @credits.each do |credit| %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+    <td><%= link_to credit.credit_category.category, credit_category_path(credit.credit_category) %></td>
+    <td><%= credit.date %></td>
+    <td><%= link_to credit.account.club.name, account_path(credit.account)%>&nbsp;<%= credit.account.year %></td>
+    <td><%= credit.amount %></td>
+	<td align="center">
+	<%= link_to(image_tag("edit_dg.gif", :border => 0), edit_credit_path(credit))%>&nbsp;
+	<%= link_to(image_tag("delete_dg.gif", :border => 0), credit_path(credit), :confirm => 'delete?', :method => :delete) %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+
 
 <%= link_to 'Edit', edit_account_path(@account) %> |
 <%= link_to 'Back', accounts_path %>
