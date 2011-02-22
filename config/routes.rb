@@ -14,6 +14,8 @@ Budgit::Application.routes.draw do
   match 'login' => 'sessions#new', :as => :login
   
   root :to => 'home#index'
+  #match 'club_profile' => 'home#club_profile' , :as => :club_profile
+
   
   resources :sessions
 
