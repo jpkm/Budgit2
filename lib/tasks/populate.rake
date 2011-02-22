@@ -72,25 +72,37 @@ namespace :db do
 	  debit.item_purchased = Faker::Company.catch_phrase
 	  debit.date_purchased = 1.month.ago..2.days.ago
 	  debit.amount = rand(10*10) + 2
+	  debit.debit_category_id = DebitCategory.all.map{|dc| dc.id}
       #debit.reimbursement_date = reimbursement.months.from_now
     end 
 	
 	
 	# Step 7: add some debitcategories to work with 
     debitcategories = %w[Food Decoration Equipement Other]
-    debitcategories.sort.each do |category|
+    debitcategories.each do |category|
       dc = DebitCategory.new
       dc.category = category
       dc.save!
     end
 	
-	 # Step 2: add some Role to work with (small set for now...)
-#    roles = %w[Faculty Student_Affairs System_Admin Club_Leader VP_of_Finance]
-#    roles.sort.each do |role|
-#      r = Role.new
-#      r.name = role
-#      r.save!
-#    end
+
+	# Step 8: add some credits and assign them to account
+    Credit.populate 50 do |credit|
+      credit.account_id = Account.all.map{|a| a.id}
+	  credit.credit_category_id = CreditCategory.all.map{|cc| cc.id}
+      credit.date = 1.month.ago..2.days.ago
+	  credit.amount = rand(10*10) + 2
+    end 
+	
+	# Step 9: add some creditcategories to work with 
+    creditcategories = %w[Inital Special Other]
+    creditcategories.each do |category|
+      cc = CreditCategory.new
+      cc.category = category
+      cc.save!
+    end
+	
+
 	
 	 
 	
