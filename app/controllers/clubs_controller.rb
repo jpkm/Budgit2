@@ -15,6 +15,8 @@ class ClubsController < ApplicationController
   # GET /clubs/1.xml
   def show
     @club = Club.find(params[:id])
+	@club_accounts = Account.for_club(@club.id) 
+	
 
     respond_to do |format|
       format.html # show.html.erb

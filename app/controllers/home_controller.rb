@@ -12,6 +12,10 @@ class HomeController < ApplicationController
 	if logged_in?
 		# list of assignments for the user
 		@assignment_for_user = Assignment.for_user(current_user.id).all
+		
+		
+		
+		
 		@debit_for_account = Debit.for_account(debit.account.id).all
 	end
   end

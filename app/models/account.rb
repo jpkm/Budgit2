@@ -12,6 +12,6 @@ class Account < ActiveRecord::Base
 	
 	#Named Scopes
 	# get all accounts for a particular club_id
-	named_scope :by_club_id, lambda { |club_id| { :conditions => ['club_id = ?', club_id] } }
+	named_scope :for_club, lambda { |club_id| { :conditions => ['club_id = ?', club_id] } }
 	
 end
