@@ -1,0 +1,17 @@
+<h2> Debits </h2>
+
+<table class="datagrid">
+  <thead class="datagrid">
+    <th>Project</th>
+    <th>Role</th>
+    <th>End_Date</th>
+  </thead>
+
+<% for debit in @debit_for_account %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+    <td><%= link_to(h(debit.project.name), project_path(assignment.project)) %></td>
+    <td><%= assignment.role %></td>
+	<td><%= assignment.project.end_date.to_s(:long_ordinal) %></td>
+  </tr>
+<% end %>
+</table>
