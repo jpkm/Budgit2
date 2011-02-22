@@ -11,6 +11,7 @@ class Account < ActiveRecord::Base
 	validates_numericality_of :year
 	
 	#Named Scopes
+	
 	# get all accounts for a particular club_id
 	named_scope :for_club, lambda { |club_id| { :conditions => ['club_id = ?', club_id] } }
 	

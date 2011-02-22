@@ -15,7 +15,9 @@ class AccountsController < ApplicationController
   # GET /accounts/1.xml
   def show
     @account = Account.find(params[:id])
-
+	@debits = Debit.for_account(@account.id)
+	@credits = Credit.for_account(@account.id)
+	
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @account }
