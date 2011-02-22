@@ -1,18 +1,23 @@
 <p id="notice"><%= notice %></p>
 
+<h2><%= @club.name %>'s Profile:</h2>	
 
-<table>
-  <tr valign="top">
-    <td width="300">
-		<h2><%= @club.name %>'s Profile:</h2>	
-		
-		
-		
-		
-		Credits for this club's active account <br>
-		Debits for this club's active account
-    </td>
+
+<table class ='datagrid'>
+  <thread class='datagrid'>
+	<th>Project</th>
+    <th>Role</th>
+    <th>End_Date</th>
+  </thead>
+
+  <% if @club_accounts.empty? %>
+	dog
+  <% end %>
+<% for account in @club_accounts %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+    <td><%= account.year %></td>
   </tr>
+<% end %>
 </table>
 
 <%= link_to 'Edit', edit_club_path(@club) %> |
