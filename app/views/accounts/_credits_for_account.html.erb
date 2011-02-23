@@ -1,0 +1,26 @@
+<p>CREDITS</p>
+<table class = "datagrid">
+	<thread class = "datagrid"
+		<th>Category</th>
+		<th>Date </th>
+		<th>Account</th>
+		<th>Amount</th>
+	</thread>
+
+<% @credits_for_account.each do |credit| %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+    <td><%= link_to credit.credit_category.category, credit_category_path(credit.credit_category) %></td>
+    <td><%= credit.date %></td>
+    <td><%= link_to credit.account.club.name, account_path(credit.account)%>&nbsp;<%= credit.account.year %></td>
+    <td><%= credit.amount %></td>
+	<td align="center">
+	<%= link_to(image_tag("edit_dg.gif", :border => 0), edit_credit_path(credit))%>&nbsp;
+	<%= link_to(image_tag("delete_dg.gif", :border => 0), credit_path(credit), :confirm => 'delete?', :method => :delete) %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<span class="smtext">
+<%= will_paginate @credits_for_account, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+</span>

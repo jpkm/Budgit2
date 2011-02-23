@@ -15,8 +15,7 @@ class ClubsController < ApplicationController
   # GET /clubs/1.xml
   def show
     @club = Club.find(params[:id])
-	@debits = Debit.for_account(@account.id)
-	@credits = Credit.for_account(@account.id)
+	@active_for_club = Account.is_active_for_club(@club)
 	
 
     respond_to do |format|

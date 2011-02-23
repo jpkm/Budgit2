@@ -1,0 +1,36 @@
+<h1>DEBITS</h1>
+<table class = "datagrid">
+	<thread class = "datagrid"
+		<th>Item purchased</th>
+		<th>Category</th>
+		<th>Reason</th>
+		<th>Date Purchased</th>
+		<th>Account</th>
+		<th>Amount</th>
+		<th>Reimbursement Date</th>
+		<th>Number of consumers</th>
+		<th>Names of consumers</th>
+	</thread>
+
+<% @debits_for_account.each do |debit| %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+	<td><%= debit.item_purchased %></td>
+    <td><%= link_to debit.debit_category.category, debit_category_path(debit.debit_category) %></td>
+    <td><%= debit.reason %></td>
+    <td><%= debit.date_purchased %></td>
+    <td><%= link_to debit.account.club.name, account_path(debit.account)%>&nbsp;<%= debit.account.year %></td>
+    <td><%= debit.amount %></td>
+    <td><%= debit.reimbursement_date %></td>
+    <td><%= debit.number_of_consumers %></td>
+    <td><%= debit.names_of_consumers %></td>
+	<td align="center">
+	<%= link_to(image_tag("edit_dg.gif", :border => 0), edit_debit_path(debit))%>&nbsp;
+	<%= link_to(image_tag("delete_dg.gif", :border => 0), debit_path(debit), :confirm => 'delete?', :method => :delete) %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<span class="smtext">
+<%= will_paginate @debits_for_account, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+</span>
