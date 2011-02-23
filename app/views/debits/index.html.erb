@@ -19,7 +19,7 @@
     <td><%= link_to debit.debit_category.category, debit_category_path(debit.debit_category) %></td>
     <td><%= debit.reason %></td>
     <td><%= debit.date_purchased %></td>
-    <td><%= link_to debit.account.club.name, account_path(debit.account)%>&nbsp;<%= debit.account.year %></td>
+    <td><%#= link_to debit.account.club.name, account_path(debit.account)%>&nbsp;<%#= debit.account.year %></td>
     <td><%= debit.amount %></td>
     <td><%= debit.reimbursement_date %></td>
     <td><%= debit.number_of_consumers %></td>

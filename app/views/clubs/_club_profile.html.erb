@@ -30,4 +30,4 @@
   <%= render :partial => "account_credits" %>
 <% end %>
 		
-<%= link_to "New Debit", new_debit_path(:account => @account.id) %>
+<%= link_to "New Debit", new_debit_path(:account => @club.current_account.id) %>

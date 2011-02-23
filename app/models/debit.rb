@@ -22,5 +22,9 @@ class Debit < ActiveRecord::Base
 	def reimbursed?
 	  self.reimbursement_date != "nil"
 	end
+	
+	def total_debits_per_account (account)
+		( Debit.for_account(account) ).amount.sum
+	end
 
 end

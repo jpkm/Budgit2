@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>Active</th>
-    <th>Type</th>
+    <th>Category</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,7 +12,7 @@
 <% @credit_categories.each do |credit_category| %>
   <tr>
     <td><%= credit_category.active %></td>
-    <td><%= credit_category.type %></td>
+    <td><%= credit_category.category %></td>
     <td><%= link_to 'Show', credit_category %></td>
     <td><%= link_to 'Edit', edit_credit_category_path(credit_category) %></td>
     <td><%= link_to 'Destroy', credit_category, :confirm => 'Are you sure?', :method => :delete %></td>

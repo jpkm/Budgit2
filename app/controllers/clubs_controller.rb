@@ -21,7 +21,7 @@ class ClubsController < ApplicationController
 	@account_debits = Debit.for_account(@current_account).paginate :page => params[:page], :per_page => 5
 	@account_credits = Credit.for_account(@current_account).paginate :page => params[:page], :per_page => 5
 	@initial_credit = Credit.initial_for_account(@current_account)
-	@balance = Credit.initial_for_account(@current_account)
+	
 	
 	@debits_unreimbursed = Debit.not_reimbursed_for_account(@current_account).paginate :page => params[:page], :per_page => 5
 	
@@ -29,7 +29,19 @@ class ClubsController < ApplicationController
 	#	@balance = @balance + credit.amount
 	#end
 	
+	@credits_amount = 0
+	@debits_amount = 0
 
+	for credit in Credit.for_account(@current_account)
+		@credits_amount = @credits_amount + credit.amount
+	end
+	
+	for debit in Debit.for_account(@current_account)
+		@debits_amount = @debits_amount + debit.amount
+	end
+	
+	@balance = 0 + 	@credits_amount + @debits_amount
+	@account = @current_account
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @club }

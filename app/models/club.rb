@@ -15,4 +15,12 @@ class Club < ActiveRecord::Base
 	# get all the projects by a particular user
     named_scope :for_user,  lambda { |user_id| { :joins => :assignments, :conditions => ['user_id = ?', user_id] } }
 	
+	def current_account
+		for account in self.accounts
+			if(account.active)
+				return account
+			end
+		end
+	end
+	
 end

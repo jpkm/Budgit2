@@ -3,8 +3,7 @@ class DebitsController < ApplicationController
   # GET /debits
   # GET /debits.xml
   def index
-    @debits = Debit.all.paginate :pgae => params[:page], :per_page => 5
-	
+    @debits = Debit.all.paginate :page => params[:page], :per_page => 5
 	
     respond_to do |format|
       format.html # index.html.erb
@@ -27,7 +26,7 @@ class DebitsController < ApplicationController
   # GET /debits/new.xml
   def new
     @debit = Debit.new
-	@debit.account_id = params[:account]
+	@debit.account_id =  params[:account]
 	
     respond_to do |format|
       format.html # new.html.erb
