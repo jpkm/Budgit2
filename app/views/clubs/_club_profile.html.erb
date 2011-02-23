@@ -1,13 +1,8 @@
 <table class="datagrid">
 	<thread class="datagrid">
     <th width="90">Year</th>
-    <th width="60">Club</th>
-	<th width="60">Active</th>
   </tr>
 
-	<% for balance in @balance %>
-		<tr> dogma </tr>
-	<% end %>
   
 <% for account in @current_account %>
 	<tr class="<%= cycle('drg_list_line_odd', 'dg_list_line_even') %>">
@@ -18,14 +13,7 @@
 <% end %>
 </table>
 
-<% for account in @current_account %>
-	<tr class="<%= cycle('drg_list_line_odd', 'dg_list_line_even') %>">
-		<td><%= account.year %></td>
-		<td><%= link_to 'Edit', edit_account_path(account) %></td>
-		<td><%= link_to 'Destroy', account, :confirm => 'Are you sure?', :method => :delete %></td>
-	</tr>
-<% end %>
-</table>
+
 
 
 <% unless @account_debits.nil? || @account_debits.empty? %>
