@@ -1,24 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h2><%= @club.name %>'s Profile:</h2>	
+<h1><%= @club.name %>'s Profile:</h1>
 
 
-<table class ='datagrid'>
-  <thread class='datagrid'>
-	<th>Project</th>
-    <th>Role</th>
-    <th>End_Date</th>
-  </thead>
-
-  <% if @club_accounts.empty? %>
-	dog
-  <% end %>
-<% for account in @club_accounts %>
-  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
-    <td><%= account.year %></td>
-  </tr>
+<% unless @current_account.nil? || @current_account.empty? %>
+  <p class="supertiny">&nbsp;</p>
+  <%= render :partial => "club_profile" %>
 <% end %>
-</table>
+
+
+
+  
+<br>
 
 <%= link_to 'Edit', edit_club_path(@club) %> |
 <%= link_to 'Back', clubs_path %>

@@ -1,7 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-<h1><%= @club.name %>'s Profile:</h1>
-
 <table class="datagrid">
 	<thread class="datagrid">
     <th width="90">Year</th>
@@ -9,19 +5,37 @@
 	<th width="60">Active</th>
   </tr>
 
-<% for account in @active_for_club %>
-	<tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
-		<td align="left"><%= account.year %></td>
-		<td align="left"><%= account.club.name %></td>
-		<td align="left"><%= account.active %></td>
-		<td><%= link_to 'Show', account %></td>
+	<% for balance in @balance %>
+		<tr> dogma </tr>
+	<% end %>
+  
+<% for account in @current_account %>
+	<tr class="<%= cycle('drg_list_line_odd', 'dg_list_line_even') %>">
+		<td><%= account.year %></td>
 		<td><%= link_to 'Edit', edit_account_path(account) %></td>
 		<td><%= link_to 'Destroy', account, :confirm => 'Are you sure?', :method => :delete %></td>
 	</tr>
 <% end %>
 </table>
+
+<% for account in @current_account %>
+	<tr class="<%= cycle('drg_list_line_odd', 'dg_list_line_even') %>">
+		<td><%= account.year %></td>
+		<td><%= link_to 'Edit', edit_account_path(account) %></td>
+		<td><%= link_to 'Destroy', account, :confirm => 'Are you sure?', :method => :delete %></td>
+	</tr>
+<% end %>
+</table>
+
+
+<% unless @account_debits.nil? || @account_debits.empty? %>
+  <p class="supertiny">&nbsp;</p>
+  <%= render :partial => "account_debits" %>
+<% end %>
+
+<% unless @account_credits.nil? || @account_credits.empty? %>
+  <p class="supertiny">&nbsp;</p>
+  <%= render :partial => "account_credits" %>
+<% end %>
 		
 
-
-<%= link_to 'Edit', edit_club_path(@club) %> |
-<%= link_to 'Back', clubs_path %>

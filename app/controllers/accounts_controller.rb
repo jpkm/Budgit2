@@ -4,8 +4,6 @@ class AccountsController < ApplicationController
   # GET /accounts.xml
   def index
     @accounts = Account.all
-	@debits_for_account = Debit.for_account.paginate :page => params[:page], per_page => 5
-	@credits_for_account = Credit.for_account.paginate :page => params[:page], per_page => 5
 	
     respond_to do |format|
       format.html # index.html.erb
@@ -16,9 +14,11 @@ class AccountsController < ApplicationController
   # GET /accounts/1
   # GET /accounts/1.xml
   def show
-    @account = Account.find(params[:id])
-	@debits_for_account = Debit.for_account(@account.id)
-	@credits_for_account = Credit.for_account(@account.id)
+	@account = Account.find(params[:id])
+	
+	@account_debits = Debit.for_account(@account.id).paginate :page => params[:page], :per_page => 5
+	@account_credits = Credit.for_account(@account.id).paginate :page => params[:page], :per_page => 5
+   
 	
     respond_to do |format|
       format.html # show.html.erb

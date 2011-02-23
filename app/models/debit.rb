@@ -14,6 +14,8 @@ class Debit < ActiveRecord::Base
     named_scope :all, :order => "id ASC"
 	
     # get all the debits by a particular account
-    named_scope :for_account, lambda { |account_id| { :conditions => ['account_id = ?', account_id] } }
+    named_scope :for_account, lambda { |account| { :conditions => ['account_id = ?', account] } }
+	
+	
 	
 end

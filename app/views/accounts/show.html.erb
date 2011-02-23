@@ -7,17 +7,17 @@
 
 <p>
   <b>Club:</b>
-  <%= @account.club.name %>
+  <%= link_to @account.club.name, club_path(@account.club) %>
 </p>
 
-<% unless @debits_for_account.nil? || @debits_for_account.empty? %>
+<% unless @account_debits.nil? || @account_debits.empty? %>
   <p class="supertiny">&nbsp;</p>
-  <%= render :partial => "debits_for_account" %>
+  <%= render :partial => "account_debits" %>
 <% end %>
 
-<% unless @credits_for_account.nil? || @credits_for_account.empty? %>
+<% unless @account_credits.nil? || @account_credits.empty? %>
   <p class="supertiny">&nbsp;</p>
-  <%= render :partial => "credits_for_account" %>
+  <%= render :partial => "account_credits" %>
 <% end %>
 
 

@@ -12,6 +12,8 @@ class Credit < ActiveRecord::Base
 	#orders debits by debit_id asscending 
     named_scope :all, :order => "id ASC"
     # get all the credits by a particular account
-    named_scope :for_account, lambda { |account_id| { :conditions => ['account_id = ?', account_id] } }
+    named_scope :for_account, lambda { |account| { :conditions => ['account_id = ?', account] } }
+	#get all credits with the credit_category of "initial" for an accoount
+	named_scope :initial_for_account, lambda { |account| {:conditions => ['account_id = ? AND credit_category_id = ?', account, "Initial" ] } }
 	
 end
