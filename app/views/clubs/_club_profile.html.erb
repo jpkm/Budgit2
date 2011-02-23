@@ -14,6 +14,10 @@
 </table>
 
 
+<% unless @debits_unreimbursed.nil? || @debits_unreimbursed.empty? %>
+  <p class="supertiny">&nbsp;</p>
+  <%= render :partial => "debits_unreimbursed" %>
+<% end %>
 
 
 <% unless @account_debits.nil? || @account_debits.empty? %>
@@ -26,4 +30,4 @@
   <%= render :partial => "account_credits" %>
 <% end %>
 		
-
+<%= link_to "New Debit", new_debit_path(:account => @account.id) %>

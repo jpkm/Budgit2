@@ -15,7 +15,12 @@ class Debit < ActiveRecord::Base
 	
     # get all the debits by a particular account
     named_scope :for_account, lambda { |account| { :conditions => ['account_id = ?', account] } }
+	# get all debits with reimbursement_date = nil for an account
+	named_scope :not_reimbursed_for_account, lambda { |account| {:conditions => ['account_id = ? AND reimbursement_date = ?', account, nil] } }
 	
-	
-	
+	#if reimbursement_date is 'nil' defect is not reimbursed
+	def reimbursed?
+	  self.reimbursement_date != "nil"
+	end
+
 end

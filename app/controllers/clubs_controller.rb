@@ -21,8 +21,10 @@ class ClubsController < ApplicationController
 	@account_debits = Debit.for_account(@current_account).paginate :page => params[:page], :per_page => 5
 	@account_credits = Credit.for_account(@current_account).paginate :page => params[:page], :per_page => 5
 	@initial_credit = Credit.initial_for_account(@current_account)
-	
 	@balance = Credit.initial_for_account(@current_account)
+	
+	@debits_unreimbursed = Debit.not_reimbursed_for_account(@current_account).paginate :page => params[:page], :per_page => 5
+	
 	#for credit in @account_credits
 	#	@balance = @balance + credit.amount
 	#end

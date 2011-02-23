@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 	layout "application"
 	before_filter :login_required, :except => [:new, :create]
-  #include AuthenicatedSystem 
   
   def new
     @user = User.new
@@ -9,9 +8,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-	#@user.password ='secret'
-	#@user.password_confirmation ='secret'
-	#@user.active = true
 	
     if @user.save
       session[:user_id] = @user.id

@@ -82,7 +82,7 @@ namespace :db do
 	  debit.date_purchased = 1.month.ago..2.days.ago
 	  debit.amount = rand(10*10) + 2
 	  debit.debit_category_id = DebitCategory.all.map{|dc| dc.id}
-      #debit.reimbursement_date = reimbursement.months.from_now
+      debit.reimbursement_date = 1.months.ago..2.days.ago
     end 
 	
 	

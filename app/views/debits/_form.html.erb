@@ -34,12 +34,10 @@
   <div class="field">
     <%= f.label :date_purchased %><br />
 	<%= f.date_select :date_purchased, :order => [:month, :day, :year] %>
-    <%#= f.text_field :date_purchased %>
   </div>
   <div class="field">
     <%= f.label :account_id %><br />
-	<%= f.hidden_field :account_id, :value => @account_id %>
-	<%#= f.collection_select :account_id, Account.all, :id, :name, :prompt => "Select ..." %>
+	<%= f.hidden_field :account_id, :value => @debit.account_id %>
   </div>
   <div class="field">
     <%= f.label :amount %><br />
