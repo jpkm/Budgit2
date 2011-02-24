@@ -47,8 +47,8 @@ class DebitsController < ApplicationController
 	@debit.reimbursement_date = "null"
 	
 	respond_to do |format|
-      if @debit.save
-        format.html { redirect_to(@debit, :notice => 'Debit was successfully created.') }
+      if @debit.save 
+        format.html { redirect_to(club_path(@debit.account.club_id), :notice => 'Debit was successfully created.') }
         format.xml  { render :xml => @debit, :status => :created, :location => @debit }
       else
         format.html { render :action => "new" }

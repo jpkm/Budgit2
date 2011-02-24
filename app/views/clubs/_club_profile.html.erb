@@ -1,6 +1,8 @@
- Account: <%#= @club.current_account.id %><br>
- Year: <%#= @club.current_account.id %><br>
+ 
+ Year: <%#= @club.current_account.year %><br>
 
+ Balance: <%= @balance %> <br>
+ 
 <%= link_to "New Debit", new_debit_path(:account => @club.current_account.id) %>
 
 
