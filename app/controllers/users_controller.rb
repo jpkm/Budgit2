@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 	layout "application"
 	before_filter :login_required, :except => [:new, :create]
-  
+	#not sure we want :except => [:new, :create]
+	
   def new
     @user = User.new
   end

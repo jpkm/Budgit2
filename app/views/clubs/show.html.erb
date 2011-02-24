@@ -3,7 +3,7 @@
 <h1><%= @club.name %>'s Profile:</h1>
 
 
-<% unless @current_account.nil? || @current_account.empty? %>
+<% unless @club.current_account.nil? %>
   <p class="supertiny">&nbsp;</p>
   <%= render :partial => "club_profile" %>
 <% end %>

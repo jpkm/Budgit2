@@ -15,7 +15,7 @@ class AccountsController < ApplicationController
   # GET /accounts/1.xml
   def show
 	@account = Account.find(params[:id])
-	
+		
 	@account_debits = Debit.for_account(@account.id).paginate :page => params[:page], :per_page => 5
 	@account_credits = Credit.for_account(@account.id).paginate :page => params[:page], :per_page => 5
    

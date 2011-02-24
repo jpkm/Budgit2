@@ -17,13 +17,15 @@ class ClubsController < ApplicationController
 	
 	# Named Scope Definitions
     @club = Club.find(params[:id])
-	@current_account = Account.is_active_for_club(@club)
-	@account_debits = Debit.for_account(@current_account).paginate :page => params[:page], :per_page => 5
-	@account_credits = Credit.for_account(@current_account).paginate :page => params[:page], :per_page => 5
-	@initial_credit = Credit.initial_for_account(@current_account)
+
+	
+	#@current_account = Account.is_active_for_club(@club)
+	@account_debits = Debit.for_account(@club.current_account).paginate :page => params[:page], :per_page => 5
+	@account_credits = Credit.for_account(@club.current_account).paginate :page => params[:page], :per_page => 5
+	@initial_credit = Credit.initial_for_account(@club.current_account)
 	
 	
-	@debits_unreimbursed = Debit.not_reimbursed_for_account(@current_account).paginate :page => params[:page], :per_page => 5
+	@debits_unreimbursed = Debit.not_reimbursed_for_account(@club.current_account).paginate :page => params[:page], :per_page => 5
 	
 	#for credit in @account_credits
 	#	@balance = @balance + credit.amount
@@ -36,9 +38,9 @@ class ClubsController < ApplicationController
 		@credits_amount = @credits_amount + credit.amount
 	end
 	
-	for debit in Debit.for_account(@current_account)
-		@debits_amount = @debits_amount + debit.amount
-	end
+	#for debit in Debit.for_account(@current_account)
+	#	@debits_amount = @debits_amount + debit.amount
+	#end
 	
 	@balance = 0 + 	@credits_amount + @debits_amount
 	@account = @current_account

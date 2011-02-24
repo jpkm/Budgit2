@@ -27,6 +27,7 @@ class DebitsController < ApplicationController
   def new
     @debit = Debit.new
 	@debit.account_id =  params[:account]
+	@debit.reimbursement_date = "null"
 	
     respond_to do |format|
       format.html # new.html.erb
@@ -43,8 +44,8 @@ class DebitsController < ApplicationController
   # POST /debits.xml
   def create
     @debit = Debit.new(params[:debit])
-	#@defect.account_id = params[:account]
-    
+	@debit.reimbursement_date = "null"
+	
 	respond_to do |format|
       if @debit.save
         format.html { redirect_to(@debit, :notice => 'Debit was successfully created.') }

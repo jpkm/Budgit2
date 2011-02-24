@@ -32,23 +32,16 @@
     <%= f.text_area :names_of_consumers %>
   </div>
   <div class="field">
-    <%= f.label :date_purchased %><br />
+    <%= f.label :date_purchased %>
 	<%= f.date_select :date_purchased, :order => [:month, :day, :year] %>
   </div>
   <div class="field">
-    <%= f.label :account_id %><br />
-	<%= @debit.account_id %>
+    <%= f.label :account_id %> <%= @debit.account_id %>
 	<%= f.hidden_field :account_id, :value => @debit.account_id %>
   </div>
   <div class="field">
-    <%= f.label :amount %><br />
+    <%= f.label :amount %>
     <%= f.text_field :amount %>
-  </div>
- <!-- if statement to check if user is Student Affairs Advisor -->
-  <div class="field">
-    <%= f.label :reimbursement_date %><br />
-     <%= f.date_select :reimbursement_date, :order => [:month, :day, :year] %>
-	<%#= f.text_field :reimbursement_date %>
   </div>
   <div class="actions">
     <%= f.submit %>
