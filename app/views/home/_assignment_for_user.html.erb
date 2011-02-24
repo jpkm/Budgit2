@@ -9,7 +9,7 @@
 <% for assignment in @assignment_for_user %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
     <td><%= assignment.role.name %></td>
-	<td><%= link_to(h(assignment.club.id), club_path(assignment.club)) %></td>
+	<td><%= link_to(h(assignment.club), club_path(assignment.club)) %></td>
 	<%#= link_to(h(assignment.club.name), account_path(:id => assignment.club.current_account)) %>
   </tr>
 <% end %>

@@ -4,19 +4,16 @@ class HomeController < ApplicationController
   def index
 	if logged_in?
 		# list of assignments for the user
-		@assignment_for_user = Assignment.for_user(current_user.id).all
+		@assignment_for_user = Assignment.for_user(current_user).all
 	end
   end
   
   def show
 	if logged_in?
 		# list of assignments for the user
-		@assignment_for_user = Assignment.for_user(current_user.id).all
-		
-		
-		
-		
-		@debit_for_account = Debit.for_account(debit.account.id).all
+		@assignment_for_user = Assignment.for_user(current_user).all
+	
+		#@debit_for_account = Debit.for_account(debit.account.id).all
 	end
   end
 

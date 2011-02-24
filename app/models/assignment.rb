@@ -11,7 +11,7 @@ class Assignment < ActiveRecord::Base
 	
 	#Named Scopes
 	#get all the assignments for a user
-    named_scope :for_user, lambda { |user_id| { :conditions => ['user_id = ?', user_id] } }
+    named_scope :for_user, lambda { |user| { :conditions => ['user_id = ?', user] } }
     #get all assignments for a club_id
     named_scope :for_club, lambda { |club_id| { :conditions => ['club_id = ?', club_id] } }
 
