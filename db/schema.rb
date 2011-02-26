@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20110219172523) do
     t.date     "date_purchased"
     t.integer  "account_id"
     t.integer  "amount"
-    t.date     "reimbursement_date"
+    t.datetime "reimbursement_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

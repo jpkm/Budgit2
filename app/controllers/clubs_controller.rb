@@ -18,14 +18,12 @@ class ClubsController < ApplicationController
 	# Named Scope Definitions
     @club = Club.find(params[:id])
 
-	#@current_account = @club.current_account
-	#@current_account = Account.is_active_for_club(@club)
 	@account_debits = Debit.for_account(@club.current_account).paginate :page => params[:page], :per_page => 5
 	@account_credits = Credit.for_account(@club.current_account).paginate :page => params[:page], :per_page => 5
 	@initial_credit = Credit.initial_for_account(@club.current_account)
 	# gets all debits which are unreimbursed for an account
 	@debits_unreimbursed = Debit.not_reimbursed_for_account(@club.current_account).paginate :page => params[:page], :per_page => 5
-	
+	@assignments_for = Assignment.for_club(@club) #.paginate :page => params[:page], :per_page => 5
 	
 	
 	@credits_amount = 0

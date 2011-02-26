@@ -17,7 +17,7 @@
 	<td><%= debit.item_purchased %></td>
     <td><%= link_to debit.debit_category.category, debit_category_path(debit.debit_category) %></td>
     <td><%= debit.reason %></td>
-    <td><%= debit.date_purchased %></td>
+    <td><%= debit.date_purchased.to_s(:long_ordinal) %></td>
     <td><%= debit.account.club.name %></td>
     <td><%= debit.amount %></td>
     <td><%= debit.reimbursement_date %></td>
@@ -25,7 +25,8 @@
     <td><%= debit.names_of_consumers %></td>
 	<td align="center">
 	<%= link_to(image_tag("edit_dg.gif", :border => 0), edit_debit_path(debit))%>&nbsp;
-	<%= link_to(image_tag("delete_dg.gif", :border => 0), club_path(debit.account.club_id), :confirm => 'delete?', :method => :delete) %>
+	<%= link_to(image_tag("delete_dg.gif", :border => 0), club_show_path(debit.account.club_id), :confirm => 'delete?', :method => :delete) %>
+	<%= link_to(image_tag("delete_dg.gif", :border => 0), :confirm => 'delete?', :method => :delete) %>
 	</td>
   </tr>
 <% end %>

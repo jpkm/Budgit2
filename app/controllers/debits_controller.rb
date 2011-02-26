@@ -63,6 +63,8 @@ class DebitsController < ApplicationController
   # PUT /debits/1.xml
   def update
     @debit = Debit.find(params[:id])
+	#if reimbursed? == true
+	  #@debit.reimbursement_date = DateTime.now
 
     respond_to do |format|
       if @debit.update_attributes(params[:debit])
