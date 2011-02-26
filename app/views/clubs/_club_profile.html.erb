@@ -22,3 +22,12 @@
   <%= render :partial => "account_credits" %>
 <% end %>
 	-->	
+	
+	<!-- all debits for club -->
+ <% unless @account_debits.nil? || @account_debits.empty? %>
+  <p class="supertiny">&nbsp;</p>
+  <%#= link_to 'all debits for account', account_defects_path %>
+  <u><%= link_to "all debits for account", account_debits_path(:account => @club.current_account.id) %></u>
+  <% else %>
+  <li>there are no debits for this account</li>
+ <% end %>

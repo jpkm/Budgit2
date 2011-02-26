@@ -88,4 +88,17 @@ class DebitsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  
+   def account
+    @account = params[:account]
+	#get all debits for a club
+	@account_debits = Debit.for_account(@account).paginate :page => params[:page], :per_page => 5
+  
+	render :partial => "defects_for", :layout => "application"
+   end
+  
 end
+
+
+

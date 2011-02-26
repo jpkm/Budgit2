@@ -1,10 +1,6 @@
 Budgit::Application.routes.draw do
   get "home/index"
 
-  resources :debit_categories
-
-  resources :dabit_categories
-
   match 'user/edit' => 'users#edit', :as => :edit_current_user
 
   match 'signup' => 'users#new', :as => :signup
@@ -14,8 +10,6 @@ Budgit::Application.routes.draw do
   match 'login' => 'sessions#new', :as => :login
   
   root :to => 'home#index'
-  #match 'club_profile' => 'home#club_profile' , :as => :club_profile
-
   
   resources :sessions
 
@@ -29,7 +23,7 @@ Budgit::Application.routes.draw do
 
   resources :roles
 
-  resources :debits
+  resources :debits 
 
   resources :accounts
 
@@ -37,10 +31,7 @@ Budgit::Application.routes.draw do
 
   resources :assignments
   
-  # for home page and other semi-static pages
-   #map.root :controller => 'home', :action => 'index'
-   #map.home ':page', :controller => 'home', :action => 'show', "page => /index|about|contacts|privacy/
-
+ 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -94,9 +85,6 @@ Budgit::Application.routes.draw do
   #root :to => 'home', :action => 'index'
   #root :controller => 'home', :action => 'index'
   
-  #map.root :controller => 'home', :action => 'index'
-   #map.home ':page', :controller => 'home', :action => 'show', "page => /index|about|contacts|privacy/
-
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
