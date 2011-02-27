@@ -2,7 +2,6 @@
   <% if @account.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
-
       <ul>
       <% @account.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -16,14 +15,17 @@
 	<%#= f.date_select :year, :order => [:month, :day, :year] %>
     <%= f.text_field :year %>
   </div>
+  
   <div class="field">
-    <%= f.label :club %> <br />
-	<%= f.collection_select :club_id, Club.all, :id, :name, :prompt => "Select ..." %>
+    <%= f.label :club %>: <%= @account.club.name %>
+	<%= f.hidden_field :club_id, :value => @account.club_id %>
   </div>
+  
   <div class="field">
-    <%= f.label :active %><br />
-    <%= f.check_box :active %>
+    <!-- make this account the current account -->
+    <%= f.hidden_field :active, :value => true %>
   </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

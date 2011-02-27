@@ -2,7 +2,7 @@
 
 <h1><%= @club.name %>'s Profile:</h1>
 
-
+<!-- renders information for @club's current account-->
 <% unless @club.current_account.nil? %>
   <p class="supertiny">&nbsp;</p>
   <%= render :partial => "club_profile" %>
@@ -10,9 +10,6 @@
 
 
 
-  
-<br>
-
-<%= link_to 'Edit Club', edit_club_path(@club) %> 
+<%#= link_to 'Edit Club', edit_club_path(@club) %> 
 <%#= link_to 'Back', clubs_path %>
 

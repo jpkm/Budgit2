@@ -3,7 +3,7 @@ class DebitCategoriesController < ApplicationController
   # GET /debit_categories
   # GET /debit_categories.xml
   def index
-    @debit_categories = DebitCategory.all
+    @debit_categories = DebitCategory.all.paginate :page => params[:page], :per_page => 5
 
     respond_to do |format|
       format.html # index.html.erb

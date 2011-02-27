@@ -1,12 +1,18 @@
- 
- Year: <%#= @club.current_account.year %><br>
+<!-- This page renders information for the club's current_account (if it has one) -->
 
- Balance: <%= @balance %> <br>
- 
-<%= link_to "New Debit", new_debit_path(:account => @club.current_account.id) %>
+<% if @club.current_account.nil? %>
+	<%= link_to "New Account", new_account_path(:club => @club) %>
+<% else %>
+  Year: <%= @club.current_account.year %><br>
+  Balance: <%= @balance %> <br> 
+<% end %>
+
+<br>
 
 <!-- all unreimbursed debits for club.current_account -->
-<% unless @debits_unreimbursed.nil? || @debits_unreimbursed.empty? %>
+<% if @debits_unreimbursed.nil? || @debits_unreimbursed.empty? %>
+	No debits for this account. <%= link_to "Record new Debit", new_debit_path(:account => @club.current_account.id) %>
+<% else %>
   <p class="supertiny">&nbsp;</p>
   <%= render :partial => "debits_unreimbursed" %>
 <% end %>
@@ -18,23 +24,26 @@
 <% end %>
 
 
-<!--
+
+
+<!-- NOT BEING USED CURRENTLY 
+  <!-- all debits for account -->
 <% unless @account_debits.nil? || @account_debits.empty? %>
   <p class="supertiny">&nbsp;</p>
   <%= render :partial => "account_debits" %>
 <% end %>
 
+ <!-- all credits for account -->
 <% unless @account_credits.nil? || @account_credits.empty? %>
   <p class="supertiny">&nbsp;</p>
   <%= render :partial => "account_credits" %>
 <% end %>
-	-->	
 	
-	<!-- all debits for club -->
+<!-- all debits for club link to new page -->
  <% unless @account_debits.nil? || @account_debits.empty? %>
   <p class="supertiny">&nbsp;</p>
   <%#= link_to 'all debits for account', account_defects_path %>
   <u><%#= link_to "all debits for account", account_debits_path(:account => @club.current_account) %></u>
   <% else %>
   <li>there are no debits for this account</li>
- <% end %>
+ <% end %> -->
