@@ -9,9 +9,9 @@
 
 <% @account_credits.each do |credit| %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
-    <td><%= link_to credit.credit_category.category, credit_category_path(credit.credit_category) %></td>
-    <td><%= credit.date %></td>
-    <td><%= link_to credit.account.club.name, account_path(credit.account)%>&nbsp;<%= credit.account.year %></td>
+    <td><%= credit.credit_category.category %></td>
+    <td><%= credit.date.to_s(:long_ordinal) %></td>
+    <td><%= credit.account.club.name %></td>
     <td><%= credit.amount %></td>
 	<td align="center">
 	<%= link_to(image_tag("edit_dg.gif", :border => 0), edit_credit_path(credit))%>&nbsp;

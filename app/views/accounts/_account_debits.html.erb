@@ -15,14 +15,16 @@
 <% @account_debits.each do |debit| %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
 	<td><%= debit.item_purchased %></td>
-    <td><%= link_to debit.debit_category.category, debit_category_path(debit.debit_category) %></td>
+    <td><%= debit.debit_category.category %></td>
     <td><%= debit.reason %></td>
     <td><%= debit.date_purchased %></td>
-    <td><%= link_to debit.account.club.name, account_path(debit.account)%>&nbsp;<%= debit.account.year %></td>
+    <td><%= debit.account.club.name %>
     <td><%= debit.amount %></td>
-    <td><%= debit.reimbursement_date %></td>
-    <td><%= debit.number_of_consumers %></td>
-    <td><%= debit.names_of_consumers %></td>
+    <td><%= debit.reimbursement_date.to_s(:long_ordinal) %></td>
+	<% if debit.number_of_consumers != nil %>
+		<td><%= debit.number_of_consumers %></td>
+		<td><%= debit.names_of_consumers %></td>
+	<% end %>
 	<td align="center">
 	<%= link_to(image_tag("edit_dg.gif", :border => 0), edit_debit_path(debit))%>&nbsp;
 	<%= link_to(image_tag("delete_dg.gif", :border => 0), debit_path(debit), :confirm => 'delete?', :method => :delete) %>

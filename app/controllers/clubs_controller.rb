@@ -17,15 +17,20 @@ class ClubsController < ApplicationController
 	
 	# Named Scope Definitions
     @club = Club.find(params[:id])
-
+	# all accounts for @club
+	@inactive_accounts = Account.inactive_for_club(@club).paginate :page => params[:page], :per_page => 5
+	# all debits for active account of @club
 	@account_debits = Debit.for_account(@club.current_account).paginate :page => params[:page], :per_page => 5
+	# all credits for active account of @club
 	@account_credits = Credit.for_account(@club.current_account).paginate :page => params[:page], :per_page => 5
-	@initial_credit = Credit.initial_for_account(@club.current_account)
 	# gets all debits which are unreimbursed for an account
 	@debits_unreimbursed = Debit.not_reimbursed_for_account(@club.current_account).paginate :page => params[:page], :per_page => 5
+	# git all assignment for @club
 	@assignments_for = Assignment.for_club(@club) #.paginate :page => params[:page], :per_page => 5
+	# get initial credit for active account of @club
+	#@initial_credit = Credit.initial_for_account(@club.current_account)
 	
-	
+	# calculates Balance of account for @club
 	@credits_amount = 0
 	@debits_amount = 0
 
@@ -38,7 +43,7 @@ class ClubsController < ApplicationController
 	end
 	
 	@balance = 0 + 	@credits_amount - @debits_amount
-	
+	################################################
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @club }

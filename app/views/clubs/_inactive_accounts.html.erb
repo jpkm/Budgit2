@@ -1,0 +1,17 @@
+<h1>Inactive Accounts</h1>
+<table class = "datagrid">
+	<thread class = "datagrid"
+		<th>Year</th>
+	</thread>
+
+<% @inactive_accounts.each do |account| %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+	<td><%= account.year %></td>
+	<td><%= link_to account.year, account_path(account) %></td>
+  </tr>
+<% end %>
+</table>
+
+<span class="smtext">
+<%= will_paginate @inactive_accounts, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+</span>

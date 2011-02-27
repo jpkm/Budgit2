@@ -1,14 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Year:</b>
-  <%= @account.year %>
-</p>
-
-<p>
-  <b>Club:</b>
-  <%= link_to @account.club.name, club_path(@account.club) %>
-  The balance is: <%= @balance %>
+  <b>Club:</b><%= link_to @account.club.name, club_path(@account.club) %> |
+  <b>Year:</b><%= @account.year %> |
+  Balance: <%= @balance %>
 </p>
 
 <% unless @account_debits.nil? || @account_debits.empty? %>

@@ -19,7 +19,20 @@ class AccountsController < ApplicationController
 	@account_debits = Debit.for_account(@account.id).paginate :page => params[:page], :per_page => 5
 	@account_credits = Credit.for_account(@account.id).paginate :page => params[:page], :per_page => 5
    
+   # calculates Balance of account for @club
+	@credits_amount = 0
+	@debits_amount = 0
+
+	for credit in Credit.for_account(@account.id)
+		@credits_amount = @credits_amount + credit.amount
+	end
 	
+	for debit in Debit.for_account(@account.id)
+		@debits_amount = @debits_amount + debit.amount
+	end
+	
+	@balance = 0 + 	@credits_amount - @debits_amount
+	################################################
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @account }

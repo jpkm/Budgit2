@@ -5,11 +5,18 @@
  
 <%= link_to "New Debit", new_debit_path(:account => @club.current_account.id) %>
 
-
+<!-- all unreimbursed debits for club.current_account -->
 <% unless @debits_unreimbursed.nil? || @debits_unreimbursed.empty? %>
   <p class="supertiny">&nbsp;</p>
   <%= render :partial => "debits_unreimbursed" %>
 <% end %>
+
+<!-- all accounts for this club -->
+<% unless @inactive_accounts.nil? || @inactive_accounts.empty? %>
+	<p class ="supertiny">&nbsp;</p>
+	<%= render :partial => "inactive_accounts" %>
+<% end %>
+
 
 <!--
 <% unless @account_debits.nil? || @account_debits.empty? %>
@@ -27,7 +34,7 @@
  <% unless @account_debits.nil? || @account_debits.empty? %>
   <p class="supertiny">&nbsp;</p>
   <%#= link_to 'all debits for account', account_defects_path %>
-  <u><%= link_to "all debits for account", account_debits_path(:account => @club.current_account.id) %></u>
+  <u><%#= link_to "all debits for account", account_debits_path(:account => @club.current_account) %></u>
   <% else %>
   <li>there are no debits for this account</li>
  <% end %>

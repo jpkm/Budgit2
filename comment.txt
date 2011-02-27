@@ -1,4 +1,5 @@
 all "not_active" accounts for a club
+	if all accounts for the club are inactive show VP of Clubs "Create new Account" link on Club_profile
 all users assigned for a club (@assignment.for_club) club controller/ssignment model
 	need to render partial with table for (above)
 
@@ -9,3 +10,9 @@ need a toggle on debit for reimbursement_date so in the table of
 unreimbursed debits each each debit will have a Reimburse field 
 which will "update" the debit. Debit controller changes
 @debit.reimbursement_date = DateTime.now
+
+
+
+
+TimeLog over break
+2/26 = 4hrs
