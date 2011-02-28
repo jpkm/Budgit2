@@ -46,8 +46,6 @@ class DebitsController < ApplicationController
     @debit = Debit.new(params[:debit])
 	@debit.reimbursement_date = "null"
 	
-	# if @debit.
-	
 	respond_to do |format|
       if @debit.save 
         format.html { redirect_to(club_path(@debit.account.club_id), :notice => 'Debit was successfully created.') }
@@ -63,8 +61,6 @@ class DebitsController < ApplicationController
   # PUT /debits/1.xml
   def update
     @debit = Debit.find(params[:id])
-	#if reimbursed? == true
-	  #@debit.reimbursement_date = DateTime.now
 
     respond_to do |format|
       if @debit.update_attributes(params[:debit])
@@ -81,22 +77,16 @@ class DebitsController < ApplicationController
   # DELETE /debits/1.xml
   def destroy
     @debit = Debit.find(params[:id])
-    @debit.destroy
+    redirect_to(@debit.account.club)
+	
+	@debit.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(debits_url) }
-      format.xml  { head :ok }
-    end
+    #respond_to do |format|
+	#  format.html { redirect_to(club_path(@defect.account.club)) }
+      #format.html { redirect_to(debits_url) }
+    #  format.xml  { head :ok }
+    #end
   end
-  
-  
-   def account
-    @account = params[:account]
-	#get all debits for a club
-	@account_debits = Debit.for_account(@account).paginate :page => params[:page], :per_page => 5
-  
-	render :partial => "defects_for", :layout => "application"
-   end
   
 end
 

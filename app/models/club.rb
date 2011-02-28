@@ -23,4 +23,20 @@ class Club < ActiveRecord::Base
 		end
 	end
 	
+	def faculty_advisor
+		for assignment in self.assignments
+			if(assignment.role) == "Faculty Advisor"
+				return assignment.user.name
+			end
+		end
+	end
+	
+	def club_leader
+		for assignment in self.assignments
+			if(assignment.role) == "Club Leader"
+				return assignment.user_id
+			end
+		end
+	end
+	
 end

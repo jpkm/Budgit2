@@ -35,10 +35,7 @@
     <%= f.label :date_purchased %>
 	<%= f.date_select :date_purchased, :order => [:month, :day, :year] %>
   </div>
-  
-  <!-- set debit.account_id to params account.id -->
-	<%= f.hidden_field :account_id, :value => @debit.account_id %>
-  
+  <div>  
   <div class="field">
     <%= f.label :amount %>
     <%= f.text_field :amount %>

@@ -12,21 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :Role %><br />
+    <%= f.label :Role %>: 
 	<%= f.collection_select :role_id, Role.all, :id, :name, :prompt => "Select ..." %>
   </div>
   <div class="field">
-    <%= f.label :Club %><br />
-	<%= f.collection_select :club_id, Club.all, :id, :name, :prompt => "Select ..." %>
-    <%#= f.text_field :clubID %>
+    <%= f.label :Club %>: <%= @assignment.club.name %>
+	<%#= f.collection_select :club_id, Club.all, :id, :name, :prompt => "Select ..." %>
   </div>
   <div class="field">
-    <%= f.label :AndrewID %><br />
+    <%= f.label :User %>: 
 	<%= f.collection_select :user_id, User.all, :id, :username, :prompt => "Select ..." %>
   </div>
   <div class="field">
-    <%= f.label :active %><br />
-    <%= f.check_box :active %>
+    <%#= f.label :Active %>
+    <%#= f.hidden_field :active, :value => true %>
   </div>
   <div class="actions">
     <%= f.submit %>

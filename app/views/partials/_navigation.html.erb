@@ -7,10 +7,10 @@
 	<!-- OPTIONS FOR EVERYONE but i thought this was just for faculty -->
 		<li><%= link_to 'home', :controller => 'home', :action => "index" %></li> 
 		<li><%= link_to 'user',  users_path(@user) %></li>
-        <%#= link_to 'clubs', clubs_path %></li>
+        <%= link_to 'clubs', clubs_path %></li>
         <li><%= link_to 'assignments', assignments_path %></li>
         <li><%= link_to 'roles', roles_path %></li>
-        <%#= link_to 'accounts', accounts_path %></li>
+        <%#= link_to 'accounts', new_account_path %></li>
         <%#= link_to 'debits', debits_path %>
 		<li><%= link_to 'debits types', debit_categories_path %>
 		<%#= link_to 'credits', credits_path %>

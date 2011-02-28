@@ -4,15 +4,27 @@
 - link_to show all debits for a club
 - link_to show all credits for a club
 
-- need a toggle on debit for reimbursement_date so in the table of 
-unreimbursed debits each each debit will have a Reimburse field 
+- need a toggle on debit for reimbursement_date so the table of 
+unreimbursed debits each debit will have a Reimburse method 
 which will "update" the debit. Debit controller changes
 @debit.reimbursement_date = DateTime.now
 
-- why do debit_categories and credit_categores have "active" ? 
+- why do debit_categories, role, and credit_categores have "active" ? 
 
+- home page for system admin
+ (users, clubs, debit/credit/role)
+ users:
+	index = list all users
+	show = user info + assignments for user
+	edit
+ club:
+	index = list all clubs
+ debit/credit/role:
+	three way button to make new debit/credit/role category
 
-
+- when you make a club, "create" redirects you to new_account_path
+	
 
 TimeLog over break
 2/26 = 4hrs
+2/27 = 8hrs

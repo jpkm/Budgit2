@@ -14,7 +14,6 @@ class ClubsController < ApplicationController
   # GET /clubs/1
   # GET /clubs/1.xml
   def show  
-	
 	# Named Scope Definitions
     @club = Club.find(params[:id])
 	# all accounts for @club
@@ -26,7 +25,7 @@ class ClubsController < ApplicationController
 	# gets all debits which are unreimbursed for an account
 	@debits_unreimbursed = Debit.not_reimbursed_for_account(@club.current_account).paginate :page => params[:page], :per_page => 5
 	# git all assignment for @club
-	@assignments_for = Assignment.for_club(@club) #.paginate :page => params[:page], :per_page => 5
+	@assignments_for_club = Assignment.for_club(@club) #.paginate :page => params[:page], :per_page => 5
 	# get initial credit for active account of @club
 	#@initial_credit = Credit.initial_for_account(@club.current_account)
 	

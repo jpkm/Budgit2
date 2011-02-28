@@ -8,6 +8,7 @@ class Assignment < ActiveRecord::Base
 	
 	#Validations
 	validates_presence_of :club_id, :role_id, :user_id
+	validates_uniqueness_of :assignment
 	
 	#Named Scopes
 	#get all the assignments for a user

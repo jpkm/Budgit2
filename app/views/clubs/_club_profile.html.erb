@@ -3,11 +3,20 @@
 <% if @club.current_account.nil? %>
 	<%= link_to "New Account", new_account_path(:club => @club) %>
 <% else %>
-  Year: <%= @club.current_account.year %><br>
-  Balance: <%= @balance %> <br> 
+  Year: <%= @club.current_account.year %> |
+  Balance: <%= @balance %> |
+  <%= link_to "Record new Debit", new_debit_path(:account => @club.current_account.id) %> |
+  <%= link_to "New Account", new_account_path(:club => @club.id) %> |
+  <%= link_to "Assign Users", new_assignment_path(:club => @club.id) %>
 <% end %>
 
 <br>
+
+<!-- all assignments for @club -->
+<% unless @assignments_for_club.nil? || @assignments_for_club.empty? %>
+	<p class="supertiny">&nbsp;</p>
+	<%= render :partial => "clubs_assignments" %>
+<% end %>
 
 <!-- all unreimbursed debits for club.current_account -->
 <% if @debits_unreimbursed.nil? || @debits_unreimbursed.empty? %>

@@ -15,6 +15,7 @@
     <td><%= credit.amount %></td>
 	<td align="center">
 	<%= link_to(image_tag("edit_dg.gif", :border => 0), edit_credit_path(credit))%>&nbsp;
+	<!-- you dont need to do this. Check out how unreimbursed debits does this -->
 	<%= link_to(image_tag("delete_dg.gif", :border => 0), credit_path(credit), :confirm => 'delete?', :method => :delete) %>
 	</td>
   </tr>

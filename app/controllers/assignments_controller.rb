@@ -26,6 +26,7 @@ class AssignmentsController < ApplicationController
   # GET /assignments/new.xml
   def new
     @assignment = Assignment.new
+	@assignment.club_id = params[:club]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,10 +43,11 @@ class AssignmentsController < ApplicationController
   # POST /assignments.xml
   def create
     @assignment = Assignment.new(params[:assignment])
+	@assignment.active = true
 
     respond_to do |format|
       if @assignment.save
-        format.html { redirect_to(@assignment, :notice => 'Assignment was successfully created.') }
+        format.html { redirect_to(club_path(@assignment.club_id), :notice => 'Assignment was successfully created.') }
         format.xml  { render :xml => @assignment, :status => :created, :location => @assignment }
       else
         format.html { render :action => "new" }
