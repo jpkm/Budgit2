@@ -1,3 +1,13 @@
+is_admin for user
+
+- VP of finance needs to "edit" club.current_account from Active to Inactive
+so a new account can be made at the beginnning of each school year.
+
+-- when a new club is made should System admin automatically be directed to
+new_account_path?
+
+-- when a new account is made should VP of Clubs be directed to new_credit_path?
+
 - system admin home page
 
 - link_to show all debits for a club

@@ -12,7 +12,7 @@ namespace :db do
     # Step 1: clear any old data in the db
     [Assignment, Debit, Credit, DebitCategory, CreditCategory, User, Role, Club, Account].each(&:delete_all)
     
-    # Step 2: add some Role to work with (small set for now...)
+    # Step 2: add some Role to work with
       r = Role.new
       r.name = "Club Leader"
       r.save!

@@ -1,5 +1,9 @@
 <% if logged_in? %>
+	<% if @user.is_admin? %>
+		im the shit
+	<% else %>
       <%= render :partial => "personal" %>
+	<% end %>
 <% else %>
       <div id= "login">
     <h1>Log In</h1>

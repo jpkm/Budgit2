@@ -9,11 +9,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+	#redirect_to user_path()
 	
+	@user.save!
     if @user.save
-      session[:user_id] = @user.id
-	  redirect_to users_path(@user)
-      #redirect_to root_url, :notice => "Thank you for signing up! You are now logged in."
+	  redirect_to root_url, :notice => "New User created"
     else
       render :action => 'new'
     end
