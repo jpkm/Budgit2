@@ -1,10 +1,9 @@
-- all users assigned for a club (@assignment.for_club) club controller/ssignment model
-	need to render partial with table for (above)
+- system admin home page
 
 - link_to show all debits for a club
 - link_to show all credits for a club
 
-- need a toggle on debit for reimbursement_date so the table of 
+- need a toggle on debit for reimbursement_date so in the table of 
 unreimbursed debits each debit will have a Reimburse method 
 which will "update" the debit. Debit controller changes
 @debit.reimbursement_date = DateTime.now
@@ -28,3 +27,4 @@ which will "update" the debit. Debit controller changes
 TimeLog over break
 2/26 = 4hrs
 2/27 = 8hrs
+2/28 = 

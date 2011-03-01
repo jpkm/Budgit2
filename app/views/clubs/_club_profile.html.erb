@@ -19,9 +19,7 @@
 <% end %>
 
 <!-- all unreimbursed debits for club.current_account -->
-<% if @debits_unreimbursed.nil? || @debits_unreimbursed.empty? %>
-	No debits for this account. <%= link_to "Record new Debit", new_debit_path(:account => @club.current_account.id) %>
-<% else %>
+<% unless @debits_unreimbursed.nil? || @debits_unreimbursed.empty? %>
   <p class="supertiny">&nbsp;</p>
   <%= render :partial => "debits_unreimbursed" %>
 <% end %>

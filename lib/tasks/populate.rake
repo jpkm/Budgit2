@@ -41,7 +41,7 @@ namespace :db do
     u.password_confirmation = "budgit"
     u.save!
     
-	# Step 4.5: add Assign Dad to Gaming Club as Club_Leader
+	#Step 4.5: add Assign Dad to Gaming Club as Club_Leader
 	a = Assignment.new
 	a.user_id = u.id
 	a.club_id = c.id
@@ -120,12 +120,5 @@ namespace :db do
 	#  credit.amount = rand(10*10) + 2
     #end 
 	
-	
-	
-
-	
-	 
-	
-      
 	end
 end
