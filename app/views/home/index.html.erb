@@ -1,11 +1,7 @@
 <% if logged_in? %>
-	<% if @user.is_admin? %>
-		im the shit
-	<% else %>
-      <%= render :partial => "personal" %>
-	<% end %>
+    <%= render :partial => "personal" %>
 <% else %>
-      <div id= "login">
+    <div id= "login">
     <h1>Log In</h1>
 
     <% form_tag  sessions_path do -%>

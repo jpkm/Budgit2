@@ -42,12 +42,12 @@ class User < ActiveRecord::Base
    end
 	
 	#checks if user assignments are admin  
-	def is_admin?
-		for assignment in self.assignments
-			if assignment.role.name == "dog"
-				return true
-			end
-		end
-	end
+	#def is_admin?
+	#	for assignment in self.assignments
+	#		if assignment.role.name = "System Admin"
+	#			return true
+	#		end
+	#	end
+	#end
    
 end

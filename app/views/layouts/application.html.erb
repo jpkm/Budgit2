@@ -1,6 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<!-- need the xmlns attr for formtastic -->
 <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8"></meta>
 		<title>Mezaniah :: <%= controller.controller_name.capitalize %></title>
@@ -11,7 +10,10 @@
 	<body>
 		<div id="wrap">
 		<% if logged_in? %>
-	    	<%= render :partial => 'partials/navigation' %>
+			<%# unless @user.is_admin? %>
+				<%= render :partial => 'partials/navigation' %>
+			<%# end %>
+			
 		<% end %>
                   <div id="body">
                   <p id="notice"><%= flash[:notice] %></p>
