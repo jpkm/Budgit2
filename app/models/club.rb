@@ -22,7 +22,8 @@ class Club < ActiveRecord::Base
 			end
 		end
 	end
-	
+	#######################################################
+	# Probably don't need this
 	# returns faculty advisor
 	def faculty_advisor
 		assignments.each do |assignment|
@@ -40,6 +41,7 @@ class Club < ActiveRecord::Base
 				return assignment.user.name
 			end
 		end
+		return false
 	end
-	
+	######################################################
 end

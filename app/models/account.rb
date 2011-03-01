@@ -9,7 +9,7 @@ class Account < ActiveRecord::Base
 	#Validations
 	validates_presence_of :club_id
 	validates_numericality_of :year
-	validates_uniqueness_of :year
+	#validates_uniqueness_of :year
 	
 	#Named Scopes
 	

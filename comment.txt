@@ -14,8 +14,6 @@ which will "update" the debit. Debit controller changes
 @debit.reimbursement_date = DateTime.now
 
 - why do debit_categories, role, and credit_categores have "active" ? 
-
-- make a club as system
 	
 
 TimeLog over break

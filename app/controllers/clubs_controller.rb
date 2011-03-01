@@ -29,7 +29,7 @@ class ClubsController < ApplicationController
 	# get initial credit for active account of @club
 	#@initial_credit = Credit.initial_for_account(@club.current_account)
 	
-	#unless @club.current_account.nil? || @club.current_account.empty?
+	unless @club.current_account.nil?
 	# calculates Balance of account for @club
 		@credits_amount = 0
 		@debits_amount = 0
@@ -43,7 +43,7 @@ class ClubsController < ApplicationController
 		end
 	
 		@balance = 0 + 	@credits_amount - @debits_amount
-	#end
+	end
 	################################################
     respond_to do |format|
       format.html # show.html.erb
@@ -74,7 +74,7 @@ class ClubsController < ApplicationController
 
     respond_to do |format|
       if @club.save
-        format.html { redirect_to(@club, :notice => 'Club was successfully created.') }
+        format.html { redirect_to(new_account_path(:club => @club), :notice => 'Club was successfully created.') }
         format.xml  { render :xml => @club, :status => :created, :location => @club }
       else
         format.html { render :action => "new" }

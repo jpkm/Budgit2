@@ -9,6 +9,7 @@
 <% for assignment in @assignments_for_club %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
     <td><%= assignment.role.name %></td>
+	 <td><%= link_to assignment.user.name, users_path(assignment.user) %></td>
 	<td><%= assignment.user.username %></td>
   </tr>
 <% end %>
