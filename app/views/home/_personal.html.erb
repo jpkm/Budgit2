@@ -1,7 +1,12 @@
-<h1> <%= current_user.first_name + " " + current_user.last_name %>'s Mezaniah </h1>
+<h1> <%= current_user.name %>'s Mezaniah </h1>
 
+<%= current_user.is_admin %>
 
-<% unless @assignment_for_user.nil? || @assignment_for_user.empty? %>
+ 
+<% if current_user.is_admin %>
+	<p class ="supertiny">&nbsp;</p>
+	<%= render :partial => "system_admin" %>
+<% elsif @assignment_for_user.nil? || @assignment_for_user.empty? %>
   <p class="supertiny">&nbsp;</p>
   <%= render :partial => "assignment_for_user" %>
 <% end %>

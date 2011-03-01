@@ -1,19 +1,19 @@
 class AddDefaultUser < ActiveRecord::Migration
-#  def self.up
-#	dad = User.new
-#	dad.username = "dad"
-#	dad.first_name = "dad"
-#	dad.middle_name = "a"
-#	dad.last_name = "d"
-#	dad.email = "dad@andrew.edu.com"
-#	dad.password = "budgit"
-#	dad.password_confirmation = "budgit"
-#	dad.save!
- # end
+  def self.up
+	admin = User.new
+	admin.username = "system"
+	admin.first_name = "system"
+	admin.middle_name = "system"
+	admin.last_name = "admin"
+	admin.email = "system@admin.com"
+	admin.password = "system"
+	admin.password_confirmation = "system"
+	admin.save!
+  end
 
- # def self.down
-#	dad = User.find(:all, :conditions => ["username = ?", "dad"])
-#	User.delete dad
-#  end
+  def self.down
+	dad = User.find(:all, :conditions => ["username = ?", "system"])
+	User.delete admin
+  end
 end
 

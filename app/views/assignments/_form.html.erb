@@ -17,15 +17,15 @@
   </div>
   <div class="field">
     <%= f.label :Club %>: <%= @assignment.club.name %>
-	<%#= f.collection_select :club_id, Club.all, :id, :name, :prompt => "Select ..." %>
+	<%= f.hidden_field :club_id, :value => @assignment.club_id %>
   </div>
   <div class="field">
     <%= f.label :User %>: 
 	<%= f.collection_select :user_id, User.all, :id, :username, :prompt => "Select ..." %>
   </div>
   <div class="field">
-    <%#= f.label :Active %>
-    <%#= f.hidden_field :active, :value => true %>
+    <%= f.label :Active %>
+    <%= f.hidden_field :active, :value => true %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -38,15 +38,25 @@ class User < ActiveRecord::Base
   
    # get user name
    def name
-    last_name + ", " + first_name
+    first_name + " " + middle_name + " " + last_name
    end
 	
 	#checks if user assignments are admin  
-	#def is_admin?
-	#	for assignment in self.assignments
-	#		if assignment.role.name = "System Admin"
-	#			return true
-	#		end
+	def is_admin
+		assignments.each do |assignment|
+			#if assignment.role_id == 2
+			if assignment.role.name.eql?("System Admin")
+				return assignment.role.name
+			end
+		end
+		return false
+	end
+	
+	#def is_admin
+	#	if id == 1
+	#		puts "dg"
+	#		return true
+	#	false
 	#	end
 	#end
    

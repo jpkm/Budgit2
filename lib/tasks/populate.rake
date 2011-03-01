@@ -14,7 +14,7 @@ namespace :db do
     
     # Step 2: add some Role to work with
       r = Role.new
-      r.name = "Club Leader"
+      r.name = "System Admin"
       r.save!
     
     # Step 3: add some clubs to work with (just six for now)
@@ -32,16 +32,16 @@ namespace :db do
     
     # Step 4: add Dad
     u = User.new
-    u.first_name = "Dad"
-	u.middle_name = "ds"
-    u.last_name = "girl"
-    u.email = "dad@cmu.edu"
-    u.username = "dad"
-    u.password = "budgit"
-    u.password_confirmation = "budgit"
+    u.first_name = "system"
+	u.middle_name = "system"
+    u.last_name = "admin"
+    u.email = "system@admin.edu"
+    u.username = "system"
+    u.password = "system"
+    u.password_confirmation = "system"
     u.save!
     
-	#Step 4.5: add Assign Dad to Gaming Club as Club_Leader
+	#Step 4.5: add Assign Dad to Gaming Club as System Admin
 	a = Assignment.new
 	a.user_id = u.id
 	a.club_id = c.id
