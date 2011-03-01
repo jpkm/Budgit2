@@ -1,5 +1,16 @@
 <% if logged_in? %>
-    <%= render :partial => "personal" %>
+	<h1> <%= current_user.name %>'s Mezaniah </h1>
+	
+	<!-- routes user to different page depending on role -->
+	<p class ="supertiny">&nbsp;</p>
+	<% if current_user.is_admin? %>
+		<%= render :partial => "system_admin" %>
+	<% elsif current_user.is_VP? %>
+		<%= render :partial => "vp" %>
+	<% else %>
+		<%= render :partial => "other" %>
+	<% end %>
+		
 <% else %>
     <div id= "login">
     <h1>Log In</h1>

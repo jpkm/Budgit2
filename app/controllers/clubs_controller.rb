@@ -29,19 +29,21 @@ class ClubsController < ApplicationController
 	# get initial credit for active account of @club
 	#@initial_credit = Credit.initial_for_account(@club.current_account)
 	
+	#unless @club.current_account.nil? || @club.current_account.empty?
 	# calculates Balance of account for @club
-	@credits_amount = 0
-	@debits_amount = 0
+		@credits_amount = 0
+		@debits_amount = 0
 
-	for credit in Credit.for_account(@club.current_account.id)
-		@credits_amount = @credits_amount + credit.amount
-	end
+		for credit in Credit.for_account(@club.current_account.id)
+			@credits_amount = @credits_amount + credit.amount
+		end
 	
-	for debit in Debit.for_account(@club.current_account.id)
-		@debits_amount = @debits_amount + debit.amount
-	end
+		for debit in Debit.for_account(@club.current_account.id)
+			@debits_amount = @debits_amount + debit.amount
+		end
 	
-	@balance = 0 + 	@credits_amount - @debits_amount
+		@balance = 0 + 	@credits_amount - @debits_amount
+	#end
 	################################################
     respond_to do |format|
       format.html # show.html.erb

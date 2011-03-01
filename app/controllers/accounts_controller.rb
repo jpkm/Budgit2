@@ -44,7 +44,8 @@ class AccountsController < ApplicationController
   def new
     @account = Account.new
 	@account.club_id = params[:club]
-
+	@account.active = true
+	
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @account }
@@ -60,6 +61,7 @@ class AccountsController < ApplicationController
   # POST /accounts.xml
   def create
     @account = Account.new(params[:account])
+	@account.active = true
 
     respond_to do |format|
       if @account.save

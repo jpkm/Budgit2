@@ -42,22 +42,54 @@ class User < ActiveRecord::Base
    end
 	
 	#checks if user assignments are admin  
-	def is_admin
+	def is_admin?
 		assignments.each do |assignment|
-			#if assignment.role_id == 2
 			if assignment.role.name.eql?("System Admin")
-				return assignment.role.name
+				return true
 			end
 		end
 		return false
 	end
 	
-	#def is_admin
-	#	if id == 1
-	#		puts "dg"
-	#		return true
-	#	false
-	#	end
-	#end
+	#checks if user is VP  
+	def is_VP?
+		assignments.each do |assignment|
+			if assignment.role.name.eql?("VP of Finance")
+				return true
+			end
+		end
+		return false
+	end
+	
+	#check is user is Student Affairs Advisor
+	def is_affairs?
+		assignments.each do |assignment|
+			if assignment.role.name.eql?("Student Affairs Advisor")
+				return true
+			end
+		end
+		return false
+	end
+	
+	#check if user is Faculty Advisor
+	def is_faculty?
+		assignments.each do |assignment|
+			if assignment.role.name.eql?("Faculty Advisor")
+				return true
+			end
+		end
+		return false
+	end
+	
+	#check if user is Club Leader
+	def is_leader?
+		assignments.each do |assignment|
+			if assignment.role.name.eql?("Club Leader")
+				return true
+			end
+		end
+		return false
+	end
+	
    
 end

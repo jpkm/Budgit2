@@ -23,18 +23,21 @@ class Club < ActiveRecord::Base
 		end
 	end
 	
+	# returns faculty advisor
 	def faculty_advisor
-		for assignment in self.assignments
-			if(assignment.role) == "Faculty Advisor"
+		assignments.each do |assignment|
+			if assignment.role.name.eql?("Faculty Advisor")
 				return assignment.user.name
 			end
 		end
+		return false
 	end
 	
+	# returns club leader
 	def club_leader
 		for assignment in self.assignments
-			if(assignment.role) == "Club Leader"
-				return assignment.user_id
+			if assignment.role.name.eql?("Club Leader")
+				return assignment.user.name
 			end
 		end
 	end

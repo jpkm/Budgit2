@@ -8,9 +8,11 @@
 <% @clubs.each do |club| %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
     <td><%= link_to club.name, club_path(club) %></td>
-	<td align="center">
-	<%= link_to(image_tag("edit_dg.gif", :border => 0), edit_club_path(club))  %>&nbsp;
-	<%= link_to(image_tag("delete_dg.gif", :border => 0), club_path(club), :confirm => 'delete?', :method => :delete) %>
+	<% if current_user.is_admin? %>
+		<td align="center">
+		<%= link_to(image_tag("edit_dg.gif", :border => 0), edit_club_path(club))  %>&nbsp;
+		<%= link_to(image_tag("delete_dg.gif", :border => 0), club_path(club), :confirm => 'delete?', :method => :delete) %>
+	<% end %>
 	</td>
   </tr>
 <% end %>
@@ -18,4 +20,6 @@
 
 <br />
 
-<%= link_to 'New Club', new_club_path %>
+<% if current_user.is_admin? %>
+	<%= link_to 'New Club', new_club_path %>
+<% end %>
