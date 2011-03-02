@@ -9,30 +9,22 @@
 	</head>
 	<body>
 		<div id="wrap">
-		<% if logged_in? %>
-			<%# unless @user.is_admin? %>
-				<%= render :partial => 'partials/navigation' %>
-			<%# end %>
-			
-		<% end %>
-                  <div id="body">
-                  <p id="notice"><%= flash[:notice] %></p>
-                  <table border="0">
-                    <tr>
-                      <td valign="top">
-                           
-                     </td>                   
-                      <td width="5">&nbsp;</td>
-                      <td><%= yield %></td>
+			<%= render :partial => 'partials/header' %>
+		
+			<div id="body">
+				<p id="notice"><%= flash[:notice] %></p>
+				<table border="0">
+					<tr>                  
+						<td width="5">&nbsp;</td>
+						<td><%= yield %></td>
 					</tr>
-                  </table>
-
-                  <br/>
-                  <br/>
-                  <br/>
-                  <br/>
-                  </div>
-                <%#= render :partial => "partials/footer" %>
+				</table>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+			</div>
+            <%#= render :partial => "partials/footer" %>
 		</div><!-- end of wrap div -->
 
         </body>

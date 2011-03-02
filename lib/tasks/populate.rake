@@ -13,25 +13,25 @@ namespace :db do
     [Assignment, Debit, Credit, DebitCategory, CreditCategory, User, Role, Club, Account].each(&:delete_all)
     
 	# Step 2: add some Role to work with
-		sys = Role.new
-		sys.name = "System Admin"
-		sys.save!
+		rsys = Role.new
+		rsys.name = "System Admin"
+		rsys.save!
 	  
-		vp = Role.new
-		vp.name = "VP of Finance"
-		vp.save!
+		rvp = Role.new
+		rvp.name = "VP of Finance"
+		rvp.save!
 	  
-		leader = Role.new
-		leader.name = "Club Leader"
-		leader.save!
+		rleader = Role.new
+		rleader.name = "Club Leader"
+		rleader.save!
 	  
-		faculty = Role.new
-		faculty.name = "Faculty Advisor"
-		faculty.save!
+		rfaculty = Role.new
+		rfaculty.name = "Faculty Advisor"
+		rfaculty.save!
 	  
-		sa = Role.new
-		sa.name = "Student Affairs"
-		sa.save!
+		rsa = Role.new
+		rsa.name = "Student Affairs"
+		rsa.save!
 	  
 	
 	# Step 3.5: add X club
@@ -39,7 +39,7 @@ namespace :db do
 		x.name = "X"
 		x.save!
     
-    # Step 4: add System Admin
+    # Step 4: add Users
 		sys = User.new
 		sys.first_name = "system"
 		sys.middle_name = "system"
@@ -91,41 +91,41 @@ namespace :db do
 		faculty.save!
 		
 
-	#Step 4.5: add Assign Dad to Gaming Club as System Admin
-		sys = Assignment.new
-		sys.user_id = sys.id
-		sys.club_id = x.id
-		sys.role_id = sys.id
-		sys.active = true
-		sys.save!
+	#Step 4.5: add Assignments
+		asys = Assignment.new
+		asys.user_id = sys.id
+		asys.club_id = x.id
+		asys.role_id = rsys.id
+		asys.active = true
+		asys.save!
 		
-		faculty = Assignment.new
-		faculty.user_id = faculty.id
-		faculty.club_id = x.id
-		faculty.role_id = faculty.id
-		faculty.active = true
-		faculty.save!
+		afaculty = Assignment.new
+		afaculty.user_id = faculty.id
+		afaculty.club_id = x.id
+		afaculty.role_id = rfaculty.id
+		afaculty.active = true
+		afaculty.save!
 	
-		vp = Assignment.new
-		vp.user_id = vp.id
-		vp.club_id = x.id
-		vp.role_id = vp.id
-		vp.active = true
-		vp.save!
+		avp = Assignment.new
+		avp.user_id = vp.id
+		avp.club_id = x.id
+		avp.role_id = rvp.id
+		avp.active = true
+		avp.save!
    
-		leader = Assignment.new
-		leader.user_id = leader.id
-		leader.club_id = x.id
-		leader.role_id = leader.id
-		leader.active = true
-		leader.save!
+		aleader = Assignment.new
+		aleader.user_id = leader.id
+		aleader.club_id = x.id
+		aleader.role_id = rleader.id
+		aleader.active = true
+		aleader.save!
 		
-		sa = Assignment.new
-		sa.user_id = sa.id
-		sa.club_id = x.id
-		sa.role_id = sa.id
-		sa.active = true
-		sa.save!
+		asa = Assignment.new
+		asa.user_id = sa.id
+		asa.club_id = x.id
+		asa.role_id = rsa.id
+		asa.active = true
+		asa.save!
     
 	# Step 5.5: Add Account
 		acc = Account.new

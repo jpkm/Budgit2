@@ -43,7 +43,7 @@ class CreditsController < ApplicationController
   # POST /credits.xml
   def create
     @credit = Credit.new(params[:credit])
-	@credit.date = DateTime.now
+	@credit.date = Date.now
 
     respond_to do |format|
       if @credit.save

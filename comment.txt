@@ -4,21 +4,22 @@ so a new account can be made at the beginnning of each school year.
 	-- when a new account is made should VP of Clubs be directed to new_credit_path?
 	--- does VP of Finance need a table on the personal page which shows clubs
 		which do not have an "active" account?
-	
-- link_to show all debits for a club
-- link_to show all credits for a club
 
 - need a toggle on debit for reimbursement_date so in the table of 
 	unreimbursed debits each debit will have a Reimburse method 
 	which will "update" the debit. Debit controller changes
 	@debit.reimbursement_date = DateTime.now
 
-- why do debit_categories, role, and credit_categores have "active" ? 
+- why do debit_categories, role, and credit_categores have "active" ? NO
 
 - mailto: 
 	- when a new debit is submitted send mail to faculty and Student Affairs advisor
 	- when a reimbursement is made send email to club leader
 	- when a club is made email club leader
+	
+- create. hidden_field: @debit.account_id... do we need this in show.
+	- does it get recorded in db if we dont have it?
+	- controller: in create not new?
 
 	
 
