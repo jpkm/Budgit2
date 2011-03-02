@@ -10,14 +10,20 @@ so a new account can be made at the beginnning of each school year.
 
 - need a toggle on debit for reimbursement_date so in the table of 
 	unreimbursed debits each debit will have a Reimburse method 
-which will "update" the debit. Debit controller changes
-@debit.reimbursement_date = DateTime.now
+	which will "update" the debit. Debit controller changes
+	@debit.reimbursement_date = DateTime.now
 
 - why do debit_categories, role, and credit_categores have "active" ? 
+
+- mailto: 
+	- when a new debit is submitted send mail to faculty and Student Affairs advisor
+	- when a reimbursement is made send email to club leader
+	- when a club is made email club leader
+
 	
 
 TimeLog over break
 2/26 = 4hrs
 2/27 = 8hrs
 2/28 = 5hrs
-3/1 = 
+3/1 = 6hrs

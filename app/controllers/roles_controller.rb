@@ -45,8 +45,8 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       if @role.save
-        format.html { redirect_to(@role, :notice => 'Role was successfully created.') }
-        format.xml  { render :xml => @role, :status => :created, :location => @role }
+        format.html { redirect_to root_url, :notice => 'Role was successfully created.'}
+		format.xml  { render :xml => @role, :status => :created, :location => @role }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @role.errors, :status => :unprocessable_entity }

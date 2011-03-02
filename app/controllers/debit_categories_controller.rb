@@ -45,8 +45,10 @@ class DebitCategoriesController < ApplicationController
 
     respond_to do |format|
       if @debit_category.save
-        format.html { redirect_to(@debit_category, :notice => 'Debit category was successfully created.') }
-        format.xml  { render :xml => @debit_category, :status => :created, :location => @debit_category }
+        #format.html { redirect_to(@debit_category, :notice => 'Debit category was successfully created.') }
+        format.html { redirect_to root_url, :notice => 'Debit category was successfully created.'}
+		#format.html { redirect_to debit_categories_path, :notice => 'Debit category was successfully created.'}
+		format.xml  { render :xml => @debit_category, :status => :created, :location => @debit_category }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @debit_category.errors, :status => :unprocessable_entity }

@@ -6,6 +6,11 @@
 </p>
 
 <p>
+	<b>Middle name:</b>
+	<%=h current_user.middle_name %>
+</p>
+
+<p>
   <b>Last name:</b>
   <%=h current_user.last_name %>
 </p>
@@ -15,11 +20,3 @@
   <%=h current_user.email %>
 </p>
 
-<!-- <p>
-  <b>Active:</b>
-  <%#=h current_user.active %>
-</p> -->
-
-<% if current_user == @user %>
-	<%= link_to 'Edit', edit_user_path(current_user) %>
-<% end %>

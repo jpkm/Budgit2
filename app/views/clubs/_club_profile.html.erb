@@ -28,16 +28,12 @@
   <%= render :partial => "debits_unreimbursed" %>
 <% end %>
 
-<!-- all accounts for this club -->
+<!-- all inactive accounts for this club -->
 <% unless @inactive_accounts.nil? || @inactive_accounts.empty? %>
 	<p class ="supertiny">&nbsp;</p>
 	<%= render :partial => "inactive_accounts" %>
 <% end %>
-
-
-
-
-<!-- NOT BEING USED CURRENTLY 
+ 
   <!-- all debits for account -->
 <% unless @account_debits.nil? || @account_debits.empty? %>
   <p class="supertiny">&nbsp;</p>
@@ -50,6 +46,10 @@
   <%= render :partial => "account_credits" %>
 <% end %>
 	
+	
+	
+	
+	<!-- NOT BEGING USED RIGHT NOW 
 <!-- all debits for club link to new page -->
  <% unless @account_debits.nil? || @account_debits.empty? %>
   <p class="supertiny">&nbsp;</p>
