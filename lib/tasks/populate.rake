@@ -12,75 +12,128 @@ namespace :db do
     # Step 1: clear any old data in the db
     [Assignment, Debit, Credit, DebitCategory, CreditCategory, User, Role, Club, Account].each(&:delete_all)
     
-    # Step 2: add some Role to work with
-      r = Role.new
-      r.name = "System Admin"
-      r.save!
-    
-    # Step 3: add some clubs to work with (just six for now)
-    #clubs = %w[BookManager ChoreTracker Proverbs Arbeit Creamery Friends]
-    #clubs.each do |club|
-    #  c = Club.new
-    #  c.name = club
-    #  c.save!
-    #end
+	# Step 2: add some Role to work with
+		sys = Role.new
+		sys.name = "System Admin"
+		sys.save!
+	  
+		vp = Role.new
+		vp.name = "VP of Finance"
+		vp.save!
+	  
+		leader = Role.new
+		leader.name = "Club Leader"
+		leader.save!
+	  
+		faculty = Role.new
+		faculty.name = "Faculty Advisor"
+		faculty.save!
+	  
+		sa = Role.new
+		sa.name = "Student Affairs"
+		sa.save!
+	  
 	
-	# Step 3.5: add Gameing Club
-	c = Club.new
-	c.name = "Gaming Club"
-	c.save!
+	# Step 3.5: add X club
+		x = Club.new
+		x.name = "X"
+		x.save!
     
-    # Step 4: add Dad
-    u = User.new
-    u.first_name = "system"
-	u.middle_name = "system"
-    u.last_name = "admin"
-    u.email = "system@admin.edu"
-    u.username = "system"
-    u.password = "system"
-    u.password_confirmation = "system"
-    u.save!
-    
+    # Step 4: add System Admin
+		sys = User.new
+		sys.first_name = "system"
+		sys.middle_name = "system"
+		sys.last_name = "admin"
+		sys.email = "system@admin.edu"
+		sys.username = "system"
+		sys.password = "system"
+		sys.password_confirmation = "system"
+		sys.save!
+			
+		vp = User.new
+		vp.first_name = "vp"
+		vp.middle_name = "vp"
+		vp.last_name = "vp"
+		vp.email = "v@p.edu"
+		vp.username = "vp"
+		vp.password = "vp"
+		vp.password_confirmation = "vp"
+		vp.save!
+		
+		leader = User.new
+		leader.first_name = "leader"
+		leader.middle_name = "leader"
+		leader.last_name = "leader"
+		leader.email = "leader@leader.edu"
+		leader.username = "leader"
+		leader.password = "leader"
+		leader.password_confirmation = "leader"
+		leader.save!
+		
+		sa = User.new
+		sa.first_name = "sa"
+		sa.middle_name = "sa"
+		sa.last_name = "sa"
+		sa.email = "sa@sa.edu"
+		sa.username = "sa"
+		sa.password = "sa"
+		sa.password_confirmation = "sa"
+		sa.save!
+		
+		faculty = User.new
+		faculty.first_name = "faculty"
+		faculty.middle_name = "faculty"
+		faculty.last_name = "faculty"
+		faculty.email = "faculty@faculty.edu"
+		faculty.username = "faculty"
+		faculty.password = "faculty"
+		faculty.password_confirmation = "faculty"
+		faculty.save!
+		
+
 	#Step 4.5: add Assign Dad to Gaming Club as System Admin
-	a = Assignment.new
-	a.user_id = u.id
-	a.club_id = c.id
-	a.role_id = r.id
-	a.active = true
-	a.save!
+		sys = Assignment.new
+		sys.user_id = sys.id
+		sys.club_id = x.id
+		sys.role_id = sys.id
+		sys.active = true
+		sys.save!
+		
+		faculty = Assignment.new
+		faculty.user_id = faculty.id
+		faculty.club_id = x.id
+		faculty.role_id = faculty.id
+		faculty.active = true
+		faculty.save!
 	
-    # Step 4: add 20 users to the system and assign
-    #User.populate 20 do |user|
-    #  user.first_name = Faker::Name.first_name
-	#  user.middle_name = Faker::Name.first_name
-    #  user.last_name = Faker::Name.last_name
-    #  user.email = Faker::Internet.email
-    #  user.username = "#{user.first_name}_#{user.last_name}"
-    #  user.created_at = Time.now
-    #  user.updated_at = Time.now
-      
-	# Step 4A: assign 1 to 3 projects for each student
-	#Assignment.populate 1 do |assignment|
-	#		assignment.user_id = user.id
-	#		assignment.club_id = Club.all.map{|c| c.id}
-	#		assignment.role_id = Role.all.map{|r| r.id}
-	#	end 
-	#end
+		vp = Assignment.new
+		vp.user_id = vp.id
+		vp.club_id = x.id
+		vp.role_id = vp.id
+		vp.active = true
+		vp.save!
+   
+		leader = Assignment.new
+		leader.user_id = leader.id
+		leader.club_id = x.id
+		leader.role_id = leader.id
+		leader.active = true
+		leader.save!
+		
+		sa = Assignment.new
+		sa.user_id = sa.id
+		sa.club_id = x.id
+		sa.role_id = sa.id
+		sa.active = true
+		sa.save!
     
 	# Step 5.5: Add Account
-	acc = Account.new
-	acc.year = "2011"
-	acc.club_id = c.id
-	acc.active = true
-	acc.save!
-	
-	
-	# Step 5: add some debits and assign them to account
-    #Account.populate 7 do |account|
-    #  account.year = 1.month.ago..2.days.ago
-	#  account.club_id = Club.all.map{|c| c.id}
-	#  account.active = true
-	#end 
+		acc = Account.new
+		acc.year = "2011"
+		acc.club_id = x.id
+		acc.active = true
+		acc.save!
+		
 	
 	# Step 6: add some debitcategories to work with 
     debitcategories = %w[Food Decoration Equipement Other]
@@ -90,7 +143,17 @@ namespace :db do
       dc.save!
     end
 	
-    # Step 7: add some debits and assign them to account
+	# Step 8: add some creditcategories to work with 
+    creditcategories = %w[Inital Special Other]
+    creditcategories.each do |category|
+      cc = CreditCategory.new
+      cc.category = category
+      cc.save!
+    end
+	
+	
+	
+	   # Step 7: add some debits and assign them to account
     #Debit.populate 100 do |debit|
     #  debit.account_id = Account.all.map{|a| a.id}
     #  debit.reason = Faker::Company.catch_phrase
@@ -102,15 +165,6 @@ namespace :db do
 	#  debit.debit_category_id = DebitCategory.all.map{|dc| dc.id}
     #  debit.reimbursement_date = 1.months.ago..2.days.ago
     #end 
-	
-	
-	# Step 8: add some creditcategories to work with 
-    creditcategories = %w[Inital Special Other]
-    creditcategories.each do |category|
-      cc = CreditCategory.new
-      cc.category = category
-      cc.save!
-    end
 	
 	# Step 9: add some credits and assign them to account
     #Credit.populate 50 do |credit|

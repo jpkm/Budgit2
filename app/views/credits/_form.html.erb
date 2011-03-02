@@ -12,23 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :category_category %><br />
+    <%= f.label :category_category %>: 
 	<%= f.collection_select :credit_category_id, CreditCategory.all, :id, :category, :prompt => "Select ..." %>
-    <%#= f.text_field :credit_category_id %>
   </div>
+ 
   <div class="field">
-    <%= f.label :date %><br />
-    <%= f.text_field :date %>
+   <%= f.label :account %>: <%= @credit.account.club.name %> 
+   <%= f.hidden_field :account_id, :value => @credit.account_id %>
   </div>
-  <div class="field">
-    <%= f.label :account %><br />
 	
-	<%= f.collection_select :account_id, Account.all, :id, :id, :prompt => "Select ..." %>
-	
-	<%#= f.collection_select :account_id, Account.all, :id, :name, :prompt => "Select ..." %>
   </div>
   <div class="field">
-    <%= f.label :amount %><br />
+    <%= f.label :amount %>: 
     <%= f.text_field :amount %>
   </div>
   <div class="actions">

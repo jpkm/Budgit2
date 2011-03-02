@@ -5,13 +5,16 @@
 		<%= link_to "New Account", new_account_path(:club => @club) %>
 	<% end %>
 <% else %>
-  Year: <%= @club.current_account.year %> |
-  Balance: <%= @balance %> |
+  Year: <%= @club.current_account.year %> 
+  | Balance: <%= @balance %> 
   <% if current_user.is_leader? %>
-	<%= link_to "Record new Debit", new_debit_path(:account => @club.current_account.id) %> |
+	| <%= link_to "Record new Debit", new_debit_path(:account => @club.current_account.id) %> 
   <% end %>
   <% if current_user.is_admin? %>
-	<%= link_to "Assign Users", new_assignment_path(:club => @club.id) %>
+	| <%= link_to "Assign Users", new_assignment_path(:club => @club.id) %>
+  <% end %>
+  <% if current_user.is_VP? %>
+	| <%= link_to "Credit Account", new_credit_path(:account => @club.current_account.id) %>
   <% end %>
 <% end %>
 

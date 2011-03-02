@@ -26,6 +26,7 @@ class CreditsController < ApplicationController
   # GET /credits/new.xml
   def new
     @credit = Credit.new
+	@credit.account_id = params[:account]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,10 +43,12 @@ class CreditsController < ApplicationController
   # POST /credits.xml
   def create
     @credit = Credit.new(params[:credit])
+	@credit.date = DateTime.now
 
     respond_to do |format|
       if @credit.save
-        format.html { redirect_to(@credit, :notice => 'Credit was successfully created.') }
+		format.html { redirect_to(club_path(@debit.account.club_id), :notice => 'Credit was successfully created.') }
+        #format.html { redirect_to(@credit, :notice => 'Credit was successfully created.') }
         format.xml  { render :xml => @credit, :status => :created, :location => @credit }
       else
         format.html { render :action => "new" }
