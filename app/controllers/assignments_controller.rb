@@ -1,5 +1,6 @@
 class AssignmentsController < ApplicationController
 	before_filter :login_required
+	layout "application"
   # GET /assignments
   # GET /assignments.xml
   def index
@@ -76,11 +77,12 @@ class AssignmentsController < ApplicationController
   # DELETE /assignments/1.xml
   def destroy
     @assignment = Assignment.find(params[:id])
-    @assignment.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(assignments_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to(@assignment.club)
+	@assignment.destroy
+	
+	#respond_to do |format|
+    #  format.html { redirect_to(assignments_url) }
+    #  format.xml  { head :ok }
+    #end
   end
 end

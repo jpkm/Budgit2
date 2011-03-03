@@ -16,11 +16,8 @@
 	<%= f.collection_select :credit_category_id, CreditCategory.all, :id, :category, :prompt => "Select ..." %>
   </div>
  
-  <div class="field">
-   <%= f.label :account %>: <%= @credit.account.club.name %> 
    <%= f.hidden_field :account_id, :value => @credit.account_id %>
-  </div>
-	
+ 
   </div>
   <div class="field">
     <%= f.label :amount %>: 

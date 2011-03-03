@@ -19,9 +19,13 @@ class Debit < ActiveRecord::Base
 	named_scope :not_reimbursed_for_account, lambda { |account| {:conditions => ['account_id = ? AND reimbursement_date is NULL', account] } }
 	
 	#if reimbursement_date is 'nil' defect is not reimbursed
-	def reimbursed?
-	  self.reimbursement_date != "nil"
-	end
+	#def reimbursed?
+	#  self.reimbursement_date != "nil"
+	#end
+	
+	#def reimburse
+	#	self.reimbursement_date = DateTime.now
+	#end
 	
 	def total_debits_per_account (account)
 		( Debit.for_account(account) ).amount.sum

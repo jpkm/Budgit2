@@ -1,5 +1,6 @@
 class DebitsController < ApplicationController
 	before_filter :login_required
+	layout "application"
   # GET /debits
   # GET /debits.xml
   def index
@@ -44,6 +45,7 @@ class DebitsController < ApplicationController
   # POST /debits.xml
   def create
     @debit = Debit.new(params[:debit])
+	@debit.reimbursement_date = "null"
 	
 	respond_to do |format|
       if @debit.save 
@@ -60,10 +62,12 @@ class DebitsController < ApplicationController
   # PUT /debits/1.xml
   def update
     @debit = Debit.find(params[:id])
-
+	@debit.reibursement_date = DateTime.now
+	
     respond_to do |format|
       if @debit.update_attributes(params[:debit])
-        format.html { redirect_to(@debit, :notice => 'Debit was successfully updated.') }
+		format.html { redirect_to(club_path(@debit.account.club_id), :notice => 'Debit reimbursed') }
+		#format.html { redirect_to(@debit, :notice => 'Debit was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -85,6 +89,13 @@ class DebitsController < ApplicationController
       #format.html { redirect_to(debits_url) }
     #  format.xml  { head :ok }
     #end
+  end
+  
+  #****************** WHY DOESN'T THIS WORK ***********
+  def reimburse
+	@debit = Debit.find(params[:id])
+	@debit.reibursement_date = DateTime.now
+	redirect_to(club_path(@debit.account.club_id), :notice => 'Debit Reimbursed.')
   end
   
 end

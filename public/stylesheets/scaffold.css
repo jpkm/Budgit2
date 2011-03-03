@@ -1,15 +1,21 @@
-body {
+body { background-color: black; color: #333; }
+
+#body {
+	margin:0 10px;
+	padding:5px;
+}
+/*body {
   background-color: #fff; 
   color: #600; 
   width: 900px;
   margin-left: auto;
   margin-right: auto;
-}
+}*/
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size:   13px;
-  line-height: 18px;
+  /*line-height: 18px;*/
 }
 
 pre {
@@ -18,16 +24,12 @@ pre {
   font-size: 11px;
 }
 
-a { color: #333; }
-a:visited { color: #666; }
-a:hover { color: #600;}
+a { color: #333; } /* #000 */
+a:hover { color: #600;} /* black text-decoration: underline; */
+/*a:visited { color: #666; }*/
 
-div.field, div.actions {
-  margin-bottom: 10px;
-}
-
-#notice {
-  color: green;
+.smtext {
+	font-size:80%;
 }
 
 .field_with_errors {
@@ -36,11 +38,21 @@ div.field, div.actions {
   display: table;
 }
 
+#notice {
+  color: green;
+  text-align: center;
+  font-style: italic;
+}
+
+#login{
+	text-align: center;
+}
+
 #error_explanation {
   width: 450px;
   border: 2px solid red;
   padding: 7px;
-  padding-bottom: 0;
+  padding-bottom: 12px;
   margin-bottom: 20px;
   background-color: #f0f0f0;
 }
@@ -51,7 +63,6 @@ div.field, div.actions {
   padding: 5px 5px 5px 15px;
   font-size: 12px;
   margin: -7px;
-  margin-bottom: 0px;
   background-color: #c00;
   color: #fff;
 }
@@ -59,6 +70,23 @@ div.field, div.actions {
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#wrap {
+background-color:white;
+position:relative;
+margin: 0 auto;
+width: 900px;
+padding: 10px;
+font-family: verdana;
+font-size: large;
+color: 	black;
 }
 
 /*	General table stuff for datagrid css class */
@@ -77,15 +105,15 @@ table.datagrid a {
 
 table.datagrid a:hover {
 	text-decoration: underline;
-	color: blue;       
+	color: blue; /* are we sure we want this color? */ 
 }
 
-/*	Time to deal with Table Caption and Header Row  */
+/* Table Caption and Header Row  */
 
 caption.datagrid {
 	height: 45px;
 	line-height: 44px;
-	color: #000000;/**/
+	color: #000000;
 	font-weight: bold;
 	text-align: center;
 	width: 100%;
@@ -141,7 +169,7 @@ td {
 }
 .dg_list_line_odd:hover a {
 	background-color: #B5CEFF;
-	color: blue;
+	color: blue; /* are you sure we want this color? */
 	text-decoration: underline;
 }
 .dg_list_line_even:hover {
@@ -150,7 +178,7 @@ td {
 }
 .dg_list_line_even:hover a {
 	background-color: #B5CEFF;
-	color: blue;
+	color: blue; /* are you sure we want this color? */
 	text-decoration: underline;
 }
 

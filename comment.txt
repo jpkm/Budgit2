@@ -20,6 +20,10 @@ so a new account can be made at the beginnning of each school year.
 - create. hidden_field: @debit.account_id... do we need this in show.
 	- does it get recorded in db if we dont have it?
 	- controller: in create not new?
+ 
+- table for Student Affairs Advisor Home page of ALL UNREIMBUIRSED DEBITS across clubs (grouped by @debit.account.club.name)
+
+- get the tables not to look retarded
 
 	
 

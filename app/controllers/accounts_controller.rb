@@ -1,5 +1,6 @@
 class AccountsController < ApplicationController
 	 before_filter :login_required
+	 layout "application"
   # GET /accounts
   # GET /accounts.xml
   def index
