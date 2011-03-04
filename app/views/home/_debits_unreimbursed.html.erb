@@ -1,7 +1,7 @@
-<h2>All Debits</h2>
+<h2>Debits Unreimbersed</h2>
 <table class = "datagrid">
 	<thread class = "datagrid"
-		<th width="50">Item purchased</th>
+		<th width="50">Item</th>
 		<th width="50">Category</th>
 		<th width="50">Reason</th>
 		<th width="120">Date Purchased</th>
@@ -11,28 +11,21 @@
 		<th width="50">Names of consumers</th>
 	</thread>
 
-<% @account_debits.each do |debit| %>
+<% @debits_unreimbursed.each do |debit| %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
 	<td><%= debit.item_purchased %></td>
     <td><%= debit.debit_category.category %></td>
     <td><%= debit.reason %></td>
     <td><%= debit.date_purchased.to_s(:long_ordinal) %></td>
-    <!--<td><%= debit.account.club.name %></td>-->
     <td><%= debit.amount %></td>
 	<td><% if debit.reimbursement_date.nil? %>
-			<% if current_user.is_affairs? || current_user.is_admin? %>
-			<!-- *************** HOW DO I DO THIS? ***************-->
-				<%= link_to "reimburse me", :method => :edit %>
-				<%#= link_to(image_tag("reimburse.gif", :border => 0), debit_path(debit), :method => :reimburse) %>
-			<% else %>
-				pending
-			<% end %>
-		<% else %>
-			<%= debit.reimbursement_date %>
-		<% end %>
-	</td>
-    <td><%= debit.number_of_consumers %></td>
-    <td><%= debit.names_of_consumers %></td>
+	<td><%= link_to "reimburse me", :method => :edit %></td>
+	
+	<!-- why doesn't this work? -->	
+	<%#= link_to(image_tag("reimburse.gif", :border => 0), debit_path(debit), :method => :reimburse) %>
+			
+	<td><%= debit.number_of_consumers %></td>
+	<td><%= debit.names_of_consumers %></td>
 	<td align="center">
 		<%= link_to(image_tag("edit_dg.gif", :border => 0), edit_debit_path(debit))%>&nbsp;
 		<%= link_to(image_tag("delete_dg.gif", :border => 0), debit_path(debit), :confirm => 'delete?', :method => :delete) %>
@@ -41,6 +34,8 @@
 <% end %>
 </table>
 
+<!--
 <span class="smtext">
-<%= will_paginate @account_debits, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+<%= will_paginate @debits_unreimbursed, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
 </span>
+-->

@@ -1,5 +1,7 @@
 <!-- This page renders information for the club's current_account (if it has one) -->
 
+<%#= link_to "deactivate account", @club.current_account.deactivate %>
+
 <% if @club.current_account.nil? %>
 	<% if current_user.is_VP? || current_user.is_admin? %> 
 		<%= link_to "New Account", new_account_path(:club => @club) %>

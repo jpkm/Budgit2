@@ -44,9 +44,9 @@ a:hover { color: #600;} /* black text-decoration: underline; */
   font-style: italic;
 }
 
-#login{
+/*#login{
 	text-align: center;
-}
+}*/
 
 #error_explanation {
   width: 450px;

@@ -1,4 +1,12 @@
+<!-- lists all assignmend for the current_user-->
 <% unless @assignment_for_user.nil? || @assignment_for_user.empty? %>
 	<p class="supertiny">&nbsp;</p>
 	<%= render :partial => "assignment_for_user" %>
+<% end %>
+
+<!-- lists all unreimbursed debits for all clubs the user is assigned to -->
+<% if current_user.is_affairs? %>
+	<% unless @debits_unreimbursed.nil? || @debits_unreimbursed.empty? %>
+	<p class="supertiny">&nbsp;</p>
+	<%= render :partial => "debits_unreimbursed" %>
 <% end %>

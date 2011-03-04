@@ -9,7 +9,6 @@ class Account < ActiveRecord::Base
 	#Validations
 	validates_presence_of :club_id
 	validates_numericality_of :year
-	#validates_uniqueness_of :year
 	
 	#Named Scopes
 	
@@ -18,6 +17,13 @@ class Account < ActiveRecord::Base
 	
 	# get all active accounts for a particular club_id 
 	named_scope :inactive_for_club, lambda { |club| {:conditions => ['club_id = ? AND active = ?', club, false] } }
+	
+	#def deactivate
+	#	p self.active
+	#	self.active = false
+	#	p self.active
+	#	
+	#end
 	
 	
 end

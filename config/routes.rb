@@ -26,6 +26,7 @@ Budgit::Application.routes.draw do
   resources :debits 
 
   resources :accounts
+  #match 'deactive' => 'accounts#deactive', :as => deactive
 
   resources :clubs
 

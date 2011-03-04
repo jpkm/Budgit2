@@ -103,4 +103,8 @@ class AccountsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def deactive
+  end
+  
 end
