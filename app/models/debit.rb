@@ -11,13 +11,11 @@ class Debit < ActiveRecord::Base
 
 	#Named Scopes
 	#orders debits by debit_id asscending 
-    named_scope :all, :order => "id ASC"
-	
+    named_scope :all, :order => "account_id"
     # get all the debits by a particular account
     named_scope :for_account, lambda { |account| { :conditions => ['account_id = ?', account] } }
 	# get all debits with reimbursement_date = nil for an account
-	
-	#named_scope :not_reimbursed_for_account, lambda { |account| {:conditions => ['account_id = ? AND reimbursement_date is NULL', account] } }
+	named_scope :not_reimbursed_for_account, lambda { |account| {:conditions => ['account_id = ? AND reimbursement_date is NULL', account] } }
 	# get all unreimbursed debits
 	#named_scope :not_reimbursed, :conditions => ['reimbursement_date is NULL']
 	

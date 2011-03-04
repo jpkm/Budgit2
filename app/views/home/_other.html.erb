@@ -7,6 +7,7 @@
 <!-- lists all unreimbursed debits for all clubs the user is assigned to -->
 <% if current_user.is_affairs? %>
 	<% unless @debits_unreimbursed.nil? || @debits_unreimbursed.empty? %>
-	<p class="supertiny">&nbsp;</p>
-	<%= render :partial => "debits_unreimbursed" %>
+		<p class="supertiny">&nbsp;</p>
+		<%= render :partial => "debits_unreimbursed" %>
+	<% end %>
 <% end %>

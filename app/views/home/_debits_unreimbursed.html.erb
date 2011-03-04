@@ -18,7 +18,6 @@
     <td><%= debit.reason %></td>
     <td><%= debit.date_purchased.to_s(:long_ordinal) %></td>
     <td><%= debit.amount %></td>
-	<td><% if debit.reimbursement_date.nil? %>
 	<td><%= link_to "reimburse me", :method => :edit %></td>
 	
 	<!-- why doesn't this work? -->	
@@ -35,7 +34,5 @@
 </table>
 
 <!--
-<span class="smtext">
-<%= will_paginate @debits_unreimbursed, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
-</span>
+
 -->
