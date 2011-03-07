@@ -22,25 +22,18 @@ class ClubsController < ApplicationController
 	
 	# all accounts for @club
 	@inactive_accounts = Account.inactive_for_club(@club).paginate :page => params[:page], :per_page => 5
-	
-	# all debits for active account of @club
-	#@account_debits = Debit.for_account(@club.current_account).paginate :page => params[:page], :per_page => 5
-	@account_debits = @club.current_account.debits.paginate :page => params[:page], :per_page => 5
-	
-	# all credits for active account of @club
-	#@account_credits = Credit.for_account(@club.current_account).paginate :page => params[:page], :per_page => 5
-	@account_credits = @club.current_account.credits.paginate :page => params[:page], :per_page => 5
-	
-	# gets all debits which are unreimbursed for an account
-	@debits_unreimbursed = Debit.not_reimbursed_for_account(@club.current_account).paginate :page => params[:page], :per_page => 5
-	
 	# get all assignment for @club
 	@assignments_for_club = Assignment.for_club(@club) #.paginate :page => params[:page], :per_page => 5
 	
-	# get initial credit for active account of @club
-	#@initial_credit = Credit.initial_for_account(@club.current_account)
+	unless @club.current_account.nil?
+		# all debits for active account of @club
+		@account_debits = @club.current_account.debits.paginate :page => params[:page], :per_page => 5
+		# all credits for active account of @club
+		@account_credits = @club.current_account.credits.paginate :page => params[:page], :per_page => 5
+		# gets all debits which are unreimbursed for an account
+		@debits_unreimbursed = Debit.not_reimbursed_for_account(@club.current_account).paginate :page => params[:page], :per_page => 5
+	end
 	
-	################################################
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @club }
@@ -70,7 +63,7 @@ class ClubsController < ApplicationController
 
     respond_to do |format|
       if @club.save
-        format.html { redirect_to(new_account_path(:club => @club), :notice => 'Club was successfully created.') }
+        format.html { redirect_to(club_path(@club), :notice => 'Club was successfully created.') }
         format.xml  { render :xml => @club, :status => :created, :location => @club }
       else
         format.html { render :action => "new" }

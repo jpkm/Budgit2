@@ -1,10 +1,8 @@
-<p id="notice"><%= notice %></p>
+<h1>Account Information</h1>
 
-<p>
-  <b>Club:</b><%= link_to @account.club.name, club_path(@account.club) %> |
-  <b>Year:</b><%= @account.year %> |
-  Balance: <%= @balance %>
-</p>
+  Club: <%= link_to @account.club.name, club_path(@account.club) %> |
+  Year:<%= @account.year %> |
+  Balance: <%= @account.balance %>
 
 <% unless @account_debits.nil? || @account_debits.empty? %>
   <p class="supertiny">&nbsp;</p>
@@ -17,8 +15,5 @@
 <% end %>
 
 
-<br>
 
-<% if current_user.VP? %>
-	<%= link_to 'Edit', edit_account_path(@account) %> |
-<% end %>
+

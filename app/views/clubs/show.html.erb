@@ -1,10 +1,13 @@
 <h1><%= @club.name %>'s Profile:</h1>
 <!-- what do we want to say here-->
 
+<!-- render club information -->
+<%= render :partial => "club_info" %>
+
 <!-- renders information for @club's current account-->
 <% unless @club.current_account.nil? %>
   <p class="supertiny">&nbsp;</p>
-  <%= render :partial => "club_profile" %>
+  <%= render :partial => "current_account" %>
 <% end %>
 
 

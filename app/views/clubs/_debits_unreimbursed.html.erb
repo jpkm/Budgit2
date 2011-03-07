@@ -1,14 +1,14 @@
 <h2>Debits Unreimbersed</h2>
 <table class = "datagrid">
 	<thread class = "datagrid">
-		<th width="70">Item</th>
+		<th width="80">Item</th>
 		<th width="50">Category</th>
 		<th width="50">Reason</th>
 		<th width="120">Date Purchased</th>
 		<th width="50">Amount</th>
-		<th width="50">Reimbursement Date</th>
 		<th width="50">Number of consumers</th>
 		<th width="50">Names of consumers</th>
+		<th width="50">Reimbursement Date</th>
 	</thread>
 
 <% @debits_unreimbursed.each do |debit| %>
@@ -18,16 +18,16 @@
     <td><%= debit.reason %></td>
     <td><%= debit.date_purchased.to_s(:long_ordinal) %></td>
     <td><%= debit.amount %></td>
+	<td><%= debit.number_of_consumers %></td>
+	<td><%= debit.names_of_consumers %></td>
 	<td><% if debit.reimbursement_date.nil? %>
 			<% if current_user.is_affairs? || current_user.is_admin? %>
-				<%= link_to(image_tag("reimburse.gif", :border => 0), :controller => "debits", :action => :reimburse, :id => debit.id ) %>
+				<%= link_to(image_tag("reimburse_dg.gif", :border => 0), :controller => "debits", :action => :reimburse, :id => debit.id ) %>
 			<% else %>
 				pending
 			<% end %>
 		<% end %>
 	</td>
-	<td><%= debit.number_of_consumers %></td>
-	<td><%= debit.names_of_consumers %></td>
 	<% if current_user.is_admin? %>
 		<td align="center">
 			<%= link_to(image_tag("edit_dg.gif", :border => 0), edit_debit_path(debit))%>&nbsp;

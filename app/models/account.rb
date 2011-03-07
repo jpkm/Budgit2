@@ -25,16 +25,6 @@ class Account < ActiveRecord::Base
 		return sum
 	end
 	
-	# checks if the account has a credit with creditcategory type of "Initial"
-	def has_inital?
-		for credit in credits
-			if credit.credit_category.category.eql?("Inital")
-				return true
-			end
-		end
-		return false
-	end
-	
 	#### returns the sum of all debits for this account.
 	def sum_debits
 		sum = 0
@@ -53,12 +43,14 @@ class Account < ActiveRecord::Base
 		return sum
 	end
 	
-	#def deactivate
-	#	p self.active
-	#	self.active = false
-	#	p self.active
-	#	
-	#end
-	
+	# checks if the account has a credit with creditcategory type of "Initial"
+	def has_inital?
+		for credit in credits
+			if credit.credit_category.category.eql?("Inital")
+				return true
+			end
+		end
+		return false
+	end
 	
 end

@@ -1,32 +1,6 @@
-<!-- This page renders information for the club's current_account (if it has one) -->
 
-<% if @club.current_account.nil? %>
-	<% if current_user.is_VP? || current_user.is_admin? %> 
-		<%= link_to "New Account", new_account_path(:club => @club) %>
-	<% end %>
-<% else %>
-	<% if current_user.is_admin? %>
-		<%= link_to "deactivate account", :controller => "accounts", :action => :deactivate, :id => @club.current_account.id %>
-	<% end %>
-
-  Year: <%= @club.current_account.year %> 
-  | Balance: <%= @club.current_balance %> 
-  <% if current_user.is_leader? || current_user.is_admin? %>
-	| <%= link_to "Record new Debit", new_debit_path(:account => @club.current_account.id) %> 
-  <% end %>
-  <% if current_user.is_VP? || current_user.is_admin? %>
-	| <%= link_to "Credit Account", new_credit_path(:account => @club.current_account.id) %>
-  <% end %>
-  <% if current_user.is_admin? %>
-	| <%= link_to "Assign Users", new_assignment_path(:club => @club.id) %>
-  <% end %>
-<% end %>
-	| <%= link_to 'Logout', logout_path %>
 
 	
-
-
-
 <!-- all assignments for @club -->
 <% unless @assignments_for_club.nil? || @assignments_for_club.empty? %>
 	<p class="supertiny">&nbsp;</p>

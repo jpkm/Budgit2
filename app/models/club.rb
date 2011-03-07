@@ -28,6 +28,7 @@ class Club < ActiveRecord::Base
 				return account
 			end
 		end
+		return nil
 	end
 	
 	#######################################################

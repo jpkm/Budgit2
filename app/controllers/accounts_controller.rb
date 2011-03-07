@@ -17,23 +17,12 @@ class AccountsController < ApplicationController
   def show
 	@account = Account.find(params[:id])
 		
-	@account_accounts = account.for_account(@account.id).paginate :page => params[:page], :per_page => 5
-	@account_credits = Credit.for_account(@account.id).paginate :page => params[:page], :per_page => 5
-   
-   # calculates Balance of account for @club
-	@credits_amount = 0
-	@accounts_amount = 0
+	# all debits for active account of @club
+	@account_debits = @account.debits.paginate :page => params[:page], :per_page => 5
+	# all credits for active account of @club
+	@account_credits = @account.credits.paginate :page => params[:page], :per_page => 5
 
-	for credit in Credit.for_account(@account.id)
-		@credits_amount = @credits_amount + credit.amount
-	end
-	
-	for account in account.for_account(@account.id)
-		@accounts_amount = @accounts_amount + account.amount
-	end
-	
-	@balance = 0 + 	@credits_amount - @accounts_amount
-	################################################
+		
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @account }

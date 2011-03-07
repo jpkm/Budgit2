@@ -1,37 +1,10 @@
-
-- VP of finance needs to "edit" club.current_account from Active to Inactive
-so a new account can be made at the beginnning of each school year.
-	-- when a new account is made should VP of Clubs be directed to new_credit_path?
-	--- does VP of Finance need a table on the personal page which shows clubs
-		which do not have an "active" account?
-
-- need a toggle on debit for reimbursement_date so in the table of 
-	unreimbursed debits each debit will have a Reimburse method 
-	which will "update" the debit. Debit controller changes
-	@debit.reimbursement_date = DateTime.now
-
-- why do debit_categories, role, and credit_categores have "active" ? NO
-
 - mailto: 
 	- when a new debit is submitted send mail to faculty and Student Affairs advisor
 	- when a reimbursement is made send email to club leader
 	- when a club is made email club leader
-	
-- create. hidden_field: @debit.account_id... do we need this in show.
-	- does it get recorded in db if we dont have it?
-	- controller: in create not new?
 
 - get the tables not to look retarded
 
-- logout button in header (text/link onto of Mezaniah picture)
-
-	
-
-TimeLog over break
-2/26 = 4hrs
-2/27 = 8hrs
-2/28 = 5hrs
-3/1 = 6hrs
-3/2 = 4hrs
-3/3 = 5hrs
-3/4 = 2hrs
+- pictures of sysadmin links
+- what should vp see on thier home page
+- can't create a debit if debit.account.balance - debit.amount < 0
