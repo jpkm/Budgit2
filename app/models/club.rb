@@ -16,6 +16,12 @@ class Club < ActiveRecord::Base
 	# get all the projects by a particular user
     named_scope :for_user,  lambda { |user_id| { :joins => :assignments, :conditions => ['user_id = ?', user_id] } }
 	
+	
+	def current_balance
+		account = self.current_account
+		balance = account.balance
+	end
+	
 	def current_account
 		for account in self.accounts
 			if(account.active)
@@ -23,6 +29,7 @@ class Club < ActiveRecord::Base
 			end
 		end
 	end
+	
 	#######################################################
 	# Probably don't need this
 	# returns faculty advisor

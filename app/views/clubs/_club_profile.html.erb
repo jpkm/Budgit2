@@ -1,14 +1,16 @@
 <!-- This page renders information for the club's current_account (if it has one) -->
 
-<%#= link_to "deactivate account", @club.current_account.deactivate %>
-
 <% if @club.current_account.nil? %>
 	<% if current_user.is_VP? || current_user.is_admin? %> 
 		<%= link_to "New Account", new_account_path(:club => @club) %>
 	<% end %>
 <% else %>
+	<% if current_user.is_admin? %>
+		<%= link_to "deactivate account", :controller => "accounts", :action => :deactivate, :id => @club.current_account.id %>
+	<% end %>
+
   Year: <%= @club.current_account.year %> 
-  | Balance: <%= @balance %> 
+  | Balance: <%= @club.current_balance %> 
   <% if current_user.is_leader? || current_user.is_admin? %>
 	| <%= link_to "Record new Debit", new_debit_path(:account => @club.current_account.id) %> 
   <% end %>
@@ -31,16 +33,16 @@
 	<%= render :partial => "clubs_assignments" %>
 <% end %>
 
-<!-- all unreimbursed debits for club.current_account -->
-<% unless @debits_unreimbursed.nil? || @debits_unreimbursed.empty? %>
-  <p class="supertiny">&nbsp;</p>
-  <%= render :partial => "debits_unreimbursed" %>
-<% end %>
-
 <!-- all inactive accounts for this club -->
 <% unless @inactive_accounts.nil? || @inactive_accounts.empty? %>
 	<p class ="supertiny">&nbsp;</p>
 	<%= render :partial => "inactive_accounts" %>
+<% end %>
+ 
+ <!-- all unreimbursed debits for club.current_account -->
+<% unless @debits_unreimbursed.nil? || @debits_unreimbursed.empty? %>
+  <p class="supertiny">&nbsp;</p>
+  <%= render :partial => "debits_unreimbursed" %>
 <% end %>
  
   <!-- all debits for account -->

@@ -17,22 +17,22 @@ class AccountsController < ApplicationController
   def show
 	@account = Account.find(params[:id])
 		
-	@account_debits = Debit.for_account(@account.id).paginate :page => params[:page], :per_page => 5
+	@account_accounts = account.for_account(@account.id).paginate :page => params[:page], :per_page => 5
 	@account_credits = Credit.for_account(@account.id).paginate :page => params[:page], :per_page => 5
    
    # calculates Balance of account for @club
 	@credits_amount = 0
-	@debits_amount = 0
+	@accounts_amount = 0
 
 	for credit in Credit.for_account(@account.id)
 		@credits_amount = @credits_amount + credit.amount
 	end
 	
-	for debit in Debit.for_account(@account.id)
-		@debits_amount = @debits_amount + debit.amount
+	for account in account.for_account(@account.id)
+		@accounts_amount = @accounts_amount + account.amount
 	end
 	
-	@balance = 0 + 	@credits_amount - @debits_amount
+	@balance = 0 + 	@credits_amount - @accounts_amount
 	################################################
     respond_to do |format|
       format.html # show.html.erb
@@ -104,7 +104,12 @@ class AccountsController < ApplicationController
     end
   end
   
-  def deactive
+  def deactivate
+  	@account = Account.find(params[:id])
+	@account.active = false
+	@account.save!
+	
+	redirect_to(club_path(@account.club_id), :notice => 'Account deactivated.')
   end
   
 end

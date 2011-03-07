@@ -62,7 +62,7 @@ class DebitsController < ApplicationController
   # PUT /debits/1.xml
   def update
     @debit = Debit.find(params[:id])
-	@debit.reibursement_date = DateTime.now
+	#@debit.reibursement_date = DateTime.now
 	
     respond_to do |format|
       if @debit.update_attributes(params[:debit])
@@ -91,10 +91,11 @@ class DebitsController < ApplicationController
     #end
   end
   
-  #****************** WHY DOESN'T THIS WORK ***********
+  #****************** WHY THIS WORK ***********
   def reimburse
 	@debit = Debit.find(params[:id])
-	@debit.reibursement_date = DateTime.now
+	@debit.reimbursement_date = DateTime.now
+	@debit.save!
 	redirect_to(club_path(@debit.account.club_id), :notice => 'Debit Reimbursed.')
   end
   

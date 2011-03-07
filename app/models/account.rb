@@ -19,6 +19,12 @@ class Account < ActiveRecord::Base
 	# get all credit categores for credits attached to this account
 	#named_scope :has_initial
 	
+	
+	def balance
+		sum = 0 - self.sum_debits + self.sum_credits
+		return sum
+	end
+	
 	# checks if the account has a credit with creditcategory type of "Initial"
 	def has_inital?
 		for credit in credits
@@ -29,6 +35,23 @@ class Account < ActiveRecord::Base
 		return false
 	end
 	
+	#### returns the sum of all debits for this account.
+	def sum_debits
+		sum = 0
+		for debit in self.debits
+			sum = sum + debit.amount
+		end
+		return sum
+	end
+	
+	#### returns the sum of all the credits for this account.
+	def sum_credits
+		sum = 0
+		for credit in self.credits
+			sum = sum + credit.amount
+		end
+		return sum
+	end
 	
 	#def deactivate
 	#	p self.active

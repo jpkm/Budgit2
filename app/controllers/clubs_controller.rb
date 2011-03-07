@@ -16,36 +16,30 @@ class ClubsController < ApplicationController
   # GET /clubs/1
   # GET /clubs/1.xml
   def show  
+	
 	# Named Scope Definitions
     @club = Club.find(params[:id])
+	
 	# all accounts for @club
 	@inactive_accounts = Account.inactive_for_club(@club).paginate :page => params[:page], :per_page => 5
+	
 	# all debits for active account of @club
-	@account_debits = Debit.for_account(@club.current_account).paginate :page => params[:page], :per_page => 5
+	#@account_debits = Debit.for_account(@club.current_account).paginate :page => params[:page], :per_page => 5
+	@account_debits = @club.current_account.debits.paginate :page => params[:page], :per_page => 5
+	
 	# all credits for active account of @club
-	@account_credits = Credit.for_account(@club.current_account).paginate :page => params[:page], :per_page => 5
+	#@account_credits = Credit.for_account(@club.current_account).paginate :page => params[:page], :per_page => 5
+	@account_credits = @club.current_account.credits.paginate :page => params[:page], :per_page => 5
+	
 	# gets all debits which are unreimbursed for an account
 	@debits_unreimbursed = Debit.not_reimbursed_for_account(@club.current_account).paginate :page => params[:page], :per_page => 5
-	# git all assignment for @club
+	
+	# get all assignment for @club
 	@assignments_for_club = Assignment.for_club(@club) #.paginate :page => params[:page], :per_page => 5
+	
 	# get initial credit for active account of @club
 	#@initial_credit = Credit.initial_for_account(@club.current_account)
 	
-	unless @club.current_account.nil?
-	# calculates Balance of account for @club
-		@credits_amount = 0
-		@debits_amount = 0
-
-		for credit in Credit.for_account(@club.current_account.id)
-			@credits_amount = @credits_amount + credit.amount
-		end
-	
-		for debit in Debit.for_account(@club.current_account.id)
-			@debits_amount = @debits_amount + debit.amount
-		end
-	
-		@balance = 0 + 	@credits_amount - @debits_amount
-	end
 	################################################
     respond_to do |format|
       format.html # show.html.erb
