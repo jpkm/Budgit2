@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-	layout "application"
 	before_filter :login_required, :except => [:new, :create]
-	#not sure we want :except => [:new, :create]
+	layout "application"
 	
   def new
     @user = User.new
@@ -10,12 +9,15 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 	
-	@user.save!
-    if @user.save
-	  redirect_to root_url, :notice => "New User created"
-    else
-      render :action => 'new'
-    end
+	respond_to do |format|
+      if @user.save 
+        format.html { redirect_to root_url, :notice => 'New User created' }
+        #format.xml  { render :xml => @debit, :status => :created, :location => @debit }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      end
+	end
   end
 
   def edit

@@ -7,7 +7,8 @@ class Debit < ActiveRecord::Base
 	
 	#Validations
 	validates_presence_of :item_purchased, :reason, :debit_category_id, :date_purchased
-	validates_numericality_of :amount
+	#validates_numericality_of :amount
+	validates_format_of :amount, :with => /^\d\d*$/
 
 	#Named Scopes
 	#orders debits by debit_id asscending 
@@ -19,14 +20,6 @@ class Debit < ActiveRecord::Base
 	# get all unreimbursed debits
 	#named_scope :not_reimbursed, :conditions => ['reimbursement_date is NULL']
 	
-	#if reimbursement_date is 'nil' defect is not reimbursed
-	#def reimbursed?
-	#  self.reimbursement_date != "nil"
-	#end
-	
-	#def reimburse
-	#	self.reimbursement_date = DateTime.now
-	#end
 	
 	def total_debits_per_account (account)
 		( Debit.for_account(account) ).amount.sum

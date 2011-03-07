@@ -94,7 +94,7 @@ namespace :db do
 	#Step 4.5: add Assignments
 		asys = Assignment.new
 		asys.user_id = sys.id
-		asys.club_id = x.id
+		#asys.club_id = x.id
 		asys.role_id = rsys.id
 		asys.active = true
 		asys.save!
@@ -108,7 +108,7 @@ namespace :db do
 	
 		avp = Assignment.new
 		avp.user_id = vp.id
-		avp.club_id = x.id
+		#avp.club_id = x.id
 		avp.role_id = rvp.id
 		avp.active = true
 		avp.save!

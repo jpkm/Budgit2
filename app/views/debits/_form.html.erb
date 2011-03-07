@@ -15,22 +15,27 @@
     <%= f.label :item_purchased %><br />
     <%= f.text_area :item_purchased %>
   </div>
+  
   <div class="field">
     <%= f.label :category %><br />
 	<%= f.collection_select :debit_category_id, DebitCategory.all, :id, :category, :prompt => "Select ..." %>
   </div>
+  
   <div class="field">
     <%= f.label :reason %><br />
     <%= f.text_area :reason %>
   </div>
+  
   <div class="field">
     <%= f.label :number_of_consumers %><br />
     <%= f.text_field :number_of_consumers %>
   </div>
+  
   <div class="field">
     <%= f.label :names_of_consumers %><br />
     <%= f.text_area :names_of_consumers %>
   </div>
+  
   <div class="field">
     <%= f.label :date_purchased %>
 	<%= f.date_select :date_purchased, :order => [:month, :day, :year] %>
@@ -42,7 +47,9 @@
     <%= f.label :amount %>
     <%= f.text_field :amount %>
   </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
+  
 <% end %>
