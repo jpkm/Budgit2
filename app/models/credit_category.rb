@@ -4,6 +4,7 @@ class CreditCategory < ActiveRecord::Base
 	has_many :credits
 	
 	validates_presence_of :category
+	validates_uniqueness_of :category
 	
 	named_scope :all, :order => "id ASC"
 	named_scope :except_initial, :conditions => 'category is not Inital' 

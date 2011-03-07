@@ -4,6 +4,7 @@ class DebitCategory < ActiveRecord::Base
 	has_many :debits
 
 	validates_presence_of :category
+	validates_uniqueness_of :category
 
 	#Named Scopes
 	#orders debits by debit_id asscending 

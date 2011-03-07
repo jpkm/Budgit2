@@ -8,6 +8,7 @@ class Club < ActiveRecord::Base
 	
 	#Validations
 	validates_presence_of :name
+	validates_uniqueness_of :name
 	
 	#Named Scopes
 	#orders clubs by club_id
