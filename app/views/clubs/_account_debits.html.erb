@@ -33,10 +33,12 @@
 	</td>
     <td><%= debit.number_of_consumers %></td>
     <td><%= debit.names_of_consumers %></td>
-	<td align="center">
-		<%= link_to(image_tag("edit_dg.gif", :border => 0), edit_debit_path(debit))%>&nbsp;
-		<%= link_to(image_tag("delete_dg.gif", :border => 0), debit_path(debit), :confirm => 'delete?', :method => :delete) %>
-	</td>
+	<% if current_user.is_admin? %>
+		<td align="center">
+			<%= link_to(image_tag("edit_dg.gif", :border => 0), edit_debit_path(debit))%>&nbsp;
+			<%= link_to(image_tag("delete_dg.gif", :border => 0), debit_path(debit), :confirm => 'delete?', :method => :delete) %>
+		</td>
+	<% end %>
   </tr>
 <% end %>
 </table>

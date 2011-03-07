@@ -7,6 +7,7 @@ class Credit < ActiveRecord::Base
 	
 	# Validations
 	validates_numericality_of :credit_category_id, :account_id, :amount
+	validates_format_of :amount, :with => /^\d\d*$/
 	
 	#Named Scopes
 	#orders debits by debit_id asscending 

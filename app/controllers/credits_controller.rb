@@ -28,7 +28,19 @@ class CreditsController < ApplicationController
   def new
     @credit = Credit.new
 	@credit.account_id = params[:account]
+	@account = Account.find(params[:account])
+	@answer = @account.has_inital?
 	@credit.date = Date.today
+	
+	if @answer
+		@except = []
+		for creditcategory in CreditCategory.all
+			unless creditcategory.category.eql?("Inital")
+				@except << creditcategory
+			end
+		end
+	end
+	
 
     respond_to do |format|
       format.html # new.html.erb

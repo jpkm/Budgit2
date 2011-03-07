@@ -96,7 +96,8 @@ table.datagrid {
 	color: black;
 	text-align: left;
 	border-collapse: collapse;
-        width: 100%;
+		width: auto;
+        /*width: 100%;*/
 }
 
 table.datagrid a {
@@ -122,17 +123,16 @@ caption.datagrid {
 }
 thead.datagrid th {
 	font-size: 105%;
-	color: /* #EEC900; #FFD700;*/ white;
-	background-color: /*#FFD700; #6B8E23*/#6B8E23;
+	color: #F1EDED;
+	background-color: #F1EDED;
 	height: 28px;
 	font-weight: bold;
 	padding: 10px;
-}
-thead.datagrid th:hover {
-	/* background-color: nothing changes right now */
 
 }
-td {
+
+
+td{
 	padding:0 5px;
 }
 

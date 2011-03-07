@@ -12,9 +12,11 @@
     <td><%= assignment.role.name %></td>
 	<td><%= assignment.user.name %></td>
 	<td><%= assignment.user.email %></td>
-	<td align="center">
-		<%= link_to(image_tag("delete_dg.gif", :border => 0), assignment_path(assignment), :confirm => 'delete?', :method => :delete) %>
-	</td>
+	<% if current_user.is_admin? %>
+		<td align="center">
+			<%= link_to(image_tag("delete_dg.gif", :border => 0), assignment_path(assignment), :confirm => 'delete?', :method => :delete) %>
+		</td>
+	<% end %>
   </tr>
 <% end %>
 </table>
