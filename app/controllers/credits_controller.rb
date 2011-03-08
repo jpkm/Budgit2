@@ -4,23 +4,23 @@ class CreditsController < ApplicationController
   # GET /credits
   # GET /credits.xml
   def index
-    @credits = Credit.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @credits }
-    end
+	redirect_to root_url
+    #@credits = Credit.all
+    #respond_to do |format|
+    #  format.html # index.html.erb
+    #  format.xml  { render :xml => @credits }
+    #end
   end
 
   # GET /credits/1
   # GET /credits/1.xml
   def show
-    @credit = Credit.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @credit }
-    end
+	redirect_to root_url
+    #@credit = Credit.find(params[:id])
+    #respond_to do |format|
+    #  format.html # show.html.erb
+    #  format.xml  { render :xml => @credit }
+    #end
   end
 
   # GET /credits/new

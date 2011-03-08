@@ -1,26 +1,28 @@
 class AssignmentsController < ApplicationController
-	before_filter :login_required
+	before_filter :login_required 	
 	layout "application"
   # GET /assignments
   # GET /assignments.xml
   def index
-    @assignments = Assignment.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @assignments }
-    end
+	redirect_to root_url
+	
+    #@assignments = Assignment.all
+    #respond_to do |format|
+    # format.html # index.html.erb
+    # format.xml  { render :xml => @assignments }
+   #end
   end
 
   # GET /assignments/1
   # GET /assignments/1.xml
   def show
-    @assignment = Assignment.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @assignment }
-    end
+	redirect_to root_url
+	
+    #@assignment = Assignment.find(params[:id])
+    #respond_to do |format|
+    #  format.html # show.html.erb
+    #  format.xml  { render :xml => @assignment }
+    #end
   end
 
   # GET /assignments/new

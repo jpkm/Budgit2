@@ -22,7 +22,7 @@
 	<td><%= debit.names_of_consumers %></td>
 	<td><% if debit.reimbursement_date.nil? %>
 			<% if current_user.is_affairs? || current_user.is_admin? %>
-				<%= link_to(image_tag("reimburse_dg.gif", :border => 0), :controller => "debits", :action => :reimburse, :id => debit.id ) %>
+				<%= link_to(image_tag("reimburse_dg.png", :border => 0), :controller => "debits", :action => :reimburse, :id => debit.id ) %>
 			<% else %>
 				pending
 			<% end %>
@@ -30,8 +30,8 @@
 	</td>
 	<% if current_user.is_admin? %>
 		<td align="center">
-			<%= link_to(image_tag("edit_dg.gif", :border => 0), edit_debit_path(debit))%>&nbsp;
-			<%= link_to(image_tag("delete_dg.gif", :border => 0), debit_path(debit), :confirm => 'delete?', :method => :delete) %>
+			<%= link_to(image_tag("edit_dg.png", :border => 0), edit_debit_path(debit))%>&nbsp;
+			<%= link_to(image_tag("delete_dg.png", :border => 0), debit_path(debit), :confirm => 'delete?', :method => :delete) %>
 		</td>
 	<% end %>
   </tr>

@@ -1,26 +1,38 @@
-<h3>Club Info</h3>
+<table>
+	<tr valign="top">
+		<td width="200">
+			<h3>Club Info</h3>
 
-<% if current_user.is_VP? || current_user.is_admin? %>
-	<% if @club.current_account.nil? %>
-		<%= link_to "New Account", new_account_path(:club => @club) %>
-	<% else %>
-		<% unless @club.current_account.nil? %>
-			<%= link_to "Deactivate Current Account", :controller => "accounts", :action => :deactivate, :id => @club.current_account.id %>
-		<% end %>
-	<% end %>
-<% end %>
-<% if current_user.is_admin? %>
-	| <%= link_to "Assign Users", new_assignment_path(:club => @club.id) %>
-<% end %>
-
-<!-- all assignments for @club -->
-<% unless @assignments_for_club.nil? || @assignments_for_club.empty? %>
-	<p class="supertiny">&nbsp;</p>
-	<%= render :partial => "clubs_assignments" %>
-<% end %>
-
-<!-- all inactive accounts for this club -->
-<% unless @inactive_accounts.nil? || @inactive_accounts.empty? %>
-	<p class ="supertiny">&nbsp;</p>
-	<%= render :partial => "inactive_accounts" %>
-<% end %>
+			<% if current_user.is_VP? || current_user.is_admin? %>
+				<% if @club.current_account.nil? %>
+					<%= link_to "New Account", new_account_path(:club => @club) %>
+					<br>
+				<% else %>
+					<% unless @club.current_account.nil? %>
+						<%= link_to "Deactivate Current Account", :controller => "accounts", :action => :deactivate, :id => @club.current_account.id %>
+						<br>
+					<% end %>
+				<% end %>
+			<% end %>
+			<% if current_user.is_admin? %>
+				<%= link_to "Assign Users", new_assignment_path(:club => @club.id) %>
+			<% end %>
+		</td>
+		<td width="10">&nbsp;</td>
+		<td width="250">
+			<!-- all assignments for @club -->
+			<% unless @assignments_for_club.nil? || @assignments_for_club.empty? %>
+				<p class="supertiny">&nbsp;</p>
+				<%= render :partial => "clubs_assignments" %>
+			<% end %>
+		</td>
+		<td width="10">&nbsp;</td>
+		<td width="250">
+			<!-- all inactive accounts for this club -->
+			<% unless @inactive_accounts.nil? || @inactive_accounts.empty? %>
+				<p class ="supertiny">&nbsp;</p>
+				<%= render :partial => "inactive_accounts" %>
+			<% end %>
+		</td>
+	</tr>
+</table>

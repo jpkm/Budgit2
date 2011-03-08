@@ -5,6 +5,9 @@
 
 - get the tables not to look retarded
 
-- pictures of sysadmin links
+- buttons for club profile links
 - what should vp see on thier home page
-- can't create a debit if debit.account.balance - debit.amount < 0
+- can't choose role for assignment if that role is already filled for that club
+- can't choose User that is already assigned to another club
+
+

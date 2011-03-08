@@ -1,6 +1,6 @@
 <h2>All Debits</h2>
 <table class = "datagrid">
-	<thread class = "datagrid"
+	<thead class = "datagrid"
 		<th width="50">Item purchased</th>
 		<th width="50">Category</th>
 		<th width="50">Reason</th>
@@ -9,7 +9,7 @@
 		<th width="50">Number of consumers</th>
 		<th width="50">Names of consumers</th>
 		<th width="50">Reimbursement Date</th>
-	</thread>
+	</thead>
 
 <% @account_debits.each do |debit| %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
@@ -23,7 +23,7 @@
     <td><%= debit.names_of_consumers %></td>
 	<td><% if debit.reimbursement_date.nil? %>
 			<% if current_user.is_affairs? || current_user.is_admin? %>
-				<%= link_to(image_tag("reimburse_dg.gif", :border => 0), :controller => "debits", :action => :reimburse, :id => debit.id ) %>
+				<%= link_to(image_tag("reimburse_dg.png", :border => 0), :controller => "debits", :action => :reimburse, :id => debit.id ) %>
 			<% else %>
 				pending
 			<% end %>
@@ -33,8 +33,8 @@
 	</td>
 	<% if current_user.is_admin? %>
 		<td align="center">
-			<%= link_to(image_tag("edit_dg.gif", :border => 0), edit_debit_path(debit))%>&nbsp;
-			<%= link_to(image_tag("delete_dg.gif", :border => 0), debit_path(debit), :confirm => 'delete?', :method => :delete) %>
+			<%= link_to(image_tag("edit_dg.png", :border => 0), edit_debit_path(debit))%>&nbsp;
+			<%= link_to(image_tag("delete_dg.png", :border => 0), debit_path(debit), :confirm => 'delete?', :method => :delete) %>
 		</td>
 	<% end %>
   </tr>
@@ -42,5 +42,5 @@
 </table>
 
 <span class="smtext">
-<%= will_paginate @account_debits, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+	<%= will_paginate @account_debits, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
 </span>

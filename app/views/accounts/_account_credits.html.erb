@@ -13,8 +13,8 @@
     <td><%= credit.amount %></td>
 	<% if current_user.is_admin? %>
 		<td align="center">
-			<%= link_to(image_tag("edit_dg.gif", :border => 0), edit_credit_path(credit))%>&nbsp;
-			<%= link_to(image_tag("delete_dg.gif", :border => 0), credit_path(credit), :confirm => 'delete?', :method => :delete) %>
+			<%= link_to(image_tag("edit_dg.png", :border => 0), edit_credit_path(credit))%>&nbsp;
+			<%= link_to(image_tag("delete_dg.png", :border => 0), credit_path(credit), :confirm => 'delete?', :method => :delete) %>
 		</td>
 	<% end %>
   </tr>

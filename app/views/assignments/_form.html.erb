@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+	<!-- shouldn't be able to do this -->
   <div class="field">
     <%= f.label :Role %>: 
 	<%= f.collection_select :role_id, Role.all, :id, :name, :prompt => "Select ..." %>

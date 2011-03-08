@@ -8,13 +8,9 @@ class Debit < ActiveRecord::Base
 	#Validations
 	validates_presence_of :item_purchased, :reason, :debit_category_id, :date_purchased
 	
-	#validates_numericality_of :amount
 	validate :valid_amount
-	validates_format_of :amount, :with => /^\d\d*$/
-	validates_numericality_of :amount, :greater_than => 0 
-	
 	validate :valid_number_of_consumers
-	validate :valid_names_of_consumers
+	#validate :valid_names_of_consumers
 	
 
 	#Named Scopes
@@ -33,29 +29,42 @@ class Debit < ActiveRecord::Base
 	end
 	
 	def valid_number_of_consumers
-		if self.debit_category.category.eql?("Food")
-			validates_numericality_of :number_of_consumers
+		if !debit_category.nil?
+			if debit_category.category.eql?("Food")
+				self.valid_names_of_consumers
+			end
+			
 		end
 		return
 	end
 	
 	def valid_names_of_consumers
 		if !number_of_consumers.nil?
-			if self.number_of_consumers > 5
-				validates_presence_of :names_of_consumers
+			if number_of_consumers > 0
+				if number_of_consumers < 5
+					validates_presence_of :names_of_consumers
+				end
+			else
+				validates_numericality_of :number_of_consumers, :greater_than => 0 
+			end
+		end
+		return
+	end
+	
+	## will throw an error unless amount is > 0 and adding the debit will not put the account over budget
+	def valid_amount
+		if !amount.nil?
+			if amount > 0
+				unless account.balance - amount > 0
+					errors.add_to_base('this amount would put you over budgit')
+				end
+			else
+				validates_numericality_of :amount, :greater_than => 0
 			end
 		else
-			validates_presence_of :names_of_consumers
-		end
-	end
-	
-	def valid_amount
-		unless self.account.balance - amount > 0
-			errors.add_to_base('this amount would put you over budgit')
+			validates_numericality_of :amount
 		end
 	end
 	
 	
-	
-
 end

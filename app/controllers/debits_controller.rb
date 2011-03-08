@@ -4,23 +4,23 @@ class DebitsController < ApplicationController
   # GET /debits
   # GET /debits.xml
   def index
-    @debits = Debit.all.paginate :page => params[:page], :per_page => 5
-	
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @debits }
-    end
+	redirect_to root_url
+    #@debits = Debit.all.paginate :page => params[:page], :per_page => 5
+    #respond_to do |format|
+    #  format.html # index.html.erb
+    #  format.xml  { render :xml => @debits }
+    #end
   end
 
   # GET /debits/1
   # GET /debits/1.xml
   def show
-    @debit = Debit.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @debit }
-    end
+	redirect_to root_url
+    #@debit = Debit.find(params[:id])
+    #respond_to do |format|
+    #  format.html # show.html.erb
+    #  format.xml  { render :xml => @debit }
+    #end
   end
 
   # GET /debits/new

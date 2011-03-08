@@ -4,12 +4,12 @@ class AccountsController < ApplicationController
   # GET /accounts
   # GET /accounts.xml
   def index
-    @accounts = Account.all
-	
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @accounts }
-    end
+	redirect_to root_url
+    #@accounts = Account.all
+    #respond_to do |format|
+    #  format.html # index.html.erb
+    #  format.xml  { render :xml => @accounts }
+    #end
   end
 
   # GET /accounts/1

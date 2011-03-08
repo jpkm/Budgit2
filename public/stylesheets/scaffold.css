@@ -97,7 +97,6 @@ table.datagrid {
 	text-align: left;
 	border-collapse: collapse;
 		width: auto;
-        /*width: 100%;*/
 }
 
 table.datagrid a {
@@ -123,8 +122,8 @@ caption.datagrid {
 }
 thead.datagrid th {
 	font-size: 105%;
-	color: #F1EDED;
-	background-color: #F1EDED;
+	color: black;
+	background-color: white;
 	height: 28px;
 	font-weight: bold;
 	padding: 10px;
@@ -143,7 +142,7 @@ td{
 	color: #000000;
 	text-align: left;
 	vertical-align: top;
-	line-height: 2.5;
+	line-height: 1.5;
 	padding: 3px;
 }
 .dg_list_line_even {
@@ -151,7 +150,7 @@ td{
 	color: #000000;
 	text-align: left;
 	vertical-align: top;
-	line-height: 2.5;
+	line-height: 1.5;
 	background-color: #cbcbcb;
 	padding: 3px;
 }
