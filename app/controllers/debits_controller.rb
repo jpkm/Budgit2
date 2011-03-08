@@ -90,8 +90,7 @@ class DebitsController < ApplicationController
     #  format.xml  { head :ok }
     #end
   end
-  
-  #****************** WHY THIS WORK ***********
+
   def reimburse
 	@debit = Debit.find(params[:id])
 	@debit.reimbursement_date = DateTime.now

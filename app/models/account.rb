@@ -43,7 +43,7 @@ class Account < ActiveRecord::Base
 		return sum
 	end
 	
-	# checks if the account has a credit with creditcategory type of "Initial"
+	#### checks if the account has a credit with creditcategory type of "Initial"
 	def has_inital?
 		for credit in credits
 			if credit.credit_category.category.eql?("Inital")
@@ -51,6 +51,17 @@ class Account < ActiveRecord::Base
 			end
 		end
 		return false
+	end
+	
+	#### returns all debits who's reimbusement_date is nil
+	def unreimbursed
+		unreimbursed = []
+		for debit in self.debits
+			if debit.reimbursement_date.nil?
+				unreimbursement << debit
+			end
+		end
+		return unreimbursed
 	end
 	
 end
