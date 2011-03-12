@@ -18,7 +18,11 @@
 <% end %>
 </table>
 
-<br />
+<span class="smtext">
+	<%= will_paginate @account_debits, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+</span>
+
+<br>
 
 <% if current_user.is_admin? %>
 	<%= link_to 'New Club', new_club_path %>

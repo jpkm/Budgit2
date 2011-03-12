@@ -5,7 +5,7 @@ class ClubsController < ApplicationController
   # GET /clubs
   # GET /clubs.xml
   def index
-    @clubs = Club.all
+    @clubs = Club.all.paginate :page => params[:page], :per_page => 5
 
     respond_to do |format|
       format.html # index.html.erb

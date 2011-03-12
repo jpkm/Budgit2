@@ -4,13 +4,13 @@ class AssignmentsController < ApplicationController
   # GET /assignments
   # GET /assignments.xml
   def index
-	redirect_to root_url
+	#redirect_to root_url
 	
-    #@assignments = Assignment.all
-    #respond_to do |format|
-    # format.html # index.html.erb
-    # format.xml  { render :xml => @assignments }
-   #end
+    @assignments = Assignment.all
+    respond_to do |format|
+     format.html # index.html.erb
+     format.xml  { render :xml => @assignments }
+   end
   end
 
   # GET /assignments/1
@@ -30,6 +30,27 @@ class AssignmentsController < ApplicationController
   def new
     @assignment = Assignment.new
 	@assignment.club_id = params[:club]
+	@club = params[:club]
+	
+	@club_roles = []
+	p @club_roles
+	
+	p @club
+	
+	for assignment in @club
+		@club_roles << assignment.role
+	end
+	
+	
+	## all roles other than System Admin of VP
+	#if @assignment.club_id.nil?
+	#	@except = []
+	#	for role in Role.all
+	#		unless role.name.eql?("System Admin") || role.name.eql?("VP")
+	#			@except << role
+	#		end
+	#	end
+	#end
 
     respond_to do |format|
       format.html # new.html.erb

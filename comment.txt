@@ -10,4 +10,7 @@
 - can't choose role for assignment if that role is already filled for that club
 - can't choose User that is already assigned to another club
 
+**how/when do you assign someone to a club?**
+** should sys admin be a role??
+	** in the user class they should have an attribute sysadmin? **
 

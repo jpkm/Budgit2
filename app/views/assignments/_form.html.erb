@@ -10,14 +10,23 @@
       </ul>
     </div>
   <% end %>
-	<!-- shouldn't be able to do this -->
+  
   <div class="field">
-    <%= f.label :Role %>: 
-	<%= f.collection_select :role_id, Role.all, :id, :name, :prompt => "Select ..." %>
+	<%= f.label :Role %>:
+	<% if @assignment.club_id != nil %>
+		<%= f.collection_select :role_id, @except, :id, :name, :prompt => "Select ..." %>
+		<!-- only give them roles which are free for the club-->
+	<% else %>
+		<%= f.collection_select :role_id, Role.all, :id, :name, :prompt => "Select ..." %>
+	<% end %>
+		
   </div>
   <div class="field">
-    <%= f.label :Club %>: <%= @assignment.club.name %>
-	<%= f.hidden_field :club_id, :value => @assignment.club_id %>
+    <%= f.label :Club %>: 
+	<% if assignment.club_id != nil %>
+		<%= @assignment.club.name %>
+		<%= f.hidden_field :club_id, :value => @assignment.club_id %>
+	<% end %>
   </div>
   <div class="field">
     <%= f.label :User %>: 

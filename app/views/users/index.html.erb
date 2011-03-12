@@ -1,22 +1,26 @@
-<h1>User Info</h1>
+<h1>Listing Users</h1>
 
-<p>
-  <b>First name:</b>
-  <%=h current_user.first_name %>
-</p>
+<table class = "datagrid">
+	<thread class = "datagrid"
+		<th>Name</th>
+	</thread>
 
-<p>
-	<b>Middle name:</b>
-	<%=h current_user.middle_name %>
-</p>
+<% @users.each do |user| %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+    <td><%= link_to user.username, user_path(user)%></td>
+	<td align="center">
+		<%= link_to(image_tag("edit_dg.png", :border => 0), edit_user_path(user))  %>&nbsp;
+		<%= link_to(image_tag("delete_dg.png", :border => 0), user_path(user), :confirm => 'delete?', :method => :delete) %>
+	</td>
+  </tr>
+  <% end %>
+</table>
 
-<p>
-  <b>Last name:</b>
-  <%=h current_user.last_name %>
-</p>
+<span class="smtext">
+	<%= will_paginate @account_debits, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+</span>
 
-<p>
-  <b>Email:</b>
-  <%=h current_user.email %>
-</p>
+<br>
+
+<%= link_to 'New User', new_user_path %>
 
