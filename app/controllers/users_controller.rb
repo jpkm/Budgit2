@@ -2,6 +2,16 @@ class UsersController < ApplicationController
 	before_filter :login_required, :except => [:new, :create]
 	layout "application"
 	
+ def index
+	@users = User.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @users }
+    end
+ end
+	
+	
   def new
     @user = User.new
   end
