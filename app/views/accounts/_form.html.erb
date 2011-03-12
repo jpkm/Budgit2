@@ -11,9 +11,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :year %><br />
-	<%#= f.date_select :year, :order => [:month, :day, :year] %>
-    <%= f.text_field :year %>
+    <%= f.label :year %>: <%= @account.year %>
+	<%= f.hidden_field :year, :value => @time.year %>
   </div>
   
   <div class="field">
@@ -21,7 +20,6 @@
 	<%= f.hidden_field :club_id, :value => @account.club_id %>
   </div>
   
-  <!-- make this account the current account -->
   <div class="field">
 	<%= f.hidden_field :active, :value => true %>
   </div>

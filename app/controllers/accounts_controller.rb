@@ -16,7 +16,6 @@ class AccountsController < ApplicationController
   # GET /accounts/1.xml
   def show
 	@account = Account.find(params[:id])
-		
 	# all debits for active account of @club
 	@account_debits = @account.debits.paginate :page => params[:page], :per_page => 5
 	# all credits for active account of @club
@@ -34,6 +33,8 @@ class AccountsController < ApplicationController
   def new
     @account = Account.new
 	@account.club_id = params[:club]
+	@time = Time.new
+	@account.year = @time.year 
 	@account.active = true
 	
     respond_to do |format|

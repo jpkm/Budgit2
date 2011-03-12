@@ -7,10 +7,8 @@ class Debit < ActiveRecord::Base
 	
 	#Validations
 	validates_presence_of :item_purchased, :reason, :debit_category_id, :date_purchased
-	
 	validate :valid_amount
 	validate :valid_number_of_consumers
-	#validate :valid_names_of_consumers
 	
 
 	#Named Scopes
@@ -31,7 +29,8 @@ class Debit < ActiveRecord::Base
 	def valid_number_of_consumers
 		if !debit_category.nil?
 			if debit_category.category.eql?("Food")
-				self.valid_names_of_consumers
+				validates_presence_of :number_of_consumers
+				valid_names_of_consumers
 			end
 			
 		end
@@ -41,7 +40,7 @@ class Debit < ActiveRecord::Base
 	def valid_names_of_consumers
 		if !number_of_consumers.nil?
 			if number_of_consumers > 0
-				if number_of_consumers < 5
+				if number_of_consumers <= 5
 					validates_presence_of :names_of_consumers
 				end
 			else
