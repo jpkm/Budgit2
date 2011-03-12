@@ -58,7 +58,7 @@ class Account < ActiveRecord::Base
 		unreimbursed = []
 		for debit in self.debits
 			if debit.reimbursement_date.nil?
-				unreimbursement << debit
+				unreimbursed << debit
 			end
 		end
 		return unreimbursed
