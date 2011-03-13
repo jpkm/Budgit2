@@ -23,7 +23,7 @@ class ClubsController < ApplicationController
 	# all accounts for @club
 	@inactive_accounts = Account.inactive_for_club(@club).paginate :page => params[:page], :per_page => 5
 	# get all assignment for @club
-	@assignments_for_club = Assignment.for_club(@club) #.paginate :page => params[:page], :per_page => 5
+	@active_assignments_for_club = Assignment.active_for_club(@club)#.paginate :page => params[:page], :per_page => 5
 	
 	unless @club.current_account.nil?
 		# all debits for active account of @club

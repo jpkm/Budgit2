@@ -20,8 +20,8 @@
 		</td>
 		<td width="10">&nbsp;</td>
 		<td width="250">
-			<!-- all assignments for @club -->
-			<% unless @assignments_for_club.nil? || @assignments_for_club.empty? %>
+			<!-- all active assignments for @club -->
+			<% unless @active_assignments_for_club.nil? || @active_assignments_for_club.empty? %>
 				<p class="supertiny">&nbsp;</p>
 				<%= render :partial => "clubs_assignments" %>
 			<% end %>

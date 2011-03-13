@@ -12,24 +12,25 @@
   <% end %>
   
   <div class="field">
+    <%= f.label :User %>: 
+	<%= f.collection_select :user_id, @available_users, :id, :username, :prompt => "Select ..." %>
+  </div>
+  
+  <div class="field">
 	<%= f.label :Role %>:
 	<% unless @assignment.club.nil? %>
-			<%= f.collection_select :role_id, @roles, :id, :name, :prompt => "Select ..." %>
+			<%= f.collection_select :role_id, @available_roles, :id, :name, :prompt => "Select ..." %>
 	<% else %>
 		<%= f.collection_select :role_id, Role.all, :id, :name, :prompt => "Select ..." %>
 	<% end %>
   </div>
+  
   <div class="field">
     <%= f.label :Club %>: 
 	<% if @assignment.club_id != nil %>
 		<%= @assignment.club.name %>
 		<%= f.hidden_field :club_id, :value => @assignment.club_id %>
 	<% end %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :User %>: 
-	<%= f.collection_select :user_id, @free_users, :id, :username, :prompt => "Select ..." %>
   </div>
   
     <%= f.hidden_field :active, :value => true %> 

@@ -26,51 +26,13 @@ class AssignmentsController < ApplicationController
     #end
   end
 
-  # GET /assignments/new
-  # GET /assignments/new.xml
+
   def new
     @assignment = Assignment.new
 	@assignment.club_id = params[:club]
-	
-	## gets the free roles for the club (should go in assignment.rb?) 
-	##############################################
-	@club = @assignment.club	
-	
-	@roles = []
-	for role in Role.all
-		unless role.name.eql?("System Admin") || role.name.eql?("VP of Finance")
-			@roles << role
-		end
-	end
-	
-	@club_roles = []
-	for assignment in @club.assignments
-		@club_roles << assignment.role
-	end
-	
-	for role in @club_roles
-		@roles.delete(role)
-	end
-	
-	#####################################################
-	@club_users = []
-	for assignment in @club.assignments
-		@club_users << assignment.user
-	end
-	p @club_users
-	
-	@free_users =[]
-	for user in User.all
-		for assignment in user.assignments
-			if assignment.nil? || assignment.club_id.nil?
-				unless assignment.role.name.eql?("System Admin") || assignment.role.name.eql?("VP of Finance")
-					@free_users << user
-				end
-			end
-		end
-	end
-	p @free_users
-	
+	@club = @assignment.club
+	@available_roles = @assignment.club.roles_available	
+	@available_users = @club.free_users
 	
     respond_to do |format|
       format.html # new.html.erb
@@ -78,13 +40,12 @@ class AssignmentsController < ApplicationController
     end
   end
 
-  # GET /assignments/1/edit
+  
   def edit
     @assignment = Assignment.find(params[:id])
   end
 
-  # POST /assignments
-  # POST /assignments.xml
+  
   def create
     @assignment = Assignment.new(params[:assignment])
 	@assignment.active = true
@@ -130,12 +91,4 @@ class AssignmentsController < ApplicationController
     #  format.xml  { head :ok }
     #end
   end
-  
-  #def deactivate
-  	#@assignment = Account.find(params[:id])
-	#@assignment.active = false
-	#@account.save!
-	
-	#redirect_to(club_path(@account.club_id), :notice => 'Account deactivated.')
-  #end
 end

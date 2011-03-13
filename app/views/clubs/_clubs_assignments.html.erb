@@ -7,7 +7,7 @@
 	<th>Email</th>
   </thread>
 
-<% for assignment in @assignments_for_club %>
+<% for assignment in @active_assignments_for_club %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
     <td><%= assignment.role.name %></td>
 	<td><%= assignment.user.name %></td>

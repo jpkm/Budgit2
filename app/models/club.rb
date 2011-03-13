@@ -31,12 +31,50 @@ class Club < ActiveRecord::Base
 		return nil
 	end
 	
-	#def filled_assignments
-	#	free_roles = []
-	#	for assignment in assignments
-	#		 p Roles.indexOf(assignment.role)
-	#	end
-	#end
+	#### returns roles that are available for club
+	def roles_available
+		available_roles = []
+		for role in Role.all
+			unless role.name.eql?("System Admin") || role.name.eql?("VP of Finance")
+				available_roles << role
+			end
+		end
+	
+		club_roles = []
+		for assignment in assignments
+			if assignment.active?
+				club_roles << assignment.role
+			end
+		end
+		
+		for role in club_roles
+			available_roles.delete(role)
+		end
+		
+		return available_roles
+	end
+	
+	#### returns users without an active assignment who are aren't the sys or vp 
+	def free_users
+		active_club_users = []
+		for assignment in assignments
+			if assignment.active
+				active_club_users << assignment.user
+			end
+		end
+	
+		free_users =[]
+		for user in User.all
+			for assignment in user.assignments
+				unless assignment.active?
+					unless assignment.role.name.eql?("System Admin") || assignment.role.name.eql?("VP of Finance")
+						free_users << user
+					end
+				end
+			end
+		end
+		return free_users
+	end
 				
 		
 	
