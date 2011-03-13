@@ -8,6 +8,7 @@ class Assignment < ActiveRecord::Base
 	
 	#Validations
 	validates_presence_of :role_id, :user_id
+	validates_uniqueness_of :user_id, :scope => [:club_id, :role_id]
 	
 	#Named Scopes
 	#get all the assignments for a user
@@ -15,5 +16,7 @@ class Assignment < ActiveRecord::Base
     #get all assignments for a club_id
     named_scope :for_club, lambda { |club| { :conditions => ['club_id = ?', club] } }
 	#get all assignments for a user,role
+		
+	
 	
 end

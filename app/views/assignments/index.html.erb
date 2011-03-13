@@ -2,10 +2,9 @@
 
 <table>
   <tr>
-    <th>Role</th>
-    <th>Club</th>
     <th>User</th>
-    <th>Active</th>
+    <th>Role</th>
+	<th>Club</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,11 +12,12 @@
 
 <% @assignments.each do |assignment| %>
   <tr>
-    <td><%= assignment.role.name %></td>
-    <td><%= assignment.club.name %></td>
     <td><%= assignment.user.name %></td>
-    <td><%#= assignment.active %></td>
-    <td><%= link_to 'Show', assignment %></td>
+	<td><%= assignment.role.name %></td>
+	<% unless assignment.club.nil? %>
+		<td><%= assignment.club.name %></td>
+	<% end %>
+    <%#= assignment.active %>
     <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
     <td><%= link_to 'Destroy', assignment, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

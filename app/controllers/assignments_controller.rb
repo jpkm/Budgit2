@@ -7,6 +7,7 @@ class AssignmentsController < ApplicationController
 	#redirect_to root_url
 	
     @assignments = Assignment.all
+	
     respond_to do |format|
      format.html # index.html.erb
      format.xml  { render :xml => @assignments }
@@ -30,28 +31,47 @@ class AssignmentsController < ApplicationController
   def new
     @assignment = Assignment.new
 	@assignment.club_id = params[:club]
-	@club = params[:club]
+	
+	## gets the free roles for the club (should go in assignment.rb?) 
+	##############################################
+	@club = @assignment.club	
+	
+	@roles = []
+	for role in Role.all
+		unless role.name.eql?("System Admin") || role.name.eql?("VP of Finance")
+			@roles << role
+		end
+	end
 	
 	@club_roles = []
-	p @club_roles
-	
-	p @club
-	
-	for assignment in @club
+	for assignment in @club.assignments
 		@club_roles << assignment.role
 	end
 	
+	for role in @club_roles
+		@roles.delete(role)
+	end
 	
-	## all roles other than System Admin of VP
-	#if @assignment.club_id.nil?
-	#	@except = []
-	#	for role in Role.all
-	#		unless role.name.eql?("System Admin") || role.name.eql?("VP")
-	#			@except << role
-	#		end
-	#	end
-	#end
-
+	#####################################################
+	@club_users = []
+	for assignment in @club.assignments
+		@club_users << assignment.user
+	end
+	p @club_users
+	
+	@free_users =[]
+	for user in User.all
+		for assignment in user.assignments
+			if assignment.nil? || assignment.club_id.nil?
+				unless assignment.role.name.eql?("System Admin") || assignment.role.name.eql?("VP of Finance")
+					@free_users << user
+				end
+			end
+		end
+	end
+	p @free_users
+	
+	
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @assignment }
@@ -100,12 +120,22 @@ class AssignmentsController < ApplicationController
   # DELETE /assignments/1.xml
   def destroy
     @assignment = Assignment.find(params[:id])
-    redirect_to(@assignment.club)
-	@assignment.destroy
+	@assignment.active = false
+	@assignment.save!
+	
+	redirect_to(@assignment.club)
 	
 	#respond_to do |format|
     #  format.html { redirect_to(assignments_url) }
     #  format.xml  { head :ok }
     #end
   end
+  
+  #def deactivate
+  	#@assignment = Account.find(params[:id])
+	#@assignment.active = false
+	#@account.save!
+	
+	#redirect_to(club_path(@account.club_id), :notice => 'Account deactivated.')
+  #end
 end

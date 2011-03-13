@@ -31,6 +31,15 @@ class Club < ActiveRecord::Base
 		return nil
 	end
 	
+	#def filled_assignments
+	#	free_roles = []
+	#	for assignment in assignments
+	#		 p Roles.indexOf(assignment.role)
+	#	end
+	#end
+				
+		
+	
 	#######################################################
 	# Probably don't need this
 	# returns faculty advisor

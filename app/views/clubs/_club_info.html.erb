@@ -15,7 +15,7 @@
 				<% end %>
 			<% end %>
 			<% if current_user.is_admin? %>
-				<%= link_to "Assign Users", new_assignment_path(:club => @club.id) %>
+				<%= link_to "Assign Users", new_assignment_path(:club => @club) %>
 			<% end %>
 		</td>
 		<td width="10">&nbsp;</td>
