@@ -30,9 +30,15 @@ class AssignmentsController < ApplicationController
   def new
     @assignment = Assignment.new
 	@assignment.club_id = params[:club]
-	@club = @assignment.club
-	@available_roles = @assignment.club.roles_available	
-	@available_users = @club.free_users
+	unless @assignment.club_id.nil?
+		@club = @assignment.club
+		@available_roles = @assignment.club.roles_available	
+		@available_users = @club.free_users
+	#### if assigning vp or sysadmin
+	else
+		@available_roles = @assignment.roles
+		@users = @assignment.available_users
+	end
 	
     respond_to do |format|
       format.html # new.html.erb

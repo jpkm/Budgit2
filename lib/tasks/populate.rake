@@ -36,14 +36,14 @@ namespace :db do
 	
 	# Step 3.5: add X club
 		x = Club.new
-		x.name = "X"
+		x.name = "Gaming Club"
 		x.save!
     
     # Step 4: add Users
 		sys = User.new
-		sys.first_name = "system"
-		sys.middle_name = "system"
-		sys.last_name = "admin"
+		sys.first_name = "Mr.system"
+		sys.middle_name = "ad"
+		sys.last_name = "min"
 		sys.email = "system@admin.edu"
 		sys.username = "system"
 		sys.password = "system"
@@ -51,9 +51,9 @@ namespace :db do
 		sys.save!
 			
 		vp = User.new
-		vp.first_name = "vp"
-		vp.middle_name = "vp"
-		vp.last_name = "vp"
+		vp.first_name = "Mr.vp"
+		vp.middle_name = "of"
+		vp.last_name = "finance"
 		vp.email = "v@p.edu"
 		vp.username = "vp"
 		vp.password = "vp"
@@ -61,9 +61,9 @@ namespace :db do
 		vp.save!
 		
 		leader = User.new
-		leader.first_name = "leader"
-		leader.middle_name = "leader"
-		leader.last_name = "leader"
+		leader.first_name = "Mrs.leader"
+		leader.middle_name = "of"
+		leader.last_name = "club"
 		leader.email = "leader@leader.edu"
 		leader.username = "leader"
 		leader.password = "leader"
@@ -71,9 +71,9 @@ namespace :db do
 		leader.save!
 		
 		sa = User.new
-		sa.first_name = "sa"
-		sa.middle_name = "sa"
-		sa.last_name = "sa"
+		sa.first_name = "Mrs.student"
+		sa.middle_name = "affairs"
+		sa.last_name = "officer"
 		sa.email = "sa@sa.edu"
 		sa.username = "sa"
 		sa.password = "sa"
@@ -81,9 +81,9 @@ namespace :db do
 		sa.save!
 		
 		faculty = User.new
-		faculty.first_name = "faculty"
-		faculty.middle_name = "faculty"
-		faculty.last_name = "faculty"
+		faculty.first_name = "Mr.Ian"
+		faculty.middle_name = "PhD"
+		faculty.last_name = "Lacey"
 		faculty.email = "faculty@faculty.edu"
 		faculty.username = "faculty"
 		faculty.password = "faculty"
@@ -94,7 +94,6 @@ namespace :db do
 	#Step 4.5: add Assignments
 		asys = Assignment.new
 		asys.user_id = sys.id
-		#asys.club_id = x.id
 		asys.role_id = rsys.id
 		asys.active = true
 		asys.save!
@@ -108,7 +107,6 @@ namespace :db do
 	
 		avp = Assignment.new
 		avp.user_id = vp.id
-		#avp.club_id = x.id
 		avp.role_id = rvp.id
 		avp.active = true
 		avp.save!
