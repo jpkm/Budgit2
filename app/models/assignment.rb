@@ -9,6 +9,7 @@ class Assignment < ActiveRecord::Base
 	#Validations
 	validates_presence_of :role_id, :user_id
 	validates_uniqueness_of :user_id, :scope => [:club_id, :role_id]
+	#validate :valid_assignment
 	
 	#Named Scopes
 	#get all the assignments for a user
@@ -18,6 +19,11 @@ class Assignment < ActiveRecord::Base
 	
 	
 	## returns true if there is an active assignment with role name of System Admin
+	#def valid_assignment_vp_or_sysadmin
+	#	if is_there_a_sysadmin?
+	#end
+	
+	
 	def is_there_a_sysadmin?
 		for assignment in Assignment.all
 			if assignment.role.name.eql?("System Admin") && assignment.active
@@ -39,15 +45,14 @@ class Assignment < ActiveRecord::Base
 	def roles
 		available_roles = []
 		for role in Role.all
-			unless is_there_a_sysadmin? || is_there_a_vp?
-				if role.name.eql?("System Admin") 
+			#unless is_there_a_sysadmin? || is_there_a_vp?
+				if role.name.eql?("System Admin") || role.name.eql?("VP of Finance") 
 					available_roles << role
-				elsif role.name.eql?("VP of Finance")
-					available_roles << role
+				#elsif role.name.eql?("VP of Finance")
+					#available_roles << role
 				end
-			end
-		return available_roles
 		end
+		return available_roles
 	end
 	
 	def available_users

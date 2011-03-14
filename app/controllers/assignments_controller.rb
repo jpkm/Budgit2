@@ -34,7 +34,6 @@ class AssignmentsController < ApplicationController
 		@club = @assignment.club
 		@available_roles = @assignment.club.roles_available	
 		@available_users = @club.free_users
-	#### if assigning vp or sysadmin
 	else
 		@available_roles = @assignment.roles
 		@users = @assignment.available_users
@@ -58,8 +57,12 @@ class AssignmentsController < ApplicationController
 
     respond_to do |format|
       if @assignment.save
-        format.html { redirect_to(club_path(@assignment.club_id), :notice => 'Assignment was successfully created.') }
-        format.xml  { render :xml => @assignment, :status => :created, :location => @assignment }
+		if @assignment.role.name.eql?("System Admin") || @assignment.role.name.eql?("VP of Finance")
+			redirect_to root_url, :notice => 'Assignment was successfully created.' }
+		else
+			format.html { redirect_to(club_path(@assignment.club_id), :notice => 'Assignment was successfully created.') }
+			format.xml  { render :xml => @assignment, :status => :created, :location => @assignment }
+		end
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @assignment.errors, :status => :unprocessable_entity }
