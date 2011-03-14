@@ -55,7 +55,7 @@ class Debit < ActiveRecord::Base
 		if !amount.nil?
 			if amount > 0
 				unless account.balance - amount > 0
-					errors.add_to_base('this amount would put you over budgit')
+					errors.add_to_base('this amount would put you over budget')
 				end
 			else
 				validates_numericality_of :amount, :greater_than => 0

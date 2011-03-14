@@ -1,9 +1,9 @@
 <h1>Listing Users</h1>
 
 <table class = "datagrid">
-	<thread class = "datagrid"
+	<thead class = "datagrid">
 		<th>Name</th>
-	</thread>
+	</thead>
 
 <% @users.each do |user| %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
