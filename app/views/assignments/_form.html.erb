@@ -13,20 +13,26 @@
   
   <div class="field">
     <%= f.label :User %>: 
-	<% unless @assignment.club.nil? %>
+	<%= @assignment.club_id.nil? %>
+	<% unless @assignment.club_id.nil? %>
 		<%= f.collection_select :user_id, @available_users, :id, :username, :prompt => "Select ..." %>
 	<% else %>
-		<%= f.collection_select :user_id, @users, :id, :username, :prompt => "Select ..." %>
+		 <%= @users.nil? %>
+		<% unless @users.nil? %>
+			<%= f.collection_select :user_id, @users, :id, :username, :prompt => "Select ..." %>
+		<% else %>
+			"There are no available users"
+		<% end %>
 	<% end %>
   </div>
   
   <div class="field">
 	<%= f.label :Role %>:
-	<% unless @assignment.club.nil? %>
-		<%= f.collection_select :role_id, @available_roles, :id, :name, :prompt => "Select ..." %>
-	<% else %>
-		<%= f.collection_select :role_id, @available_roles, :id, :name, :prompt => "Select ..." %>
-	<% end %>
+		<% unless @assignment.club_id.nil? || @roles.nil? %>
+			<%= f.collection_select :role_id, @available_roles, :id, :name, :prompt => "Select ..." %>
+		<% else %>
+			<%= f.collection_select :role_id, @roles, :id, :name, :prompt => "Select ..." %>
+		<% end %>
   </div>
   
   <div class="field"> 

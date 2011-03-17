@@ -8,8 +8,9 @@ class Assignment < ActiveRecord::Base
 	
 	#Validations
 	validates_presence_of :role_id, :user_id
-	validates_uniqueness_of :user_id, :scope => [:club_id, :role_id]
+	#validates_uniqueness_of :user_id, :scope => [:club_id, :role_id]
 	#validate :valid_assignment
+	
 	
 	#Named Scopes
 	#get all the assignments for a user
@@ -19,9 +20,14 @@ class Assignment < ActiveRecord::Base
 	
 	
 	## returns true if there is an active assignment with role name of System Admin
-	#def valid_assignment_vp_or_sysadmin
-	#	if is_there_a_sysadmin?
-	#end
+	def valid_assignment
+			if is_there_a_sysadmin? && role.name.eql?("System Admin")
+				errors.add_to_base('there is already a system admin. You must deactiveate current sysad before assigning a new one')
+			end
+			if is_there_a_vp? && role.eql?("VP of Finance")
+				errors.add_to_base('there is already a vp. You must deactiveate current vp before assigning a new one')
+			end
+	end
 	
 	
 	def is_there_a_sysadmin?
@@ -42,17 +48,18 @@ class Assignment < ActiveRecord::Base
 		return false
 	end
 	
-	def roles
-		available_roles = []
+	def roles_for_vp_and_sysadmin
+		vp_and_sysadmin_roles = []
 		for role in Role.all
 			#unless is_there_a_sysadmin? || is_there_a_vp?
 				if role.name.eql?("System Admin") || role.name.eql?("VP of Finance") 
-					available_roles << role
+					vp_and_sysadmin_roles << role
 				#elsif role.name.eql?("VP of Finance")
 					#available_roles << role
 				end
+			#end
 		end
-		return available_roles
+		return vp_and_sysadmin_roles
 	end
 	
 	def available_users
