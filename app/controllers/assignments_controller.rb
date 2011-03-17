@@ -37,6 +37,8 @@ class AssignmentsController < ApplicationController
 	else
 		unless @assignment.roles_for_vp_and_sysadmin.nil? || @assignment.roles_for_vp_and_sysadmin.empty?
 			@roles = @assignment.roles_for_vp_and_sysadmin
+		end
+		unless @assignment.available_users.nil? || @assignment.available_users.empty?
 			@users = @assignment.available_users
 		end
 	end
@@ -56,17 +58,18 @@ class AssignmentsController < ApplicationController
   def create
     @assignment = Assignment.new(params[:assignment])
 	@assignment.active = true
-
+	
     respond_to do |format|
       if @assignment.save
 		if @assignment.role.name.eql?("System Admin") || @assignment.role.name.eql?("VP of Finance")
-			format.html { redirect_to root_url, :notice => 'Debit was successfully created.' }
-			format.xml  { render :xml => @assignment, :status => :created, :location => @assignment }
+			format.html { redirect_to root_url, :notice => 'Assignment created' }
 		else
 			format.html { redirect_to(club_path(@assignment.club_id), :notice => 'Assignment was successfully created.') }
 			format.xml  { render :xml => @assignment, :status => :created, :location => @assignment }
 		end
       else
+		@roles = @assignment.roles_for_vp_and_sysadmin
+		@users = @assignment.available_users
         format.html { render :action => "new" }
         format.xml  { render :xml => @assignment.errors, :status => :unprocessable_entity }
       end

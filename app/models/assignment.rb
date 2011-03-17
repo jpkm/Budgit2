@@ -51,13 +51,9 @@ class Assignment < ActiveRecord::Base
 	def roles_for_vp_and_sysadmin
 		vp_and_sysadmin_roles = []
 		for role in Role.all
-			#unless is_there_a_sysadmin? || is_there_a_vp?
-				if role.name.eql?("System Admin") || role.name.eql?("VP of Finance") 
-					vp_and_sysadmin_roles << role
-				#elsif role.name.eql?("VP of Finance")
-					#available_roles << role
-				end
-			#end
+			if role.name.eql?("System Admin") || role.name.eql?("VP of Finance") 
+				vp_and_sysadmin_roles << role
+			end
 		end
 		return vp_and_sysadmin_roles
 	end
