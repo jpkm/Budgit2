@@ -9,7 +9,7 @@ class Assignment < ActiveRecord::Base
 	#Validations
 	validates_presence_of :role_id, :user_id
 	#validates_uniqueness_of :user_id, :scope => [:club_id, :role_id]
-	#validate :valid_assignment
+	validate :valid_assignment
 	
 	
 	#Named Scopes
@@ -21,10 +21,10 @@ class Assignment < ActiveRecord::Base
 	
 	## returns true if there is an active assignment with role name of System Admin
 	def valid_assignment
-			if is_there_a_sysadmin? && role.name.eql?("System Admin")
+			if is_there_a_sysadmin? && self.role.name.eql?("System Admin")
 				errors.add_to_base('there is already a system admin. You must deactiveate current sysad before assigning a new one')
 			end
-			if is_there_a_vp? && role.eql?("VP of Finance")
+			if is_there_a_vp? && self.role.eql?("VP of Finance")
 				errors.add_to_base('there is already a vp. You must deactiveate current vp before assigning a new one')
 			end
 	end
@@ -72,6 +72,7 @@ class Assignment < ActiveRecord::Base
 				free_users << user
 			end
 		end
+		p free_users
 		return free_users
 	end
 		

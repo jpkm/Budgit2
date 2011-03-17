@@ -96,14 +96,24 @@ class AssignmentsController < ApplicationController
   # DELETE /assignments/1.xml
   def destroy
     @assignment = Assignment.find(params[:id])
+	@assignment.destroy!
+	
+	respond_to do |format|
+      format.html { redirect_to(assignments_url) }
+      format.xml  { head :ok }
+    end
+  end
+  
+   def deactivate
+  	@assignment = Assignment.find(params[:id])
 	@assignment.active = false
 	@assignment.save!
 	
-	redirect_to(@assignment.club)
-	
-	#respond_to do |format|
-    #  format.html { redirect_to(assignments_url) }
-    #  format.xml  { head :ok }
-    #end
+	unless @assignment.club.nil? || @assignment.club.empty?
+		redirect_to((@assignment.club), :notice => 'Assignment deactivated.')
+	else
+		redirect_to root_url, :notice => 'Assignment deactivated.'
+	end
   end
+  
 end

@@ -5,9 +5,7 @@
     <th>User</th>
     <th>Role</th>
 	<th>Club</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Destroy</th>
   </tr>
 
 <% @assignments.each do |assignment| %>
@@ -16,10 +14,15 @@
 	<td><%= assignment.role.name %></td>
 	<% unless assignment.club.nil? %>
 		<td><%= assignment.club.name %></td>
+	<% else %>
+		<td>N/A</td>
 	<% end %>
     <%#= assignment.active %>
-    <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
-    <td><%= link_to 'Destroy', assignment, :confirm => 'Are you sure?', :method => :delete %></td>
+	<td><% if assignment.active %>
+		<%= link_to "Deactivate", :confirm => "Are you sure?", :controller => "assignments", :action => :deactivate, :id => assignment.id %>
+	<% else %>
+		<%= link_to 'Destroy', assignment, :confirm => 'Are you sure?', :method => :delete %></td>
+	<% end %></td>
   </tr>
 <% end %>
 </table>
