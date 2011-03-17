@@ -31,7 +31,7 @@ Budgit::Application.routes.draw do
   resources :clubs
 
   resources :assignments
-  match 'deactivate' => 'assignments#deactivate', :as => :deactivate
+  match 'deactivates' => 'assignments#deactivates', :as => :deactivates
   
   match 'reimburse' => 'debits#reimburse', :as => :reimburse
 

@@ -30,7 +30,7 @@ class AssignmentsController < ApplicationController
   def new
     @assignment = Assignment.new
 	@assignment.club_id = params[:club]
-	unless @assignment.club_id.nil? || @assignment.club_id.empty?
+	unless @assignment.club_id.nil?
 		@club = @assignment.club
 		@available_roles = @assignment.club.roles_available	
 		@available_users = @club.free_users
@@ -104,12 +104,12 @@ class AssignmentsController < ApplicationController
     end
   end
   
-   def deactivate
+   def deactivates
   	@assignment = Assignment.find(params[:id])
 	@assignment.active = false
 	@assignment.save!
 	
-	unless @assignment.club.nil? || @assignment.club.empty?
+	unless @assignment.club.nil?
 		redirect_to((@assignment.club), :notice => 'Assignment deactivated.')
 	else
 		redirect_to root_url, :notice => 'Assignment deactivated.'
