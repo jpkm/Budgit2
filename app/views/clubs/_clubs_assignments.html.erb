@@ -1,11 +1,11 @@
 <h2> Clubs' Assignments </h2>
 
-<table class = "datagrid">
-  <thread class = "datagrid">
+<table class="datagrid">
+  <thead class="datagrid">
     <th>Role</th>
     <th>User</th>
 	<th>Email</th>
-  </thread>
+  </thead>
 
 <% for assignment in @active_assignments_for_club %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
@@ -14,7 +14,7 @@
 	<td><%= assignment.user.email %></td>
 	<% if current_user.is_admin? %>
 		<td align="center">
-			<%= link_to(image_tag("delete_dg.png", :border => 0), :confirm => "Are you sure?", :controller => "assignments", :action => :deactivates, :id => assignment.id) %>
+			<%= link_to(image_tag("delete_dg.png", :border => 0), :confirm => "Are you sure?", :controller => "assignments", :action => :deactivate2, :id => assignment.id) %>
 			<%#= link_to(image_tag("delete_dg.png", :border => 0), assignment_path(assignment), :confirm => 'deactivate?', :method => :delete) %>
 		</td>
 	<% end %>

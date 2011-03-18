@@ -138,6 +138,7 @@ namespace :db do
     debitcategories.each do |category|
       dc = DebitCategory.new
       dc.category = category
+	  dc.category.active = true
       dc.save!
     end
 	
@@ -146,6 +147,7 @@ namespace :db do
     creditcategories.each do |category|
       cc = CreditCategory.new
       cc.category = category
+	  cc.active = true
       cc.save!
     end
 	

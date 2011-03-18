@@ -16,8 +16,6 @@ class Account < ActiveRecord::Base
 	named_scope :for_club, lambda { |club_id| { :conditions => ['club_id = ?', club_id] } }
 	# get all active accounts for a particular club_id 
 	named_scope :inactive_for_club, lambda { |club| {:conditions => ['club_id = ? AND active = ?', club, false] } }
-	# get all credit categores for credits attached to this account
-	#named_scope :has_initial
 	
 	
 	def balance
@@ -62,6 +60,14 @@ class Account < ActiveRecord::Base
 			end
 		end
 		return unreimbursed
+	end
+	
+	def debitsandcredits
+		@all = []
+		@debits = debits.all
+		@credits = credits.all
+		@all << @debits
+		@all << @credits
 	end
 	
 end

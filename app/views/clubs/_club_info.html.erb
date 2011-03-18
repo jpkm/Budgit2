@@ -9,7 +9,7 @@
 					<br>
 				<% else %>
 					<% unless @club.current_account.nil? %>
-						<%= link_to "Deactivate Current Account", :controller => "accounts", :action => :deactivate, :id => @club.current_account.id %>
+						<%= link_to "Deactivate Current Account", :controller => "accounts", :action => :deactivate1, :id => @club.current_account.id %>
 						<br>
 					<% end %>
 				<% end %>

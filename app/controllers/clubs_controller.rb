@@ -26,6 +26,8 @@ class ClubsController < ApplicationController
 	@active_assignments_for_club = Assignment.active_for_club(@club)#.paginate :page => params[:page], :per_page => 5
 	
 	unless @club.current_account.nil?
+		@account_all = @club.current_account.debitsandcredits
+		p @account_all
 		# all debits for active account of @club
 		@account_debits = @club.current_account.debits.paginate :page => params[:page], :per_page => 5
 		# all credits for active account of @club
@@ -63,7 +65,14 @@ class ClubsController < ApplicationController
 
     respond_to do |format|
       if @club.save
-        format.html { redirect_to(new_account_path(:club => @club), :notice => 'Club was successfully created.') }
+		@time = Time.new
+		@account = Account.new
+		@account.club_id = @club.id
+		@account.year = @time.year
+		@account.active = true
+		@account.save!
+		format.html { redirect_to(club_path(@club), :notice => 'Club was successfully created.') }
+        #format.html { redirect_to(new_account_path(:club => @club), :notice => 'Club was successfully created.') }
         format.xml  { render :xml => @club, :status => :created, :location => @club }
       else
         format.html { render :action => "new" }
@@ -79,7 +88,7 @@ class ClubsController < ApplicationController
 
     respond_to do |format|
       if @club.update_attributes(params[:club])
-        format.html { redirect_to(@club, :notice => 'Club was successfully updated.') }
+        format.html { redirect_to((@club), :notice => 'Club was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

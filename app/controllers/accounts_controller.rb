@@ -20,7 +20,6 @@ class AccountsController < ApplicationController
 	@account_debits = @account.debits.paginate :page => params[:page], :per_page => 5
 	# all credits for active account of @club
 	@account_credits = @account.credits.paginate :page => params[:page], :per_page => 5
-
 		
     respond_to do |format|
       format.html # show.html.erb

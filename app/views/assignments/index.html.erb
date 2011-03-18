@@ -1,7 +1,7 @@
 <h1>Listing assignments</h1>
 
-<table>
-  <tr>
+<table class='datagrid'>
+  <thead class='datagrid'>
     <th>User</th>
     <th>Role</th>
 	<th>Club</th>
@@ -9,7 +9,7 @@
   </tr>
 
 <% @assignments.each do |assignment| %>
-  <tr>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
     <td><%= assignment.user.name %></td>
 	<td><%= assignment.role.name %></td>
 	<% unless assignment.club.nil? %>
@@ -17,9 +17,9 @@
 	<% else %>
 		<td>N/A</td>
 	<% end %>
-    <%#= assignment.active %>
-	<td><% if assignment.active %>
-		<%= link_to "Deactivate", :confirm => "Are you sure?", :controller => "assignments", :action => :deactivate2, :id => assignment.id %>
+	
+	<td align="center"><% if assignment.active %>
+		<%= link_to(image_tag("delete_dg.png", :border => 0), :confirm => "Are you sure?", :controller => "assignments", :action => :deactivate2, :id => assignment.id) %>
 	<% else %>
 		<%= link_to 'Destroy', assignment, :confirm => 'Are you sure?', :method => :delete %></td>
 	<% end %></td>

@@ -3,11 +3,32 @@ class CreditCategory < ActiveRecord::Base
 	
 	has_many :credits
 	
-	validates_presence_of :category
-	validates_uniqueness_of :category
+	#validates_presence_of :category
+	#validates_uniqueness_of :category
+	validate :cc
+	
 	
 	named_scope :all, :order => "id ASC"
-	named_scope :except_initial, :conditions => 'category is not Inital' 
+		
+	
+	def cc
+		cats = []
+		for c in CreditCategory.all
+			cats << c.category
+		end
+		
+		unless category.nil? || category.empty?
+			p category
+			cc = category
+			cc = category.downcase.strip
+			p cc
+			if cats.find(cc)
+				validates_uniqueness_of :category
+			end
+		else
+			validate_presence_of :category
+		end
+	end	
 	
 	
 	def except_inital

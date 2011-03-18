@@ -75,29 +75,4 @@ class Club < ActiveRecord::Base
 		end
 		return free_users
 	end
-				
-		
-	
-	#######################################################
-	# Probably don't need this
-	# returns faculty advisor
-	#def faculty_advisor
-	#	assignments.each do |assignment|
-	#		if assignment.role.name.eql?("Faculty Advisor")
-	#			return assignment.user.name
-	#		end
-	#	end
-	#	return false
-	#end
-	
-	# returns club leader
-	#def club_leader
-	#	for assignment in self.assignments
-	#		if assignment.role.name.eql?("Club Leader")
-	#			return assignment.user.name
-	#		end
-	#	end
-	#	return false
-	#end
-	######################################################
 end
