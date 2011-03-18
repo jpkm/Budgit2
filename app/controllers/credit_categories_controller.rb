@@ -47,7 +47,7 @@ class CreditCategoriesController < ApplicationController
 
     respond_to do |format|
       if @credit_category.save
-        format.html { redirect_to(credit_categories_path), :notice => 'Credit category was successfully created.') }
+        format.html { redirect_to((credit_categories_path), :notice => 'Credit category was successfully created.') }
         #format.html { redirect_to root_url, :notice => 'Credit category was successfully created.'}
 		#format.xml  { render :xml => @credit_category, :status => :created, :location => @credit_category }
       else

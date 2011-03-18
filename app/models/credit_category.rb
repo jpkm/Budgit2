@@ -5,6 +5,8 @@ class CreditCategory < ActiveRecord::Base
 	has_many :credits
 	
 	## Validations
+	#validates_presence_of :category
+	#validates_uniqueness_of :category
 	validate :cc
 	
 	## Named Scopes
@@ -18,8 +20,10 @@ class CreditCategory < ActiveRecord::Base
 		end
 		
 		unless category.nil? || category.empty?
+			category.downcase!
+			category.strip!
 			if cats.include?(category)
-				validates_uniqueness_of :category
+				errors.add_to_base('Category already used')
 			end
 		else
 			validates_presence_of :category

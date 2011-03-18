@@ -14,8 +14,10 @@ class Role < ActiveRecord::Base
 		end
 		
 		unless name.nil? || name.empty?
+			name.downcase!
+			name.strip!
 			if rs.include?(name)
-				validates_uniqueness_of :name
+				errors.add_to_base('Role already used')
 			end
 		else
 			validates_presence_of :name

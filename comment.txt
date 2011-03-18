@@ -3,13 +3,7 @@
 	- when a reimbursement is made send email to club leader
 	- when a club is made email club leader
 
-- get the tables not to look retarded
-
-- buttons for club profile links
-- what should vp see on thier home page
-- can't choose role for assignment if that role is already filled for that club
-- can't choose User that is already assigned to another club
-
 - garbage can for when an element has already been deactivated -
 - should you be able to reactive things?
+- username changed to login (don't mess with mother nature)
 
