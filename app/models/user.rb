@@ -9,41 +9,41 @@ class User < ActiveRecord::Base
   has_many :clubs, :through => :assignments
   
   #Validations
-  validates_presence_of :first_name, :middle_name, :last_name
-  validates_uniqueness_of :email, :allow_blank => true
-  validate :name
-  
+  #validate :un
+  validates_presence_of :username, :first_name, :middle_name, :last_name
+  validates_uniqueness_of :username, :email, :allow_blank => true
+  validates_format_of :username, :with => /^[-\w\._@]+$/i, :allow_blank => true, :message => "should only contain letters, numbers, or .-_@"
   validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
   validates_presence_of :password, :on => :create
   validates_confirmation_of :password
   
-  def name
-		names = []
-		for u in User.all
-			names << u.username.downcase.strip
-		end
+  
+	#def un
+	#	names = []
+	#	for u in User.all
+	#		names << u.username.downcase.strip
+	#	end
 		
-		unless name.nil? || name.empty?
-			name.downcase!
-			name.strip!
-			if names.include?(name)
-				errors.add_to_base('Username already used')
-			else
-				validates_format_of :username, :with => /^[-\w\._@]+$/i, :allow_blank => true, :message => "should only contain letters, numbers, or .-_@"
-			end
-		else
-			validates_presence_of :username
-		end
-	end	
+	#	unless username.nil? || username.empty?
+	#		username.downcase!
+	#		username.strip!
+	#		if names.include?(username)
+	#			#validates_uniqueness_of :username, :email, :allow_blank => true
+	#			errors.add_to_base('Username already used')
+	#		else
+	#			validates_format_of :username, :with => /^[-\w\._@]+$/i, :allow_blank => true, :message => "should only contain letters, numbers, or .-_@"
+	#		end
+	#	else
+	#		validates_presence_of :username
+	#	end
+	#end	
  
 
   # login can be either username or email address
   def self.authenticate(login, pass)
-	p login
-	p pass
 	login = login.strip
 	pass = pass.strip
-    user = find_by_login(login)
+    user = find_by_username(login)
     return user if user && user.password_hash == user.encrypt_password(pass)
   end
 
@@ -68,7 +68,8 @@ class User < ActiveRecord::Base
 	#checks if user assignments are admin  
 	def is_admin?
 		assignments.each do |assignment|
-			if assignment.role.name.eql?("System Admin")
+			p assignment.role.name
+			if assignment.role.name.downcase.eql?("system admin")
 				return true
 			end
 		end
@@ -78,7 +79,7 @@ class User < ActiveRecord::Base
 	#checks if user is VP  
 	def is_VP?
 		assignments.each do |assignment|
-			if assignment.role.name.eql?("VP of Finance")
+			if assignment.role.name.downcase.eql?("vp of finance")
 				return true
 			end
 		end
@@ -88,7 +89,7 @@ class User < ActiveRecord::Base
 	#check is user is Student Affairs Advisor
 	def is_affairs?
 		assignments.each do |assignment|
-			if assignment.role.name.eql?("Student Affairs Advisor")
+			if assignment.role.name.downcase.eql?("student affairs advisor")
 				return true
 			end
 		end
@@ -98,7 +99,7 @@ class User < ActiveRecord::Base
 	#check if user is Faculty Advisor
 	def is_faculty?
 		assignments.each do |assignment|
-			if assignment.role.name.eql?("Faculty Advisor")
+			if assignment.role.name.downcase.eql?("faculty advisor")
 				return true
 			end
 		end
