@@ -1,12 +1,13 @@
 class CreditCategory < ActiveRecord::Base
 	attr_accessible :category
 	
+	##Relationships
 	has_many :credits
-
-	validates_presence_of :category
-	validates_uniqueness_of :category
+	
+	## Validations
 	validate :cc
 	
+	## Named Scopes
 	named_scope :all, :order => "id ASC"
 		
 	
@@ -16,10 +17,9 @@ class CreditCategory < ActiveRecord::Base
 			cats << c.category.downcase.strip
 		end
 		
-		unless self.category.nil? || self.category.empty?
-			if cats.find(self.category)
-				#validates_uniqueness_of :category
-				errors.add_to_base('Category is already taken')
+		unless category.nil? || category.empty?
+			if cats.include?(category)
+				validates_uniqueness_of :category
 			end
 		else
 			validates_presence_of :category

@@ -134,33 +134,42 @@ namespace :db do
 		
 	
 	# Step 6: add some debitcategories to work with 
-    debitcategories = %w[Food Decoration Equipement Other]
-    debitcategories.each do |category|
-	  df = DebitCategory.new
-      df.category = "Food"
-	  df.active = true
-      df.save!
-    end
-	
-	
-	
+		df = DebitCategory.new
+		df.category = "Food"
+		df.active = true
+		df.save!
+		  
+		dd = DebitCategory.new
+		dd.category = "Decoration"
+		dd.active = true
+		dd.save!
+		  
+		de = DebitCategory.new
+		de.category = "Equipement"
+		de.active = true
+		de.save!
+		  
+		dt = DebitCategory.new
+		dt.category = "Other"
+		dt.active = true
+		dt.save!
+		
 	
 	# Step 8: add some creditcategories to work with 
-      ci = CreditCategory.new
-      ci.category = "Initial"
-	  ci.active = true
-      ci.save!
+		ci = CreditCategory.new
+		ci.category = "Initial"
+		ci.active = true
+		ci.save!
     
-	  cs = CreditCategory.new
-      cs.category = "Special"
-	  cs.active = true
-      cs.save!
+		cs = CreditCategory.new
+		cs.category = "Special"
+		cs.active = true
+		cs.save!
 	  
-	  co = CreditCategory.new
-      co.category = "Other"
-	  co.active = true
-      co.save!
-    
+		co = CreditCategory.new
+		co.category = "Other"
+		co.active = true
+		co.save!
     
 	   # Step 7: add some debits and assign them to account
     #Debit.populate 100 do |debit|

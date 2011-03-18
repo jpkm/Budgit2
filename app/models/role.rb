@@ -5,7 +5,21 @@ class Role < ActiveRecord::Base
 	has_many :assignments
 	
 	#Validations
-	validates_presence_of :name
-	validates_uniqueness_of :name
+	validate :r
+	
+	def r
+		rs = []
+		for r in Role.all
+			rs << r.name.downcase.strip
+		end
+		
+		unless name.nil? || name.empty?
+			if rs.include?(name)
+				validates_uniqueness_of :name
+			end
+		else
+			validates_presence_of :name
+		end
+	end	
 	
 end
