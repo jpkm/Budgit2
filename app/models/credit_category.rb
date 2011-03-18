@@ -23,7 +23,6 @@ class CreditCategory < ActiveRecord::Base
 			p cats.find(category)
 			if cats.find(self.category)
 				#validates_uniqueness_of :category
-				#errors.add_to_base('Category is already taken')
 			end
 		else
 			#validates_presence_of :category
