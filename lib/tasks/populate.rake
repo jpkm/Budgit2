@@ -10,7 +10,7 @@ namespace :db do
     require 'faker'
     
     # Step 1: clear any old data in the db
-    [Assignment, Debit, Credit, DebitCategory, CreditCategory, User, Role, Club, Account].each(&:delete_all)
+    [Assignment, Debit, Credit, DebitCategory, User, Role, Club, Account].each(&:delete_all)
     
 	# Step 2: add some Role to work with
 		rsys = Role.new
@@ -141,24 +141,6 @@ namespace :db do
 	  df.active = true
       df.save!
     end
-	
-	
-	# Step 8: add some creditcategories to work with 
-      #ci = CreditCategory.new
-      #ci.category = "Inital"
-	  #ci.active = true
-      #ci.save!
-    
-	  #cs = CreditCategory.new
-      #cs.category = "Special"
-	  #cs.active = true
-      #cs.save!
-	  
-	  #co = CreditCategory.new
-      #co.category = "Other"
-	  #co.active = true
-      #co.save!
-    
     
 	   # Step 7: add some debits and assign them to account
     #Debit.populate 100 do |debit|

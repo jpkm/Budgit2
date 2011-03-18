@@ -3,29 +3,9 @@ class CreditCategory < ActiveRecord::Base
 	
 	has_many :credits
 
-	#validates_presence_of :category
-	#validates_uniqueness_of :category
-	#validate :cc
-	
-	
 	
 	named_scope :all, :order => "id ASC"
-		
-	
-	def cc
-		cats = []
-		for c in CreditCategory.all
-			cats << c.category.downcase.strip
-		end
-		
-		unless self.category.nil? || self.category.empty?
-			p category
-			p cats.find(category)
-			if cats.find(self.category)
-			end
-		else
-		end
-	end	
+			
 	
 	
 	def except_inital
