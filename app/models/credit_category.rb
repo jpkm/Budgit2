@@ -3,9 +3,28 @@ class CreditCategory < ActiveRecord::Base
 	
 	has_many :credits
 
+	validates_presence_of :category
+	validates_uniqueness_of :category
+	validate :cc
 	
 	named_scope :all, :order => "id ASC"
-			
+		
+	
+	def cc
+		cats = []
+		for c in CreditCategory.all
+			cats << c.category.downcase.strip
+		end
+		
+		unless self.category.nil? || self.category.empty?
+			if cats.find(self.category)
+				#validates_uniqueness_of :category
+				errors.add_to_base('Category is already taken')
+			end
+		else
+			validates_presence_of :category
+		end
+	end	
 	
 	
 	def except_inital
