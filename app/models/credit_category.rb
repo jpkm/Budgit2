@@ -2,10 +2,11 @@ class CreditCategory < ActiveRecord::Base
 	attr_accessible :category
 	
 	has_many :credits
-	
+
 	#validates_presence_of :category
 	#validates_uniqueness_of :category
 	validate :cc
+	
 	
 	
 	named_scope :all, :order => "id ASC"
@@ -14,19 +15,18 @@ class CreditCategory < ActiveRecord::Base
 	def cc
 		cats = []
 		for c in CreditCategory.all
-			cats << c.category
+			cats << c.category.downcase.strip
 		end
 		
-		unless category.nil? || category.empty?
+		unless self.category.nil? || self.category.empty?
 			p category
-			cc = category
-			cc = category.downcase.strip
-			p cc
-			if cats.find(cc)
-				validates_uniqueness_of :category
+			p cats.find(category)
+			if cats.find(self.category)
+				#validates_uniqueness_of :category
+				#errors.add_to_base('Category is already taken')
 			end
 		else
-			validate_presence_of :category
+			#validates_presence_of :category
 		end
 	end	
 	

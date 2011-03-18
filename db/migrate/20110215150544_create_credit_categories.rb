@@ -1,7 +1,7 @@
 class CreateCreditCategories < ActiveRecord::Migration
   def self.up
     create_table :credit_categories do |t|
-      t.boolean :active = true
+      t.boolean :active
       t.string :category
 
       t.timestamps
