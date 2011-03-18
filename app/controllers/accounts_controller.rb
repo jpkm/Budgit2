@@ -94,7 +94,7 @@ class AccountsController < ApplicationController
     end
   end
   
-  def deactivate
+  def deactivate1
   	@account = Account.find(params[:id])
 	@account.active = false
 	@account.save!

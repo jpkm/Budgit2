@@ -19,7 +19,7 @@
 	<% end %>
     <%#= assignment.active %>
 	<td><% if assignment.active %>
-		<%= link_to "Deactivate", :confirm => "Are you sure?", :controller => "assignments", :action => :deactivates, :id => assignment.id %>
+		<%= link_to "Deactivate", :confirm => "Are you sure?", :controller => "assignments", :action => :deactivate2, :id => assignment.id %>
 	<% else %>
 		<%= link_to 'Destroy', assignment, :confirm => 'Are you sure?', :method => :delete %></td>
 	<% end %></td>

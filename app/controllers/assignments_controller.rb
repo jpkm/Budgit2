@@ -104,7 +104,7 @@ class AssignmentsController < ApplicationController
     end
   end
   
-   def deactivates
+   def deactivate2
   	@assignment = Assignment.find(params[:id])
 	@assignment.active = false
 	@assignment.save!
