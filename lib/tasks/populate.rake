@@ -144,20 +144,20 @@ namespace :db do
 	
 	
 	# Step 8: add some creditcategories to work with 
-      ci = CreditCategory.new
-      ci.category = "Inital"
-	  ci.active = true
-      ci.save!
+      #ci = CreditCategory.new
+      #ci.category = "Inital"
+	  #ci.active = true
+      #ci.save!
     
-	  cs = CreditCategory.new
-      cs.category = "Special"
-	  cs.active = true
-      cs.save!
+	  #cs = CreditCategory.new
+      #cs.category = "Special"
+	  #cs.active = true
+      #cs.save!
 	  
-	  co = CreditCategory.new
-      co.category = "Other"
-	  co.active = true
-      co.save!
+	  #co = CreditCategory.new
+      #co.category = "Other"
+	  #co.active = true
+      #co.save!
     
     
 	   # Step 7: add some debits and assign them to account

@@ -5,7 +5,7 @@ class CreditCategory < ActiveRecord::Base
 
 	#validates_presence_of :category
 	#validates_uniqueness_of :category
-	validate :cc
+	#validate :cc
 	
 	
 	
@@ -22,10 +22,8 @@ class CreditCategory < ActiveRecord::Base
 			p category
 			p cats.find(category)
 			if cats.find(self.category)
-				#validates_uniqueness_of :category
 			end
 		else
-			#validates_presence_of :category
 		end
 	end	
 	
