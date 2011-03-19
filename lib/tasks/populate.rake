@@ -14,29 +14,29 @@ namespace :db do
     
 	# Step 2: add some Role to work with
 		rsys = Role.new
-		rsys.name = "system admin"
+		rsys.name = "System Admin"
 		rsys.save!
 	  
 		rvp = Role.new
-		rvp.name = "vp of finance"
+		rvp.name = "VP of Finance"
 		rvp.save!
 	  
 		rleader = Role.new
-		rleader.name = "club leader"
+		rleader.name = "Club Leader"
 		rleader.save!
 	  
 		rfaculty = Role.new
-		rfaculty.name = "faculty advisor"
+		rfaculty.name = "Faculty Advisor"
 		rfaculty.save!
 	  
 		rsa = Role.new
-		rsa.name = "student affairs"
+		rsa.name = "Student Affairs"
 		rsa.save!
 	  
 	
 	# Step 3.5: add X club
 		x = Club.new
-		x.name = "gaming club"
+		x.name = "Gaming Club"
 		x.save!
     
     # Step 4: add Users

@@ -7,14 +7,34 @@ class Club < ActiveRecord::Base
 	has_many :users, :through => :assignments
 	
 	#Validations
-	validates_presence_of :name
-	validates_uniqueness_of :name
+	#validates_presence_of :name
+	#validates_uniqueness_of :name
+	validate :cn
 	
 	#Named Scopes
 	#orders clubs by club_id
 	named_scope :all, :order => "name"
 	# get all the projects by a particular user
     named_scope :for_user,  lambda { |user_id| { :joins => :assignments, :conditions => ['user_id = ?', user_id] } }
+	
+	def cn
+		names = []
+		for c in Club.all
+			names << c.name.downcase.strip
+		end
+		
+		unless name.nil? || name.empty?
+			if names.include?(name.downcase.strip)
+				errors.add_to_base('Name already taken')
+			end
+		else
+			validates_presence_of :name
+		end
+	
+	
+	
+	end
+	
 	
 	
 	def current_balance

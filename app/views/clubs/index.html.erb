@@ -1,10 +1,10 @@
 <h1>Listing clubs</h1>
 
-<table class = "datagrid">
-	<thead class = "datagrid"
+<table class ="datagrid">
+	<thead class ="datagrid"
 		<th>Name</th>
 		<th>Balance</th>
-		<th>Deactivate Club</th>
+		<th>Manage</th>
 	</thead>
 
 <% @clubs.each do |club| %>
@@ -13,7 +13,7 @@
 	<td><%= club.current_account.balance %></td>
 	<% if current_user.is_admin? %>
 		<td align="center">
-			<%#= link_to(image_tag("edit_dg.png", :border => 0), edit_club_path(club))  %>&nbsp;
+			<!-- should you be able to do this? -->
 			<%= link_to(image_tag("delete_dg.png", :border => 0), club_path(club), :confirm => 'delete?', :method => :delete) %>
 		</td>
 	<% end %>
