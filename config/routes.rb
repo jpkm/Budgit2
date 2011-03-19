@@ -21,6 +21,7 @@ Budgit::Application.routes.draw do
   resources :credits
 
   resources :debit_categories
+  match 'deactivate4' => 'debit_categories#deactivate4', :as => :deactivate4
 
   resources :roles
 

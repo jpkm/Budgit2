@@ -36,6 +36,7 @@ class DebitCategoriesController < ApplicationController
   def new
 	if current_user.is_admin?
 		@debit_category = DebitCategory.new
+		@debit_category.active = true
 
 		respond_to do |format|
 		  format.html # new.html.erb
@@ -94,4 +95,14 @@ class DebitCategoriesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+   def deactivate4
+  	@debit_category = DebitCategory.find(params[:id])
+	@debit_category.active = false
+	@debit_category.save!
+	
+	redirect_to(debit_categories_path, :notice => 'Debit Category Deactivated.')
+  end
+  
+  
 end

@@ -5,7 +5,7 @@ class DebitCategory < ActiveRecord::Base
 	has_many :debits
 
 	## Validations
-	#validates_uniqueness_of :category
+	validates_uniqueness_of :category
 	validate :dd
 
 	#Named Scopes
@@ -23,6 +23,8 @@ class DebitCategory < ActiveRecord::Base
 			category.strip!
 			if cats.include?(category)
 				errors.add_to_base('Category already used')
+			else
+				debit_category.save!
 			end
 		else
 			validates_presence_of :category

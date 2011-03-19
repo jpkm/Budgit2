@@ -26,13 +26,15 @@ class CreditCategoriesController < ApplicationController
   # GET /credit_categories/new
   # GET /credit_categories/new.xml
   def new
-    @credit_category = CreditCategory.new
-	#@credit_category.active = true
+	if current_user.is_admin?
+		@credit_category = CreditCategory.new
+		@credit_category.active = true
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @credit_category }
-    end
+		respond_to do |format|
+			format.html # new.html.erb
+			format.xml  { render :xml => @credit_category }
+		end
+	end
   end
 
   # GET /credit_categories/1/edit

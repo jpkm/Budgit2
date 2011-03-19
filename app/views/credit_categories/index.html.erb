@@ -1,18 +1,22 @@
-<h1>Listing credit_categories</h1>
+<h1>Credit Categories</h1>
 
 <table class='datagrid'>
   <thead class='datagrid'>
     <th>Category</th>
-    <th>Delete</th>
-    <th></th>
-    <th></th>
+    <th>Manage</th>
   </tr>
 
+  <!-- only shows active credit_categories? -->
 <% @credit_categories.each do |credit_category| %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
     <td><%= credit_category.category %></td>
-	<td><%= link_to(image_tag("delete_dg.png", :border => 0), :confirm => "Are you sure?", :controller => "credit_categories", :action => :deactivate3, :id => credit_category.id) %></td>
-    <%#= link_to 'Destroy', credit_category, :confirm => 'Are you sure?', :method => :delete %>
+	<td align='center'>
+		<% if credit_category.active %>
+			<%= link_to(image_tag("delete_dg.png", :border => 0), :confirm => "Are you sure?", :controller => "credit_categories", :action => :deactivate3, :id => credit_category.id) %>
+		<% else %>
+			<%= link_to "Reactivate", credit_category_path(credit_category), :confirm => 'Are you sure?', :method => :delete %>
+		<% end %>
+	</td>
   </tr>
 <% end %>
 </table>

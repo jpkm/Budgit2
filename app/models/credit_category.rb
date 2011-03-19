@@ -5,8 +5,7 @@ class CreditCategory < ActiveRecord::Base
 	has_many :credits
 	
 	## Validations
-	#validates_presence_of :category
-	#validates_uniqueness_of :category
+	validates_uniqueness_of :category
 	validate :cc
 	
 	## Named Scopes
@@ -24,6 +23,8 @@ class CreditCategory < ActiveRecord::Base
 			category.strip!
 			if cats.include?(category)
 				errors.add_to_base('Category already used')
+			else
+				credit_category.save!
 			end
 		else
 			validates_presence_of :category
@@ -34,7 +35,7 @@ class CreditCategory < ActiveRecord::Base
 	def except_inital
 		except = []
 		for creditcategory in CreditCategory.all
-			unless creditcategory.category.eql?("Inital")
+			unless creditcategory.category.downcase.eql?("inital")
 				except << creditcategory
 			end
 		end

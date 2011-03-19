@@ -14,29 +14,29 @@ namespace :db do
     
 	# Step 2: add some Role to work with
 		rsys = Role.new
-		rsys.name = "System Admin"
+		rsys.name = "system admin"
 		rsys.save!
 	  
 		rvp = Role.new
-		rvp.name = "VP of Finance"
+		rvp.name = "vp of finance"
 		rvp.save!
 	  
 		rleader = Role.new
-		rleader.name = "Club Leader"
+		rleader.name = "club leader"
 		rleader.save!
 	  
 		rfaculty = Role.new
-		rfaculty.name = "Faculty Advisor"
+		rfaculty.name = "faculty advisor"
 		rfaculty.save!
 	  
 		rsa = Role.new
-		rsa.name = "Student Affairs"
+		rsa.name = "student affairs"
 		rsa.save!
 	  
 	
 	# Step 3.5: add X club
 		x = Club.new
-		x.name = "Gaming Club"
+		x.name = "gaming club"
 		x.save!
     
     # Step 4: add Users
@@ -157,7 +157,7 @@ namespace :db do
 	
 	# Step 8: add some creditcategories to work with 
 		ci = CreditCategory.new
-		ci.category = "Initial"
+		ci.category = "Inital"
 		ci.active = true
 		ci.save!
     

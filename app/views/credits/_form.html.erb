@@ -14,7 +14,7 @@
     <%= f.hidden_field :account_id, :value => @credit.account_id %>
   
   <div class="field">
-    <%= f.label :category_category %>:
+    <%= f.label :category %>
 		<% if @answer %>
 			<%= f.collection_select :credit_category_id, @except, :id, :category, :prompt => "Select ..." %>
 		<% else %>

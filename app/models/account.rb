@@ -44,7 +44,7 @@ class Account < ActiveRecord::Base
 	#### checks if the account has a credit with creditcategory type of "Initial"
 	def has_inital?
 		for credit in credits
-			if credit.credit_category.category.eql?("Inital")
+			if credit.credit_category.category.downcase.eql?("inital")
 				return true
 			end
 		end
