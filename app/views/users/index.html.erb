@@ -7,7 +7,7 @@
 
 <% @users.each do |user| %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
-    <td><%= link_to user.username, user_path(user)%></td>
+    <td><%= link_to user.name, user_path(user)%></td>
   </tr>
   <% end %>
 </table>
