@@ -7,8 +7,6 @@ class Club < ActiveRecord::Base
 	has_many :users, :through => :assignments
 	
 	#Validations
-	#validates_presence_of :name
-	#validates_uniqueness_of :name
 	validate :cn
 	
 	#Named Scopes

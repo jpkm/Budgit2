@@ -1,13 +1,14 @@
-<% "Log in" %>
-
+<p id="notice"><%= notice %></p>
+<div id="login">
+<h1>Log In</h1>
 <%= form_tag sessions_path do %>
-  <p>
-    <%= label_tag :login, "Login" %><br />
-    <%= text_field_tag :login, params[:login] %>
-  </p>
-  <p>
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
-  </p>
+  <p><%= label_tag :login, "Login" %>&nbsp; &nbsp; &nbsp;&nbsp;
+    <%= text_field_tag :login, params[:login] %></p>
+	
+  <p><%= label_tag :password %>
+    <%= password_field_tag :password %></p>
+	
   <p><%= submit_tag "Log in" %></p>
 <% end %>
+</div>
+

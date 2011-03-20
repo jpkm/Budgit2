@@ -22,15 +22,16 @@
     <td><%= debit.amount %></td>
     <td><%= debit.number_of_consumers %></td>
     <td><%= debit.names_of_consumers %></td>
-	<% if debit.reimbursement_date.nil? %>
-			<% if current_user.is_affairs? || current_user.is_admin? %>
+	<td><% if debit.reimbursement_date.nil? %>
+		<% if current_user.is_affairs? || current_user.is_admin? %>
 			<td><%= link_to(image_tag("reimburse_dg.png", :border => 0), :confirm => 'Are you sure?', :controller => "debits", :action => :reimburse, :id => debit.id)%></td>
-			<% else %>
-			<td>pending</td>
-			<% end %>
 		<% else %>
-			<%= debit.reimbursement_date.to_s(:long_ordinal) %>
+			<td>pending</td>
 		<% end %>
+	<% else %>
+		<%= debit.reimbursement_date.to_s(:long_ordinal) %>
+	<% end %>
+	</td>
 	<% if current_user.is_admin? %>
 		<td><%= link_to(image_tag("edit_dg.png", :border => 0), edit_debit_path(debit))%>&nbsp;</td>
 		<td><%= link_to(image_tag("delete_dg.png", :border => 0), debit_path(debit), :confirm => 'delete?', :method => :delete) %></td>

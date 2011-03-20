@@ -7,13 +7,16 @@ class Debit < ActiveRecord::Base
 	
 	#Validations
 	validates_presence_of :item_purchased, :reason, :debit_category_id, :date_purchased
-	validate :valid_amount
+	validate :valid_amount, :on => :create
+	validate :valid_amount_editing, :on => :update
 	validate :valid_number_of_consumers
 	
 
 	#Named Scopes
 	#orders debits by debit_id asscending 
     named_scope :all, :order => "account_id"
+	#gets all debits except this debit 
+	named_scope :all_except, lambda {|id| { :conditions => ['id != ?', id] } } 
 	
     # get all the debits by a particular account
     named_scope :for_account, lambda { |account| { :conditions => ['account_id = ?', account] } }
@@ -49,10 +52,25 @@ class Debit < ActiveRecord::Base
 	end
 	
 	## will throw an error unless amount is > 0 and adding the debit will not put the account over budget
+	## could take in a condition for editing
 	def valid_amount
 		unless amount.nil?
 			if amount > 0
-				unless account.balance - amount > 0
+				unless account.balance - amount >= 0
+					errors.add_to_base('this amount would put you over budget')
+				end
+			else
+				validates_numericality_of :amount, :greater_than => 0
+			end
+		else
+			validates_numericality_of :amount
+		end
+	end
+	
+	def valid_amount_editing
+		unless amount.nil?
+			if amount > 0
+				unless account.editing_balance(self) - amount >= 0
 					errors.add_to_base('this amount would put you over budget')
 				end
 			else

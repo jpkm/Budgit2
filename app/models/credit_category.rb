@@ -7,6 +7,7 @@ class CreditCategory < ActiveRecord::Base
 	## Validations
 	#validates_uniqueness_of :category
 	validate :cc
+	validates_format_of :category, :with => /^[A-Za-z]+$/i, :allow_blank => false, :message => "should only contain letters"
 	
 	## Named Scopes
 	named_scope :all, :order => "id ASC"
@@ -21,8 +22,6 @@ class CreditCategory < ActiveRecord::Base
 		unless category.nil? || category.empty?
 			if cats.include?(category.downcase.strip)
 				errors.add_to_base('Category already used')
-			else
-				validates_format_of :first_name, :middle_name, :last_name, :with => /^[A-Za-z]+$/i, :allow_blank => false, :message => "should only contain letters"
 			end
 		else
 			validates_presence_of :category

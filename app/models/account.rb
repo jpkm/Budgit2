@@ -18,6 +18,20 @@ class Account < ActiveRecord::Base
 	named_scope :inactive_for_club, lambda { |club| {:conditions => ['club_id = ? AND active = ?', club, false] } }
 	
 	
+	def editing_balance(debit)
+		sum = 0 - self.sum_editing_debits(debit) + self.sum_credits
+		return sum
+	end
+	
+	def sum_editing_debits(debit)
+		sum = 0
+		for debit in Debit.all_except(debit.id)
+			sum = sum + debit.amount
+		end
+		return sum
+	end
+	
+	
 	def balance
 		sum = 0 - self.sum_debits + self.sum_credits
 		return sum

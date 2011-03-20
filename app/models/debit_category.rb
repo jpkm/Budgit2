@@ -5,8 +5,8 @@ class DebitCategory < ActiveRecord::Base
 	has_many :debits
 
 	## Validations
-	#validates_uniqueness_of :category
 	validate :dd
+	validates_format_of :category, :with => /^[A-Za-z]+$/i, :allow_blank => false, :message => "should only contain letters"
 
 	#Named Scopes
 	#orders debits by debit_id asscending 
@@ -21,8 +21,6 @@ class DebitCategory < ActiveRecord::Base
 		unless category.nil? || category.empty?
 			if cats.include?(category.downcase.strip)
 				errors.add_to_base('Category already used')
-			#else
-				#debit_category.save!
 			end
 		else
 			validates_presence_of :category
