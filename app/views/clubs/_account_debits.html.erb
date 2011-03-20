@@ -1,14 +1,16 @@
 <h2>All Debits</h2>
-<table class = "datagrid">
-	<thead class = "datagrid"
-		<th width="50">Item purchased</th>
-		<th width="50">Category</th>
-		<th width="50">Reason</th>
-		<th width="120">Date Purchased</th>
-		<th width="50">Amount</th>
-		<th width="50">Number of consumers</th>
-		<th width="50">Names of consumers</th>
-		<th width="50">Reimbursement Date</th>
+<table class="datagrid">
+	<thead class="datagrid"
+		<th>Item purchased</th>
+		<th>Category</th>
+		<th>Reason</th>
+		<th>Date Purchased</th>
+		<th>Amount</th>
+		<th>Number of consumers</th>
+		<th>Names of consumers</th>
+		<th>Reimbursement Date</th>
+		<th>Edit</th>
+		<th>Delete</th>
 	</thead>
 
 <% @account_debits.each do |debit| %>
@@ -17,25 +19,21 @@
     <td><%= debit.debit_category.category %></td>
     <td><%= debit.reason %></td>
     <td><%= debit.date_purchased.to_s(:long_ordinal) %></td>
-    <!--<td><%= debit.account.club.name %></td>-->
     <td><%= debit.amount %></td>
     <td><%= debit.number_of_consumers %></td>
     <td><%= debit.names_of_consumers %></td>
-	<td><% if debit.reimbursement_date.nil? %>
+	<% if debit.reimbursement_date.nil? %>
 			<% if current_user.is_affairs? || current_user.is_admin? %>
-				<%= link_to(image_tag("reimburse_dg.png", :border => 0), :controller => "debits", :action => :reimburse, :id => debit.id ) %>
+			<td><%= link_to(image_tag("reimburse_dg.png", :border => 0), :confirm => 'Are you sure?', :controller => "debits", :action => :reimburse, :id => debit.id)%></td>
 			<% else %>
-				pending
+			<td>pending</td>
 			<% end %>
 		<% else %>
 			<%= debit.reimbursement_date.to_s(:long_ordinal) %>
 		<% end %>
-	</td>
 	<% if current_user.is_admin? %>
-		<td align="center">
-			<%= link_to(image_tag("edit_dg.png", :border => 0), edit_debit_path(debit))%>&nbsp;
-			<%= link_to(image_tag("delete_dg.png", :border => 0), debit_path(debit), :confirm => 'delete?', :method => :delete) %>
-		</td>
+		<td><%= link_to(image_tag("edit_dg.png", :border => 0), edit_debit_path(debit))%>&nbsp;</td>
+		<td><%= link_to(image_tag("delete_dg.png", :border => 0), debit_path(debit), :confirm => 'delete?', :method => :delete) %></td>
 	<% end %>
   </tr>
 <% end %>

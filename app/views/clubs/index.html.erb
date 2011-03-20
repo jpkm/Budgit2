@@ -10,7 +10,11 @@
 <% @clubs.each do |club| %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
     <td><%= link_to club.name, club_path(club) %></td>
-	<td><%= club.current_account.balance %></td>
+	<% unless club.current_account.nil? %>
+		<td><%= club.current_account.balance %></td>
+	<% else %>
+		<td>club doesn't have current account</td>
+	<% end %>
 	<% if current_user.is_admin? %>
 		<td align="center">
 			<!-- should you be able to do this? -->

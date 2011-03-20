@@ -30,9 +30,6 @@ class Club < ActiveRecord::Base
 		else
 			validates_presence_of :name
 		end
-	
-	
-	
 	end
 	
 	
@@ -76,23 +73,44 @@ class Club < ActiveRecord::Base
 	
 	#### returns users without an active assignment who are aren't the sys or vp 
 	def free_users
-		active_club_users = []
-		for assignment in assignments
-			if assignment.active
-				active_club_users << assignment.user
-			end
-		end
-	
-		free_users =[]
-		for user in User.all
-			for assignment in user.assignments
-				unless assignment.active?
-					unless assignment.role.name.eql?("System Admin") || assignment.role.name.eql?("VP of Finance")
-						free_users << user
+		free_users = []
+		for u in User.all
+			unless u.assignments.nil? || u.assignments.empty?
+				for assignment in u.assignments
+					p assignment.active
+					p assignment.role
+					if assignment.active || assignment.role.eql?("system admin") || assignment.role.eql?("vp of finance")
+						break
 					end
+				free_users << u
 				end
+			else
+				free_users << u
 			end
 		end
-		return free_users
+		free_users
 	end
+			
+	
+		
+		
+		#active_club_users = []
+		#for assignment in assignments
+		#	if assignment.active
+		#		active_club_users << assignment.user
+		#	end
+		#end
+	
+		#free_users =[]
+		#for user in User.all
+		#	for assignment in user.assignments
+		#		unless assignment.active?
+		#			unless assignment.role.name.eql?("System Admin") || assignment.role.name.eql?("VP of Finance")
+		#				free_users << user
+		#			end
+		#		end
+		#	end
+		#end
+		#return free_users
+	#end
 end

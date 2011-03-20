@@ -41,7 +41,7 @@ namespace :db do
     
     # Step 4: add Users
 		sys = User.new
-		sys.first_name = "Mr.system"
+		sys.first_name = "System"
 		sys.middle_name = "Ad"
 		sys.last_name = "Min"
 		sys.email = "system@admin.edu"
@@ -51,7 +51,7 @@ namespace :db do
 		sys.save!
 			
 		vp = User.new
-		vp.first_name = "Mr.VP"
+		vp.first_name = "VP"
 		vp.middle_name = "of"
 		vp.last_name = "Finance"
 		vp.email = "v@p.edu"
@@ -61,7 +61,7 @@ namespace :db do
 		vp.save!
 		
 		leader = User.new
-		leader.first_name = "Mrs.Leader"
+		leader.first_name = "Leader"
 		leader.middle_name = "of"
 		leader.last_name = "Club"
 		leader.email = "leader@leader.edu"
@@ -71,7 +71,7 @@ namespace :db do
 		leader.save!
 		
 		sa = User.new
-		sa.first_name = "Mrs.Student"
+		sa.first_name = "Student"
 		sa.middle_name = "Affairs"
 		sa.last_name = "Officer"
 		sa.email = "sa@sa.edu"
@@ -81,7 +81,7 @@ namespace :db do
 		sa.save!
 		
 		faculty = User.new
-		faculty.first_name = "Mr.Ian"
+		faculty.first_name = "Ian"
 		faculty.middle_name = "PhD"
 		faculty.last_name = "Lacey"
 		faculty.email = "faculty@faculty.edu"

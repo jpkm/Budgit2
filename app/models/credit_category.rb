@@ -23,8 +23,6 @@ class CreditCategory < ActiveRecord::Base
 			#category.strip!
 			if cats.include?(category.downcase.strip)
 				errors.add_to_base('Category already used')
-			#else
-			#	credit_category.save!
 			end
 		else
 			validates_presence_of :category
