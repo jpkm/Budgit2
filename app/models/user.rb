@@ -65,7 +65,6 @@ class User < ActiveRecord::Base
 	#checks if user assignments are admin  
 	def is_admin?
 		assignments.each do |assignment|
-			p assignment.role.name
 			if assignment.role.name.downcase.eql?("system admin")
 				return true
 			end
@@ -86,7 +85,7 @@ class User < ActiveRecord::Base
 	#check is user is Student Affairs Advisor
 	def is_affairs?
 		assignments.each do |assignment|
-			if assignment.role.name.downcase.eql?("student affairs advisor")
+			if assignment.role.name.downcase.eql?("student affairs")
 				return true
 			end
 		end
@@ -106,7 +105,7 @@ class User < ActiveRecord::Base
 	#check if user is Club Leader
 	def is_leader?
 		assignments.each do |assignment|
-			if assignment.role.name.eql?("Club Leader")
+			if assignment.role.name.downcase.eql?("club leader")
 				return true
 			end
 		end

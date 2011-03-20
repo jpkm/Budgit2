@@ -24,13 +24,13 @@ class Club < ActiveRecord::Base
 		unless name.nil? || name.empty?
 			if names.include?(name.downcase.strip)
 				errors.add_to_base('Name already taken')
+			else
+				validates_format_of :name, :with => /^[-\w\._@]+$/i, :allow_blank => false, :message => "should only contain letters, numbers, or .-_@"
 			end
 		else
 			validates_presence_of :name
 		end
 	end
-	
-	
 	
 	def current_balance
 		account = self.current_account
@@ -75,8 +75,6 @@ class Club < ActiveRecord::Base
 		for u in User.all
 			unless u.assignments.nil? || u.assignments.empty?
 				for assignment in u.assignments
-					p assignment.active
-					p assignment.role
 					if assignment.active || assignment.role.eql?("system admin") || assignment.role.eql?("vp of finance")
 						break
 					end

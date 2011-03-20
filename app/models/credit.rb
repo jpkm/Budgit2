@@ -6,8 +6,9 @@ class Credit < ActiveRecord::Base
 	belongs_to :account
 	
 	# Validations
-	validates_numericality_of :credit_category_id, :account_id, :amount
-	validates_format_of :amount, :with => /^\d\d*$/
+	#validates_numericality_of :credit_category_id, :account_id, :amount
+	#validates_format_of :amount, :with => /^\d\d*$/
+	validate :valid_amount
 	
 	#Named Scopes
 	#orders debits by debit_id asscending 
@@ -20,6 +21,18 @@ class Credit < ActiveRecord::Base
 	
 	def total_credits_per_account (account)
 		( Credit.for_account(account) ).amount.sum
+	end
+	
+	def valid_amount
+		unless amount.nil?
+			if amount > 0
+				errors.add_to_base('this amount would put you over budget')
+			else
+				validates_numericality_of :amount, :greater_than => 0
+			end
+		else
+			validates_numericality_of :amount
+		end
 	end
 	
 end

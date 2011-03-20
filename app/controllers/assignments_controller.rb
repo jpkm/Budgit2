@@ -61,13 +61,15 @@ class AssignmentsController < ApplicationController
 	
     respond_to do |format|
       if @assignment.save
-		if @assignment.role.name.eql?("System Admin") || @assignment.role.name.eql?("VP of Finance")
+		if @assignment.role.name.eql?("system admin") || @assignment.role.name.eql?("vp of finance")
 			format.html { redirect_to root_url, :notice => 'Assignment created' }
 		else
 			format.html { redirect_to(club_path(@assignment.club_id), :notice => 'Assignment was successfully created.') }
 			format.xml  { render :xml => @assignment, :status => :created, :location => @assignment }
 		end
       else
+		@available_roles = @assignment.club.roles_available	
+		@available_users = @assignment.club.free_users
 		@roles = @assignment.roles_for_vp_and_sysadmin
 		@users = @assignment.available_users
         format.html { render :action => "new" }

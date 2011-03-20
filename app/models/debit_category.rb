@@ -6,7 +6,7 @@ class DebitCategory < ActiveRecord::Base
 
 	## Validations
 	validate :dd
-	validates_format_of :category, :with => /^[A-Za-z]+$/i, :allow_blank => false, :message => "should only contain letters"
+	
 
 	#Named Scopes
 	#orders debits by debit_id asscending 
@@ -21,6 +21,8 @@ class DebitCategory < ActiveRecord::Base
 		unless category.nil? || category.empty?
 			if cats.include?(category.downcase.strip)
 				errors.add_to_base('Category already used')
+			else
+				validates_format_of :category, :with => /^[A-Za-z]+$/i, :allow_blank => false, :message => "should only contain letters"
 			end
 		else
 			validates_presence_of :category

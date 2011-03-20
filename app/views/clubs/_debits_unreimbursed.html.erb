@@ -9,8 +9,10 @@
 		<th>Number of consumers</th>
 		<th>Names of consumers</th>
 		<th>Reimbursement Date</th>
-		<th>Edit</td>
-		<th>Delete</td>
+		<% if current_user.is_admin? %>
+			<th>Edit</td>
+			<th>Delete</td>
+		<% end %>
 	</thead>
 
 <% @debits_unreimbursed.each do |debit| %>
@@ -22,11 +24,12 @@
     <td><%= debit.amount %></td>
 	<td><%= debit.number_of_consumers %></td>
 	<td><%= debit.names_of_consumers %></td>
-	<% if debit.reimbursement_date.nil? %>
+	<td>
+		<% if debit.reimbursement_date.nil? %>
 			<% if current_user.is_affairs? || current_user.is_admin? %>
-				<td><%= link_to(image_tag("reimburse_dg.png", :border => 0), :controller => "debits", :action => :reimburse, :id => debit.id ) %></td>
+				<%= link_to(image_tag("reimburse_dg.png", :border => 0), :controller => "debits", :action => :reimburse, :id => debit.id ) %>
 			<% else %>
-				<td>pending</td>
+				pending
 			<% end %>
 		<% end %>
 	</td>

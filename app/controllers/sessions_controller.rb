@@ -7,12 +7,14 @@ class SessionsController < ApplicationController
   def create
     user = User.authenticate(params[:login], params[:password])
     if user
-      session[:user_id] = user.id
-      redirect_to_target_or_default root_url, :notice => "Logged in successfully."
-    else
+		if user.assignments.nil? || user.assignments.empty?
+			redirect_to root_url, :notice => "You don't have any assignments right now. Check yoself."
+		else
+			session[:user_id] = user.id
+			redirect_to_target_or_default root_url, :notice => "Logged in successfully."
+		end
+	else
 	 redirect_to root_url, :notice => "Invalid login or password."
-     # flash.now[:alert] = "Invalid login or password."
-     #render :action => 'new'
     end
   end
 

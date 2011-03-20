@@ -9,8 +9,10 @@
 		<th>Number of consumers</th>
 		<th>Names of consumers</th>
 		<th>Reimbursement Date</th>
-		<th>Edit</th>
-		<th>Delete</th>
+		<% if current_user.is_admin? %>
+			<th>Edit</th>
+			<th>Delete</th>
+		<% end %>
 	</thead>
 
 <% @account_debits.each do |debit| %>
@@ -22,15 +24,16 @@
     <td><%= debit.amount %></td>
     <td><%= debit.number_of_consumers %></td>
     <td><%= debit.names_of_consumers %></td>
-	<td><% if debit.reimbursement_date.nil? %>
-		<% if current_user.is_affairs? || current_user.is_admin? %>
-			<td><%= link_to(image_tag("reimburse_dg.png", :border => 0), :confirm => 'Are you sure?', :controller => "debits", :action => :reimburse, :id => debit.id)%></td>
+	<td>
+		<% if debit.reimbursement_date.nil? %>
+			<% if current_user.is_affairs? || current_user.is_admin? %>
+				<%= link_to(image_tag("reimburse_dg.png", :border => 0), :confirm => 'Are you sure?', :controller => "debits", :action => :reimburse, :id => debit.id)%>
+			<% else %>
+				pending
+			<% end %>
 		<% else %>
-			<td>pending</td>
+			<%= debit.reimbursement_date.to_s(:long_ordinal) %>
 		<% end %>
-	<% else %>
-		<%= debit.reimbursement_date.to_s(:long_ordinal) %>
-	<% end %>
 	</td>
 	<% if current_user.is_admin? %>
 		<td><%= link_to(image_tag("edit_dg.png", :border => 0), edit_debit_path(debit))%>&nbsp;</td>
