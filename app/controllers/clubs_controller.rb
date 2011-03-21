@@ -1,12 +1,12 @@
 class ClubsController < ApplicationController
 	before_filter :login_required
-	#layout "application"
+	load_and_authorize_resource
 	
   # GET /clubs
   # GET /clubs.xml
   def index
     @clubs = Club.all.paginate :page => params[:page], :per_page => 5
-
+    authorize! :read, @club
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @clubs }
