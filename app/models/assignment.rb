@@ -17,7 +17,6 @@ class Assignment < ActiveRecord::Base
     #get all active assignments for a club_id
     named_scope :active_for_club, lambda { |club| { :conditions => ['club_id = ? AND active = ?', club, true] } }
 	
-	
 	## returns true if there is an active assignment with role name of System Admin
 	def valid_assignment
 		unless role.nil? || user.nil?

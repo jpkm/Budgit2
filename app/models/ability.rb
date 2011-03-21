@@ -11,7 +11,15 @@ class Ability
 			can :read, :all
 			can :credit, :club
 		elsif user.is_affairs?
-			can :read, :clubs
+			can :read, Club do |this_club|
+				assignment_clubs = user.assignments.map{|a| a.club_id if a.active}
+				assignment_clubs.include? this_club.id
+			end
+			can :reimburse, Debit do |this_debit|
+				assignment_clubs = user.assignments.map{|a| a.club_id if a.active}
+				#clubs_debits = assignment_clubs.map{|c| c.debit_id}
+				assignment_clubs.include? this_debit.club_id
+			end
 		else
 			can :read, :all
 		end

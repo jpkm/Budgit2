@@ -6,8 +6,7 @@ class Credit < ActiveRecord::Base
 	belongs_to :account
 	
 	# Validations
-	#validates_numericality_of :credit_category_id, :account_id, :amount
-	#validates_format_of :amount, :with => /^\d\d*$/
+	validates_presence_of :category
 	validate :valid_amount
 	
 	#Named Scopes
@@ -25,9 +24,7 @@ class Credit < ActiveRecord::Base
 	
 	def valid_amount
 		unless amount.nil?
-			if amount > 0
-				errors.add_to_base('this amount would put you over budget')
-			else
+			unless amount > 0
 				validates_numericality_of :amount, :greater_than => 0
 			end
 		else
