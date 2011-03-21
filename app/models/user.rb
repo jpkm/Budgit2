@@ -73,7 +73,7 @@ class User < ActiveRecord::Base
 	end
 	
 	#checks if user is VP  
-	def is_VP?
+	def is_vp?
 		assignments.each do |assignment|
 			if assignment.role.name.downcase.eql?("vp of finance")
 				return true

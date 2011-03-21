@@ -5,7 +5,7 @@ Year: <%= @club.current_account.year %>
 <% if current_user.is_leader? || current_user.is_admin? %>
 	| <%= link_to "Record new Debit", new_debit_path(:account => @club.current_account.id) %> 
 <% end %>
-<% if current_user.is_VP? || current_user.is_admin? %>
+<% if current_user.is_vp? || current_user.is_admin? %>
 	| <%= link_to "Credit Account", new_credit_path(:account => @club.current_account.id) %>
 <% end %>
 

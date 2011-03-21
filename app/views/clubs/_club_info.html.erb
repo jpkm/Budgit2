@@ -3,7 +3,7 @@
 		<td width="200">
 			<h3>Club Info</h3>
 
-			<% if current_user.is_VP? || current_user.is_admin? %>
+			<% if current_user.is_vp? || current_user.is_admin? %>
 				<% if @club.current_account.nil? %>
 					<%= link_to "New Account", new_account_path(:club => @club) %>
 					<br>

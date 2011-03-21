@@ -1,12 +1,13 @@
 class AssignmentsController < ApplicationController
 	before_filter :login_required 	
 	layout "application"
+	load_and_authorize_resource
   # GET /assignments
   # GET /assignments.xml
   def index
-	#redirect_to root_url
 	
     @assignments = Assignment.all
+	authorize! :read, @assignments, :message => "no"
 	
     respond_to do |format|
      format.html # index.html.erb

@@ -74,11 +74,15 @@ class Club < ActiveRecord::Base
 		free_users = []
 		for u in User.all
 			unless u.assignments.nil? || u.assignments.empty?
-				for assignment in u.assignments
-					if assignment.active || assignment.role.eql?("system admin") || assignment.role.eql?("vp of finance")
-						break
+				unless u.assignments[0].role.name.downcase.eql?("student affairs")
+					for assignment in u.assignments
+						if assignment.active || assignment.role.name.downcase.eql?("system admin") || assignment.role.name.downcase.eql?("vp of finance")
+							break
+						end
+					free_users << u
 					end
-				free_users << u
+				else
+					free_users << u
 				end
 			else
 				free_users << u
@@ -86,27 +90,4 @@ class Club < ActiveRecord::Base
 		end
 		free_users
 	end
-			
-	
-		
-		
-		#active_club_users = []
-		#for assignment in assignments
-		#	if assignment.active
-		#		active_club_users << assignment.user
-		#	end
-		#end
-	
-		#free_users =[]
-		#for user in User.all
-		#	for assignment in user.assignments
-		#		unless assignment.active?
-		#			unless assignment.role.name.eql?("System Admin") || assignment.role.name.eql?("VP of Finance")
-		#				free_users << user
-		#			end
-		#		end
-		#	end
-		#end
-		#return free_users
-	#end
 end

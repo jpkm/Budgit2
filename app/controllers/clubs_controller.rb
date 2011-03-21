@@ -6,7 +6,8 @@ class ClubsController < ApplicationController
   # GET /clubs.xml
   def index
     @clubs = Club.all.paginate :page => params[:page], :per_page => 5
-    authorize! :read, @club
+    #authorize! :read, @clubs, :message => "No no no"
+	
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @clubs }
@@ -19,6 +20,7 @@ class ClubsController < ApplicationController
 	
 	# Named Scope Definitions
     @club = Club.find(params[:id])
+	#authorize! :read, @club, :message => "No no no"
 	
 	# all accounts for @club
 	@inactive_accounts = Account.inactive_for_club(@club).paginate :page => params[:page], :per_page => 5

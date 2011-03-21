@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 	
   def index
 	if logged_in?
-		unless current_user.is_admin? || current_user.is_VP?
+		unless current_user.is_admin? || current_user.is_vp?
 			unless current_user.assignments.nil? || current_user.assignments.empty?
 				unless current_user.assignments.count == 1 
 					for assignment in current_user.assignments
