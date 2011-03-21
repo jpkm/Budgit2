@@ -112,5 +112,14 @@ class User < ActiveRecord::Base
 		return false
 	end
 	
+	def has_active_assignment?
+		for assignment in assignments
+			if assignment.active
+				return true
+			end
+		false
+		end
+	end
+	
    
 end
