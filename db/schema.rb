@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110215175505) do
+ActiveRecord::Schema.define(:version => 20110219172523) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "year"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20110215175505) do
 
   create_table "credits", :force => true do |t|
     t.integer  "credit_category_id"
-    t.date     "date"
+    t.datetime "date"
     t.integer  "account_id"
     t.integer  "amount"
     t.datetime "created_at"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20110215175505) do
     t.date     "date_purchased"
     t.integer  "account_id"
     t.integer  "amount"
-    t.datetime "reimbursement_date"
+    t.date     "reimbursement_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

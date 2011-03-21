@@ -22,7 +22,13 @@ class CreditCategory < ActiveRecord::Base
 			if cats.include?(category.downcase.strip)
 				errors.add_to_base('Category already used')
 			else
-				validates_format_of :category, :with => /^[A-Za-z]+$/i, :allow_blank => false, :message => "should only contain letters"
+				#validates_format_of :category, :with => /^[A-Za-z]+$/i, :allow_blank => false, :message => "should only contain letters"
+				
+				test = category.strip
+				if test.blank?
+					return errors.add_to_base('Name was invalid')
+				end
+			
 			end
 		else
 			validates_presence_of :category
