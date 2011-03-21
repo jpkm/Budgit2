@@ -6,7 +6,7 @@ class Credit < ActiveRecord::Base
 	belongs_to :account
 	
 	# Validations
-	validates_presence_of :category
+	validates_presence_of :credit_category
 	validate :valid_amount
 	
 	#Named Scopes
