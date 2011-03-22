@@ -14,7 +14,7 @@
 		<% if credit_category.active %>
 			<%= link_to(image_tag("delete_dg.png", :border => 0), :confirm => "Are you sure?", :controller => "credit_categories", :action => :deactivate3, :id => credit_category.id) %>
 		<% else %>
-			<%= link_to "Reactivate", credit_category_path(credit_category), :confirm => 'Are you sure?', :method => :delete %>
+			<%= link_to 'Reactivate', :confirm => 'Are you sure?', :controller => "credit_categories", :action => :reactivate3, :id => credit_category.id %>
 		<% end %>
 	</td>
   </tr>

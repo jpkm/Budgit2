@@ -21,11 +21,12 @@ class UsersController < ApplicationController
 	
   def new
     @user = User.new
+	authorize! :create, @user, :message => "no"
   end
 
   def create
     @user = User.new(params[:user])
-	
+	authorize! :create, @user, :message => "no"
 	respond_to do |format|
       if @user.save 
         format.html { redirect_to root_url, :notice => 'New User created' }

@@ -106,12 +106,25 @@ class AssignmentsController < ApplicationController
    def deactivate2
   	@assignment = Assignment.find(params[:id])
 	@assignment.active = false
-	@assignment.save!
+	@assignment.save!(:validate => false)
 	
 	unless @assignment.club.nil?
 		redirect_to((@assignment.club), :notice => 'Assignment deactivated.')
 	else
 		redirect_to root_url, :notice => 'Assignment deactivated.'
+	end
+  end
+  
+   def reactivate2
+  	@assignment = Assignment.find(params[:id])
+	@assignment.active = true
+	
+	unless @assignment.save
+		redirect_to(assignments_path, :notice => 'You suck.')
+	else
+	
+	redirect_to((assignments_path), :notice => 'Assignment reactivated.')
+	
 	end
   end
   

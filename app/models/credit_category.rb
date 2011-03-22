@@ -22,8 +22,6 @@ class CreditCategory < ActiveRecord::Base
 			if cats.include?(category.downcase.strip)
 				errors.add_to_base('Category already used')
 			else
-				#validates_format_of :category, :with => /^[A-Za-z]+$/i, :allow_blank => false, :message => "should only contain letters"
-				
 				test = category.strip
 				if test.blank?
 					return errors.add_to_base('Name was invalid')
@@ -36,7 +34,7 @@ class CreditCategory < ActiveRecord::Base
 	end	
 	
 	
-	def except_inital
+	def self.except_inital
 		except = []
 		for creditcategory in CreditCategory.all
 			unless creditcategory.category.downcase.eql?("inital")

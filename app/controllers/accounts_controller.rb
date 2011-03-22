@@ -5,6 +5,7 @@ class AccountsController < ApplicationController
   # GET /accounts.xml
   def index
 	redirect_to root_url
+	authorize! :read, @accounts, :message => "no"
     #@accounts = Account.all
     #respond_to do |format|
     #  format.html # index.html.erb
@@ -16,6 +17,7 @@ class AccountsController < ApplicationController
   # GET /accounts/1.xml
   def show
 	@account = Account.find(params[:id])
+	authorize! :read, @account, :message => "no"
 	# all debits for active account of @club
 	@account_debits = @account.debits.paginate :page => params[:page], :per_page => 5
 	# all credits for active account of @club

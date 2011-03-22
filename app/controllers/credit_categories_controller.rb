@@ -90,9 +90,17 @@ class CreditCategoriesController < ApplicationController
   def deactivate3
   	@credit_category = CreditCategory.find(params[:id])
 	@credit_category.active = false
-	@credit_category.save!
+	@credit_category.save!(:validate => false)
 	
 	redirect_to(credit_categories_path, :notice => 'Credit Category Deactivated.')
+  end
+  
+   def reactivate3
+  	@credit_category = CreditCategory.find(params[:id])
+	@credit_category.active = true
+	@credit_category.save!(:validate => false)
+	
+	redirect_to(credit_categories_path, :notice => 'Credit Category Reactivated.')
   end
   
 end

@@ -117,8 +117,8 @@ class User < ActiveRecord::Base
 			if assignment.active
 				return true
 			end
-		false
 		end
+		return false
 	end
 	
    

@@ -17,12 +17,14 @@ Budgit::Application.routes.draw do
 
   resources :credit_categories
   match 'deactivate3' => 'credit_categories#deactivate3', :as => :deactivate3
+  match 'reactivate3' => 'credit_categories#reactivate3', :as => :reactivate3
 
   resources :credits
 
   resources :debit_categories
   match 'deactivate4' => 'debit_categories#deactivate4', :as => :deactivate4
-
+  match 'reactivate4' => 'debit_categories#reactivate4', :as => :reactivate4
+  
   resources :roles
 
   resources :debits 
@@ -34,6 +36,7 @@ Budgit::Application.routes.draw do
 
   resources :assignments
   match 'deactivate2' => 'assignments#deactivate2', :as => :deactivate2
+  match 'reactivate2' => 'assignments#reactivate2', :as => :reactivate2
   
   match 'reimburse' => 'debits#reimburse', :as => :reimburse
 

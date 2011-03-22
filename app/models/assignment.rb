@@ -7,9 +7,11 @@ class Assignment < ActiveRecord::Base
 	belongs_to :user
 	
 	#Validations
-	#validates_uniqueness_of :user_id, :scope => [:club_id, :role_id]
-	validate :valid_assignment
+	#validates_uniqueness_of :user_id, :scope => [:club_id, :role_id], :if => Proc.new {|assignment| !is_there_another_active(assignment)}
 	
+	validates_presence_of :role, :user
+	validate :valid_assignment
+
 	
 	#Named Scopes
 	#get all the assignments for a user
@@ -21,16 +23,39 @@ class Assignment < ActiveRecord::Base
 	def valid_assignment
 		unless role.nil? || user.nil?
 			if is_there_a_sysadmin? && role.name.eql?("System Admin")
-				errors.add_to_base('there is already a system admin. You must deactiveate current sysad before assigning a new one')
+				errors.add_to_base('There is already a '+role.name+'. You must deactivate the current '+role.name+' before assigning a new one')
 			end
-			if is_there_a_vp? && self.role.eql?("VP of Finance")
-				errors.add_to_base('there is already a vp. You must deactiveate current vp before assigning a new one')
+			
+			if is_there_a_vp? && role.name.eql?("VP of Finance")
+				errors.add_to_base('There is already a '+role.name+'. You must deactivate the current '+role.name+' before assigning a new one')
 			end
-		else
-			validates_presence_of :role, :user
+
+			unless (role.name.eql?("VP of Finance") || role.name.eql?("System Admin"))
+			p role.name
+				if(is_there_another_active(self))
+					errors.add_to_base('There is already a '+role.name+'. You must deactivate the current '+role.name+' before assigning a new one')
+				end	
+			end
+			
+			
 		end
+
 	end
 	
+	
+	def is_there_another_active(assignment)
+			for other in Assignment.all
+				unless other.id == assignment.id
+					if other.role.name.eql?(assignment.role.name)
+						if other.club.name.eql?(assignment.club.name)
+							return true if other.active
+						end
+					end
+				end
+			end
+			
+			return false
+	end
 	
 	def is_there_a_sysadmin?
 		for assignment in Assignment.all

@@ -33,12 +33,13 @@ class CreditsController < ApplicationController
 	@credit.date = Date.today
 	
 	if @answer
-		@except = []
-		for creditcategory in CreditCategory.all
-			unless creditcategory.category.eql?("Inital")
-				@except << creditcategory
-			end
-		end
+		@except = CreditCategory.except_inital
+		#@except = []
+		#for creditcategory in CreditCategory.all
+		#	unless creditcategory.category.eql?("Inital")
+		#		@except << creditcategory
+		#	end
+		#end
 	end
 	
 

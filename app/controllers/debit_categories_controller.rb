@@ -99,9 +99,17 @@ class DebitCategoriesController < ApplicationController
    def deactivate4
   	@debit_category = DebitCategory.find(params[:id])
 	@debit_category.active = false
-	@debit_category.save!
+	@debit_category.save!(:validate => false)
 	
 	redirect_to(debit_categories_path, :notice => 'Debit Category Deactivated.')
+  end
+  
+  def reactivate4
+  	@debit_category = DebitCategory.find(params[:id])
+	@debit_category.active = true
+	@debit_category.save!(:validate => false)
+	
+	redirect_to(debit_categories_path, :notice => 'Debit Category Reactivated.')
   end
   
   

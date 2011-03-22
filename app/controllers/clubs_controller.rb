@@ -17,10 +17,10 @@ class ClubsController < ApplicationController
   # GET /clubs/1
   # GET /clubs/1.xml
   def show  
-	
 	# Named Scope Definitions
     @club = Club.find(params[:id])
-	#authorize! :read, @club, :message => "No no no"
+
+	authorize! :read, @club, :message => "no"
 	
 	# all accounts for @club
 	@inactive_accounts = Account.inactive_for_club(@club).paginate :page => params[:page], :per_page => 5
@@ -29,7 +29,7 @@ class ClubsController < ApplicationController
 	
 	unless @club.current_account.nil?
 		@account_all = @club.current_account.debitsandcredits
-		p @account_all
+		
 		# all debits for active account of @club
 		@account_debits = @club.current_account.debits.paginate :page => params[:page], :per_page => 5
 		# all credits for active account of @club

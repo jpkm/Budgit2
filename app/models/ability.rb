@@ -19,8 +19,19 @@ class Ability
 				assignment_clubs = user.assignments.map{|a| a.club_id if a.active}
 				assignment_clubs.include? this_debit.club_id
 			end
-		else
-			can :read, :all
+		
+		elsif user.is_leader?
+			can :read, Club do |this_club|
+				assignment_clubs = user.assignments.map{|a| a.club_id if a.active}
+				assignment_clubs.include? this_club.id
+			end
+			
+			can :create, Debit do |this_debit|
+				assignment_clubs = user.assignments.map{|a| a.club_id if a.active}
+				assignment_clubs.include? this_debit.account.club_id
+			end
+		#else
+		#	can :read, :all
 		end
 	
 			

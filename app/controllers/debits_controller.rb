@@ -26,6 +26,8 @@ class DebitsController < ApplicationController
 	@debit.account_id = params[:account]
 	@debit.reimbursement_date = "null"
 	
+	authorize! :create, @debit, :message => "NO!"
+	
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @debit }
@@ -39,7 +41,7 @@ class DebitsController < ApplicationController
   def create
     @debit = Debit.new(params[:debit])
 	@debit.reimbursement_date = "null"
-	
+	authorize! :create, @debit, :message => "NO!"
 	respond_to do |format|
       if @debit.save 
         format.html { redirect_to(club_path(@debit.account.club_id), :notice => 'Debit was successfully created.') }

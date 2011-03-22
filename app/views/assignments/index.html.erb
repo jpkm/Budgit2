@@ -1,5 +1,22 @@
 <h1>Listing assignments</h1>
 
+<% for assignment in @assignments %>
+	<% if assignment.errors.any? %>
+		p assignment.errors
+		<div id="error_explanation">
+		  <h2><%= pluralize(assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
+
+		  <ul>
+		  <% assignment.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		  <% end %>
+		  </ul>
+		  
+		</div>
+		
+	  <% end %>
+<% end %>
+  
 <table class='datagrid'>
   <thead class='datagrid'>
     <th>User</th>
@@ -21,7 +38,8 @@
 	<td align="center"><% if assignment.active %>
 		<%= link_to(image_tag("delete_dg.png", :border => 0), :confirm => "Are you sure?", :controller => "assignments", :action => :deactivate2, :id => assignment.id) %>
 	<% else %>
-		<%= link_to 'Destroy', assignment, :confirm => 'Are you sure?', :method => :delete %></td>
+		<%#= link_to 'Destroy', assignment, :confirm => 'Are you sure?', :method => :delete %>
+		<%= link_to 'Reactivate', :confirm => 'Are you sure?', :controller => "assignments", :action => :reactivate2, :id => assignment.id %>
 	<% end %></td>
   </tr>
 <% end %>
