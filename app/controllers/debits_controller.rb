@@ -1,8 +1,7 @@
 class DebitsController < ApplicationController
 	before_filter :login_required
 	layout "application"
-  # GET /debits
-  # GET /debits.xml
+ 
   def index
 	redirect_to root_url
     #@debits = Debit.all.paginate :page => params[:page], :per_page => 5
@@ -12,8 +11,7 @@ class DebitsController < ApplicationController
     #end
   end
 
-  # GET /debits/1
-  # GET /debits/1.xml
+ 
   def show
 	redirect_to root_url
     #@debit = Debit.find(params[:id])
@@ -23,8 +21,6 @@ class DebitsController < ApplicationController
     #end
   end
 
-  # GET /debits/new
-  # GET /debits/new.xml
   def new
     @debit = Debit.new
 	@debit.account_id = params[:account]
@@ -36,13 +32,10 @@ class DebitsController < ApplicationController
     end
   end
 
-  # GET /debits/1/edit
   def edit
     @debit = Debit.find(params[:id])
   end
 
-  # POST /debits
-  # POST /debits.xml
   def create
     @debit = Debit.new(params[:debit])
 	@debit.reimbursement_date = "null"
@@ -92,6 +85,8 @@ class DebitsController < ApplicationController
 
   def reimburse
 	@debit = Debit.find(params[:id])
+	authorize! :reimburse, @debit, :message => "no"
+	
 	@debit.reimbursement_date = DateTime.now
 	@debit.save!
 	redirect_to(club_path(@debit.account.club_id), :notice => 'Debit Reimbursed.')

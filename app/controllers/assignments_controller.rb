@@ -1,11 +1,9 @@
 class AssignmentsController < ApplicationController
 	before_filter :login_required 	
 	layout "application"
-	load_and_authorize_resource
-  # GET /assignments
-  # GET /assignments.xml
+	#load_and_authorize_resource
+
   def index
-	
     @assignments = Assignment.all
 	authorize! :read, @assignments, :message => "no"
 	
@@ -15,8 +13,6 @@ class AssignmentsController < ApplicationController
    end
   end
 
-  # GET /assignments/1
-  # GET /assignments/1.xml
   def show
 	redirect_to root_url
 	

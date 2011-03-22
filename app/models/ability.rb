@@ -17,7 +17,6 @@ class Ability
 			end
 			can :reimburse, Debit do |this_debit|
 				assignment_clubs = user.assignments.map{|a| a.club_id if a.active}
-				#clubs_debits = assignment_clubs.map{|c| c.debit_id}
 				assignment_clubs.include? this_debit.club_id
 			end
 		else

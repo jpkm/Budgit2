@@ -26,7 +26,8 @@
 	<td><%= debit.names_of_consumers %></td>
 	<td>
 		<% if debit.reimbursement_date.nil? %>
-			<% if current_user.is_affairs? || current_user.is_admin? %>
+			<% if can? :reimburse, debit %>
+			<%# if current_user.is_affairs? || current_user.is_admin? %>
 				<%= link_to(image_tag("reimburse_dg.png", :border => 0), :controller => "debits", :action => :reimburse, :id => debit.id ) %>
 			<% else %>
 				pending
