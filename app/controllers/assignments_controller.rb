@@ -27,9 +27,14 @@ class AssignmentsController < ApplicationController
   def new
     @assignment = Assignment.new
 	@assignment.club_id = params[:club]
+	
 	unless @assignment.club_id.nil?
+	# you are assigning to club
 		@club = @assignment.club
-		@available_roles = @assignment.club.roles_available	
+		#get all the role not filled for club	
+		@available_roles = @assignment.club.roles_available
+		#get all users who don't have an active assignment and aren't sysa or vp
+			#-- needs to give: all users who don't have active assignment and don't already have a "deactivated" assignment with this club.id
 		@available_users = @club.free_users
 	else
 		unless @assignment.roles_for_vp_and_sysadmin.nil? || @assignment.roles_for_vp_and_sysadmin.empty?
@@ -56,8 +61,16 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.new(params[:assignment])
 	@assignment.active = true
 	
+	should_send = false
+	if current_user.assignments.nil? || current_user.assignments.blank? 
+		should_send = true
+	end
+	
     respond_to do |format|
       if @assignment.save
+		if !@assignment.role.name.eql?("system admin") && should_send
+			#mailto: there username and password for @assignment.user.username @assignment.user.password 
+		end
 		if @assignment.role.name.eql?("system admin") || @assignment.role.name.eql?("vp of finance")
 			format.html { redirect_to root_url, :notice => 'Assignment created' }
 		else

@@ -84,18 +84,12 @@ class Club < ActiveRecord::Base
 	def free_users
 		free_users = []
 		for u in User.all
-			unless u.assignments.nil? || u.assignments.empty?
-				unless u.assignments[0].role.name.downcase.eql?("student affairs")
-					for assignment in u.assignments
-						
-						if assignment.active || assignment.role.name.downcase.eql?("system admin") || assignment.role.name.downcase.eql?("vp of finance")
-							break
-						end
-						
-					free_users << u
+			unless u.assignments.nil? || u.assignments.empty? 
+				for assignment in u.assignments
+					if assignment.active || assignment.role.name.downcase.eql?("system admin") || assignment.role.name.downcase.eql?("vp of finance") || assignment.club_id == self.id
+						break
 					end
-				else
-					free_users << u
+				free_users << u
 				end
 			else
 				free_users << u
