@@ -22,5 +22,17 @@ Budgit::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+  
+  # stuff for emails
+  config.action_mailer.delivery_method :smtp
+
+  config.action_mailer.smtp_settings = {
+  :address              => "smtp.gmail.com",
+  :port                 => 587,
+  :user_name 			=> 'mezaniah.budgit.373@gmail.com', 
+  :password 			=> 'studentaffairs',
+  :authentication       => 'plain',
+  :enable_starttls_auto => true  }
+  
 end
 

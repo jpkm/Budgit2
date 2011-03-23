@@ -62,15 +62,22 @@ class AssignmentsController < ApplicationController
 	@assignment.active = true
 	
 	should_send = false
-	if current_user.assignments.nil? || current_user.assignments.blank? 
+	
+	
+	if @assignment.user.assignments.nil? || @assignment.user.assignments.empty? 
 		should_send = true
 	end
 	
     respond_to do |format|
       if @assignment.save
+	  p 'DICKS'
+	  p should_send
+	  p 'DICKS'
+	  
 		if !@assignment.role.name.eql?("system admin") && should_send
-			#mailto: there username and password for @assignment.user.username @assignment.user.password 
+			Notifier.welcome_email(@assignment.user).deliver
 		end
+		
 		if @assignment.role.name.eql?("system admin") || @assignment.role.name.eql?("vp of finance")
 			format.html { redirect_to root_url, :notice => 'Assignment created' }
 		else
