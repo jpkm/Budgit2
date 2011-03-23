@@ -1,5 +1,5 @@
 class Club < ActiveRecord::Base
-	attr_accessible :name
+	attr_accessible :name, :club_key
 
 	#Relationships
 	has_many :accounts, :dependent => :destroy
@@ -8,6 +8,10 @@ class Club < ActiveRecord::Base
 	
 	#Validations
 	validate :cn
+	validates_uniqueness_of :club_key
+	validates_presence_of :club_key, :allow_blank => false
+	## allows 3 digit numbers that start with 0.
+	validates_format_of :club_key, :with => /^[0-9]{3}$/
 	
 	#Named Scopes
 	#orders clubs by club_id
@@ -33,11 +37,12 @@ class Club < ActiveRecord::Base
 				end
 				
 			end
+			
 		else
 			validates_presence_of :name
 		end
 	end
-	
+		
 	def current_balance
 		account = self.current_account
 		balance = account.balance
@@ -82,9 +87,11 @@ class Club < ActiveRecord::Base
 			unless u.assignments.nil? || u.assignments.empty?
 				unless u.assignments[0].role.name.downcase.eql?("student affairs")
 					for assignment in u.assignments
+						
 						if assignment.active || assignment.role.name.downcase.eql?("system admin") || assignment.role.name.downcase.eql?("vp of finance")
 							break
 						end
+						
 					free_users << u
 					end
 				else

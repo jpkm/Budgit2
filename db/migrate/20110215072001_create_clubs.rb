@@ -2,7 +2,7 @@ class CreateClubs < ActiveRecord::Migration
   def self.up
     create_table :clubs do |t|
       t.string :name
-
+	  t.integer :club_key
       t.timestamps
     end
   end

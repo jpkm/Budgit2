@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates_confirmation_of :password
   
-  
+  ## unique names
 	def un
 		names = []
 		for u in User.all

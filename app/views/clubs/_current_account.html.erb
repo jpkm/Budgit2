@@ -10,7 +10,7 @@ Year: <%= @club.current_account.year %>
 <% end %>
 
  <!-- all unreimbursed debits for club.current_account -->
-<% unless @debits_unreimbursed.nil? || @debits_unreimbursed.empty? %>
+<% unless @debits_unreimbursed.nil? || @debits_unreimbursed.empty? || !current_user.is_affairs? %>
   <p class="supertiny">&nbsp;</p>
   <%= render :partial => "debits_unreimbursed" %>
 <% end %>
@@ -26,3 +26,9 @@ Year: <%= @club.current_account.year %>
   <p class="supertiny">&nbsp;</p>
   <%= render :partial => "account_credits" %>
 <% end %>
+
+<!-- all stuff for account 
+<% unless  @club.current_account.debitsandcredits.nil? ||  @club.current_account.debitsandcredits.empty? %>
+  <p class="supertiny">&nbsp;</p>
+  <%= render :partial => "account_debitsandcredits" %>
+<% end %>-->

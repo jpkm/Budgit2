@@ -37,6 +37,7 @@ namespace :db do
 	# Step 3.5: add X club
 		x = Club.new
 		x.name = "Gaming Club"
+		x.club_key = "312"
 		x.save!
     
     # Step 4: add Users

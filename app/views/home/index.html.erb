@@ -10,16 +10,26 @@
 	<% end %>
 		
 <% else %>
+	
     <div id= "login">
     <h1>Log In</h1>
-    <% form_tag  sessions_path do -%>
-    <p><%= label_tag 'login' %> &nbsp;   &nbsp; &nbsp;
-    <%= text_field_tag 'login', @login %></p>
-
-    <p><%= label_tag 'password' %>
-    <%= password_field_tag 'password', nil %></p>
-
-    <p><%= submit_tag 'Log in' %></p>
+    
+	<table>
+	<% form_tag  sessions_path do -%>
+    
+	<tr>
+	<td><%= label_tag 'login' %> &nbsp;   &nbsp; &nbsp;</td>
+    <td><%= text_field_tag 'login', @login %></td>
+	</tr>
+	
+	<tr>
+    <td><%= label_tag 'password' %> </td>
+    <td><%= password_field_tag 'password', nil %></td>
+	</tr>
+	
+	</table>
+    
+	<p><%= submit_tag 'Log in' %></p>
     <% end %>
       </div>
 <% end %>

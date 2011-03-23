@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20110219172523) do
 
   create_table "clubs", :force => true do |t|
     t.string   "name"
+    t.integer  "club_key"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -44,7 +45,7 @@ ActiveRecord::Schema.define(:version => 20110219172523) do
 
   create_table "credits", :force => true do |t|
     t.integer  "credit_category_id"
-    t.datetime "date"
+    t.date     "date"
     t.integer  "account_id"
     t.integer  "amount"
     t.datetime "created_at"
@@ -67,7 +68,7 @@ ActiveRecord::Schema.define(:version => 20110219172523) do
     t.date     "date_purchased"
     t.integer  "account_id"
     t.integer  "amount"
-    t.date     "reimbursement_date"
+    t.datetime "reimbursement_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
