@@ -1,9 +1,7 @@
-- mailto: 
-	- when a new debit is submitted send mail to faculty and Student Affairs advisor
-	- when a reimbursement is made send email to club leader
-	- when a club is made email club leader
 
-- garbage can for when an element has already been deactivated -
-- should you be able to reactive things?
 - username changed to login (don't mess with mother nature)
+- debit show page link from item purchased
+- date format
+- change time formating (d.m.y) 
+- take out time
 

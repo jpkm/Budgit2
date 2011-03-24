@@ -2,16 +2,15 @@
 
 <table class = "datagrid">
   <thead class = "datagrid">
-    <th>Role</th>
     <th>Club</th>
+	<th>Balance</th>
 	<th>New Debits</th>
   </thead>
 
 <% for assignment in current_user.assignments %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
-    <td><%= assignment.role.name %></td>
 	<td><%= link_to(h(assignment.club.name), club_path(assignment.club)) %></td>
-
+	<td><%= assignment.club.current_account.balance %>
 	<td align='center'> 
 	<% if current_user.is_affairs? %>
 
