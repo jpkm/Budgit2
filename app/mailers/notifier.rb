@@ -1,9 +1,8 @@
 class Notifier < ActionMailer::Base
   default :from => 'mezaniah.budgit.373@gmail.com',
 			:return_path => 'mezaniah.budgit.373@gmail.com',
-			#:cc => 'mezaniah.budgit.373@gmail.com'
-			:cc => 'zfh@qatar.cmu.edu'
-			
+			:cc => 'mezaniah.budgit.373@gmail.com'
+			#:cc => 'zfh@qatar.cmu.edu'
 
 	  def welcome_email(user)
 		@user = user
