@@ -34,10 +34,10 @@ class CreditCategory < ActiveRecord::Base
 	end	
 	
 	
-	def self.except_inital
+	def self.except_initial
 		except = []
 		for creditcategory in CreditCategory.all
-			unless creditcategory.category.downcase.eql?("inital")
+			unless creditcategory.category.downcase.eql?("initial")
 				except << creditcategory
 			end
 		end

@@ -33,9 +33,8 @@ class AssignmentsController < ApplicationController
 		@club = @assignment.club
 		#get all the role not filled for club	
 		@available_roles = @assignment.club.roles_available
-		#get all users who don't have an active assignment and aren't sysa or vp
-			#-- needs to give: all users who don't have active assignment and don't already have a "deactivated" assignment with this club.id
-		@available_users = @club.free_users
+		@available_users = User.free_users(@club) 
+		#@club.free_users
 	else
 		unless @assignment.roles_for_vp_and_sysadmin.nil? || @assignment.roles_for_vp_and_sysadmin.empty?
 			@roles = @assignment.roles_for_vp_and_sysadmin
@@ -60,9 +59,7 @@ class AssignmentsController < ApplicationController
   def create
     @assignment = Assignment.new(params[:assignment])
 	@assignment.active = true
-	
 	should_send = false
-	
 	
 	if @assignment.user.assignments.nil? || @assignment.user.assignments.empty? 
 		should_send = true
@@ -70,10 +67,6 @@ class AssignmentsController < ApplicationController
 	
     respond_to do |format|
       if @assignment.save
-	  p 'DICKS'
-	  p should_send
-	  p 'DICKS'
-	  
 		if !@assignment.role.name.eql?("system admin") && should_send
 			Notifier.welcome_email(@assignment.user).deliver
 		end

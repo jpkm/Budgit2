@@ -29,14 +29,14 @@ class CreditsController < ApplicationController
     @credit = Credit.new
 	@credit.account_id = params[:account]
 	@account = Account.find(params[:account])
-	@answer = @account.has_inital?
+	@answer = @account.has_initial?
 	@credit.date = Date.today
 	
 	if @answer
-		@except = CreditCategory.except_inital
+		@except = CreditCategory.except_initial
 		#@except = []
 		#for creditcategory in CreditCategory.all
-		#	unless creditcategory.category.eql?("Inital")
+		#	unless creditcategory.category.eql?("Initial")
 		#		@except << creditcategory
 		#	end
 		#end

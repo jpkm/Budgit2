@@ -44,6 +44,7 @@ class DebitsController < ApplicationController
 	authorize! :create, @debit, :message => "NO!"
 	respond_to do |format|
       if @debit.save 
+		Notifier.debit_email(current_user, @debit).deliver
         format.html { redirect_to(club_path(@debit.account.club_id), :notice => 'Debit was successfully created.') }
         format.xml  { render :xml => @debit, :status => :created, :location => @debit }
       else
@@ -70,27 +71,20 @@ class DebitsController < ApplicationController
     end
   end
 
-  # DELETE /debits/1
-  # DELETE /debits/1.xml
+  
   def destroy
     @debit = Debit.find(params[:id])
     redirect_to(@debit.account.club)
 	
 	@debit.destroy
-
-    #respond_to do |format|
-	#  format.html { redirect_to(club_path(@defect.account.club)) }
-      #format.html { redirect_to(debits_url) }
-    #  format.xml  { head :ok }
-    #end
   end
 
   def reimburse
 	@debit = Debit.find(params[:id])
 	authorize! :reimburse, @debit, :message => "no"
-	
 	@debit.reimbursement_date = DateTime.now
 	@debit.save!
+	Notifier.reimburse_email(current_user, @debit).deliver
 	redirect_to(club_path(@debit.account.club_id), :notice => 'Debit Reimbursed.')
   end
   

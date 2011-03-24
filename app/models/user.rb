@@ -121,5 +121,24 @@ class User < ActiveRecord::Base
 		return false
 	end
 	
-   
+	#### returns users an active assignment who are aren't the sys or vp 
+	def self.free_users(club)
+		free_users = []
+		for u in User.all
+			should_add = true
+			if u.assignments.nil? || u.assignments.empty?
+				free_users << u
+			else
+				for assignment in u.assignments
+					if assignment.club_id == club.id || assignment.role.name.downcase.eql?("system admin") || assignment.role.name.downcase.eql?("vp of finance")
+						should_add = false
+					end
+				end
+				if should_add 
+					free_users << u
+				end
+			end
+		end
+		free_users
+	end
 end

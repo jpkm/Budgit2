@@ -80,21 +80,4 @@ class Club < ActiveRecord::Base
 		return available_roles
 	end
 	
-	#### returns users without an active assignment who are aren't the sys or vp 
-	def free_users
-		free_users = []
-		for u in User.all
-			unless u.assignments.nil? || u.assignments.empty? 
-				for assignment in u.assignments
-					if assignment.active || assignment.role.name.downcase.eql?("system admin") || assignment.role.name.downcase.eql?("vp of finance") || assignment.club_id == self.id
-						break
-					end
-				free_users << u
-				end
-			else
-				free_users << u
-			end
-		end
-		free_users
-	end
 end

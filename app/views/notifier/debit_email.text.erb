@@ -1,0 +1,17 @@
+
+		<%= @user.name %>
+		You have successfully recorded a Debit,
+		<% if @debit.amount <= 250 %>
+		Good boy, come get your money from your SA
+	  	<% else %>
+		Bad, please inform us when you are Bank account is credited, so we can finalize reimbursement
+		<% end %>
+	
+
+		Item purchased: <%= @debit.item_purchased %>
+		Category: <%= @debit.debit_category.category %>
+		Reason: <%= @debit.reason %>
+		Date Purchased: <%= @debit.date_purchased %>
+		Amount: <%= @debit.amount %>
+		Number of consumers: <%= @debit.number_of_consumers %>
+		Names of consumers: <%= @debit.names_of_consumers %>

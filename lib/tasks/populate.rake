@@ -158,7 +158,7 @@ namespace :db do
 	
 	# Step 8: add some creditcategories to work with 
 		ci = CreditCategory.new
-		ci.category = "Inital"
+		ci.category = "Initial"
 		ci.active = true
 		ci.save!
     

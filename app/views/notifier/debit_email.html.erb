@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1><%= @user.name %></h1>
+    <p>
+		You have successfully recorded a Debit,
+		<% if @debit.amount <= 250 %>
+			Good boy, come get your money from your SA
+	  	<% else %>
+			Bad, please inform us when you are Bank account is credited, so we can finalize reimbursement
+		<% end %>
+    </p>
+	
+<table>
+	<thead>
+		<th>Item purchased</th>
+		<th>Category</th>
+		<th>Reason</th>
+		<th>Date Purchased</th>
+		<th>Amount</th>
+		<th>Number of consumers</th>
+		<th>Names of consumers</th>
+	</thead>
+
+  <tr>
+	<td><%= @debit.item_purchased %></td>
+    <td><%= @debit.debit_category.category %></td>
+    <td><%= @debit.reason %></td>
+    <td><%= @debit.date_purchased %></td>
+    <td><%= @debit.amount %></td>
+    <td><%= @debit.number_of_consumers %></td>
+    <td><%= @debit.names_of_consumers %></td>
+  </tr>
+</table>
+    
+    
+  </body>
+</html>
