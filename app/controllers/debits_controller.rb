@@ -40,8 +40,8 @@ class DebitsController < ApplicationController
   def create
     @debit = Debit.new(params[:debit])
 	@debit.reimbursement_date = "null"
-	
 	authorize! :create, @debit, :message => "NO!"
+	
 	respond_to do |format|
       if @debit.save 
 		Notifier.debit_email(current_user, @debit).deliver

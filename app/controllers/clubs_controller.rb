@@ -14,13 +14,11 @@ class ClubsController < ApplicationController
     end
   end
 
-  # GET /clubs/1
-  # GET /clubs/1.xml
+
   def show  
 	# Named Scope Definitions
     @club = Club.find(params[:id])
 	authorize! :read, @club, :message => "No no no"
-	
 	# all accounts for @club
 	@inactive_accounts = Account.inactive_for_club(@club).paginate :page => params[:page], :per_page => 5
 	# get all assignment for @club
@@ -43,8 +41,6 @@ class ClubsController < ApplicationController
     end
   end
 
-  # GET /clubs/new
-  # GET /clubs/new.xml
   def new
     @club = Club.new
 	authorize! :read, @clubs, :message => "No no no"

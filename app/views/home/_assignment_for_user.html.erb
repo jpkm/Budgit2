@@ -9,6 +9,7 @@
 
   <!-- only shows active assignments -->
 <% for assignment in current_user.assignments %>
+    <% if assignment.active %>
 	  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
 		<td><%= link_to(h(assignment.club.name), club_path(assignment.club)) %></td>
 		<td><%= assignment.club.current_account.balance %>
@@ -20,5 +21,6 @@
 		<% end %>
 		</td>
 	  </tr>
+	<% end %>
 <% end %>
 </table>

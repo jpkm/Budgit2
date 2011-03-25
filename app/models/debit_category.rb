@@ -1,5 +1,5 @@
 class DebitCategory < ActiveRecord::Base
-	attr_accessible :category
+	attr_accessible :category, :active
 
 	##Relationships
 	has_many :debits

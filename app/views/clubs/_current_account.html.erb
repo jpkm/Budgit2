@@ -15,6 +15,8 @@ Year: <%= @club.current_account.year %>
   <%= render :partial => "debits_unreimbursed" %>
 <% end %>
 
+<%= @club.accounts %>
+
   <!-- all debits for account -->
 <% unless @account_debits.nil? || @account_debits.empty? %>
   <p class="supertiny">&nbsp;</p>

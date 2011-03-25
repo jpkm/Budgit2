@@ -15,6 +15,9 @@
     <%= f.label :category %><br />
     <%= f.text_field :category %>
   </div>
+  
+   <%= f.hidden_field :active, :value => true %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

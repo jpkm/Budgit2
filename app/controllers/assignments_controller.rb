@@ -139,7 +139,7 @@ class AssignmentsController < ApplicationController
 	unless @assignment.save
 		redirect_to(assignments_path, :notice => 'You suck.')
 	else
-	
+	# where should this take you?
 	redirect_to((assignments_path), :notice => 'Assignment reactivated.')
 	
 	end

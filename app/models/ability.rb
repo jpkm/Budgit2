@@ -29,7 +29,18 @@ class Ability
 				clubs_accounts = assignment_clubs.map{|c| c.current_account.id}
 				clubs_accounts.include? this_debit.account.id
 			end
-		#else
+			# need to get all the accounts for clubs you are actively assigned to
+			can :read, Account do |this_account|
+				assignment_clubs = user.assignments.map{|a| a.club if a.active}
+				accounts = []
+				for club in assignment_clubs.compact
+					for account in club.accounts
+						accounts << account
+					end
+				end
+				accounts.include? this_account
+			end
+		#else				
 		#	can :read, :all
 		end
 	
