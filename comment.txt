@@ -5,3 +5,6 @@
 - change time formating (d.m.y) 
 - take out time
 
+
+- sysadin functionality
+

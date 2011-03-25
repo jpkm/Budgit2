@@ -34,12 +34,6 @@ class CreditsController < ApplicationController
 	
 	if @answer
 		@except = CreditCategory.except_initial
-		#@except = []
-		#for creditcategory in CreditCategory.all
-		#	unless creditcategory.category.eql?("Initial")
-		#		@except << creditcategory
-		#	end
-		#end
 	end
 	
 
@@ -59,13 +53,16 @@ class CreditsController < ApplicationController
   def create
     @credit = Credit.new(params[:credit])
 	@credit.date = Date.today
+	@answer = @credit.account.has_initial?
 	
     respond_to do |format|
       if @credit.save
 		format.html { redirect_to(club_path(@credit.account.club_id), :notice => 'Credit was successfully created.') }
-        #format.html { redirect_to(@credit, :notice => 'Credit was successfully created.') }
         format.xml  { render :xml => @credit, :status => :created, :location => @credit }
       else
+		if @answer
+			@except = CreditCategory.except_initial
+		end
         format.html { render :action => "new" }
         format.xml  { render :xml => @credit.errors, :status => :unprocessable_entity }
       end
