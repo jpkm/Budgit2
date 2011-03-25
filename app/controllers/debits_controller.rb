@@ -22,13 +22,12 @@ class DebitsController < ApplicationController
   end
 
   def new
-    @debit = Debit.new
+    @debit = Debit.new	
 	@debit.account_id = params[:account]
 	@debit.reimbursement_date = "null"
-	
 	authorize! :create, @debit, :message => "NO!"
-	
-    respond_to do |format|
+    
+	respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @debit }
     end
@@ -41,6 +40,7 @@ class DebitsController < ApplicationController
   def create
     @debit = Debit.new(params[:debit])
 	@debit.reimbursement_date = "null"
+	
 	authorize! :create, @debit, :message => "NO!"
 	respond_to do |format|
       if @debit.save 

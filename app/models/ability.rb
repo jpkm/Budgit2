@@ -25,8 +25,9 @@ class Ability
 				assignment_clubs.include? this_club.id
 			end
 			can :create, Debit do |this_debit|
-				assignment_clubs = user.assignments.map{|a| a.club_id if a.active}
-				assignment_clubs.include? this_debit.account.club_id
+				assignment_clubs = user.assignments.map{|a| a.club if a.active}
+				clubs_accounts = assignment_clubs.map{|c| c.current_account.id}
+				clubs_accounts.include? this_debit.account.id
 			end
 		#else
 		#	can :read, :all

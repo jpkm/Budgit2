@@ -47,9 +47,16 @@
 	<% end %>
   </div>
   
-    <%= f.hidden_field :active, :value => true %> 
+   <%= f.hidden_field :active, :value => true %> 
 	
   <div class="actions">
     <%= f.submit %>
   </div>
+  
+	<!-- if assignment.club_id is not nil render this partical for reactivating users-->
+	<% unless @assignment.club_id.nil? || @assignment.club.deactivated == 0 %>
+		<p class ="supertiny">&nbsp;</p>
+		<%= render :partial => "reactivate_users" %>
+	<% end %>
+  
 <% end %>

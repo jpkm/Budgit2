@@ -2,10 +2,10 @@
 
 Year: <%= @club.current_account.year %> 
 | Balance: <%= @club.current_balance %>
-<% if current_user.is_leader? || current_user.is_admin? %>
+<% if can? :create, Debit %>
 	| <%= link_to "Record new Debit", new_debit_path(:account => @club.current_account.id) %> 
 <% end %>
-<% if current_user.is_vp? || current_user.is_admin? %>
+<% if can? :create, Credit %>
 	| <%= link_to "Credit Account", new_credit_path(:account => @club.current_account.id) %>
 <% end %>
 

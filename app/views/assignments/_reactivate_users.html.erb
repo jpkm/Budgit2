@@ -1,0 +1,31 @@
+<h2>Reactivateable Users for Club</h2>
+  
+<table class='datagrid'>
+  <thead class='datagrid'>
+    <th>User</th>
+    <th>Role</th>
+	<th>Club</th>
+    <th>Reactivate</th>
+  <thead>
+
+  <!-- gets all the assignments for this club where active == false and that user doesn't have an active assignment anywhere else -->
+<% for assignment in @assignment.club.assignments %>
+	<% unless assignment.active %>
+		<tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+			<td><%= assignment.user.name %></td>
+			<td><%= assignment.role.name %></td>
+			<td><%= assignment.club.name %></td>
+			<td align="center">
+				<%= link_to 'Reactivate', :confirm => 'Are you sure?', :controller => "assignments", :action => :reactivate2, :id => assignment.id %>
+			</td>
+		</tr>
+	<% end %>
+<% end %>
+</table>
+
+
+
+
+
+
+

@@ -80,4 +80,15 @@ class Club < ActiveRecord::Base
 		return available_roles
 	end
 	
+	# get all the not active (deactivated) accounts for club
+	def deactivated
+		count = 0
+		for assignment in assignments
+			unless assignment.active
+				count = count + 1
+			end
+		end
+		count
+	end	
+	
 end

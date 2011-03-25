@@ -19,7 +19,7 @@ class ClubsController < ApplicationController
   def show  
 	# Named Scope Definitions
     @club = Club.find(params[:id])
-	#authorize! :read, @clubs, :message => "No no no"
+	authorize! :read, @club, :message => "No no no"
 	
 	# all accounts for @club
 	@inactive_accounts = Account.inactive_for_club(@club).paginate :page => params[:page], :per_page => 5

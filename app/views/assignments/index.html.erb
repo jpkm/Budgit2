@@ -1,19 +1,15 @@
 <h1>Assignments</h1>
-
 <% for assignment in @assignments %>
 	<% if assignment.errors.any? %>
 		p assignment.errors
 		<div id="error_explanation">
 		  <h2><%= pluralize(assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
-
 		  <ul>
 		  <% assignment.errors.full_messages.each do |msg| %>
 			<li><%= msg %></li>
 		  <% end %>
 		  </ul>
-		  
 		</div>
-		
 	  <% end %>
 <% end %>
   
@@ -23,7 +19,7 @@
     <th>Role</th>
 	<th>Club</th>
     <th>Destroy</th>
-  </tr>
+  </thead>
 
 <% @assignments.each do |assignment| %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
@@ -48,3 +44,9 @@
 <br />
 
 <%= link_to 'New Assignment', new_assignment_path(:club => nil) %>
+
+
+
+
+
+
