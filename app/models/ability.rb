@@ -41,8 +41,10 @@ class Ability
 				end
 				accounts.include? this_account
 			end
-		#else				
-		#	can :read, :all
+		#else			
+			#the treasure/club leader of Student Majlis falls under leader
+			# who else would get to here and what should they see
+			#can :read, :all
 		end
 	
 			
