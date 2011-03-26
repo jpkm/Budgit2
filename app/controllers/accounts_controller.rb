@@ -108,4 +108,9 @@ class AccountsController < ApplicationController
 	redirect_to(club_path(@account.club_id), :notice => 'Account deactivated.')
   end
   
+  def make_account(club_id)
+	p club_id
+	Account.make_new_account(club_id)
+  end
+  
 end

@@ -31,7 +31,8 @@ Budgit::Application.routes.draw do
 
   resources :accounts
   match 'deactivate1' => 'accounts#deactivate1', :as => :deactivate1
-
+  match 'make_account' => 'accounts#make_account', :as => :make_account
+	
   resources :clubs
 
   resources :assignments

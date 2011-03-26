@@ -10,21 +10,51 @@
 	<% end %>
 		
 <% else %>
+
+		<img style="position: absolute; right: 0; z-index: 0;" src="images/splash.png">
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
     <div id= "login">
-		<h1>Log In</h1>
-		<table>
-		<% form_tag  sessions_path do -%>
-			<tr>
-				<td><%= label_tag 'login' %> &nbsp;   &nbsp; &nbsp;</td>
-				<td><%= text_field_tag 'login', @login %></td>
-			</tr>
-			<tr>
-				<td><%= label_tag 'password' %> </td>
-				<td><%= password_field_tag 'password', nil %></td>
-			</tr>
-		</table>
-		
-		<p><%= submit_tag 'Log in' %></p>
-		<% end %>
+    
+    <h1>Sign in</h1>
+    
+    <% form_tag  sessions_path do -%>
+    <p><%= label_tag 'username' %> &nbsp;
+    <%= text_field_tag 'login', @login %></p>
+
+    <p><%= label_tag 'password' %> &nbsp;&nbsp;
+    <%= password_field_tag 'password', nil %></p>
+
+    <p>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      
+      <%= submit_tag 'Log in' %>
+    </p>
+    
+    <% end %>
     </div>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    
+    
 <% end %>

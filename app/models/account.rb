@@ -96,4 +96,12 @@ class Account < ActiveRecord::Base
 		return "#{date.year}-#{next_date}"
 	end
 	
+	def self.make_account(club_id)
+		account = Account.new
+		account.club_id = club_id
+		account.date = Time.new
+		account.active = true
+		account.save!
+	end
+	
 end

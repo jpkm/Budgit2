@@ -1,4 +1,10 @@
-body { background-color: black; color: #333; }
+body { 
+background-image: url('/images/Money_Tree.png');
+background-position: bottom right;
+background-repeat: no-repeat;
+color: #333; 
+vertical-align: baseline;
+}
 
 #body {
 	margin:0 10px;
@@ -44,9 +50,17 @@ a:hover { color: #600;} /* black text-decoration: underline; */
   font-style: italic;
 }
 
-/*#login{
-	text-align: center;
-}*/
+#login{
+  position: static;
+  top: 140px;
+  left: 15px;
+  padding: 15px, 20px, 15px, 20px;
+  z-index: 1;
+}
+
+img{ 
+
+}
 
 #error_explanation {
   width: 450px;
@@ -79,7 +93,6 @@ a:hover { color: #600;} /* black text-decoration: underline; */
 }
 
 #wrap {
-background-color:white;
 position:relative;
 margin: 0 auto;
 width: 900px;

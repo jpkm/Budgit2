@@ -1,0 +1,26 @@
+﻿body {font-family:"Tw Cen MT";margin:10px;padding:0;font-weight:bold;color:#666666;}
+a{color:#666666;}
+ul{list-style-type:none;margin:0;}
+ul li div.title{width:110px;float:left;}
+.container{width:325px;padding:10px;border:dashed 3px #666666;}
+
+
+/* CODE FOR ROUNDED BOXES */
+.input{
+  background:url(/images/input_left.png) no-repeat;
+  padding:0 0 0 4px;float:left;
+  margin:1px;
+  float:left;
+}
+.input span{
+  background:url(/images/input_right.png) no-repeat right top;
+  padding:1px 3px 3px 0;
+  float:left;
+}
+    /* if you want a different color, jsut specify it here, and change the color of the included .png files */
+.input span input{
+  background:#cccccc;
+  color:#666666;
+  font-weight:bold;
+  border:0;
+}

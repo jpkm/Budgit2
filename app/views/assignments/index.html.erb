@@ -34,7 +34,6 @@
 	<td align="center"><% if assignment.active %>
 		<%= link_to(image_tag("delete_dg.png", :border => 0), :confirm => "Are you sure?", :controller => "assignments", :action => :deactivate2, :id => assignment.id) %>
 	<% else %>
-		<%#= link_to 'Destroy', assignment, :confirm => 'Are you sure?', :method => :delete %>
 		<%= link_to 'Reactivate', :confirm => 'Are you sure?', :controller => "assignments", :action => :reactivate2, :id => assignment.id %>
 	<% end %></td>
   </tr>

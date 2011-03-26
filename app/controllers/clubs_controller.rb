@@ -63,14 +63,8 @@ class ClubsController < ApplicationController
 
     respond_to do |format|
       if @club.save
-		@time = Time.new
-		@account = Account.new
-		@account.club_id = @club.id
-		@account.year = @time.year
-		@account.active = true
-		@account.save!
-		format.html { redirect_to(club_path(@club), :notice => 'Club was successfully created.') }
-        #format.html { redirect_to(new_account_path(:club => @club), :notice => 'Club was successfully created.') }
+		Account.make_new_account(@club.id)
+		format.html { redirect_to(club_path(@club), :notice => 'Club and Account were successfully created.') }
         format.xml  { render :xml => @club, :status => :created, :location => @club }
       else
         format.html { render :action => "new" }
