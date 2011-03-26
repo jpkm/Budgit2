@@ -1,10 +1,8 @@
 
 - username changed to login (don't mess with mother nature)
 - debit show page link from item purchased
-- date format
 - change time formating (d.m.y) 
-- take out time
 
 
-- sysadin functionality
+- do we want to give you access to deactivate account in the middle of a school year.
 

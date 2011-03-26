@@ -128,7 +128,7 @@ namespace :db do
     
 	# Step 5.5: Add Account
 		acc = Account.new
-		acc.year = "2011"
+		acc.date = Time.now
 		acc.club_id = x.id
 		acc.active = true
 		acc.save!

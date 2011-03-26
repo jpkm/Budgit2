@@ -1,7 +1,7 @@
 class CreateAccounts < ActiveRecord::Migration
   def self.up
     create_table :accounts do |t|
-      t.integer :year
+      t.date :date #changed from integer
       t.integer :club_id
 	  t.boolean :active
 	  

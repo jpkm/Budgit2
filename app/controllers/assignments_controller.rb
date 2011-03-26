@@ -27,7 +27,7 @@ class AssignmentsController < ApplicationController
   def new
     @assignment = Assignment.new
 	@assignment.club_id = params[:club]
-	authorize! :view, @assignments, :message => "no"
+	authorize! :create, @assignment, :message => "no"
 	
 	unless @assignment.club_id.nil?
 	# you are assigning to club
@@ -62,6 +62,7 @@ class AssignmentsController < ApplicationController
 	@assignment.active = true
 	should_send = false
 	@user = @assignment.user
+	authorize! :create, @assignment, :message => "no"
 	
 	unless @user.nil?
 		if @assignment.user.assignments.nil? || @assignment.user.assignments.empty? 

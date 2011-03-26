@@ -11,8 +11,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :year %>: <%= @account.year %>
-	<%= f.hidden_field :year, :value => @time.year %>
+    <%= f.label :date %>: <%= @account.date.year + 1%>-<%= @account.date.year + 2 %>
+	<%= f.hidden_field :date, :value => Time.new %>
   </div>
   
   <div class="field">

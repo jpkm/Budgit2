@@ -2,19 +2,16 @@
 	<tr valign="top">
 		<td width="200">
 			<h3>Club Info</h3>
-
-			<% if current_user.is_vp? || current_user.is_admin? %>
-				<% if @club.current_account.nil? %>
+			<% if can? :create, Account %>
+				<% if @club.current_account.nil? || @club.current_account.time_to_deactivate? %>
 					<%= link_to "New Account", new_account_path(:club => @club) %>
 					<br>
 				<% else %>
-					<% unless @club.current_account.nil? %>
-						<%= link_to "Deactivate Current Account", :controller => "accounts", :action => :deactivate1, :id => @club.current_account.id %>
-						<br>
-					<% end %>
+					<%= link_to "Deactivate Current Account", :controller => "accounts", :action => :deactivate1, :id => @club.current_account.id %>
+					<br>
 				<% end %>
 			<% end %>
-			<% if current_user.is_admin? %>
+			<% if can? :create, Assignment %>
 				<%= link_to "Assign Users", new_assignment_path(:club => @club) %>
 			<% end %>
 		</td>

@@ -1,5 +1,5 @@
 class Account < ActiveRecord::Base
-	attr_accessible :club_id, :year, :active
+	attr_accessible :club_id, :date, :active
 
 	#Relationships
 	belongs_to :club
@@ -8,14 +8,14 @@ class Account < ActiveRecord::Base
 	
 	#Validations
 	validates_presence_of :club_id
-	validates_numericality_of :year
+	#validates_numericality_of :date
 	
 	#Named Scopes
 	
 	# get all accounts for a particular club_id
-	named_scope :for_club, lambda { |club_id| { :conditions => ['club_id = ?', club_id] } }
+	scope :for_club, lambda { |club_id| { :conditions => ['club_id = ?', club_id] } }
 	# get all active accounts for a particular club_id 
-	named_scope :inactive_for_club, lambda { |club| {:conditions => ['club_id = ? AND active = ?', club, false] } }
+	scope :inactive_for_club, lambda { |club| {:conditions => ['club_id = ? AND active = ?', club, false] } }
 	
 	
 	def editing_balance(debit)
@@ -82,6 +82,18 @@ class Account < ActiveRecord::Base
 		@credits = credits.all
 		@all << @debits
 		@all << @credits
+	end
+	
+	def time_to_deactivate?
+		if Time.now.month == 6
+			return true
+		end
+		false
+	end
+	
+	def year
+		next_date = date.year + 1
+		return "#{date.year}-#{next_date}"
 	end
 	
 end

@@ -35,8 +35,7 @@ class AccountsController < ApplicationController
   def new
     @account = Account.new
 	@account.club_id = params[:club]
-	@time = Time.new
-	@account.year = @time.year 
+	@account.date = Time.new 
 	@account.active = true
 	
     respond_to do |format|
@@ -45,6 +44,11 @@ class AccountsController < ApplicationController
     end
   end
 
+  #time.month
+  # count starts when new account is made
+  # that account is active for 8months then is deactivated
+  
+  
   # GET /accounts/1/edit
   def edit
     @account = Account.find(params[:id])

@@ -1,7 +1,7 @@
 <h1>Account Information</h1>
 
   Club: <%= link_to @account.club.name, club_path(@account.club) %> |
-  Year:<%= @account.year %> |
+  Year:<%= @account.date.year %>-<%= @account.date.year + 1 %> |
   Balance: <%= @account.balance %>
 
 <% unless @account_debits.nil? || @account_debits.empty? %>

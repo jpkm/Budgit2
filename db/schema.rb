@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(:version => 20110215175505) do
 
   create_table "accounts", :force => true do |t|
-    t.integer  "year"
+    t.date     "date"
     t.integer  "club_id"
     t.boolean  "active"
     t.datetime "created_at"

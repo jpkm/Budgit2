@@ -3,6 +3,7 @@
 	<thead class = "datagrid"
 		<th>Year</th>
 	</thead>
+	
 <% @inactive_accounts.each do |account| %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
 	<td><%= link_to account.year, account_path(account) %></td>

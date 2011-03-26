@@ -15,7 +15,8 @@
 	<% else %>
 		<td>club doesn't have current account</td>
 	<% end %>
-	<% if current_user.is_admin? %>
+	<!-- should you be allowed to delete a club? -->
+	<% if can? :delete, Club %>
 		<td align="center">
 			<!-- should you be able to do this? -->
 			<%= link_to(image_tag("delete_dg.png", :border => 0), club_path(club), :confirm => 'delete?', :method => :delete) %>

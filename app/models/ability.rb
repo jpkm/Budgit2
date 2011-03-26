@@ -8,6 +8,7 @@ class Ability
 		if user.is_admin?
 			can :manage, :all
 		elsif user.is_vp?
+			can :create, :account
 			can :read, :all
 			can :credit, :club
 		elsif user.is_affairs?
