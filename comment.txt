@@ -6,3 +6,8 @@
 
 - do we want to give you access to deactivate account in the middle of a school year.
 
+
+- little tree only on landing page
+- link in assigned users in club info to user info
+- category, amount, date, reimbursed(change color?)
+- larger/bolder text for visually impared

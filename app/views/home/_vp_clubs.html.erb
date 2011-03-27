@@ -11,8 +11,7 @@
 			<td><%= link_to club.name, club_path(club) %></td>
 			<td>
 				<% if club.current_account.nil? %>
-					<%= club.current_account.nil? %>
-					<%= link_to 'Make New Account', :confirm => 'Are you sure?', :controller => "accounts", :action => :make_account, :id => club.id %>
+					<%= link_to 'Make New Account', :confirm => 'Are you sure?', :controller => "accounts", :action => :make_account, :id => club.id  %>
 				<% else %>
 					<%= club.current_account.balance %>
 				<% end %>

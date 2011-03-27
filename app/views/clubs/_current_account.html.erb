@@ -1,20 +1,10 @@
-<h3>Current Account Information</h3>
 
-Academic Year: <%= @club.current_account.year %> 
-| Balance: <%= @club.current_balance %>
-<% if can? :create, Debit %>
-	| <%= link_to "Record new Debit", new_debit_path(:account => @club.current_account.id) %> 
-<% end %>
-<% if can? :create, Credit %>
-	| <%= link_to "Credit Account", new_credit_path(:account => @club.current_account.id) %>
-<% end %>
-
- <!-- all unreimbursed debits for club.current_account -->
-<% unless @debits_unreimbursed.nil? || @debits_unreimbursed.empty? || !current_user.is_affairs? %>
+ <!-- all unreimbursed debits for club.current_account 
+<% unless @debits_unreimbursed.nil? || @debits_unreimbursed.empty? %>
   <p class="supertiny">&nbsp;</p>
   <%= render :partial => "debits_unreimbursed" %>
 <% end %>
-
+-->
   <!-- all debits for account -->
 <% unless @account_debits.nil? || @account_debits.empty? %>
   <p class="supertiny">&nbsp;</p>
@@ -25,4 +15,17 @@ Academic Year: <%= @club.current_account.year %>
 <% unless @account_credits.nil? || @account_credits.empty? %>
   <p class="supertiny">&nbsp;</p>
   <%= render :partial => "account_credits" %>
+<% end %>
+
+<br>
+<br>
+
+<h3>Current Account Information</h3>
+Academic Year: <%= @club.current_account.year %> 
+| Balance: <%= @club.current_balance %>
+<% if can? :create, Debit %>
+	| <%= link_to "Record new Debit", new_debit_path(:account => @club.current_account.id) %> 
+<% end %>
+<% if can? :create, Credit %>
+	| <%= link_to "Credit Account", new_credit_path(:account => @club.current_account.id) %>
 <% end %>

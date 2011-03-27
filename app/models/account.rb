@@ -97,6 +97,7 @@ class Account < ActiveRecord::Base
 	end
 	
 	def self.make_account(club_id)
+		p club_id
 		account = Account.new
 		account.club_id = club_id
 		account.date = Time.new

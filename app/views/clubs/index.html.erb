@@ -18,7 +18,7 @@
 	<!-- should you be allowed to delete a club? -->
 	<% if can? :delete, Club %>
 		<td align="center">
-			<!-- should you be able to do this? -->
+			<!-- should you be able to do this? NO need to be able to dectivate a club -->
 			<%= link_to(image_tag("delete_dg.png", :border => 0), club_path(club), :confirm => 'delete?', :method => :delete) %>
 		</td>
 	<% end %>
@@ -32,6 +32,6 @@
 
 <br>
 
-<% if current_user.is_admin? %>
+<% if can? :create, Club %>
 	<%= link_to 'New Club', new_club_path %>
 <% end %>

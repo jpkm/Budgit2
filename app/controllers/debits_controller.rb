@@ -13,12 +13,11 @@ class DebitsController < ApplicationController
 
  
   def show
-	redirect_to root_url
-    #@debit = Debit.find(params[:id])
-    #respond_to do |format|
-    #  format.html # show.html.erb
-    #  format.xml  { render :xml => @debit }
-    #end
+    @debit = Debit.find(params[:id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @debit }
+    end
   end
 
   def new

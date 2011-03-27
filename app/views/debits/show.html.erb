@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h2>Debit Info</h2>
+
 <p>
   <b>Item purchased:</b>
   <%= @debit.item_purchased %>
@@ -45,6 +47,9 @@
   <%= @debit.reimbursement_date %>
 </p>
 
-
-<%= link_to 'Edit', edit_debit_path(@debit) %> |
-<%#= link_to 'Back', debits_path %>
+<% if can? :update, @debit %>
+	<%= link_to(image_tag("edit_dg.png", :border => 0), edit_debit_path(@debit))%>&nbsp;
+<% end %>
+<% if can? :delete, @debit %>
+	<%= link_to(image_tag("delete_dg.png", :border => 0), debit_path(@debit), :confirm => 'delete?', :method => :delete) %>
+<% end %>
