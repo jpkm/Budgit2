@@ -11,3 +11,5 @@
 - link in assigned users in club info to user info
 - category, amount, date, reimbursed(change color?)
 - larger/bolder text for visually impared
+- get rid of roles: can't make new roles 
+		
