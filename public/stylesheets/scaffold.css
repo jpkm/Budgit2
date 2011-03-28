@@ -1,7 +1,22 @@
+#header{
+	position: absolute;
+	margin-right: 15px;
+	z-index: -1
+}
+
+#user{
+	font-style: italic;
+	font-size: 70%;
+	position: absolute;
+	right: 0px;
+}
+
+
 body { 
 background-image: url('/images/Money_Tree.png');
 background-position: bottom right;
 background-repeat: no-repeat;
+background-attachment: fixed;
 color: #333; 
 vertical-align: baseline;
 }
@@ -10,18 +25,10 @@ vertical-align: baseline;
 	margin:0 10px;
 	padding:5px;
 }
-/*body {
-  background-color: #fff; 
-  color: #600; 
-  width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-}*/
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size:   13px;
-  /*line-height: 18px;*/
 }
 
 pre {
@@ -30,9 +37,8 @@ pre {
   font-size: 11px;
 }
 
-a { color: #333; } /* #000 */
-a:hover { color: #600;} /* black text-decoration: underline; */
-/*a:visited { color: #666; }*/
+a { color: #333; }
+a:hover { color: #600;} 
 
 .smtext {
 	font-size:80%;

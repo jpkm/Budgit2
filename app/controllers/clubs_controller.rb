@@ -56,14 +56,12 @@ class ClubsController < ApplicationController
     @club = Club.find(params[:id])
   end
 
-  # POST /clubs
-  # POST /clubs.xml
   def create
     @club = Club.new(params[:club])
 
     respond_to do |format|
       if @club.save
-		Account.make_new_account(@club.id)
+		Account.make_account(@club.id)
 		format.html { redirect_to(club_path(@club), :notice => 'Club and Account were successfully created.') }
         format.xml  { render :xml => @club, :status => :created, :location => @club }
       else
@@ -73,8 +71,6 @@ class ClubsController < ApplicationController
     end
   end
 
-  # PUT /clubs/1
-  # PUT /clubs/1.xml
   def update
     @club = Club.find(params[:id])
 
@@ -89,8 +85,7 @@ class ClubsController < ApplicationController
     end
   end
 
-  # DELETE /clubs/1
-  # DELETE /clubs/1.xml
+  # you can't do this
   def destroy
     @club = Club.find(params[:id])
     @club.destroy

@@ -4,6 +4,7 @@ table.datagrid {
 	font: 90% Verdana, Arial, Helvetica, sans-serif;
 	color: black;
 	text-align: left;
+	vertical-align: middle;
 	border-collapse: collapse;
 		width: auto;
 }
@@ -32,17 +33,17 @@ caption.datagrid {
 thead.datagrid th {
 	font-size: 105%;
 	color: black;
-	background-color: white;
 	height: 28px;
 	font-weight: bold;
 	padding: 10px;
-
+	border-bottom: gray dashed 0.25pt;
 }
 
 
 td{
 	padding: 0 10px 0 10px;
-	/*padding:0 5px;*/
+	border-bottom: gray dashed 0.25pt;
+	vertical-align: middle;
 }
 
 /*	TR elements handled here (main rows only)  */
@@ -52,7 +53,7 @@ td{
 	color: #000000;
 	text-align: left;
 	vertical-align: top;
-	line-height: 1.5;
+	line-height: 1;
 	padding: 3px;
 }
 .dg_list_line_even {
@@ -60,9 +61,9 @@ td{
 	color: #000000;
 	text-align: left;
 	vertical-align: top;
-	line-height: 1.5;
-	background-color: #cbcbcb;
+	line-height: 1;
 	padding: 3px;
+	background-color: rgba(255,255,255,0.15);
 }
 .dg_list_line_even img {
 	vertical-align: top;
@@ -73,21 +74,21 @@ td{
 	padding: 5px 0px 3px 8px;
 }
 .dg_list_line_odd:hover {
-	background-color: #B5CEFF;
+	background-color: rgba(255,255,255,0.3);
 	color: #0033ff;
 }
 .dg_list_line_odd:hover a {
-	background-color: #B5CEFF;
-	color: blue; /* are you sure we want this color? */
+	background-color: rgba(255,255,255,0.3);
+	color: blue;
 	text-decoration: underline;
 }
 .dg_list_line_even:hover {
-	background-color: #B5CEFF;
+	background-color: rgba(255,255,255,0.3);
 	color: #0033ff;
 }
 .dg_list_line_even:hover a {
 	background-color: #B5CEFF;
-	color: blue; /* are you sure we want this color? */
+	color: blue;
 	text-decoration: underline;
 }
 

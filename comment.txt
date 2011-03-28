@@ -8,8 +8,6 @@
 
 
 - little tree only on landing page
-- link in assigned users in club info to user info
-- category, amount, date, reimbursed(change color?)
-- larger/bolder text for visually impared
+- larger/bolder text
 - get rid of roles: can't make new roles 
 		

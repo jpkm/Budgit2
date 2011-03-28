@@ -1,35 +1,35 @@
-
-
 			<h2>Club Info</h2>
-      
-			<!-- all active assignments for @club -->
-			<% unless @active_assignments_for_club.nil? || @active_assignments_for_club.empty? %>
-				<p class="supertiny">&nbsp;</p>
-				<%= render :partial => "clubs_assignments" %>
-			<% end %>
-
-      <br><br>
-
-      <!-- actions that can be performed on @club -->
-	  
-    <% if can? :create, Account %>
-		<% if @club.current_account.nil? %>
-			<!-- should be action for make_account -->
-			<%= link_to "New Account", new_account_path(:club => @club) %>
-			<br>
-		<% else %>
-			<%= link_to "Deactivate Current Account", :controller => "accounts", :action => :deactivate1, :id => @club.current_account.id %>
-			<br>
-		<% end %>
-	<% end %>
-	<% if can? :create, Assignment %>
-		<%= link_to "Assign Users", new_assignment_path(:club => @club) %>
-	<% end %>
       
 			<!-- all inactive accounts for this club -->
 			<% unless @inactive_accounts.nil? || @inactive_accounts.empty? %>
 				<p class ="supertiny">&nbsp;</p>
 				<%= render :partial => "inactive_accounts" %>
 			<% end %>
-		</div>
+			
+			 <% if can? :create, Account %>
+				<% if @club.current_account.nil? %>
+				<!-- should be action for make_account -->
+					<%= link_to "New Account", new_account_path(:club => @club) %>
+				<% else %>
+					<%= link_to "Deactivate Current Account", :controller => "accounts", :action => :deactivate1, :id => @club.current_account.id %>
+				<% end %>
+			<% end %>
+	  
+			<!-- all active assignments for @club -->
+			<% unless @active_assignments_for_club.nil? || @active_assignments_for_club.empty? %>
+				<p class="supertiny">&nbsp;</p>
+				<%= render :partial => "clubs_assignments" %>
+			<% end %>
+			<% if can? :create, Assignment %>
+				<%= link_to "Assign Users", new_assignment_path(:club => @club) %>
+			<% end %>
+
+      <br><br>
+
+      <!-- actions that can be performed on @club -->
+	  
+   
+      
+			
+		
 
