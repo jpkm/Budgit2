@@ -27,8 +27,12 @@ class Ability
 			end
 			can :create, Debit do |this_debit|
 				assignment_clubs = user.assignments.map{|a| a.club if a.active}
-				clubs_accounts = assignment_clubs.map{|c| c.current_account.id}
-				clubs_accounts.include? this_debit.account.id
+				clubs_active_accounts = assignment_clubs.compact.map{|c|
+					unless c.current_account.nil?
+					c.current_account.id
+					end
+					}
+				clubs_active_accounts.compact.include? this_debit.account.id
 			end
 			# need to get all the accounts for clubs you are actively assigned to
 			can :read, Account do |this_account|

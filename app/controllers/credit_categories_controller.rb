@@ -1,5 +1,7 @@
 class CreditCategoriesController < ApplicationController
 	before_filter :login_required
+	
+	## this doesnt work, we need to fix it .
 	load_and_authorize_resource
 	layout "application"
   

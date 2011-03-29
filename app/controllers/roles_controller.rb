@@ -1,5 +1,6 @@
 class RolesController < ApplicationController
 	before_filter :login_required
+	load_and_authorize_resource
 	layout "application"
   # GET /roles
   # GET /roles.xml

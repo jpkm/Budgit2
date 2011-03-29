@@ -40,6 +40,8 @@ class AssignmentsController < ApplicationController
 		unless @assignment.roles_for_vp_and_sysadmin.nil? || @assignment.roles_for_vp_and_sysadmin.empty?
 			@roles = @assignment.roles_for_vp_and_sysadmin
 		end
+		p @roles
+		p @assignment.available_users.empty?
 		unless @assignment.available_users.nil? || @assignment.available_users.empty?
 			@users = @assignment.available_users
 		end

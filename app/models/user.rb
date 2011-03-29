@@ -35,7 +35,18 @@ class User < ActiveRecord::Base
 		end
 	end	
  
-
+	def count_active_assignments
+		sum = 0
+		for a in assignments
+			if a.active?
+				sum = sum + 1
+			end
+		end
+		
+		return sum
+	end
+ 
+ 
   # login can be either username or email address
   def self.authenticate(login, pass)
 	login = login.strip
