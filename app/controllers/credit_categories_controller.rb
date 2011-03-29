@@ -1,8 +1,8 @@
 class CreditCategoriesController < ApplicationController
 	before_filter :login_required
+	load_and_authorize_resource
 	layout "application"
-  # GET /credit_categories
-  # GET /credit_categories.xml
+  
   def index
     @credit_categories = CreditCategory.all
 
@@ -12,46 +12,36 @@ class CreditCategoriesController < ApplicationController
     end
   end
 
-  # GET /credit_categories/1
-  # GET /credit_categories/1.xml
   def show
     @credit_category = CreditCategory.find(params[:id])
-
+	
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @credit_category }
     end
   end
 
-  # GET /credit_categories/new
-  # GET /credit_categories/new.xml
   def new
-	if current_user.is_admin?
-		@credit_category = CreditCategory.new
-		@credit_category.active = true
+	@credit_category = CreditCategory.new
+	
+	@credit_category.active = true
 
-		respond_to do |format|
-			format.html # new.html.erb
-			format.xml  { render :xml => @credit_category }
-		end
+	respond_to do |format|
+		format.html # new.html.erb
+		format.xml  { render :xml => @credit_category }
 	end
   end
 
-  # GET /credit_categories/1/edit
   def edit
     @credit_category = CreditCategory.find(params[:id])
   end
 
-  # POST /credit_categories
-  # POST /credit_categories.xml
   def create
-    @credit_category = CreditCategory.new(params[:credit_category])
-
+    @credit_category = CreditCategory.new(params[:credit_category])	
+	
     respond_to do |format|
       if @credit_category.save
         format.html { redirect_to((credit_categories_path), :notice => 'Credit category was successfully created.') }
-        #format.html { redirect_to root_url, :notice => 'Credit category was successfully created.'}
-		#format.xml  { render :xml => @credit_category, :status => :created, :location => @credit_category }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @credit_category.errors, :status => :unprocessable_entity }
@@ -59,8 +49,6 @@ class CreditCategoriesController < ApplicationController
     end
   end
 
-  # PUT /credit_categories/1
-  # PUT /credit_categories/1.xml
   def update
     @credit_category = CreditCategory.find(params[:id])
 
@@ -75,8 +63,6 @@ class CreditCategoriesController < ApplicationController
     end
   end
 
-  # DELETE /credit_categories/1
-  # DELETE /credit_categories/1.xml
   def destroy
     @credit_category = CreditCategory.find(params[:id])
     @credit_category.destroy

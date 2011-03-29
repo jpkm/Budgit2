@@ -15,7 +15,7 @@ table.datagrid a {
 
 table.datagrid a:hover {
 	text-decoration: underline;
-	color: blue; /* are we sure we want this color? */ 
+	color: blue;
 }
 
 /* Table Caption and Header Row  */
@@ -78,7 +78,6 @@ td{
 	color: #0033ff;
 }
 .dg_list_line_odd:hover a {
-	background-color: rgba(255,255,255,0.3);
 	color: blue;
 	text-decoration: underline;
 }
@@ -87,7 +86,6 @@ td{
 	color: #0033ff;
 }
 .dg_list_line_even:hover a {
-	background-color: #B5CEFF;
 	color: blue;
 	text-decoration: underline;
 }
