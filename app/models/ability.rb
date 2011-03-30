@@ -2,15 +2,17 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    #Define abilities for the passed in user here. For example:
-    ## does a user ever have more than one role?? ##
-       user ||= User.new # guest user (not logged in)
+    user ||= User.new # guest user (not logged in)
 		if user.is_admin?
 			can :manage, :all
 		elsif user.is_vp?
 			can :create, :account
 			can :read, :all
 			can :credit, :club
+			can [:update, :edit, :create], Credit do |this_credit|
+				this_credit.account.active
+			end
+			
 		elsif user.is_affairs?
 			can :read, Club do |this_club|
 				assignment_clubs = user.assignments.map{|a| a.club_id if a.active}
@@ -18,7 +20,7 @@ class Ability
 			end
 			can :reimburse, Debit do |this_debit|
 				assignment_clubs = user.assignments.map{|a| a.club_id if a.active}
-				assignment_clubs.include? this_debit.account.club_id
+				(assignment_clubs.include? this_debit.account.club_id) && this_debit.account.active
 			end
 		elsif user.is_leader?
 			can :read, Club do |this_club|
@@ -45,10 +47,6 @@ class Ability
 				end
 				accounts.include? this_account
 			end
-		#else			
-			#the treasure/club leader of Student Majlis falls under leader
-			# who else would get to here and what should they see
-			#can :read, :all
 		end
 	
 			

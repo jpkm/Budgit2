@@ -29,7 +29,7 @@
 
 <p>
   <b>Date Purchased:</b>
-  <%= @debit.date_purchased %>
+  <%= @debit.date_purchased.strftime("%d.%m.%y") %>
 </p>
 
 <p>
@@ -44,14 +44,14 @@
 
 <p>
   <b>Reimbursement Date:</b>
-	<% if can? :reimburse, @debit %>
-		<% if @debit.reimbursement_date.nil? && @debit.account.active %>
+	<% if @debit.reimbursement_date.nil? && @debit.account.active %>
+		<% if can? :reimburse, @debit %>
 			<%= link_to(image_tag("reimburse_dg.png", :border => 0), :confirm => 'Are you sure?', :controller => "debits", :action => :reimburse, :id => @debit.id)%>
-		<% elsif !@debit.reimbursement_date.nil? %>
-			<% @debit.reimbursement_date.strftime("%d/%m/%Y") %>
-		<% elsif !@debit.account.active %>
-			Never Reimbursed
 		<% end %>
+	<% elsif !@debit.reimbursement_date.nil? %>
+		<% @debit.reimbursement_date.strftime("%d/%m/%Y") %>
+	<% elsif !@debit.account.active %>
+		Never Reimbursed
 	<% end %>
 </p>
 

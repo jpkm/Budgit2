@@ -1,6 +1,5 @@
 class CreditsController < ApplicationController
 	before_filter :login_required
-	load_and_authorize_resource
 	layout "application"
   
   def index
@@ -25,23 +24,29 @@ class CreditsController < ApplicationController
     @credit = Credit.new
 	@credit.account_id = params[:account]
 	@account = Account.find(params[:account])
-	@answer = @account.has_initial?
-	@credit.date = Date.today
-	
-	if @answer
-		@except = CreditCategory.except_initial
+	authorize! :create, @credit, :message => "NO!"
+	unless @account.active
+		redirect_to root_url
 	else
-		@credit.credit_category = CreditCategory.get_initial
-	end
+		@answer = @account.has_initial?
+		@credit.date = Date.today
+	
+		if @answer
+			@except = CreditCategory.except_initial
+		else
+			@credit.credit_category = CreditCategory.get_initial
+		end
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @credit }
-    end
+		respond_to do |format|
+			format.html # new.html.erb
+			format.xml  { render :xml => @credit }
+		end
+	end
   end
 
   def edit
     @credit = Credit.find(params[:id])
+	authorize! :edit, @credit, :message => "NO!"
   end
 
   def create
@@ -67,8 +72,8 @@ class CreditsController < ApplicationController
   # PUT /credits/1.xml
   def update
     @credit = Credit.find(params[:id])
-
-    respond_to do |format|
+    
+	respond_to do |format|
       if @credit.update_attributes(params[:credit])
         format.html { redirect_to(club_path(@credit.account.club_id), :notice =>'Credit was successfully updated.') }
 		#format.html { redirect_to(@credit, :notice => 'Credit was successfully updated.') }

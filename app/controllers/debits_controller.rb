@@ -23,17 +23,23 @@ class DebitsController < ApplicationController
   def new
     @debit = Debit.new	
 	@debit.account_id = params[:account]
-	@debit.reimbursement_date = "null"
 	authorize! :create, @debit, :message => "NO!"
-    
-	respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @debit }
-    end
+	@account = Account.find(params[:account])
+	unless @account.active
+		redirect_to root_url
+	else
+		@debit.reimbursement_date = "null"
+		
+		respond_to do |format|
+			format.html # new.html.erb
+			format.xml  { render :xml => @debit }
+		end
+	end
   end
 
   def edit
     @debit = Debit.find(params[:id])
+	authorize! :edit, @debit, :message => "NO!"
   end
 
   def create
@@ -53,10 +59,9 @@ class DebitsController < ApplicationController
     end
   end
 
-  # PUT /debits/1
-  # PUT /debits/1.xml
   def update
     @debit = Debit.find(params[:id])
+	authorize! :update, @debit, :message => "NO!"
 	
     respond_to do |format|
       if @debit.update_attributes(params[:debit])
