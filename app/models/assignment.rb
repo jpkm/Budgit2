@@ -31,7 +31,6 @@ class Assignment < ActiveRecord::Base
 			end
 
 			unless (role.name.eql?("VP of Finance") || role.name.eql?("System Admin"))
-			p role.name
 				if(is_there_another_active(self))
 					errors.add_to_base('There is already a '+role.name+'. You must deactivate the current '+role.name+' before assigning a new one')
 				end	
