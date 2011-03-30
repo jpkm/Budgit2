@@ -10,4 +10,6 @@
 - little tree only on landing page
 - larger/bolder text
 - get rid of roles: can't make new roles 
+
+- freeze that clubs account
 		

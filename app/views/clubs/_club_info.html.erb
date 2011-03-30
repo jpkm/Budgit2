@@ -9,7 +9,7 @@
 			 <% if can? :create, Account %>
 				<% if @club.current_account.nil? %>
 				<!-- should be action for make_account -->
-					<%= link_to "New Account", new_account_path(:club => @club) %>
+					<%= link_to "New Account", :method => Account.make_account(@club.id) %>
 				<% else %>
 					<%= link_to "Deactivate Current Account", :controller => "accounts", :action => :deactivate1, :id => @club.current_account.id %>
 				<% end %>
@@ -25,8 +25,6 @@
 			<% end %>
 
       <br><br>
-
-      <!-- actions that can be performed on @club -->
 	  
    
       

@@ -2,8 +2,7 @@ class CreditsController < ApplicationController
 	before_filter :login_required
 	load_and_authorize_resource
 	layout "application"
-  # GET /credits
-  # GET /credits.xml
+  
   def index
 	redirect_to root_url
     #@credits = Credit.all
@@ -13,8 +12,6 @@ class CreditsController < ApplicationController
     #end
   end
 
-  # GET /credits/1
-  # GET /credits/1.xml
   def show
 	redirect_to root_url
     #@credit = Credit.find(params[:id])
@@ -24,8 +21,6 @@ class CreditsController < ApplicationController
     #end
   end
 
-  # GET /credits/new
-  # GET /credits/new.xml
   def new
     @credit = Credit.new
 	@credit.account_id = params[:account]
@@ -35,8 +30,9 @@ class CreditsController < ApplicationController
 	
 	if @answer
 		@except = CreditCategory.except_initial
+	else
+		@credit.credit_category = CreditCategory.get_initial
 	end
-	
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,13 +40,10 @@ class CreditsController < ApplicationController
     end
   end
 
-  # GET /credits/1/edit
   def edit
     @credit = Credit.find(params[:id])
   end
 
-  # POST /credits
-  # POST /credits.xml
   def create
     @credit = Credit.new(params[:credit])
 	@credit.date = Date.today

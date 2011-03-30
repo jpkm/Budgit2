@@ -44,4 +44,13 @@ class CreditCategory < ActiveRecord::Base
 		return except
 	end
 	
+	def self.get_initial
+		for creditcategory in CreditCategory.all
+			if creditcategory.category.downcase.eql?("initial")
+				return creditcategory
+			end
+		end
+		return
+	end
+	
 end

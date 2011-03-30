@@ -1,8 +1,7 @@
 class AccountsController < ApplicationController
 	 before_filter :login_required
 	 layout "application"
-  # GET /accounts
-  # GET /accounts.xml
+ 
   def index
 	@accounts = Account.all
 	authorize! :read, @accounts, :message => "no"
@@ -13,8 +12,6 @@ class AccountsController < ApplicationController
     end
   end
 
-  # GET /accounts/1
-  # GET /accounts/1.xml
   def show
 	@account = Account.find(params[:id])
 	authorize! :read, @account, :message => "no"
@@ -30,8 +27,6 @@ class AccountsController < ApplicationController
     end
   end
 
-  # GET /accounts/new
-  # GET /accounts/new.xml
   def new
     @account = Account.new
 	@account.club_id = params[:club]
@@ -43,13 +38,7 @@ class AccountsController < ApplicationController
       format.xml  { render :xml => @account }
     end
   end
-
-  #time.month
-  # count starts when new account is made
-  # that account is active for 8months then is deactivated
   
-  
-  # GET /accounts/1/edit
   def edit
     @account = Account.find(params[:id])
   end

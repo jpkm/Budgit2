@@ -18,7 +18,7 @@
 		<% if @answer %>
 			<%= f.collection_select :credit_category_id, @except, :id, :category, :prompt => "Select ..." %>
 		<% else %>
-			<%= f.collection_select :credit_category_id, CreditCategory.all, :id, :category, :prompt => "Select ..." %>
+			: <%= f.hidden_field :credit_category_id, :value => @credit.credit_category.id %><%= @credit.credit_category.category %>
 		<% end %>
    </div>
  
