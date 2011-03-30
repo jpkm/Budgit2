@@ -9,7 +9,7 @@
 <% @account_credits.each do |credit| %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
     <td><%= credit.credit_category.category %></td>
-    <td><%= credit.date.to_s(:long_ordinal) %></td>
+    <td><%= credit.date.strftime("%d/%m/%Y") %></td>
     <td><%= credit.amount %></td>
 	<td align="center">
 		<% if can? :update, credit%>

@@ -9,7 +9,7 @@
 
 <p>
   <b>Category:</b>
-  <%= @debit.debit_category_id %>
+  <%= @debit.debit_category.category %>
 </p>
 
 <p>
@@ -39,12 +39,20 @@
 
 <p>
   <b>Amount:</b>
-  <%= @debit.amount %>
+  $<%= @debit.amount %>
 </p>
 
 <p>
   <b>Reimbursement Date:</b>
-  <%= @debit.reimbursement_date %>
+	<% if can? :reimburse, @debit %>
+		<% if @debit.reimbursement_date.nil? && @debit.account.active %>
+			<%= link_to(image_tag("reimburse_dg.png", :border => 0), :confirm => 'Are you sure?', :controller => "debits", :action => :reimburse, :id => @debit.id)%>
+		<% elsif !@debit.reimbursement_date.nil? %>
+			<% @debit.reimbursement_date.strftime("%d/%m/%Y") %>
+		<% elsif !@debit.account.active %>
+			Never Reimbursed
+		<% end %>
+	<% end %>
 </p>
 
 <% if can? :update, @debit %>

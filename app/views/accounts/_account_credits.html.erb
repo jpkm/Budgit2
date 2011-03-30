@@ -1,22 +1,16 @@
 <h2>Credits</h2>
 <table class = "datagrid">
-	<thread class = "datagrid"
+	<thead class = "datagrid"
 		<th>Category</th>
 		<th>Date </th>
 		<th>Amount</th>
-	</thread>
+	</thead>
 
 <% @account_credits.each do |credit| %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
     <td><%= credit.credit_category.category %></td>
-    <td><%= credit.date.to_s(:long_ordinal) %></td>
+    <td><%= credit.date.strftime("%m/%d/%Y") %></td>
     <td><%= credit.amount %></td>
-	<% if current_user.is_admin? %>
-		<td align="center">
-			<%= link_to(image_tag("edit_dg.png", :border => 0), edit_credit_path(credit))%>&nbsp;
-			<%= link_to(image_tag("delete_dg.png", :border => 0), credit_path(credit), :confirm => 'delete?', :method => :delete) %>
-		</td>
-	<% end %>
   </tr>
 <% end %>
 </table>

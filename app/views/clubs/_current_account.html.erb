@@ -7,6 +7,7 @@ Balance: <%= @club.current_balance %>
   <p class="supertiny">&nbsp;</p>
   <%= render :partial => "account_debits" %>
 <% end %>
+<br>
 <% if can? :create, Debit %>
 	<%= link_to "Record new Debit", new_debit_path(:account => @club.current_account.id) %> 
 <% end %>
@@ -16,6 +17,7 @@ Balance: <%= @club.current_balance %>
   <p class="supertiny">&nbsp;</p>
   <%= render :partial => "account_credits" %>
 <% end %>
+<br>
 <% if can? :create, Credit %>
 	<%= link_to "Credit Account", new_credit_path(:account => @club.current_account.id) %>
 <% end %>

@@ -1,6 +1,7 @@
 <h2>All Debits</h2>
 <table class="datagrid">
 	<thead class="datagrid">
+		<th>Item</th>
 		<th>Category</th>
 		<th>Date Purchased</th>
 		<th>Amount</th>
@@ -9,25 +10,26 @@
 
 <% @account_debits.each do |debit| %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
-	<td><%= link_to debit.debit_category.category, debit_path(debit) %></td>
-    <td><%= debit.date_purchased.to_s(:long_ordinal) %></td>
+	<td><%= link_to debit.item_purchased, debit_path(debit) %></td>
+	<td><%= debit.debit_category.category %></td>
+    <td><%= debit.date_purchased.strftime("%d/%m/%Y")%></td>
     <td><%= debit.amount %></td>
 	<td>
 		<% if debit.reimbursement_date.nil? %>
-			<% if current_user.is_affairs? || current_user.is_admin? %>
+			<% if can? :reimburse, debit %>
 				<%= link_to(image_tag("reimburse_dg.png", :border => 0), :confirm => 'Are you sure?', :controller => "debits", :action => :reimburse, :id => debit.id)%>
 			<% else %>
 				pending
 			<% end %>
 		<% else %>
-			<%= debit.reimbursement_date.to_s(:long_ordinal) %>
+			<%= debit.reimbursement_date.date.strftime("%d/%m/%Y") %>
 		<% end %>
 	</td>
 	<% if can? :update, debit %>
-		<td><%= link_to(image_tag("edit_dg.png", :border => 0), edit_debit_path(debit))%>&nbsp;</td>
+		<td align="center"><%= link_to(image_tag("edit_dg.png", :border => 0), edit_debit_path(debit))%></td>
 	<% end %>
 	<% if can? :delete, debit %>
-		<td><%= link_to(image_tag("delete_dg.png", :border => 0), debit_path(debit), :confirm => 'delete?', :method => :delete) %></td>
+		<td align="center"><%= link_to(image_tag("delete_dg.png", :border => 0), debit_path(debit), :confirm => 'delete?', :method => :delete) %></td>
 	<% end %>
   </tr>
 <% end %>
