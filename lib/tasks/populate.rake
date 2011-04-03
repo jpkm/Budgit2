@@ -304,35 +304,35 @@ namespace :db do
 	  c = Credit.new
       c.account_id = acx.id
 	  c.credit_category_id = ci.id 
-      c.date = Time.now
+      c.date = Date.today
 	  c.amount = 4000
       c.save!
 		
 	  d = Credit.new
       d.account_id = acy.id
 	  d.credit_category_id = ci.id 
-      d.date = Time.now
+      d.date = Date.today
 	  d.amount = 4000
       d.save! 
 	  
 	  d = Credit.new
       d.account_id = acz.id
 	  d.credit_category_id = ci.id 
-      d.date = Time.now
+      d.date = Date.today
 	  d.amount = 4000
       d.save! 
 	  
 	  e = Credit.new
       e.account_id = acj.id
 	  e.credit_category_id = ci.id 
-      e.date = Time.now
+      e.date = Date.today
 	  e.amount = 4000
       e.save! 
 	  
 	  f = Credit.new
       f.account_id = acp.id
 	  f.credit_category_id = ci.id
-      f.date = Time.now
+      f.date = Date.today
 	  f.amount = 4000
       f.save! 
 	  
@@ -344,7 +344,7 @@ namespace :db do
       d.number_of_consumers = 6 
 	  d.names_of_consumers = nil 
 	  d.item_purchased = "hot dogs"
-	  d.date_purchased = Time.now
+	  d.date_purchased = Date.today
 	  d.amount = 10
 	  d.debit_category_id = df.id
       d.reimbursement_date = nil
@@ -357,10 +357,10 @@ namespace :db do
       a.number_of_consumers = 6 
 	  a.names_of_consumers = nil 
 	  a.item_purchased = "hot dogs"
-	  a.date_purchased = Time.now
+	  a.date_purchased = Date.today
 	  a.amount = 10
 	  a.debit_category_id = df.id
-      a.reimbursement_date = Time.now
+      a.reimbursement_date = Date.today
 	  a.save!
 	
 	  # with debit unreimbursed
@@ -370,7 +370,7 @@ namespace :db do
       b.number_of_consumers = 6 
 	  b.names_of_consumers = nil 
 	  b.item_purchased = "hot dogs"
-	  b.date_purchased = Time.now
+	  b.date_purchased = Date.today
 	  b.amount = 10
 	  b.debit_category_id = df.id
       b.reimbursement_date = nil
@@ -383,10 +383,10 @@ namespace :db do
       c.number_of_consumers = 6 
 	  c.names_of_consumers = nil 
 	  c.item_purchased = "hot dogs"
-	  c.date_purchased = Time.now
+	  c.date_purchased = Date.today
 	  c.amount = 10
 	  c.debit_category_id = df.id
-      c.reimbursement_date = Time.now
+      c.reimbursement_date = Date.today
 	  c.save!
 	  
 	  # with debit unreimbursed
@@ -396,7 +396,7 @@ namespace :db do
       e.number_of_consumers = 6 
 	  e.names_of_consumers = nil 
 	  e.item_purchased = "hot dogs"
-	  e.date_purchased = Time.now
+	  e.date_purchased = Date.today
 	  e.amount = 10
 	  e.debit_category_id = df.id
       e.reimbursement_date = nil
@@ -409,10 +409,10 @@ namespace :db do
       f.number_of_consumers = 6 
 	  f.names_of_consumers = nil 
 	  f.item_purchased = "hot dogs"
-	  f.date_purchased = Time.now
+	  f.date_purchased = Date.today
 	  f.amount = 10
 	  f.debit_category_id = df.id
-      f.reimbursement_date = Time.now
+      f.reimbursement_date = Date.today
 	  f.save!
 	  
 	  # with debit unreimbursed
@@ -422,7 +422,7 @@ namespace :db do
       g.number_of_consumers = 6 
 	  g.names_of_consumers = nil 
 	  g.item_purchased = "hot dogs"
-	  g.date_purchased = Time.now
+	  g.date_purchased = Date.today
 	  g.amount = 10
 	  g.debit_category_id = df.id
       g.reimbursement_date = nil
@@ -435,10 +435,10 @@ namespace :db do
       h.number_of_consumers = 6 
 	  h.names_of_consumers = nil 
 	  h.item_purchased = "hot dogs"
-	  h.date_purchased = Time.now
+	  h.date_purchased = Date.today
 	  h.amount = 10
 	  h.debit_category_id = df.id
-      h.reimbursement_date = Time.now
+      h.reimbursement_date = Date.today
 	  h.save!
 	  
 	  # with debit unreimbursed
@@ -448,7 +448,7 @@ namespace :db do
       i.number_of_consumers = 6 
 	  i.names_of_consumers = nil 
 	  i.item_purchased = "hot dogs"
-	  i.date_purchased = Time.now
+	  i.date_purchased = Date.today
 	  i.amount = 10
 	  i.debit_category_id = df.id
       i.reimbursement_date = nil
@@ -464,7 +464,7 @@ namespace :db do
 	  j.date_purchased = Time.now
 	  j.amount = 10
 	  j.debit_category_id = df.id
-      j.reimbursement_date = Time.now
+      j.reimbursement_date = Date.today
 	  j.save!
 	  
 end

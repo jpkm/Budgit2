@@ -22,7 +22,7 @@
 				pending
 			<% end %>
 		<% else %>
-			<%= debit.reimbursement_date.strftime("%d/%m/%Y") %>
+			<%= debit.reimbursement_date.year %>
 		<% end %>
 	</td>
 	<% if can? :update, debit %>
