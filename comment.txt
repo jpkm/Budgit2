@@ -12,4 +12,7 @@
 - get rid of roles: can't make new roles 
 
 - freeze that clubs account
+
+::Style::
+- too much space between headers and table
 		

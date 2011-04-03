@@ -3,22 +3,22 @@
 	<thead class="datagrid">
 		<th>Item</th>
 		<th>Category</th>
-		<th>Date Purchased</th>
+		<th>Purchased</th>
 		<th>Amount</th>
-		<th>Reimbursement Date</th>
+		<th>Reimbursement</th>
 	</thead>
 
 <% @account_debits.each do |debit| %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
 	<td><%= link_to debit.item_purchased, debit_path(debit) %></td>
 	<td><%= debit.debit_category.category %></td>
-    <td><%= debit.date_purchased.strftime("%d/%m/%Y") %></td>
-    <td><%= debit.amount %></td>
+    <td><%= debit.date_purchased.strftime("%d.%m.%Y") %></td>
+    <td>$<%= debit.amount %></td>
 	<td>
 		<% if debit.reimbursement_date.nil? %>
 			Never reimbursed
-		<% else %>
-			<% debit.reimbursement_date.strftime("%d/%m/%Y") %>
+		<% else %>	
+			<%= debit.reimbursement_date.strftime("%d.%m.%Y") %>
 		<% end %>
 	</td>
   </tr>

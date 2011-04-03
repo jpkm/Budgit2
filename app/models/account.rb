@@ -8,10 +8,8 @@ class Account < ActiveRecord::Base
 	
 	#Validations
 	validates_presence_of :club_id
-	#validates_numericality_of :date
 	
 	#Named Scopes
-	
 	# get all accounts for a particular club_id
 	scope :for_club, lambda { |club_id| { :conditions => ['club_id = ?', club_id] } }
 	# get all active accounts for a particular club_id 
@@ -76,16 +74,8 @@ class Account < ActiveRecord::Base
 		return unreimbursed
 	end
 	
-	def debitsandcredits
-		@all = []
-		@debits = debits.all
-		@credits = credits.all
-		@all << @debits
-		@all << @credits
-	end
-	
 	def time_to_deactivate?
-		if Time.now.month == 6
+		if Date.today.month == 6
 			return true
 		end
 		false
@@ -99,9 +89,17 @@ class Account < ActiveRecord::Base
 	def self.make_account(club_id)
 		account = Account.new
 		account.club_id = club_id
-		account.date = Time.new
+		account.date = Date.today
 		account.active = true
 		account.save!
 	end
+	
+	#def debitsandcredits
+	#	@all = []
+	#	@debits = debits.all
+	#	@credits = credits.all
+	#	@all << @debits
+	#	@all << @credits
+	#end
 	
 end

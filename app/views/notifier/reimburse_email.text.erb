@@ -6,9 +6,9 @@
 		Item purchased: <%= @debit.item_purchased %>
 		Category: <%= @debit.debit_category.category %>
 		Reason: <%= @debit.reason %>
-		Date Purchased: <%= @debit.date_purchased %>
+		Purchased: <%= @debit.date_purchased.strftime(%d.%m.%y) %>
 		Amount: <%= @debit.amount %>
 		Number of consumers: <%= @debit.number_of_consumers %>
 		Names of consumers: <%= @debit.names_of_consumers %>
-		Reimbursement Date: <%= @debit.reimbursement_date %>
+		Reimbursement: <%= @debit.reimbursement_date.strftime(%d.%m.%y) %>
 		

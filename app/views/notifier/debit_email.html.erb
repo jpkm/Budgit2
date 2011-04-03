@@ -10,7 +10,7 @@
 		<% if @debit.amount <= 250 %>
 			Good boy, come get your money from your SA
 	  	<% else %>
-			Bad, please inform us when you are Bank account is credited, so we can finalize reimbursement
+			Bad, please inform us when your Bank account is credited, so we can finalize reimbursement
 		<% end %>
     </p>
 	
@@ -29,7 +29,7 @@
 	<td><%= @debit.item_purchased %></td>
     <td><%= @debit.debit_category.category %></td>
     <td><%= @debit.reason %></td>
-    <td><%= @debit.date_purchased %></td>
+    <td><%= @debit.date_purchased.strftime(%d.%m.%y) %></td>
     <td><%= @debit.amount %></td>
     <td><%= @debit.number_of_consumers %></td>
     <td><%= @debit.names_of_consumers %></td>

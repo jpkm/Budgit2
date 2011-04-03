@@ -11,13 +11,13 @@
 </p>
 
 <p>
-  <b>Accountid:</b>
-  <%= @credit.account_id %>
+  <b>Account:</b>
+  <%= link_to @credit.account.year, account_path(@credit.account) %>
 </p>
 
 <p>
   <b>Amount:</b>
-  <%= @credit.amount %>
+  $<%= @credit.amount %>
 </p>
 
 
