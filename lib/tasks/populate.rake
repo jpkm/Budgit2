@@ -63,31 +63,31 @@ namespace :db do
 	
     # Step 4: add Users
 		sys = User.new
-		sys.first_name = "System"
-		sys.middle_name = "Ad"
-		sys.last_name = "Min"
-		sys.email = "system@admin.edu"
+		sys.first_name = "David"
+		sys.middle_name = "Admin"
+		sys.last_name = "Stanfield"
+		sys.email = "davesta@qatar.cmu.edu"
 		sys.username = "davestan"
 		sys.password = "davestan"
 		sys.password_confirmation = "davestan"
 		sys.save!
 			
 		vp = User.new
-		vp.first_name = "VP"
-		vp.middle_name = "of"
-		vp.last_name = "Finance"
-		vp.email = "v@p.edu"
-		vp.username = "vpfinance"
-		vp.password = "vpfinance"
-		vp.password_confirmation = "vpfinance"
+		vp.first_name = "Muhammad"
+		vp.middle_name = "M"
+		vp.last_name = "Dauleh"
+		vp.email = "mmdaule@qatar.cmu.edu"
+		vp.username = "mmdauleh"
+		vp.password = "mmdauleh"
+		vp.password_confirmation = "mmdauleh"
 		vp.save!
 		
 		#assigned to DSO, Active Women
 		leader1 = User.new
-		leader1.first_name = "Leader"
-		leader1.middle_name = "of"
-		leader1.last_name = "Club"
-		leader1.email = "leader1@leader.edu"
+		leader1.first_name = "Hira"
+		leader1.middle_name = "Niyaz"
+		leader1.last_name = "Ahmed"
+		leader1.email = "hahmed@qatar.cmu.edu"
 		leader1.username = "hahmed"
 		leader1.password = "hahmed"
 		leader1.password_confirmation = "hahmed"
@@ -95,22 +95,31 @@ namespace :db do
 	
 		#assigned to Debate Club
 		leader2 = User.new
-		leader2.first_name = "Leader"
-		leader2.middle_name = "of"
-		leader2.last_name = "Club"
+		leader2.first_name = "Samira"
+		leader2.middle_name = "Leader"
+		leader2.last_name = "Islam"
 		leader2.email = "leader2@leader.edu"
 		leader2.username = "sislam"
 		leader2.password = "sislam"
 		leader2.password_confirmation = "sislam"
 		leader2.save!
 		
+		leader3 = User.new
+		leader3.first_name = "Muna"
+		leader3.middle_name = "Abu"
+		leader3.last_name = "Holayqa"
+		leader3.email = "mabuhol@qatar.cmu.edu"
+		leader3.username = "mabuhola"
+		leader3.password = "mabuhola"
+		leader3.password_confirmation = "mabuhola"
+		leader3.save!
 	
 		#assigned to DSO, Debate Club, Active Women
 		sa1 = User.new
-		sa1.first_name = "Student"
-		sa1.middle_name = "Affairs"
-		sa1.last_name = "Officer"
-		sa1.email = "sa1@sa.edu"
+		sa1.first_name = "Jill"
+		sa1.middle_name = "SA"
+		sa1.last_name = "Duffy"
+		sa1.email = "jaduff@qatar.cmu.edu"
 		sa1.username = "jduffy"
 		sa1.password = "jduffy"
 		sa1.password_confirmation = "jduffy"
@@ -118,10 +127,10 @@ namespace :db do
 		
 		#assigned to Gaming Club, All Around
 		sa2 = User.new
-		sa2.first_name = "Student"
-		sa2.middle_name = "Affairs"
-		sa2.last_name = "Officer"
-		sa2.email = "sa2@sa.edu"
+		sa2.first_name = "Kevin"
+		sa2.middle_name = "SA"
+		sa2.last_name = "Darco"
+		sa2.email = "kdarc@qatar.cmu.edu"
 		sa2.username = "kdarco"
 		sa2.password = "kdarco"
 		sa2.password_confirmation = "kdarco"
@@ -351,7 +360,7 @@ namespace :db do
 	  a.date_purchased = Time.now
 	  a.amount = 10
 	  a.debit_category_id = df.id
-      a.reimbursement_date = Date.new
+      a.reimbursement_date = Time.now
 	  a.save!
 	
 	  # with debit unreimbursed
@@ -377,7 +386,7 @@ namespace :db do
 	  c.date_purchased = Time.now
 	  c.amount = 10
 	  c.debit_category_id = df.id
-      c.reimbursement_date = Date.new
+      c.reimbursement_date = Time.now
 	  c.save!
 	  
 	  # with debit unreimbursed
@@ -403,7 +412,7 @@ namespace :db do
 	  f.date_purchased = Time.now
 	  f.amount = 10
 	  f.debit_category_id = df.id
-      f.reimbursement_date = Date.new
+      f.reimbursement_date = Time.now
 	  f.save!
 	  
 	  # with debit unreimbursed
@@ -429,7 +438,7 @@ namespace :db do
 	  h.date_purchased = Time.now
 	  h.amount = 10
 	  h.debit_category_id = df.id
-      h.reimbursement_date = Date.new
+      h.reimbursement_date = Time.now
 	  h.save!
 	  
 	  # with debit unreimbursed
@@ -455,7 +464,7 @@ namespace :db do
 	  j.date_purchased = Time.now
 	  j.amount = 10
 	  j.debit_category_id = df.id
-      j.reimbursement_date = Date.new
+      j.reimbursement_date = Time.now
 	  j.save!
 	  
 end
