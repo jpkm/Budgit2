@@ -24,7 +24,8 @@
 - SysAd + VP: want to see club leader/email on club show page
 - Print function on show page for transactions:
 	- Want to print out a debit show page
-- Add a "vendure" to the debit(were did you buy this)
+- **Add a "vendure" to the debit(were did you buy this)
+- only let people be assignmed to a club from the club show page
 
 
 ::Style::

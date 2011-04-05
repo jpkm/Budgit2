@@ -19,7 +19,5 @@
    <%= f.hidden_field :active, :value => true %>
    
   <br>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.submit %> <%= link_to "or Cancel", debit_categories_path() %>
 <% end %>

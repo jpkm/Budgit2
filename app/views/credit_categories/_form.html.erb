@@ -17,7 +17,7 @@
     <%= f.label :category %><br />
     <%= f.text_field :category %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  
+    <%= f.submit %><%= link_to "or Cancel", credit_categories_path() %>
+  
 <% end %>

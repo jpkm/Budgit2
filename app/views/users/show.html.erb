@@ -1,4 +1,4 @@
-<h1>User Info</h1>
+<h2>User Info</h2>
 
 <p>
   <b>First name:</b>
@@ -26,7 +26,8 @@
 </p>
 
 <!-- renders a table that shows all assignments for the user -->
-	<% unless user.assignments.nil? || user.assignments.empty? %>
+<!-- do we want this to do more (aka manage assignments if can?)
+	<% unless @user.assignments.nil? || @user.assignments.empty? || @user.is_admin? || @user.is_vp? %>
 		<p class="supertiny">&nbsp;</p>
 		<%= render :partial => "user_assignments" %>
 	<% end %>

@@ -10,14 +10,21 @@
       </ul>
     </div>
   <% end %>
-
+  <table id="form">
   <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %> 
+    <tr>
+		<td><%= f.label :name %></td>
+		<td><%= f.text_field :name %></td> 
+	</tr>
 	<br>
-	<%= f.label :club_key %>
-	<%= f.text_field :club_key %>
+	<tr>
+		<td><%= f.label :club_key %></td>
+		<td><%= f.text_field :club_key %></td>
+	</tr>
   </div>
+  <td></td>
   
-  <%= f.submit %> <%= link_to "or Cancel", clubs_path %>
+  <td align="right"><%= f.submit %><%= link_to "or Cancel", clubs_path %></td> 
+</table>
 <% end %>
+

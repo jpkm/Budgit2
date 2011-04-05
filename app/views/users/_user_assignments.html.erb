@@ -1,5 +1,5 @@
 
-<h3> user assignments </h3>
+<h3> Assignments </h3>
 <table class='datagrid'>
 	<thead class='datagrid'>
 		<th>Club</th>
@@ -10,8 +10,8 @@
 	<% for assignment in @user.assignments %>
 		<tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
 			<td><%= link_to assignment.club.name, club_path(assignment.club)%></td>
-			<td><%= assignment.role %></td>
-			<td><%= assingment.active </td>
+			<td><%= assignment.role.name %></td>
+			<td><%= assignment.active %> </td>
 		</tr>
 	<% end %>
 </table>

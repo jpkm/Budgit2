@@ -9,7 +9,7 @@
 <% for assignment in @active_assignments_for_club %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
     <td><%= assignment.role.name %></td>
-	<td><%= assignment.user.name %></td>
+	<td><%= link_to assignment.user.name, user_path(assignment.user) %></td>
 	<td><%= assignment.user.email %></td> <!-- want mailto: functionality here -->
 	<% if current_user.is_admin? %>
 		<td align="center">
