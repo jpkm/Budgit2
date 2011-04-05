@@ -3,11 +3,20 @@
 <table class = "datagrid">
 	<thead class = "datagrid">
 		<th>Name</th>
+		<th>Email</th>
+		<th>Clubs</th>
 	</thead>
 
 <% @users.each do |user| %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
     <td><%= link_to user.name, user_path(user)%></td>
+	<td><%= mail_to user.email, user.email %></td>
+	<td><% unless user.get_clubs.nil? %>
+			<% for club in user.get_clubs %>
+				<%= link_to club.name, club_path(club)%>,
+			<% end %>
+		<% end %>
+	</td>
   </tr>
   <% end %>
 </table>

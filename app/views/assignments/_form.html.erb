@@ -49,9 +49,9 @@
   
    <%= f.hidden_field :active, :value => true %> 
 	
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<!-- needs help -->
+   <%= f.submit %> <%= link_to "or Cancel", root_url %>
+  
   
 	<!-- if assignment.club_id is not nil render this partical for reactivating users-->
 	<% unless @assignment.club_id.nil? || @assignment.club.deactivated == 0 %>

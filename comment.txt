@@ -13,6 +13,20 @@
 
 - freeze that clubs account
 
+::System::
+- cancel button on forms, acts as back button
+- AJAX/JAVASCRIPT hide show for names of consumers/# of consumers
+- VP of Finance want a sum of all money clubs have left not including Student Majlis
+- SysAd: sees a list: username, email, list of clubs you are assigned to
+	- link to user show page: includes table showing users assignments
+	QUESTION: how do you disable choose an assignment for a user to disable then
+	ANSWER: give link to users show page which has a table listing each assignment + option to "X"
+- SysAd + VP: want to see club leader/email on club show page
+- Print function on show page for transactions:
+	- Want to print out a debit show page
+- Add a "vendure" to the debit(were did you buy this)
+
+
 ::Style::
 - too much space between headers and table
 		

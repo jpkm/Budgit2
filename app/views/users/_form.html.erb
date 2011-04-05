@@ -10,7 +10,6 @@
       </ul>
     </div>
   <% end %>
-
   
   <div class="field">
     <%= f.label :username %>
@@ -47,8 +46,6 @@
     <%= f.password_field :password_confirmation %>
   </div>
   
-  <div class="actions">
-	<%= f.submit (@user.new_record? ? "Submit" : "Update") %>
-  </div>
+<%= f.submit (@user.new_record? ? "Submit" : "Update") %> <%= link_to "or Cancel", users_path %>
   
 <% end %>

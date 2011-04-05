@@ -27,7 +27,7 @@
   <div class="field">
     <%= f.label :amount %><%= f.text_field :amount %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  
+  <!--there is now actions class-->
+  <%= f.submit %> <%= link_to "or Cancel", club_path(@credit.account.club_id)%>
 <% end %>

@@ -16,7 +16,22 @@
 </p>
 
 <p>
+ <b>Username:</b>
+	<%=h @user.username %>
+</p>
+
+<p>
   <b>Email:</b>
   <%=h @user.email %>
 </p>
+
+<!-- renders a table that shows all assignments for the user -->
+	<% unless user.assignments.nil? || user.assignments.empty? %>
+		<p class="supertiny">&nbsp;</p>
+		<%= render :partial => "user_assignments" %>
+	<% end %>
+
+
+
+
 
