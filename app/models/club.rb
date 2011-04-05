@@ -91,4 +91,24 @@ class Club < ActiveRecord::Base
 		count
 	end	
 	
+	#gets the active leader for this club
+	def get_leader
+		for assignment in assignments
+			if assignment.active && assignment.role.name.downcase.eql?("club leader")
+				return assignment.user
+			end
+		end
+		return nil
+	end
+	
+	#gets the active sa for this club
+	def get_sa
+		for assignment in assignments
+			if assignment.active && assignment.role.name.downcase.eql?("student affairs")
+				return assignment.user
+			end
+		end
+		return nil
+	end
+	
 end

@@ -6,7 +6,7 @@
 				<%= render :partial => "inactive_accounts" %>
 			<% end %>
 			
-			 <% if can? :create, Account %>
+			<% if can? :create, Account %>
 				<% if @club.current_account.nil? %>
 				<!-- should be action for make_account -->
 					<%= link_to "New Account", :method => Account.make_account(@club.id) %>
@@ -14,14 +14,15 @@
 					<%= link_to "Deactivate Current Account", :controller => "accounts", :action => :deactivate1, :id => @club.current_account.id %>
 				<% end %>
 			<% end %>
+			<br>
 	  
-			<!-- all active assignments for @club -->
-			<% unless @active_assignments_for_club.nil? || @active_assignments_for_club.empty? %>
-				<p class="supertiny">&nbsp;</p>
-				<%= render :partial => "clubs_assignments" %>
+			<% unless @club.get_sa.nil? %>  
+				Student Affairs Advisor: <%= @club.get_sa.name %>, <%= mail_to @club.get_sa.email, @club.get_sa.email %><br>
+			<% end %>
+			<% unless @club.get_leader.nil? %>
+				Club Leader: <%= @club.get_leader.name %>, <%= mail_to @club.get_leader.email, @club.get_leader.email %>
 			<% end %>
 			<% if can? :create, Assignment %>
 				<%= link_to "Assign Users", new_assignment_path(:club => @club) %>
 			<% end %>
-
-      <br><br>
+			
