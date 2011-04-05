@@ -2,53 +2,93 @@
   <% if @debit.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@debit.errors.count, "error") %> prohibited this debit from being saved:</h2>
-
       <ul>
-      <% @debit.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+		<% @debit.errors.full_messages.each do |msg| %>
+        <li>
+			<%= msg %>
+		</li>
+		<% end %>
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :item_purchased %>
-    <%= f.text_area :item_purchased, :cols => "25", :rows => "1" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :category %>
-	<%= f.collection_select :debit_category_id, DebitCategory.all, :id, :category, :prompt => "Select ..." %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :reason %>
-    <%= f.text_area :reason, :cols => "25", :rows => "1"%>
-  </div>
-  
-  <div class="field">
-    <%= f.label :number_of_consumers %>
-    <%= f.text_field :number_of_consumers %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :names_of_consumers %><br>
-    <%= f.text_area :names_of_consumers, :cols => "25", :rows => "1" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :date_purchased %>
-	<%= f.date_select :date_purchased, :order => [:month, :day, :year] %>
-  </div> 
-  
-   <%= f.hidden_field :account_id, :value => @debit.account_id %>
-  
-  <div class="field">
-    <%= f.label :amount %>
-    <%= f.text_field :amount %>
-  </div>
-  
-  <!--there is now actions class-->
-  <%= f.submit %> <%= link_to "or Cancel", club_path(@debit.account.club_id)%>
-  
+  <table id="form">
+    <tr>
+        <div class="field">
+            <td>
+                <%= f.label :item_purchased %>
+            </td>
+            <td>
+                <%= f.text_area :item_purchased, :cols => "25", :rows => "1" %>
+            </td>
+        </div>
+    </tr>
+    <tr>
+        <div class="field">
+            <td>
+                <%= f.label :category %>
+            </td>
+            <td>
+                <%= f.collection_select :debit_category_id, DebitCategory.all, :id, :category, :prompt => "Select ..." %>
+            </td>
+        </div>
+    </tr>
+    <tr>
+        <div class="field">
+            <td>
+                <%= f.label :reason %>
+            </td>
+            <td>
+                <%= f.text_area :reason, :cols => "25", :rows => "1" %>
+            </td>
+        </div>
+    </tr>
+    <tr>
+        <div class="field">
+            <td>
+                <%= f.label :number_of_consumers %>
+            </td>
+            <td>
+                <%= f.text_field :number_of_consumers %>
+            </td>
+        </div>
+    </tr>
+    <tr>
+        <div class="field">
+            <td>
+                <%= f.label :names_of_consumers %>
+            </td>
+            <td>
+                <%= f.text_area :names_of_consumers, :cols => "25", :rows => "1" %>
+            </td>
+        </div>
+    </tr>
+    <tr>
+        <div class="field">
+            <td>
+                <%= f.label :date_purchased %>
+            </td>
+            <td>
+                <%= f.date_select :date_purchased, :order => [:month, :day, :year] %>
+            </td>
+        </div>
+    </tr>
+    <%= f.hidden_field :account_id, :value => @debit.account_id %>
+    <tr>
+        <div class="field">
+            <td>
+                <%= f.label :amount %>
+            </td>
+            <td>
+                <%= f.text_field :amount %>
+            </td>
+        </div>
+    </tr>
+    <tr>
+        <td>
+        </td>
+        <td align="right">
+            <%= f.submit %><%= link_to "or Cancel", club_path(@debit.account.club_id)%>
+        </td>
+    </tr>
+</table>
 <% end %>
