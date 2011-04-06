@@ -1,12 +1,12 @@
 <% if logged_in? %>
-	<span id="header">  
-		<%= link_to(image_tag("Header.png", :border => 0), root_url) %>
-	</span>
+	<div id="header">
 	
-	<span id="user">
-		Sign is as <%= current_user.name %>. <%= link_to "Log out", logout_path %>
-	</span> 
-  
-	<br><br><br><br>
+		<div id="user">
+			Sign is as <%= current_user.name %>. <%= link_to "Log out", logout_path %>
+		</div>
+	
+		<%= link_to(image_tag("Header.png", :border => 0), root_url) %>
+		
+	</div>
 <% end %>
 

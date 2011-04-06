@@ -1,12 +1,36 @@
-<h1>(<%= @club.club_key %>) <%= @club.name %>'s Profile:</h1>
+(<%= @club.club_key %>) <%= @club.name %>'s Page:
+	
+	<div id="club_ass">
+		<% unless @club.get_sa.nil? %>  
+			Student Affairs Advisor: <%= @club.get_sa.name %>, <%= mail_to @club.get_sa.email, @club.get_sa.email %><br>
+		<% end %>
+		<% unless @club.get_leader.nil? %>
+			Club Leader: <%= @club.get_leader.name %>, <%= mail_to @club.get_leader.email, @club.get_leader.email %>
+		<% end %>
+	</div>	
 
 	<!-- renders information for @club's current account-->
 	<% unless @club.current_account.nil? %>
-		<p class="supertiny">&nbsp;</p>
 		<%= render :partial => "current_account" %>
 	<% end %>
 
-	<%= render :partial => "club_info" %>
+	<% if can? :create, Assignment %>
+		<%= link_to "Assign Users", new_assignment_path(:club => @club) %>
+	<% end %>
+	
+	<!-- all inactive accounts for this club -->
+		<% unless @inactive_accounts.nil? || @inactive_accounts.empty? %>
+			<%= render :partial => "inactive_accounts" %>
+		<% end %>
+		<% if can? :create, Account %>
+				<% if @club.current_account.nil? %>
+				<!-- should be action for make_account -->
+					<%= link_to "New Account", :method => Account.make_account(@club.id) %>
+				<% else %>
+					<%= link_to "Deactivate Current Account", :controller => "accounts", :action => :deactivate1, :id => @club.current_account.id %>
+				<% end %>
+			<% end %>
+
 	
 
 

@@ -15,7 +15,6 @@ table.datagrid a {
 
 table.datagrid a:hover {
 	text-decoration: underline;
-	color: blue;
 }
 
 /* Table Caption and Header Row  */
@@ -41,7 +40,7 @@ thead.datagrid th {
 
 
 td{
-	padding: 0 10px 0 10px;
+	padding: 5px 5px 2px;
 	border-bottom: gray dashed 0.25pt;
 	vertical-align: middle;
 }
@@ -75,18 +74,14 @@ td{
 }
 .dg_list_line_odd:hover {
 	background-color: rgba(255,255,255,0.3);
-	color: #0033ff;
 }
 .dg_list_line_odd:hover a {
-	color: blue;
 	text-decoration: underline;
 }
 .dg_list_line_even:hover {
 	background-color: rgba(255,255,255,0.3);
-	color: #0033ff;
 }
 .dg_list_line_even:hover a {
-	color: blue;
 	text-decoration: underline;
 }
 
@@ -101,20 +96,9 @@ tr.dgalt,th.dgalt,td.dgalt {
 }
 tr.dgalt:hover {
 	background-color: #FFFF99;
-	color: #0033ff;
 }
 tr.dgalt:hover a {
 	text-decoration: underline;
-	color: #0033ff;
 	background-color: #FFFF99;
 }
 
-/*	table foot elements handled here  */
-
-tfoot.datagrid tr {
-	/* background-color: nothing set at this time */
-}
-tfoot.datagrid td, tfoot.datagrid th{
-	color: #000;
-	border: 0px;
-}
