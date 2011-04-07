@@ -94,12 +94,14 @@ class Account < ActiveRecord::Base
 		account.save!
 	end
 	
-	#def debitsandcredits
-	#	@all = []
-	#	@debits = debits.all
-	#	@credits = credits.all
-	#	@all << @debits
-	#	@all << @credits
-	#end
+	def self.total
+		total = 0
+		for account in Account.all
+			if account.active
+				total = total + account.balance
+			end
+		end
+		return total
+	end
 	
 end

@@ -26,7 +26,11 @@
 	- Want to print out a debit show page
 - **Add a "vendure" to the debit(were did you buy this)
 - only let people be assignmed to a club from the club show page
-
+- manage assignments from club page. Next to the SA or Leader name have 'X' to deactive (and if  no user exist have a link to create assignment (shoudl create assignmet be specified to that user role you are looking to fulfill)) 
+- assign me button next to users name in user index. (params[user_id => user.id])
+	- assign me button: collection club and role (unless user is already assigned with another role than use that role)  
+				params[club_id => club selected from collection and role_id is user.get_role]
+				makes a new assignment for user in whatever controller you show the link
 
 ::Style::
 - too much space between headers and table

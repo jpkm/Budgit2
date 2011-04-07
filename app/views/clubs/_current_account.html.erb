@@ -2,7 +2,15 @@
 	<tr>
 		<td width="200" valign="top"> 
 			<u>Current Balance</u><br>
-			<font size="150%"><%= @club.current_balance %></font>
+			<div style="font-size:315%;">
+			<% if @club.current_balance < 1000 %>
+				<div style="color:red;">
+				<%= @club.current_balance %>
+			<% else %>
+				<div style="color:green;">
+				<%= @club.current_balance %>
+			<% end %>
+			</font>
 		</td>
 		<td>		
 			<!-- all debits for account -->

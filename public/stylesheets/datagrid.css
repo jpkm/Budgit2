@@ -15,6 +15,7 @@ table.datagrid a {
 
 table.datagrid a:hover {
 	text-decoration: underline;
+	color: red;
 }
 
 /* Table Caption and Header Row  */
@@ -38,9 +39,8 @@ thead.datagrid th {
 	border-bottom: gray dashed 0.25pt;
 }
 
-
 td{
-	padding: 5px 5px 2px;
+	padding: 5px 5px 10px;
 	border-bottom: gray dashed 0.25pt;
 	vertical-align: middle;
 }

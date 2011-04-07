@@ -5,7 +5,7 @@ class ClubsController < ApplicationController
   # GET /clubs
   # GET /clubs.xml
   def index
-    @clubs = Club.all.paginate :page => params[:page], :per_page => 5
+    @clubs = Club.all.paginate :page => params[:page], :per_page => 20
     authorize! :read, @clubs, :message => "No no no"
 	
     respond_to do |format|

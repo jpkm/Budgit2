@@ -1,10 +1,9 @@
-<h1>Clubs</h1>
-<table class ="datagrid">
-	<thead class ="datagrid"
+<h2>Clubs</h2>
+<table class ='datagrid'>
+	<thead class ='datagrid'>
 		<th>Name</th>
-		<th>Manage</th>
+		<th>Balance</th>
 	</thead>
-
 		<!-- all clubs -->
 	<% for club in Club.all %>
 		<tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
@@ -13,9 +12,19 @@
 				<% if club.current_account.nil? %>
 					<%= link_to 'Make New Account', :confirm => 'Are you sure?', :controller => "accounts", :action => :make_account, :id => club.id  %>
 				<% else %>
-					<%= club.current_account.balance %>
+					$<%= club.current_account.balance %>
 				<% end %>
 			</td>
 		</tr>
 	<% end %>
-</table>
+	<tr>
+		<td>
+			<b>Total:</b>
+		</td>
+		<td>
+			$<%= Account.total %>
+		</td>
+	</tr>
+</table> 
+
+<!-- need pagination -->

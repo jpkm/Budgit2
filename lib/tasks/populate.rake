@@ -341,6 +341,7 @@ namespace :db do
 	  d = Debit.new
       d.account_id = acx.id 
       d.reason = "hunger"
+	  d.vendure = "Walmart"
       d.number_of_consumers = 6 
 	  d.names_of_consumers = nil 
 	  d.item_purchased = "hot dogs"
@@ -354,7 +355,8 @@ namespace :db do
 	  a = Debit.new
       a.account_id = acx.id 
       a.reason = "hunger"
-      a.number_of_consumers = 6 
+      a.vendure = "Walmart"
+	  a.number_of_consumers = 6 
 	  a.names_of_consumers = nil 
 	  a.item_purchased = "hot dogs"
 	  a.date_purchased = Date.today
@@ -367,6 +369,7 @@ namespace :db do
 	  b = Debit.new
       b.account_id = acy.id 
       b.reason = "hunger"
+	  b.vendure = "Walmart"
       b.number_of_consumers = 6 
 	  b.names_of_consumers = nil 
 	  b.item_purchased = "hot dogs"
@@ -380,7 +383,8 @@ namespace :db do
 	  c = Debit.new
       c.account_id = acy.id 
       c.reason = "hunger"
-      c.number_of_consumers = 6 
+      c.vendure = "Walmart"
+	  c.number_of_consumers = 6 
 	  c.names_of_consumers = nil 
 	  c.item_purchased = "hot dogs"
 	  c.date_purchased = Date.today
@@ -393,7 +397,8 @@ namespace :db do
 	  e = Debit.new
       e.account_id = acz.id 
       e.reason = "hunger"
-      e.number_of_consumers = 6 
+      e.vendure = "Walmart"
+	  e.number_of_consumers = 6 
 	  e.names_of_consumers = nil 
 	  e.item_purchased = "hot dogs"
 	  e.date_purchased = Date.today
@@ -406,7 +411,8 @@ namespace :db do
 	  f = Debit.new
       f.account_id = acz.id 
       f.reason = "hunger"
-      f.number_of_consumers = 6 
+      f.vendure = "Walmart"
+	  f.number_of_consumers = 6 
 	  f.names_of_consumers = nil 
 	  f.item_purchased = "hot dogs"
 	  f.date_purchased = Date.today
@@ -419,7 +425,8 @@ namespace :db do
 	  g = Debit.new
       g.account_id = acj.id 
       g.reason = "hunger"
-      g.number_of_consumers = 6 
+      g.vendure = "Walmart"
+	  g.number_of_consumers = 6 
 	  g.names_of_consumers = nil 
 	  g.item_purchased = "hot dogs"
 	  g.date_purchased = Date.today
@@ -432,7 +439,8 @@ namespace :db do
 	  h = Debit.new
       h.account_id = acj.id 
       h.reason = "hunger"
-      h.number_of_consumers = 6 
+      h.vendure = "Walmart"
+	  h.number_of_consumers = 6 
 	  h.names_of_consumers = nil 
 	  h.item_purchased = "hot dogs"
 	  h.date_purchased = Date.today
@@ -445,7 +453,8 @@ namespace :db do
 	  i = Debit.new
       i.account_id = acp.id 
       i.reason = "hunger"
-      i.number_of_consumers = 6 
+      i.vendure = "Walmart"
+	  i.number_of_consumers = 6 
 	  i.names_of_consumers = nil 
 	  i.item_purchased = "hot dogs"
 	  i.date_purchased = Date.today
@@ -458,7 +467,8 @@ namespace :db do
 	  j = Debit.new
       j.account_id = acp.id 
       j.reason = "hunger"
-      j.number_of_consumers = 6 
+      j.vendure = "Walmart"
+	  j.number_of_consumers = 6 
 	  j.names_of_consumers = nil 
 	  j.item_purchased = "hot dogs"
 	  j.date_purchased = Time.now
