@@ -51,17 +51,12 @@ pre {
 }
 
 #notice {
-  color: green;
+  color: yellow;
   text-align: center;
   font-style: italic;
 }
 
-#login{
-  position: static;
-  top: 140px;
-  left: 15px;
-  padding: 15px, 20px, 15px, 20px;
-  z-index: 1;
+#login {
 }
 
 #error_explanation {
@@ -81,6 +76,11 @@ pre {
   margin: -7px;
   background-color: #c00;
   color: #fff;
+}
+
+#error_explanation ul {
+  font-size: 12px;
+  margin: 10px 0 0;
 }
 
 #error_explanation ul li {

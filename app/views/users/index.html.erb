@@ -18,7 +18,8 @@
 		<% elsif user.is_admin? || user.is_vp? %>
 			N/A
 		<% else %>
-			Assign Me
+			<a href="#" onclick="Element.toggle('foo'); return false;">Assign Me</a>
+			<div id="foo" style="display:none;">collection select of clubs</div>
 		<% end %>
 	</td>
   </tr>

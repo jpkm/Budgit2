@@ -15,9 +15,9 @@ class Club < ActiveRecord::Base
 	
 	#Named Scopes
 	#orders clubs by club_id
-	named_scope :all, :order => "name"
+	scope :all, :order => "name"
 	# get all the projects by a particular user
-    named_scope :for_user,  lambda { |user_id| { :joins => :assignments, :conditions => ['user_id = ?', user_id] } }
+    scope :for_user,  lambda { |user_id| { :joins => :assignments, :conditions => ['user_id = ?', user_id] } }
 	
 	def cn
 		names = []

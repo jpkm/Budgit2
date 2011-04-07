@@ -13,37 +13,40 @@
 </p>
 
 <p>
-  <b>Reason:</b>
+  Reason:
   <%= @debit.reason %>
 </p>
 
 <p>
-  <b>Nunber of consumers:</b>
+	Vendure:
+	<%= @debit.vendure %>
+<p>
+  Number of consumers:
   <%= @debit.number_of_consumers %>
 </p>
 
 <p>
-  <b>Names of consumers:</b>
+  Names of consumers:
   <%= @debit.names_of_consumers %>
 </p>
 
 <p>
-  <b>Purchased:</b>
+  Purchased:
   <%= @debit.date_purchased.strftime("%d.%m.%y") %>
 </p>
 
 <p>
-  <b>Account:</b>
+  Account:
   <%= link_to @debit.account.year, account_path(@debit.account) %>
 </p>
 
 <p>
-  <b>Amount:</b>
-  $<%= @debit.amount %>
+	Amount:
+	$<%= @debit.amount %>
 </p>
 
 <p>
-  <b>Reimbursement:</b>
+	Reimbursement:
 	<% if @debit.reimbursement_date.nil? && @debit.account.active %>
 		<% if can? :reimburse, @debit %>
 			<%= link_to(image_tag("reimburse_dg.png", :border => 0), :confirm => 'Are you sure?', :controller => "debits", :action => :reimburse, :id => @debit.id)%>
