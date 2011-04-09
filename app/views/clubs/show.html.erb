@@ -8,14 +8,14 @@
 			Club Leader: <%= @club.get_leader.name %>, <%= mail_to @club.get_leader.email, @club.get_leader.email %>
 		<% end %>
 	</div>	
+	<br>
+		<% if can? :create, Assignment %>
+		<a style="text-align:right;"><%= link_to "Assign Users", new_assignment_path(:club => @club) %>
+		<% end %>
 
 	<!-- renders information for @club's current account-->
 	<% unless @club.current_account.nil? %>
 		<%= render :partial => "current_account" %>
-	<% end %>
-
-	<% if can? :create, Assignment %>
-		<%= link_to "Assign Users", new_assignment_path(:club => @club) %>
 	<% end %>
 	
 	<!-- all inactive accounts for this club -->
@@ -32,7 +32,7 @@
 			<% end %>
 			
 
-			<%= collection_select(:get, :id, Club.all, :id, :name, :prompt=>"...Select") %>
+			<%#= collection_select(:get, :id, Club.all, :id, :name, :prompt=>"...Select") %>
 			
 
 
