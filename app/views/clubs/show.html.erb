@@ -1,5 +1,24 @@
 <div style='font-size:140%'>(<%= @club.club_key %>) <%= @club.name %>'s Page:</div>
+
+	<!-- renders information for @club's current account-->
+	<% unless @club.current_account.nil? %>
+		<%= render :partial => "current_account" %>
+	<% end %>
 	
+	<% if can? :create, Account %>
+		<% if @club.current_account.nil? %>
+			<!-- should be action for make_account -->
+			<%= link_to "New Account", :method => Account.make_account(@club.id) %>
+		<% else %>
+			<%= link_to "Deactivate Current Account", :controller => "accounts", :action => :deactivate1, :id => @club.current_account.id %>
+		<% end %>
+	<% end %>
+	<!-- all inactive accounts for this club -->
+		<% unless @inactive_accounts.nil? || @inactive_accounts.empty? %>
+			<%= render :partial => "inactive_accounts" %>
+		<% end %>
+		
+	<!-- list club assignments -->
 	<div id="club_ass">
 		<% unless @club.get_sa.nil? %>  
 			Student Affairs Advisor: <%= @club.get_sa.name %>, <%= mail_to @club.get_sa.email, @club.get_sa.email %><br>
@@ -7,33 +26,16 @@
 		<% unless @club.get_leader.nil? %>
 			Club Leader: <%= @club.get_leader.name %>, <%= mail_to @club.get_leader.email, @club.get_leader.email %>
 		<% end %>
-	</div>	
-	<br>
-		<% if can? :create, Assignment %>
-		<a style="text-align:right;"><%= link_to "Assign Users", new_assignment_path(:club => @club) %>
-		<% end %>
-
-	<!-- renders information for @club's current account-->
-	<% unless @club.current_account.nil? %>
-		<%= render :partial => "current_account" %>
-	<% end %>
+	</div>
 	
-	<!-- all inactive accounts for this club -->
-		<% unless @inactive_accounts.nil? || @inactive_accounts.empty? %>
-			<%= render :partial => "inactive_accounts" %>
-		<% end %>
-		<% if can? :create, Account %>
-				<% if @club.current_account.nil? %>
-				<!-- should be action for make_account -->
-					<%= link_to "New Account", :method => Account.make_account(@club.id) %>
-				<% else %>
-					<%= link_to "Deactivate Current Account", :controller => "accounts", :action => :deactivate1, :id => @club.current_account.id %>
-				<% end %>
-			<% end %>
+	<% if can? :create, Assignment %>
+		<a style="text-align:right;"><%= link_to "Assign Users", new_assignment_path(:club => @club) %>
+	<% end %>
+		
 			
 
-			<%#= collection_select(:get, :id, Club.all, :id, :name, :prompt=>"...Select") %>
-			
+		<%#= collection_select(:get, :id, Club.all, :id, :name, :prompt=>"...Select") %>
+		<%#= x %>
 
 
 

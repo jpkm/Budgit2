@@ -13,7 +13,8 @@
 	<td><%= mail_to user.email, user.email %></td>
 	<td><% if !user.get_clubs.nil? %>
 			<% for club in user.get_clubs %>
-				<%= link_to club.name, club_path(club)%>,
+				<%= link_to club.name, club_path(club)%>
+				<% unless user.get_clubs.last == club %>,<% end %>
 			<% end %>
 		<% elsif user.is_admin? || user.is_vp? %>
 			N/A

@@ -2,7 +2,8 @@
 	<tr>
 	<td><b>Inactive Accounts:</b></td>
 		<% @inactive_accounts.each do |account| %>
-			<td><%= link_to account.year, account_path(account) %></td>
+			<td><%= link_to account.year, account_path(account) %>
+				<% unless @inactive_accounts.last == account %> | <% end %></td>
 		<% end %>
 	</tr>
 </table>

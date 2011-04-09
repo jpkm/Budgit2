@@ -8,7 +8,8 @@ ul li div.title{width:110px;float:left;}
 /* CODE FOR ROUNDED BOXES */
 .input{
   background:url(/images/input_left.png) no-repeat;
-  padding:0 0 0 4px;float:left;
+  padding:0 0 0 4px;
+  float:left;
   margin:1px;
   float:left;
 }

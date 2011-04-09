@@ -13,6 +13,7 @@
 			<th>Item purchased</th>
 			<th>Category</th>
 			<th>Reason</th>
+			<th>Vendor</th>
 			<th>Date Purchased</th>
 			<th>Amount</th>
 			<th>Number of consumers</th>
@@ -24,11 +25,12 @@
 		<td><%= @debit.item_purchased %></td>
 		<td><%= @debit.debit_category.category %></td>
 		<td><%= @debit.reason %></td>
-		<td><%= @debit.date_purchased.strftime(%d.%m.%y) %></td>
+		<td><%= @debit.vendor %></td>
+		<td><%= @debit.date_purchased.strftime("%d.%m.%y") %></td>
 		<td><%= @debit.amount %></td>
 		<td><%= @debit.number_of_consumers %></td>
 		<td><%= @debit.names_of_consumers %></td>
-		<td><%= @debit.reimbursement_date.strftime(%d.%m.%y) %></td>
+		<td><%= @debit.reimbursement_date.strftime("%d.%m.%y") %></td>
 	  </tr>
 	</table>
     
