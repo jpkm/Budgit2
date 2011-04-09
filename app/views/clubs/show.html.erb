@@ -1,4 +1,4 @@
-(<%= @club.club_key %>) <%= @club.name %>'s Page:
+<div style='font-size:140%'>(<%= @club.club_key %>) <%= @club.name %>'s Page:</div>
 	
 	<div id="club_ass">
 		<% unless @club.get_sa.nil? %>  
@@ -30,8 +30,10 @@
 					<%= link_to "Deactivate Current Account", :controller => "accounts", :action => :deactivate1, :id => @club.current_account.id %>
 				<% end %>
 			<% end %>
+			
 
-	
+			<%= collection_select(:get, :id, Club.all, :id, :name, :prompt=>"...Select") %>
+			
 
 
 
