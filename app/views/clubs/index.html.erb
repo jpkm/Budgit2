@@ -1,9 +1,10 @@
 <h2>Clubs</h2>
-
 <table class ="datagrid">
 	<thead class ="datagrid">
 		<th>Name</th>
 		<th>Balance</th>
+		<th>Leader</th>
+		<th>Student Affairs</th>
 		<th>Manage</th>
 	</thead>
 
@@ -11,10 +12,23 @@
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
     <td><%= link_to club.name, club_path(club) %></td>
 	<% unless club.current_account.nil? %>
-		<td><%= club.current_account.balance %></td>
+		<td>$<%= club.current_account.balance %></td>
 	<% else %>
-		<td>club doesn't have current account</td>
+		<td>N/A</td>
 	<% end %>
+	
+	<% if !club.get_leader.nil? %>  
+		<td><%= link_to club.get_leader.name, user_path(club.get_leader.id) %></td>
+	<% else %>
+		<td>N/A</td> <!-- Assign Me? -->
+	<% end %>
+	
+	<% if !club.get_sa.nil? %>  
+		<td><%= link_to club.get_sa.name, user_path(club.get_sa.id) %></td>
+	<% else %>
+		<td>N/A</td> <!-- Assign Me? -->
+	<% end %>
+	
 	<!-- should you be allowed to delete a club? -->
 	<% if can? :delete, Club %>
 		<td align="center">

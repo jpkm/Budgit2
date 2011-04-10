@@ -1,16 +1,16 @@
 class Debit < ActiveRecord::Base
-	attr_accessible :item_purchased, :debit_category_id, :reason, :number_of_consumers, :names_of_consumers, :date_purchased, :account_id, :reimbursement_date, :amount, :vendure
+	attr_accessible :item_purchased, :debit_category_id, :reason, :number_of_consumers, :names_of_consumers, :date_purchased, :account_id, :reimbursement_date, :amount, :vendor
 
 	#Relationships
 	belongs_to :account
 	belongs_to :debit_category
 	
 	#Validations
-	validates_presence_of :item_purchased, :reason, :debit_category_id, :date_purchased, :vendure
+	validates_presence_of :item_purchased, :reason, :debit_category_id, :date_purchased, :vendor
 	validate :valid_amount, :on => :create
 	validate :valid_amount_editing, :on => :update
 	validate :valid_number_of_consumers
-	validates_format_of :vendure, :with => /^[-\w\._@]+$/i, :allow_blank => false, :message => "should only contain letters, numbers, or .-_@"
+	#validates_format_of :vendor :with => /^[-\w\._@]+$/i, :allow_blank => false, :message => "should only contain letters, numbers, or .-_@"
 	
 
 	#Named Scopes

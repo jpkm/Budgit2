@@ -6,27 +6,33 @@
 			<% if @club.current_balance < 1000 %>
 				<div style="color:red;">
 				<%= @club.current_balance %>
+				</div>
 			<% else %>
 				<div style="color:green;">
 				<%= @club.current_balance %>
+				</div>
 			<% end %>
-			</font>
+			</div>
 		</td>
-		<td>		
+
+		<td>
 			<!-- all debits for account -->
 			<% unless @account_debits.nil? || @account_debits.empty? %>
 				<%= render :partial => "account_debits" %>
 			<% end %>
-			<br>
-			<% if can? :create, Debit %>
-				<div align="right"><%= link_to "Record new Debit", new_debit_path(:account => @club.current_account.id) %></div>
+	
+			<% if @club.current_balance == 0 %>
+				Account must be Credit before Debit can be made
+			<% else %>
+				<% if can? :create, Debit %>
+					<div align="right"><%= link_to "Record new Debit", new_debit_path(:account => @club.current_account.id) %></div>
+				<% end %>
 			<% end %>
-
+			
 			<!-- all credits for account -->
 			<% unless @account_credits.nil? || @account_credits.empty? %>
 				<%= render :partial => "account_credits" %>
 			<% end %>
-			<br>
 			<% if can? :create, Credit %>
 				<div align="center"><%= link_to "Credit Account", new_credit_path(:account => @club.current_account.id) %></div>
 			<% end %>

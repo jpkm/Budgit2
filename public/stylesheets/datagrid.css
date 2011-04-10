@@ -35,7 +35,7 @@ thead.datagrid th {
 	color: black;
 	height: 28px;
 	font-weight: bold;
-	padding: 10px;
+	padding: 10px 5px 3px 5px;
 	border-bottom: gray dashed 0.25pt;
 }
 

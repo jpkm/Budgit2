@@ -9,11 +9,11 @@
 	text-align: right;
 }
 
-#club_ass{
-    text-align: right;
-    font-size: 11px;
-	float: right;
+
+#club_ass a{
+    clear: both;
 }
+
 
 body { 
 background-image: url('/images/Money_Tree.png');
@@ -97,7 +97,7 @@ pre {
 #wrap {
 position:relative;
 margin: 0 auto;
-width: 900px;
+width: 950px;
 padding: 10px;
 font-family: verdana;
 font-size: large;

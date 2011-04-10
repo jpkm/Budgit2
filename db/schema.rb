@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(:version => 20110215175505) do
     t.text     "item_purchased"
     t.integer  "debit_category_id"
     t.text     "reason"
-    t.text     "vendure"
+    t.text     "vendor"
     t.integer  "number_of_consumers"
     t.text     "names_of_consumers"
     t.date     "date_purchased"
