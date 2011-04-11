@@ -1,18 +1,45 @@
-<h1>Account Information</h1>
+<div style='font-size:140%'>(<%= @account.club.club_key %>)<%= link_to @account.club.name, club_path(@account.club) %>'s Club:</div>
+Year: <%= @account.date.year %>-<%= @account.date.year + 1 %>
+  
+<table>
+	<tr>
+		<td width="200" valign="top"> 
+			<u>Current Balance</u><br>
+			<div style="font-size:315%;">
+			<% if @account.club.current_balance < 1000 %>
+				<div style="color:red;">
+				<%= @account.club.current_balance %>
+				</div>
+			<% else %>
+				<div style="color:green;">
+				<%= @account.club.current_balance %>
+				</div>
+			<% end %>
+			</div>
+		</td>
 
-  Club: <%= link_to @account.club.name, club_path(@account.club) %><br>
-  Year: <%= @account.date.year %>-<%= @account.date.year + 1 %><br>
-  Balance: <%= @account.balance %>
+		<td>
+			<!-- all debits for account -->
+			<% unless @account_debits.nil? || @account_debits.empty? %>
+				<%= render :partial => "account_debits" %>
+			<% end %>
+	
+			<!-- all credits for account -->
+			<% unless @account_credits.nil? || @account_credits.empty? %>
+				<%= render :partial => "account_credits" %>
+			<% end %>
+		</td>
+	</tr>
+</table>
 
-<% unless @account_debits.nil? || @account_debits.empty? %>
-  <p class="supertiny">&nbsp;</p>
-  <%= render :partial => "account_debits" %>
-<% end %>
 
-<% unless @account_credits.nil? || @account_credits.empty? %>
-  <p class="supertiny">&nbsp;</p>
-  <%= render :partial => "account_credits" %>
-<% end %>
+
+
+
+
+
+
+
 
 
 

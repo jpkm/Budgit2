@@ -31,7 +31,7 @@
 	- assign me button: collection club and role (unless user is already assigned with another role than use that role)  
 				params[club_id => club selected from collection and role_id is user.get_role]
 				makes a new assignment for user in whatever controller you show the link
-
+- IF you wanted to know who the club leader was two years/accounts ago your screwed, because Accounts don't know who the club leader is
 ::Style::
 - too much space between headers and table
 - change buttons, submit_tag is bs can be changed to button_to and stylized		
