@@ -11,11 +11,15 @@
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
     <td><%= credit_category.category %></td>
 	<td align='center'>
+	<% unless credit_category.category.downcase.eql?('initial') || credit_category.category.downcase.eql?('special')%>
 		<% if credit_category.active %>
 			<%= link_to(image_tag("delete_dg.png", :border => 0), :confirm => "Are you sure?", :controller => "credit_categories", :action => :deactivate3, :id => credit_category.id) %>
 		<% else %>
 			<%= link_to 'Reactivate', :confirm => 'Are you sure?', :controller => "credit_categories", :action => :reactivate3, :id => credit_category.id %>
 		<% end %>
+	<% else %>
+		N/A
+	<% end %>
 	</td>
   </tr>
 <% end %>

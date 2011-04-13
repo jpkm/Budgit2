@@ -32,6 +32,17 @@ class DebitCategory < ActiveRecord::Base
 		else
 			validates_presence_of :category
 		end
-	end	
+	end
+	
+	# get me all the active categories
+	def self.get_active_categories
+		acats = []
+		for dc in DebitCategory.all
+			if dc.active
+				acats << dc
+			end
+		end
+		return acats
+	end
 
 end

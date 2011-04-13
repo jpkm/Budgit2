@@ -28,7 +28,7 @@
                 <%= f.label :category %>
             </td>
             <td>
-                <%= f.collection_select :debit_category_id, DebitCategory.all, :id, :category, :prompt => "Select ..." %>
+                <%= f.collection_select :debit_category_id, DebitCategory.get_active_categories, :id, :category, :prompt => "Select ..." %>
             </td>
         </div>
     </tr>

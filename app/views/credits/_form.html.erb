@@ -14,8 +14,8 @@
 <table> 
 	<tr>
 		<td><%= f.label :category %>: </td>
-			<td><% if @answer %>
-				<%= f.collection_select :credit_category_id, @except, :id, :category, :prompt => "Select ..." %>
+			<td><% if @account.has_initial? %>
+				<%= f.collection_select :credit_category_id, CreditCategory.except_initial, :id, :category, :prompt => "Select ..." %>
 			<% else %>
 			    <%= f.hidden_field :credit_category_id, :value => @credit.credit_category.id %><%= @credit.credit_category.category %>
 			<% end %>

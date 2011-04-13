@@ -28,10 +28,8 @@ class CreditsController < ApplicationController
 	unless @account.active
 		redirect_to root_url
 	else
-		@answer = @account.has_initial?
 		@credit.date = Date.today
-	
-		if @answer
+		if @account.has_initial?
 			@except = CreditCategory.except_initial
 		else
 			@credit.credit_category = CreditCategory.get_initial
@@ -76,7 +74,6 @@ class CreditsController < ApplicationController
 	respond_to do |format|
       if @credit.update_attributes(params[:credit])
         format.html { redirect_to(club_path(@credit.account.club_id), :notice =>'Credit was successfully updated.') }
-		#format.html { redirect_to(@credit, :notice => 'Credit was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

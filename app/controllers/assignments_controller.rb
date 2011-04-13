@@ -4,13 +4,13 @@ class AssignmentsController < ApplicationController
 	#load_and_authorize_resource
 
   def index
-    @assignments = Assignment.all
-	authorize! :read, @assignments, :message => "no"
-	
-    respond_to do |format|
-     format.html # index.html.erb
-     format.xml  { render :xml => @assignments }
-   end
+    #@assignments = Assignment.all
+	#authorize! :read, @assignments, :message => "no"
+	redirect_to root_url
+    #respond_to do |format|
+    # format.html # index.html.erb
+    # format.xml  { render :xml => @assignments }
+   #end
   end
 
   def show
@@ -29,22 +29,16 @@ class AssignmentsController < ApplicationController
 	@assignment.club_id = params[:club]
 	authorize! :create, @assignment, :message => "no"
 	
-	unless @assignment.club_id.nil?
-	# you are assigning to club
+	if !@assignment.club_id.nil?
 		@club = @assignment.club
-		#get all the role not filled for club	
-		@available_roles = @assignment.club.roles_available
-		@available_users = User.free_users(@club) 
-		#@club.free_users
-	else
-		unless @assignment.roles_for_vp_and_sysadmin.nil? || @assignment.roles_for_vp_and_sysadmin.empty?
-			@roles = @assignment.roles_for_vp_and_sysadmin
-		end
-		p @roles
-		p @assignment.available_users.empty?
-		unless @assignment.available_users.nil? || @assignment.available_users.empty?
-			@users = @assignment.available_users
-		end
+		@roles = @assignment.club.roles_available
+	elsif !@assignment.roles_for_vp_and_sysadmin.nil? || !@assignment.roles_for_vp_and_sysadmin.empty?
+		p "I am here"
+		@roles = @assignment.roles_for_vp_and_sysadmin
+		@users = @assignment.available_users
+	elsif !@assignment.available_users.nil? || !@assignment.available_users.empty?
+		p "I am here 2"
+		@users = @assignment.available_users
 	end
 	
     respond_to do |format|
@@ -85,8 +79,8 @@ class AssignmentsController < ApplicationController
 			format.xml  { render :xml => @assignment, :status => :created, :location => @assignment }
 		end
       else
-		@available_roles = @assignment.club.roles_available	
-		@available_users = User.free_users(@assignment.club)
+		#@available_roles = @assignment.club.roles_available	
+		#@available_users = User.free_users(@assignment.club)
 		@roles = @assignment.roles_for_vp_and_sysadmin
 		@users = @assignment.available_users
         format.html { render :action => "new" }

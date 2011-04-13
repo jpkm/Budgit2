@@ -2,7 +2,6 @@
   <% if @assignment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
-
       <ul>
       <% @assignment.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,47 +10,58 @@
     </div>
   <% end %>
   
-  <div class="field">
-    <%= f.label :User %>: 
-	<% unless @assignment.club_id.nil? %>
-		<!-- if assigning a user to a club -->
-		<%= f.collection_select :user_id, @available_users, :id, :username, :prompt => "Select ..." %>
-	<% else %>
-		<!-- else assigning sysadmin or VP -->
-		<% unless @users.nil? || @users.empty? %>
-			<%= f.collection_select :user_id, @users, :id, :username, :prompt => "Select ..." %>
-		<% else %>
-			There are no available users
-		<% end %>
-	<% end %>
-  </div>
-  
-  <div class="field">
-	<%= f.label :Role %>:
-		<% unless @assignment.club_id.nil? %>
-			<%= f.collection_select :role_id, @available_roles, :id, :name, :prompt => "Select ..." %>
-		<% else %>
-			<% unless @roles.nil? || @roles.empty? %>
-				<%= f.collection_select :role_id, @roles, :id, :name, :prompt => "Select ..." %>
-			<% else %>
-				There are no avaiable roles
-			<% end %>
-		<% end %>
-  </div>
-  
-  <div class="field"> 
-	<% unless @assignment.club_id.nil? %>
-		<%= f.label :Club %>:
-		<%= @assignment.club.name %>
-		<%= f.hidden_field :club_id, :value => @assignment.club_id %>
-	<% end %>
-  </div>
-  
-   <%= f.hidden_field :active, :value => true %> 
-	
-	<!-- needs help -->
-   <%= f.submit %> <%= link_to "or Cancel", root_url %>
-  
+<table id="form">
+    <tr>
+        <div class="field">
+            <td>
+                <%= f.label :User %>: 
+				<% if !@assignment.club_id.nil? %>
+					<!-- if assigning a user to a club -->
+					<%= f.collection_select :user_id, User.free_users(@assignment.club), :id, :username, :prompt => "Select ..." %>
+				<% elsif !@users.nil? || !@users.empty? %>
+					<!-- else assigning sysadmin or VP -->
+					<%= f.collection_select :user_id, @users, :id, :username, :prompt => "Select ..." %>
+				<% else %>
+					There are no available users
+				<% end %>
+            </td>
+		</div>
+	</tr>
+	<tr>
+        <div class="field">
+            <td>
+                <%= f.label :Role %>:
+				<% if !@assignment.club_id.nil? %>
+					<!-- get that clubs available roles -->
+					<%= f.collection_select :role_id, @assignment.club.roles_available, :id, :name, :prompt => "Select ..." %>
+				<% elsif !@roles.nil? || !@roles.empty?%>
+					<%= f.collection_select :role_id, @roles, :id, :name, :prompt => "Select ..." %>
+				<% else %>
+					There are no avaiable roles
+				<% end %>
+            </td>
+		</div>
+    </tr>
+	<tr>
+        <div class="field">
+            <td>
+				<% unless @assignment.club_id.nil? %>
+					<%= f.label :Club %>:
+					<%= @assignment.club.name %>
+					<%= f.hidden_field :club_id, :value => @assignment.club_id %>
+				<% end %>
+            </td>
+		</div>
+    </tr>
+	<%= f.hidden_field :active, :value => true %> 
+	<tr>
+		<div class="field">
+			<td align="right">
+				<%= f.submit %> <%= link_to "or Cancel", root_url %>
+			</td>
+		</div>
+    </tr>
+</table>
   
 	<!-- if assignment.club_id is not nil render this partical for reactivating users-->
 	<% unless @assignment.club_id.nil? || @assignment.club.deactivated == 0 %>

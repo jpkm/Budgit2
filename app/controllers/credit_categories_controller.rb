@@ -25,9 +25,8 @@ class CreditCategoriesController < ApplicationController
 
   def new
 	@credit_category = CreditCategory.new
-	
 	@credit_category.active = true
-
+	
 	respond_to do |format|
 		format.html # new.html.erb
 		format.xml  { render :xml => @credit_category }
@@ -77,10 +76,14 @@ class CreditCategoriesController < ApplicationController
   
   def deactivate3
   	@credit_category = CreditCategory.find(params[:id])
-	@credit_category.active = false
-	@credit_category.save!(:validate => false)
+	unless @credit_category.category.downcase.eql?("initial") || @credit_category.category.downcase.eql?("special") 
+		@credit_category.active = false
+		@credit_category.save!(:validate => false)
 	
-	redirect_to(credit_categories_path, :notice => 'Credit Category Deactivated.')
+		redirect_to(credit_categories_path, :notice => 'Credit Category Deactivated.')
+	else
+		redirect_to(credit_categories_path, :notice => 'This category is not allowed to be deactivated')
+	end
   end
   
    def reactivate3

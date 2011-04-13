@@ -82,5 +82,4 @@ class Debit < ActiveRecord::Base
 		end
 	end
 	
-	
 end
