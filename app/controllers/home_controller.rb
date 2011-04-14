@@ -21,6 +21,6 @@ class HomeController < ApplicationController
 	end
 	  
 	def say_when
-		render_text "<p>The time is <b>" + DateTime.now.to_s + "</b></p>"
+		render :text=>"<p>The time is <b>" + DateTime.now.to_s + "</b></p>"
 	end
 end

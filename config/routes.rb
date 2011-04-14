@@ -10,6 +10,7 @@ Budgit::Application.routes.draw do
   match 'login' => 'sessions#new', :as => :login
   
   root :to => 'home#index'
+  match 'say_when' => 'home#say_when', :as => :say_when
   
   resources :sessions
 
