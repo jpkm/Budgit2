@@ -15,7 +15,7 @@ class HomeController < ApplicationController
 	  
 	def show
 		if logged_in?
-			# list of assignments for the user
+			#list of assignments for the user
 			@assignment_for_user = Assignment.for_user(current_user).all
 		end
 	end
@@ -23,5 +23,4 @@ class HomeController < ApplicationController
 	def say_when
 		render_text "<p>The time is <b>" + DateTime.now.to_s + "</b></p>"
 	end
-
 end
