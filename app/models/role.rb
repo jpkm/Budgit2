@@ -7,6 +7,7 @@ class Role < ActiveRecord::Base
 	#Validations
 	validate :r
 	
+	#Custome Validations
 	def r
 		rs = []
 		for r in Role.all

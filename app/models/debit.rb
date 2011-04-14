@@ -10,25 +10,18 @@ class Debit < ActiveRecord::Base
 	validate :valid_amount, :on => :create
 	validate :valid_amount_editing, :on => :update
 	validate :valid_number_of_consumers
-	#validates_format_of :vendor :with => /^[-\w\._@]+$/i, :allow_blank => false, :message => "should only contain letters, numbers, or .-_@"
 	
-
-	#Named Scopes
+	#Scopes
 	#orders debits by debit_id asscending 
-    named_scope :all, :order => "account_id"
+    scope :all, :order => "account_id"
 	#gets all debits except this debit 
-	named_scope :all_except, lambda {|id| { :conditions => ['id != ?', id] } } 
-	
+	scope :all_except, lambda {|id| { :conditions => ['id != ?', id] } } 
     # get all the debits by a particular account
-    named_scope :for_account, lambda { |account| { :conditions => ['account_id = ?', account] } }
+    scope :for_account, lambda { |account| { :conditions => ['account_id = ?', account] } }
 	# get all debits with reimbursement_date = nil for an account
-	named_scope :not_reimbursed_for_account, lambda { |account| {:conditions => ['account_id = ? AND reimbursement_date is NULL', account] } }
+	scope :not_reimbursed_for_account, lambda { |account| {:conditions => ['account_id = ? AND reimbursement_date is NULL', account] } }
 	
-	
-	def reimburse
-		self.reimbursement_date = DateTime.now
-	end
-	
+	#Custome Validations
 	def valid_number_of_consumers
 		unless debit_category.nil?
 			if debit_category.category.eql?("Food")
@@ -52,8 +45,6 @@ class Debit < ActiveRecord::Base
 		return
 	end
 	
-	## will throw an error unless amount is > 0 and adding the debit will not put the account over budget
-	## could take in a condition for editing
 	def valid_amount
 		unless amount.nil?
 			if amount > 0
@@ -80,6 +71,12 @@ class Debit < ActiveRecord::Base
 		else
 			validates_numericality_of :amount
 		end
+	end
+	
+	#Methods
+	#sets reimbursement date to current datetime 
+	def reimburse
+		self.reimbursement_date = DateTime.now
 	end
 	
 end

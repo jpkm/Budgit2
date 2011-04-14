@@ -4,7 +4,6 @@
 		<th>Name</th>
 		<th>Balance</th>
 	</thead>
-		<!-- all clubs -->
 	<% for club in Club.all %>
 		<tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
 			<td><%= link_to club.name, club_path(club) %></td>
@@ -26,5 +25,3 @@
 		</td>
 	</tr>
 </table> 
-
-<!-- need pagination -->

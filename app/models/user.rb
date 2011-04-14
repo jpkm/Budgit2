@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates_confirmation_of :password
   
-  ## unique names
+  #Custome Validations
 	def un
 		names = []
 		for u in User.all
@@ -35,6 +35,8 @@ class User < ActiveRecord::Base
 		end
 	end	
  
+	#Methods
+	#counts number of active assignments for user
 	def count_active_assignments
 		sum = 0
 		for a in assignments
@@ -42,36 +44,13 @@ class User < ActiveRecord::Base
 				sum = sum + 1
 			end
 		end
-		
 		return sum
 	end
  
- 
-  # login can be either username or email address
-  def self.authenticate(login, pass)
-	login = login.strip
-	pass = pass.strip
-    user = find_by_username(login)
-    return user if user && user.password_hash == user.encrypt_password(pass)
-  end
-
-  def encrypt_password(pass)
-    BCrypt::Engine.hash_secret(pass, password_salt)
-  end
-
-  #private
-
-  def prepare_password
-    unless password.blank?
-      self.password_salt = BCrypt::Engine.generate_salt
-      self.password_hash = encrypt_password(password)
-    end
-  end
-  
-   # get user name
-   def name
-    first_name + " " + middle_name + " " + last_name
-   end
+	#formats user name
+	def name
+		first_name + " " + middle_name + " " + last_name
+	end
 	
 	#checks if user assignments are admin  
 	def is_admin?
@@ -123,6 +102,7 @@ class User < ActiveRecord::Base
 		return false
 	end
 	
+	#checks if user has active assignments
 	def has_active_assignment?
 		for assignment in assignments
 			if assignment.active
@@ -132,7 +112,7 @@ class User < ActiveRecord::Base
 		return false
 	end
 	
-	#### returns users an active assignment who are aren't the sys or vp 
+	#returns users who are aren't the sys or vp 
 	def self.free_users(club)
 		free_users = []
 		for u in User.all
@@ -153,7 +133,7 @@ class User < ActiveRecord::Base
 		free_users
 	end
 	
-	# gets all clubs user has an active assignment to
+	#gets all clubs a user has an active assignment to
 	def get_clubs
 		unless self.is_admin? || self.is_vp?
 			clubs = []
@@ -167,5 +147,24 @@ class User < ActiveRecord::Base
 			end
 		end
 	end
-	
+ 
+	#Stuff it came with
+	# login can be either username or email address
+	def self.authenticate(login, pass)
+		login = login.strip
+		pass = pass.strip
+		user = find_by_username(login)
+		return user if user && user.password_hash == user.encrypt_password(pass)
+	end
+
+	def encrypt_password(pass)
+		BCrypt::Engine.hash_secret(pass, password_salt)
+	end	
+
+	def prepare_password
+		unless password.blank?
+			self.password_salt = BCrypt::Engine.generate_salt
+		self.password_hash = encrypt_password(password)
+		end
+	end
 end

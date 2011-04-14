@@ -7,11 +7,11 @@ class DebitCategory < ActiveRecord::Base
 	## Validations
 	validate :dd
 	
-
 	#Named Scopes
 	#orders debits by debit_id asscending 
-	named_scope :all, :order => "id ASC"
+	scope :all, :order => "id ASC"
 	
+	#Custome Validations
 	def dd
 		cats = []
 		for c in DebitCategory.all
@@ -23,7 +23,6 @@ class DebitCategory < ActiveRecord::Base
 				errors.add_to_base('Category already used')
 			else
 				#validates_format_of :category, :with => /^[A-Za-z]+$/i, :allow_blank => false, :message => "should only contain letters"
-				
 				test = category.strip
 				if test.blank?
 					return errors.add_to_base('Name was invalid')
@@ -34,7 +33,8 @@ class DebitCategory < ActiveRecord::Base
 		end
 	end
 	
-	# get me all the active categories
+	#Methods
+	# get me all the active debit categories
 	def self.get_active_categories
 		acats = []
 		for dc in DebitCategory.all

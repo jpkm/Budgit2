@@ -7,19 +7,17 @@ class Assignment < ActiveRecord::Base
 	belongs_to :user
 	
 	#Validations
-	#validates_uniqueness_of :user_id, :scope => [:club_id, :role_id], :if => Proc.new {|assignment| !is_there_another_active(assignment)}
-	
 	validates_presence_of :role, :user
 	validate :valid_assignment
 
-	
-	#Named Scopes
+	#Scopes
 	#get all the assignments for a user
-    named_scope :for_user, lambda { |user| { :conditions => ['user_id = ?', user] } }
+    scope :for_user, lambda { |user| { :conditions => ['user_id = ?', user] } }
     #get all active assignments for a club_id
-    named_scope :active_for_club, lambda { |club| { :conditions => ['club_id = ? AND active = ?', club, true] } }
+    scope :active_for_club, lambda { |club| { :conditions => ['club_id = ? AND active = ?', club, true] } }
 	
-	## returns true if there is an active assignment with role name of System Admin
+	#Custume Validations
+	#returns true if there is not an active assignment with role name of System Admin or VP
 	def valid_assignment
 		unless role.nil? || user.nil?
 			if is_there_a_sysadmin? && role.name.eql?("System Admin")
@@ -35,27 +33,25 @@ class Assignment < ActiveRecord::Base
 					errors.add_to_base('There is already a '+role.name+'. You must deactivate the current '+role.name+' before assigning a new one')
 				end	
 			end
-			
-			
 		end
-
 	end
 	
-	
+	#Methods
+	#determines if an identical assignment as the parameter is already exists
 	def is_there_another_active(assignment)
-			for other in Assignment.all
-				unless other.id == assignment.id
-					if other.role.name.eql?(assignment.role.name)
-						if other.club.name.eql?(assignment.club.name)
-							return true if other.active
-						end
+		for other in Assignment.all
+			unless other.id == assignment.id
+				if other.role.name.eql?(assignment.role.name)
+					if other.club.name.eql?(assignment.club.name)
+						return true if other.active
 					end
 				end
 			end
-			
-			return false
+		end
+		return false
 	end
 	
+	#determines if there is an active assignment for 'System Admin'
 	def is_there_a_sysadmin?
 		for assignment in Assignment.all
 			if assignment.role.name.eql?("System Admin") && assignment.active
@@ -65,6 +61,7 @@ class Assignment < ActiveRecord::Base
 		return false
 	end
 	
+	#determines if there is an active assignment for 'System Admin'
 	def is_there_a_vp?
 		for assignment in Assignment.all
 			if assignment.role.name.eql?("VP of Finance") && assignment.active
@@ -74,6 +71,7 @@ class Assignment < ActiveRecord::Base
 		return false
 	end
 	
+	#returns an array of roles for the System Admin and VP
 	def roles_for_vp_and_sysadmin
 		vp_and_sysadmin_roles = []
 		for role in Role.all
@@ -84,6 +82,7 @@ class Assignment < ActiveRecord::Base
 		return vp_and_sysadmin_roles
 	end
 	
+	#returns an array of users who do not have an active assignment
 	def available_users
 		free_users = []
 		for user in User.all

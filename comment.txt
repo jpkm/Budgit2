@@ -1,37 +1,22 @@
-
-- username changed to login (don't mess with mother nature)
-- debit show page link from item purchased
-- change time formating (d.m.y) 
-
-
-- do we want to give you access to deactivate account in the middle of a school year.
-
-
-- little tree only on landing page
-- larger/bolder text
-- get rid of roles: can't make new roles 
-
-- freeze that clubs account
-
 ::System::
-- cancel button on forms, acts as back button
 - AJAX/JAVASCRIPT hide show for names of consumers/# of consumers
 - VP of Finance want a sum of all money clubs have left not including Student Majlis
-- SysAd: sees a list: username, email, list of clubs you are assigned to
-	- link to user show page: includes table showing users assignments
-	QUESTION: how do you disable choose an assignment for a user to disable then
-	ANSWER: give link to users show page which has a table listing each assignment + option to "X"
-- SysAd + VP: want to see club leader/email on club show page
 - Print function on show page for transactions:
 	- Want to print out a debit show page
-- **Add a "vendure" to the debit(were did you buy this)
-- only let people be assignmed to a club from the club show page
-- manage assignments from club page. Next to the SA or Leader name have 'X' to deactive (and if  no user exist have a link to create assignment (shoudl create assignmet be specified to that user role you are looking to fulfill)) 
+- manage assignments from club page. Next to the SA or Leader name have 'X' to deactive (and if no user exist have a link to create assignment (shoudl create assignmet be specified to that user role you are looking to fulfill)) 
 - assign me button next to users name in user index. (params[user_id => user.id])
 	- assign me button: collection club and role (unless user is already assigned with another role than use that role)  
 				params[club_id => club selected from collection and role_id is user.get_role]
 				makes a new assignment for user in whatever controller you show the link
 - IF you wanted to know who the club leader was two years/accounts ago your screwed, because Accounts don't know who the club leader is
+- username changed to login (don't mess with mother nature)
+- freeze that clubs account
+
 ::Style::
 - too much space between headers and table
-- change buttons, submit_tag is bs can be changed to button_to and stylized		
+- change buttons, submit_tag is bs can be changed to button_to and stylized	
+
+QUESTIONS:
+jeff
+		- where do you want people to be assignmed from
+		- what should it look like (further implementation with Ajax)

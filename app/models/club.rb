@@ -10,7 +10,6 @@ class Club < ActiveRecord::Base
 	validate :cn
 	validates_uniqueness_of :club_key
 	validates_presence_of :club_key, :allow_blank => false
-	## allows 3 digit numbers that start with 0.
 	validates_format_of :club_key, :with => /^[0-9]{3}$/
 	
 	#Named Scopes
@@ -19,6 +18,7 @@ class Club < ActiveRecord::Base
 	# get all the projects by a particular user
     scope :for_user,  lambda { |user_id| { :joins => :assignments, :conditions => ['user_id = ?', user_id] } }
 	
+	#Custome Validations
 	def cn
 		names = []
 		for c in Club.all
@@ -30,7 +30,6 @@ class Club < ActiveRecord::Base
 				errors.add_to_base('Name already taken')
 			else
 				#validates_format_of :name, :with => /^[-\w\._@]+$/i, :allow_blank => false, :message => "should only contain letters, numbers, or .-_@"
-				
 				test = name.strip
 				if test.blank?
 					return errors.add_to_base('Name was invalid')
@@ -43,11 +42,14 @@ class Club < ActiveRecord::Base
 		end
 	end
 		
+	#Methods
+	#determines current account balance for this club
 	def current_balance
 		account = self.current_account
 		balance = account.balance
 	end
 	
+	#determines current account for this club
 	def current_account
 		for account in self.accounts
 			if(account.active)
@@ -57,7 +59,7 @@ class Club < ActiveRecord::Base
 		return nil
 	end
 	
-	#### returns roles that are available for club
+	#returns roles that are available for club
 	def roles_available
 		available_roles = []
 		for role in Role.all
@@ -80,7 +82,7 @@ class Club < ActiveRecord::Base
 		return available_roles
 	end
 	
-	# get all the not active (deactivated) accounts for club
+	#returns all the not active (deactivated) accounts for club
 	def deactivated
 		count = 0
 		for assignment in assignments
@@ -91,7 +93,7 @@ class Club < ActiveRecord::Base
 		count
 	end	
 	
-	#gets the active leader for this club
+	#get the active leader for this club
 	def get_leader
 		for assignment in assignments
 			if assignment.active && assignment.role.name.downcase.eql?("club leader")
@@ -101,7 +103,7 @@ class Club < ActiveRecord::Base
 		return nil
 	end
 	
-	#gets the active sa for this club
+	#get the active sa for this club
 	def get_sa
 		for assignment in assignments
 			if assignment.active && assignment.role.name.downcase.eql?("student affairs")
