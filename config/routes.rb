@@ -29,6 +29,8 @@ Budgit::Application.routes.draw do
   resources :roles
 
   resources :debits 
+   match 'reimburse' => 'debits#reimburse', :as => :reimburse
+   match 'check' => 'debits#check', :as => :check
 
   resources :accounts
   match 'deactivate1' => 'accounts#deactivate1', :as => :deactivate1
@@ -40,8 +42,6 @@ Budgit::Application.routes.draw do
   match 'deactivate2' => 'assignments#deactivate2', :as => :deactivate2
   match 'reactivate2' => 'assignments#reactivate2', :as => :reactivate2
   
-  match 'reimburse' => 'debits#reimburse', :as => :reimburse
-
  
   # The priority is based upon order of creation:
   # first created -> highest priority.

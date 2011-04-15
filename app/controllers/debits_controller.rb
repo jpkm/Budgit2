@@ -91,6 +91,12 @@ class DebitsController < ApplicationController
 		Notifier.reimburse_email(current_user, @debit).deliver
 		redirect_to(club_path(@debit.account.club_id), :notice => 'Debit Reimbursed.')
 	end
+	
+	def check
+		p "I am here"
+		p params[:item_purchased].nil?
+		render_text "<li>" + params[:item_purchased] + "</li>"
+	end
 	  
 end
 

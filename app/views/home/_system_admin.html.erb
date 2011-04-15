@@ -6,7 +6,7 @@
 
 <h1>What time is it?</h1>
     <div id="time_div">
-      I don't have the time, but
+	  I don't have the time, but
       <%= link_to_remote( "click here",
                          :update => "time_div",
                          :url =>{ :action => :say_when }) %>

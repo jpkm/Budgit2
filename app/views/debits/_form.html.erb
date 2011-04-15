@@ -19,8 +19,15 @@
             </td>
             <td>
                 <%= f.text_area :item_purchased, :cols => "25", :rows => "1" %>
-            </td>
-        </div>
+	
+<%= form_for @debit, :remote => true do |a|%>
+      New item text:
+      <%= text_field_tag :item_purchased %>
+	  <%= observe_field :item_purchased, :url=>{:controller=>"debits", :action=>:check}, :update=>"my_list"%>
+<% end %>
+	
+	</td>
+    </div>
     </tr>
     <tr>
         <div class="field">
@@ -29,7 +36,7 @@
             </td>
             <td>
                 <%= f.collection_select :debit_category_id, DebitCategory.get_active_categories, :id, :category, :prompt => "Select ..." %>
-            </td>
+			</td>
         </div>
     </tr>
     <tr>
