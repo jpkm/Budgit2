@@ -1,5 +1,5 @@
 class Club < ActiveRecord::Base
-	attr_accessible :name, :club_key
+	attr_accessible :name, :club_key, :active
 
 	#Relationships
 	has_many :accounts, :dependent => :destroy

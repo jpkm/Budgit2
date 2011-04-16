@@ -38,26 +38,31 @@ namespace :db do
 		x = Club.new
 		x.name = "Gaming Club"
 		x.club_key = "312"
+		x.active = true
 		x.save!
     
 		y = Club.new
 		y.name = "DSO"
 		y.club_key = "123"
+		y.active = true
 		y.save!
 	
 		z = Club.new
 		z.name = "Active Women"
 		z.club_key = "124"
+		z.active = true
 		z.save!
 		
 		j = Club.new
 		j.name = "Debate Club"
 		j.club_key = "125"
+		j.active = true
 		j.save!
 		
 		p = Club.new
 		p.name = "All Around"
 		p.club_key = "126"
+		p.active = true
 		p.save!
 	
 	

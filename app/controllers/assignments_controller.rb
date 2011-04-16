@@ -121,7 +121,7 @@ class AssignmentsController < ApplicationController
 			redirect_to root_url, :notice => 'Assignment deactivated.'
 		end
 	end
-	  
+	 
 	def reactivate2
 		@assignment = Assignment.find(params[:id])
 		@assignment.active = true

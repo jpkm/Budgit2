@@ -2,7 +2,6 @@
   <% if @club.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@club.errors.count, "error") %> prohibited this club from being saved:</h2>
-
       <ul>
       <% @club.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -23,7 +22,7 @@
 	</tr>
   </div>
   <td></td>
-  
+  <%= f.hidden_field :active, :value => true %> 
   <td align="right"><%= f.submit %><%= link_to "or Cancel", clubs_path %></td> 
 </table>
 <% end %>

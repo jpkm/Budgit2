@@ -1,4 +1,4 @@
-<%= form_for(@debit) do |f| %>
+<%= form_for @debit, :remote => true do |f| %>
   <% if @debit.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@debit.errors.count, "error") %> prohibited this debit from being saved:</h2>
@@ -19,15 +19,8 @@
             </td>
             <td>
                 <%= f.text_area :item_purchased, :cols => "25", :rows => "1" %>
-	
-<%= form_for @debit, :remote => true do |a|%>
-      New item text:
-      <%= text_field_tag :item_purchased %>
-	  <%= observe_field :item_purchased, :url=>{:controller=>"debits", :action=>:check}, :update=>"my_list"%>
-<% end %>
-	
-	</td>
-    </div>
+			</td>
+		</div>
     </tr>
     <tr>
         <div class="field">
@@ -35,7 +28,7 @@
                 <%= f.label :category %>
             </td>
             <td>
-                <%= f.collection_select :debit_category_id, DebitCategory.get_active_categories, :id, :category, :prompt => "Select ..." %>
+                <%= f.collection_select :debit_category, DebitCategory.get_active_categories, :id, :category, :prompt => "Select ..." %>
 			</td>
         </div>
     </tr>
@@ -109,3 +102,22 @@
     </tr>
 </table>
 <% end %>
+
+
+<form>
+	<input class="target" type="text" value="Field 1"/>
+	<select class="target">
+		<option value="option1" selected="selected">Option1</option>
+		<option value="option2">Option2</option>
+	</select>
+</form>
+	<div id="other">
+		Trigger the handler
+	</div>
+	
+<%= form_for @debit do |a| %>
+	<%= a.collection_select :debit_category, DebitCategory.all, :id, :category, :prompt=>true %>
+<% end %>
+	
+	
+

@@ -3,6 +3,7 @@ class CreateClubs < ActiveRecord::Migration
     create_table :clubs do |t|
       t.string :name
 	  t.integer :club_key
+	  t.boolean :active
       t.timestamps
     end
   end

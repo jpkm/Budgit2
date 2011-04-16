@@ -1,4 +1,4 @@
-<div style='font-size:140%'>(<%= @club.club_key %>) <%= @club.name %>'s Club:</div>
+<div style='font-size:140%'><%= @club.name %>'s Club:</div>
 
 	<!-- renders information for @club's current account-->
 	<% unless @club.current_account.nil? %>
@@ -39,11 +39,5 @@
 		<% end %>
 	</div>
 	
-		
-			
-
-		<%#= collection_select(:get, :id, Club.all, :id, :name, :prompt=>"...Select") %>
-		<%#= x %>
-
 
 

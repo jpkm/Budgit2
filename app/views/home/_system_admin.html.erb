@@ -4,11 +4,13 @@
 	<%= link_to "Debit Categores", debit_categories_path %> <br>
 	<%= link_to "Assign System Admin or VP", new_assignment_path(:club => nil) %><br>
 
-<h1>What time is it?</h1>
-    <div id="time_div">
-	  I don't have the time, but
-      <%= link_to_remote( "click here",
-                         :update => "time_div",
-                         :url =>{ :action => :say_when }) %>
-      and I will look it up.
-    </div>
+	<br>
+	
+	<%= link_to "back", '#', :id=>"link" %>
+	
+	<p id="d">Not loaded yet.</p>
+	
+	
+	 
+	 
+	 

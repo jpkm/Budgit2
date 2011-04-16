@@ -37,6 +37,8 @@ Budgit::Application.routes.draw do
   match 'make_account' => 'accounts#make_account', :as => :make_account
 	
   resources :clubs
+  match 'deactivate5' => 'clubs#deactivate5', :as => :deactivate5
+  match 'reactivate5' => 'clubs#reactivate5', :as => :reactivate5
 
   resources :assignments
   match 'deactivate2' => 'assignments#deactivate2', :as => :deactivate2

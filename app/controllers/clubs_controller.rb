@@ -81,7 +81,21 @@ class ClubsController < ApplicationController
 		end
 	end
 
-	  # you can't do this
+	def deactivate5
+		@club = Club.find(params[:id])
+		@club.active = false
+		@club.save!(:validate => false)
+		redirect_to clubs_path, :notice => "#{@club.name} deactivated."
+	end
+	 
+	def reactivate5
+		@club = Club.find(params[:id])
+		@club.active = true
+		@club.save!(:validate => false)
+		redirect_to clubs_path, :notice => "#{@club.name} reactivated."
+	end
+
+	# you can't do this
 	def destroy
 		@club = Club.find(params[:id])
 		@club.destroy
@@ -91,4 +105,7 @@ class ClubsController < ApplicationController
 		  format.xml  { head :ok }
 		end
 	end
+	
+	
+	
 end

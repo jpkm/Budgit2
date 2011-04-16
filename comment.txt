@@ -1,16 +1,18 @@
 ::System::
-- AJAX/JAVASCRIPT hide show for names of consumers/# of consumers
-- VP of Finance want a sum of all money clubs have left not including Student Majlis
+- AJAX/JAVASCRIPT/jQuery hide show for names of consumers/# of consumers
 - Print function on show page for transactions:
 	- Want to print out a debit show page
-- manage assignments from club page. Next to the SA or Leader name have 'X' to deactive (and if no user exist have a link to create assignment (shoudl create assignmet be specified to that user role you are looking to fulfill)) 
+-? manage assignments from club page. Next to the SA or Leader name have 'X' to deactive (and if no user exist have a link to create assignment (shoudl create assignmet be specified to that user role you are looking to fulfill)) 
 - assign me button next to users name in user index. (params[user_id => user.id])
 	- assign me button: collection club and role (unless user is already assigned with another role than use that role)  
 				params[club_id => club selected from collection and role_id is user.get_role]
 				makes a new assignment for user in whatever controller you show the link
-- IF you wanted to know who the club leader was two years/accounts ago your screwed, because Accounts don't know who the club leader is
 - username changed to login (don't mess with mother nature)
 - freeze that clubs account
+- deactivate club
+	- how to handle clubs that are diactivated and stay deactivated for some amount of time
+		- should sysAd be prompted to delete inactive clubs after a year?
+- make "home" button a big link_to 'back', :back
 
 ::Style::
 - too much space between headers and table

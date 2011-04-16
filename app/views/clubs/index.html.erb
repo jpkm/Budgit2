@@ -29,23 +29,17 @@
 		<td>N/A</td> <!-- Assign Me? -->
 	<% end %>
 	
-	<!-- should you be allowed to delete a club? -->
-	<% if can? :delete, Club %>
-		<td align="center">
-			<!-- should you be able to do this? NO need to be able to dectivate a club -->
-			<%= link_to(image_tag("delete_dg.png", :border => 0), club_path(club), :confirm => 'delete?', :method => :delete) %>
-		</td>
-	<% end %>
+	<td><% if club.active %>
+		<%= link_to(image_tag("delete_dg.png", :border => 0), :confirm => "Are you sure?", :controller => "clubs", :action => :deactivate5, :id => club.id) %>
+	<% else %>
+		<%= link_to 'Reactivate', :confirm => 'Are you sure?', :controller => "clubs", :action => :reactivate5, :id => club.id %>
+	<% end %></td>
   </tr>
 <% end %>
 </table>
 
-<span class="smtext">
-	<%= will_paginate @account_debits, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
-</span>
-
-<br>
-
 <% if can? :create, Club %>
 	<%= link_to 'New Club', new_club_path %>
 <% end %>
+
+<%= link_to "back", :back %>
