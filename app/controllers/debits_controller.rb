@@ -23,7 +23,7 @@ class DebitsController < ApplicationController
 	def new
 		@debit = Debit.new	
 		@debit.account_id = params[:account]
-		authorize! :create, @debit, :message => "NO!"
+		authorize! :create, @debit, :message => "You are not authorized"
 		@account = Account.find(params[:account])
 		unless @account.active
 			redirect_to root_url
@@ -39,13 +39,13 @@ class DebitsController < ApplicationController
 
 	def edit
 		@debit = Debit.find(params[:id])
-		authorize! :edit, @debit, :message => "NO!"
+		authorize! :edit, @debit, :message => "You are not authorized"
 	end
 
 	def create
 		@debit = Debit.new(params[:debit])
 		@debit.reimbursement_date = "null"
-		authorize! :create, @debit, :message => "NO!"
+		authorize! :create, @debit, :message => "You are not authorized"
 		
 		respond_to do |format|
 		  if @debit.save 
@@ -61,12 +61,11 @@ class DebitsController < ApplicationController
 
 	def update
 		@debit = Debit.find(params[:id])
-		authorize! :update, @debit, :message => "NO!"
+		authorize! :update, @debit, :message => "You are not authorized"
 		
 		respond_to do |format|
 		  if @debit.update_attributes(params[:debit])
-			format.html { redirect_to(club_path(@debit.account.club_id), :notice => 'Debit reimbursed') }
-			#format.html { redirect_to(@debit, :notice => 'Debit was successfully updated.') }
+			format.html { redirect_to(@debit, :notice => 'Debit was successfully updated.') }
 			format.xml  { head :ok }
 		  else
 			format.html { render :action => "edit" }
@@ -79,7 +78,6 @@ class DebitsController < ApplicationController
 	def destroy
 		@debit = Debit.find(params[:id])
 		redirect_to(@debit.account.club)
-		
 		@debit.destroy
 	end
 
@@ -87,15 +85,10 @@ class DebitsController < ApplicationController
 		@debit = Debit.find(params[:id])
 		authorize! :reimburse, @debit, :message => "no"
 		@debit.reimbursement_date = DateTime.now
+		@debit.status = "reimbursed"
 		@debit.save!
 		Notifier.reimburse_email(current_user, @debit).deliver
 		redirect_to(club_path(@debit.account.club_id), :notice => 'Debit Reimbursed.')
-	end
-	
-	def check
-		p "I am here"
-		p params[:item_purchased].nil?
-		render_text "<li>" + params[:item_purchased] + "</li>"
 	end
 	  
 end

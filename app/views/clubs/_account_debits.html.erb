@@ -5,7 +5,6 @@
 		<th>Category</th>
 		<th>Purchased</th>
 		<th>Amount</th>
-		<th>Reimbursement</th>
 		<th>Status</th>
 	</thead>
 
@@ -14,20 +13,25 @@
 	<td><%= link_to debit.item_purchased, debit_path(debit) %></td>
 	<td><%= debit.debit_category.category %></td>
     <td><%= debit.date_purchased.strftime("%d.%m.%Y")%></td>
-    <td>$<%= debit.amount %></td>
+    <td>
+		$<% if debit.amount > 250 %>
+			<%= debit.amount.to_s + "*"%>
+		<% else %> 
+			<%= debit.amount %>
+		<% end %>
+	</td>
 	<td>
-		<% if debit.reimbursement_date.nil? %>
+		<% if debit.status.eql?("unclaimed") %>
+			<%= debit.status %><!-- link ti send email notification to student -->
+		<% elsif debit.status.eql?("processing") %>
 			<% if can? :reimburse, debit %>
 				<%= link_to(image_tag("reimburse_dg.png", :border => 0), :confirm => 'Are you sure?', :controller => "debits", :action => :reimburse, :id => debit.id)%>
 			<% else %>
-				pending
+				<%= debit.status %>
 			<% end %>
 		<% else %>
 			<%= debit.reimbursement_date.strftime("%d.%m.%Y") %>
 		<% end %>
-	</td>
-	<td>
-		<%= debit.status %>
 	</td>
 	<% if can? :update, debit %>
 		<td align="center"><%= link_to(image_tag("edit_dg.png", :border => 0), edit_debit_path(debit))%></td>
