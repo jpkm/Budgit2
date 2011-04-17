@@ -354,6 +354,7 @@ namespace :db do
 	  d.amount = 10
 	  d.debit_category_id = df.id
       d.reimbursement_date = nil
+	  d.status = 
 	  d.save!
 	  
 	  #with debit reimbursed
@@ -368,6 +369,7 @@ namespace :db do
 	  a.amount = 10
 	  a.debit_category_id = df.id
       a.reimbursement_date = Date.today
+	  a.status = 
 	  a.save!
 	
 	  # with debit unreimbursed
@@ -382,6 +384,7 @@ namespace :db do
 	  b.amount = 10
 	  b.debit_category_id = df.id
       b.reimbursement_date = nil
+	  b.status =
 	  b.save!
 	  
 	  #with debit reimbursed
@@ -396,6 +399,7 @@ namespace :db do
 	  c.amount = 10
 	  c.debit_category_id = df.id
       c.reimbursement_date = Date.today
+	  c.status =
 	  c.save!
 	  
 	  # with debit unreimbursed
@@ -410,6 +414,7 @@ namespace :db do
 	  e.amount = 10
 	  e.debit_category_id = df.id
       e.reimbursement_date = nil
+	  e.status =
 	  e.save!
 	  
 	  #with debit reimbursed
@@ -424,6 +429,7 @@ namespace :db do
 	  f.amount = 10
 	  f.debit_category_id = df.id
       f.reimbursement_date = Date.today
+	  f.status =
 	  f.save!
 	  
 	  # with debit unreimbursed
@@ -438,6 +444,7 @@ namespace :db do
 	  g.amount = 10
 	  g.debit_category_id = df.id
       g.reimbursement_date = nil
+	  g.status =
 	  g.save!
 	  
 	  #with debit reimbursed
@@ -452,6 +459,7 @@ namespace :db do
 	  h.amount = 10
 	  h.debit_category_id = df.id
       h.reimbursement_date = Date.today
+	  h.status =
 	  h.save!
 	  
 	  # with debit unreimbursed
@@ -466,6 +474,7 @@ namespace :db do
 	  i.amount = 10
 	  i.debit_category_id = df.id
       i.reimbursement_date = nil
+	  i.status =
 	  i.save!
 	  
 	  #with debit reimbursed
@@ -480,6 +489,7 @@ namespace :db do
 	  j.amount = 10
 	  j.debit_category_id = df.id
       j.reimbursement_date = Date.today
+	  j.status =
 	  j.save!
 	  
 end

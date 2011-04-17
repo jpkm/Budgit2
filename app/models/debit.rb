@@ -1,5 +1,5 @@
 class Debit < ActiveRecord::Base
-	attr_accessible :item_purchased, :debit_category_id, :reason, :number_of_consumers, :names_of_consumers, :date_purchased, :account_id, :reimbursement_date, :amount, :vendor
+	attr_accessible :item_purchased, :debit_category_id, :reason, :number_of_consumers, :names_of_consumers, :date_purchased, :account_id, :reimbursement_date, :amount, :vendor, :status
 
 	#Relationships
 	belongs_to :account
@@ -20,6 +20,10 @@ class Debit < ActiveRecord::Base
     scope :for_account, lambda { |account| { :conditions => ['account_id = ?', account] } }
 	# get all debits with reimbursement_date = nil for an account
 	scope :not_reimbursed_for_account, lambda { |account| {:conditions => ['account_id = ? AND reimbursement_date is NULL', account] } }
+	
+	Status_LIST = [['unclaimed'],['processing'],['reimbursed']]
+
+	
 	
 	#Custome Validations
 	def valid_number_of_consumers

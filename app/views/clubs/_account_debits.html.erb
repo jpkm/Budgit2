@@ -6,6 +6,7 @@
 		<th>Purchased</th>
 		<th>Amount</th>
 		<th>Reimbursement</th>
+		<th>Status</th>
 	</thead>
 
 <% @account_debits.each do |debit| %>
@@ -24,6 +25,9 @@
 		<% else %>
 			<%= debit.reimbursement_date.strftime("%d.%m.%Y") %>
 		<% end %>
+	</td>
+	<td>
+		<%= debit.status %>
 	</td>
 	<% if can? :update, debit %>
 		<td align="center"><%= link_to(image_tag("edit_dg.png", :border => 0), edit_debit_path(debit))%></td>

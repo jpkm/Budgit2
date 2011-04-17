@@ -11,6 +11,7 @@ class CreateDebits < ActiveRecord::Migration
       t.integer :account_id
       t.integer :amount
       t.date :reimbursement_date
+	  t.string :status
 	  
 
       t.timestamps
