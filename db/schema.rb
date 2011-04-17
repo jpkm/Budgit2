@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20110215175505) do
     t.integer  "account_id"
     t.integer  "amount"
     t.date     "reimbursement_date"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

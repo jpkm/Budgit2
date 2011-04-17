@@ -342,20 +342,36 @@ namespace :db do
       f.save! 
 	  
 	    # Step 7: add some debits and assign them to account
-	  # with debit unreimbursed
-	  d = Debit.new
-      d.account_id = acx.id 
-      d.reason = "hunger"
-	  d.vendor = "Walmart"
-      d.number_of_consumers = 6 
-	  d.names_of_consumers = nil 
-	  d.item_purchased = "hot dogs"
-	  d.date_purchased = Date.today
-	  d.amount = 10
-	  d.debit_category_id = df.id
-      d.reimbursement_date = nil
-	  d.status = 
-	  d.save!
+	  # with debit unreimbursed (unclaimed)
+	  du = Debit.new
+      du.account_id = acx.id 
+      du.reason = "hunger"
+	  du.vendor = "Walmart"
+      du.number_of_consumers = 6 
+	  du.names_of_consumers = nil 
+	  du.item_purchased = "hot dogs"
+	  du.date_purchased = Date.today
+	  du.amount = 10
+	  du.debit_category_id = df.id
+      du.reimbursement_date = nil
+	  du.status = "unclaimed"
+	  du.save!
+	  
+	  # with debit unreimbursed (processing)
+	  dp = Debit.new
+      dp.account_id = acx.id 
+      dp.reason = "hunger"
+	  dp.vendor = "Walmart"
+      dp.number_of_consumers = 6 
+	  dp.names_of_consumers = nil 
+	  dp.item_purchased = "Hot Dogs"
+	  dp.date_purchased = Date.today
+	  dp.amount = 10
+	  dp.debit_category_id = df.id
+      dp.reimbursement_date = nil
+	  dp.status = "processing"
+	  dp.save!
+	  
 	  
 	  #with debit reimbursed
 	  a = Debit.new
@@ -369,23 +385,38 @@ namespace :db do
 	  a.amount = 10
 	  a.debit_category_id = df.id
       a.reimbursement_date = Date.today
-	  a.status = 
+	  a.status = "reimbursed"
 	  a.save!
-	
-	  # with debit unreimbursed
+	###########################################
+	  # with debit unreimbursed (unclaimed)
 	  b = Debit.new
       b.account_id = acy.id 
       b.reason = "hunger"
 	  b.vendor = "Walmart"
       b.number_of_consumers = 6 
 	  b.names_of_consumers = nil 
-	  b.item_purchased = "hot dogs"
+	  b.item_purchased = "Hot Dogs"
 	  b.date_purchased = Date.today
 	  b.amount = 10
 	  b.debit_category_id = df.id
       b.reimbursement_date = nil
-	  b.status =
+	  b.status = "unclaimed"
 	  b.save!
+	  
+	  # with debit unreimbursed (processing)
+	  d = Debit.new
+      d.account_id = acy.id 
+      d.reason = "hunger"
+	  d.vendor = "Walmart"
+      d.number_of_consumers = 6 
+	  d.names_of_consumers = nil 
+	  d.item_purchased = "hot dogs"
+	  d.date_purchased = Date.today
+	  d.amount = 10
+	  d.debit_category_id = df.id
+      d.reimbursement_date = nil
+	  d.status = "processing"
+	  d.save!
 	  
 	  #with debit reimbursed
 	  c = Debit.new
@@ -399,10 +430,10 @@ namespace :db do
 	  c.amount = 10
 	  c.debit_category_id = df.id
       c.reimbursement_date = Date.today
-	  c.status =
+	  c.status = "reimbursed"
 	  c.save!
-	  
-	  # with debit unreimbursed
+	####################################
+	  # with debit unreimbursed(unclaimed)
 	  e = Debit.new
       e.account_id = acz.id 
       e.reason = "hunger"
@@ -414,10 +445,10 @@ namespace :db do
 	  e.amount = 10
 	  e.debit_category_id = df.id
       e.reimbursement_date = nil
-	  e.status =
+	  e.status = "unclaimed"
 	  e.save!
 	  
-	  #with debit reimbursed
+	  #with debit reimbursed(reimbursed)
 	  f = Debit.new
       f.account_id = acz.id 
       f.reason = "hunger"
@@ -429,12 +460,12 @@ namespace :db do
 	  f.amount = 10
 	  f.debit_category_id = df.id
       f.reimbursement_date = Date.today
-	  f.status =
+	  f.status = "reimbursed"
 	  f.save!
 	  
-	  # with debit unreimbursed
+	  # with debit unreimbursed(processing)
 	  g = Debit.new
-      g.account_id = acj.id 
+      g.account_id = acz.id 
       g.reason = "hunger"
       g.vendor = "Walmart"
 	  g.number_of_consumers = 6 
@@ -444,12 +475,12 @@ namespace :db do
 	  g.amount = 10
 	  g.debit_category_id = df.id
       g.reimbursement_date = nil
-	  g.status =
+	  g.status = "processing"
 	  g.save!
-	  
-	  #with debit reimbursed
+	##################################
+	  #with debit reimbursed(reimbursed)
 	  h = Debit.new
-      h.account_id = acj.id 
+      h.account_id = acp.id 
       h.reason = "hunger"
       h.vendor = "Walmart"
 	  h.number_of_consumers = 6 
@@ -459,10 +490,10 @@ namespace :db do
 	  h.amount = 10
 	  h.debit_category_id = df.id
       h.reimbursement_date = Date.today
-	  h.status =
+	  h.status = "reimbursed"
 	  h.save!
 	  
-	  # with debit unreimbursed
+	  # with debit unreimbursed(processing)
 	  i = Debit.new
       i.account_id = acp.id 
       i.reason = "hunger"
@@ -474,10 +505,10 @@ namespace :db do
 	  i.amount = 10
 	  i.debit_category_id = df.id
       i.reimbursement_date = nil
-	  i.status =
+	  i.status = "processing"
 	  i.save!
 	  
-	  #with debit reimbursed
+	  #with debit reimbursed (unclaimed)
 	  j = Debit.new
       j.account_id = acp.id 
       j.reason = "hunger"
@@ -488,8 +519,8 @@ namespace :db do
 	  j.date_purchased = Time.now
 	  j.amount = 10
 	  j.debit_category_id = df.id
-      j.reimbursement_date = Date.today
-	  j.status =
+      j.reimbursement_date = nil
+	  j.status = "unclaimed"
 	  j.save!
 	  
 end

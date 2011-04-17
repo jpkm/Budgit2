@@ -24,7 +24,7 @@ class ClubsController < ApplicationController
 		
 		unless @club.current_account.nil?
 			#all debits for active account of @club
-			@account_debits = @club.current_account.debits.paginate :page => params[:page], :per_page => 5
+			@account_debits = @club.current_account.debits.paginate :page => params[:page], :per_page => 20
 			#all credits for active account of @club
 			@account_credits = @club.current_account.credits.paginate :page => params[:page], :per_page => 5
 			# gets all debits which are unreimbursed for an account
