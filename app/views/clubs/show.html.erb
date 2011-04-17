@@ -24,7 +24,6 @@
 
 	<!-- club participants -->
 	
-
 	<div id="club_ass">
 		<% if can? :create, Assignment %>
 			<a style="text-align:right;"><%= link_to "Assign Users", new_assignment_path(:club => @club) %>
@@ -38,6 +37,12 @@
 			Club Leader: <%= @club.get_leader.name %>
 		<% end %>
 	</div>
+	in stead make it look like:
+		Student Affairs: ijijij
+		Club Leader: ojoj
+		Faculty Advisor: jojj
+	if any of the position are vacent (record position) ->
+		link to new assignment with params[:role_id, :club_id] based on position selected 
 	
 
 
