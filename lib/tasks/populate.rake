@@ -372,6 +372,20 @@ namespace :db do
 	  dp.status = "processing"
 	  dp.save!
 	  
+	  # with debit unreimbursed (funds ready)
+	  da = Debit.new
+      da.account_id = acx.id 
+      da.reason = "Hunger"
+	  da.vendor = "Walmart"
+      da.number_of_consumers = 6 
+	  da.names_of_consumers = nil 
+	  da.item_purchased = "Hot Dogs"
+	  da.date_purchased = Date.today
+	  da.amount = 10
+	  da.debit_category_id = df.id
+      da.reimbursement_date = nil
+	  da.status = "ready"
+	  da.save!
 	  
 	  #with debit reimbursed
 	  a = Debit.new
@@ -418,6 +432,21 @@ namespace :db do
 	  d.status = "processing"
 	  d.save!
 	  
+	  # with debit unreimbursed (funds ready)
+	  d5 = Debit.new
+      d5.account_id = acy.id 
+      d5.reason = "Hunger"
+	  d5.vendor = "Walmart"
+      d5.number_of_consumers = 6 
+	  d5.names_of_consumers = nil 
+	  d5.item_purchased = "Hot Dogs"
+	  d5.date_purchased = Date.today
+	  d5.amount = 10
+	  d5.debit_category_id = df.id
+      d5.reimbursement_date = nil
+	  d5.status = "ready"
+	  d5.save!
+	  
 	  #with debit reimbursed
 	  c = Debit.new
       c.account_id = acy.id 
@@ -463,6 +492,22 @@ namespace :db do
 	  f.status = "reimbursed"
 	  f.save!
 	  
+	  # with debit unreimbursed (funds ready)
+	  d7 = Debit.new
+      d7.account_id = acz.id 
+      d7.reason = "Hunger"
+	  d7.vendor = "Walmart"
+      d7.number_of_consumers = 6 
+	  d7.names_of_consumers = nil 
+	  d7.item_purchased = "Hot Dogs"
+	  d7.date_purchased = Date.today
+	  d7.amount = 10
+	  d7.debit_category_id = df.id
+      d7.reimbursement_date = nil
+	  d7.status = "ready"
+	  d7.save!
+	  
+	  
 	  # with debit unreimbursed(processing)
 	  g = Debit.new
       g.account_id = acz.id 
@@ -507,6 +552,21 @@ namespace :db do
       i.reimbursement_date = nil
 	  i.status = "processing"
 	  i.save!
+	  
+	  # with debit unreimbursed (funds ready)
+	  d9 = Debit.new
+      d9.account_id = acp.id 
+      d9.reason = "Hunger"
+	  d9.vendor = "Walmart"
+      d9.number_of_consumers = 6 
+	  d9.names_of_consumers = nil 
+	  d9.item_purchased = "Hot Dogs"
+	  d9.date_purchased = Date.today
+	  d9.amount = 10
+	  d9.debit_category_id = df.id
+      d9.reimbursement_date = nil
+	  d9.status = "ready"
+	  d9.save!
 	  
 	  #with debit reimbursed (unclaimed)
 	  j = Debit.new

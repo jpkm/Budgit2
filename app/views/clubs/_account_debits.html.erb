@@ -24,6 +24,10 @@
 		<% if debit.status.eql?("unclaimed") %>
 			<%= debit.status %><!-- link ti send email notification to student -->
 		<% elsif debit.status.eql?("processing") %>
+			<% if current_user.is_sa? %>
+				<%= link_to(
+			<%= debit.status %>
+		<% elsif debit.status.eql?("ready") %>
 			<% if can? :reimburse, debit %>
 				<%= link_to(image_tag("reimburse_dg.png", :border => 0), :confirm => 'Are you sure?', :controller => "debits", :action => :reimburse, :id => debit.id)%>
 			<% else %>

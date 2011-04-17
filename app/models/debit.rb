@@ -21,7 +21,7 @@ class Debit < ActiveRecord::Base
 	# get all debits with reimbursement_date = nil for an account
 	scope :not_reimbursed_for_account, lambda { |account| {:conditions => ['account_id = ? AND reimbursement_date is NULL', account] } }
 	
-	Status_LIST = [['unclaimed'],['processing'],['reimbursed']]
+	Status_LIST = [['unclaimed'],['processing'],['ready'],['reimbursed']]
 
 	
 	
