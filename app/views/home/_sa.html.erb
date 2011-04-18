@@ -1,6 +1,5 @@
 <!-- lists all assignmend for the current_user-->
 
-<div id="container">
 	<div id="your_clubs">
 		<% unless current_user.assignments.nil? || current_user.assignments.empty? %>
 			<%= render :partial => "assignment_for_user" %>
@@ -24,8 +23,8 @@
 			<%= render :partial => "ready" %>
 		<% end %>
 	</div>
-</div>
 
 
-what does a student affairs advisor wanna see here?
+
+
 
