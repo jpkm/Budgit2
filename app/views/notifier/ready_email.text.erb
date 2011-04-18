@@ -1,0 +1,15 @@
+
+		<%= @user.name %>
+		
+		<p>The following Debit is Ready to be Reimbursed. Please visit your Student Affairs Advisor,
+     	<%= @debit.account.club.get_sa.username %>, for Reimbursement:<p>
+
+		Item purchased: <%= @debit.item_purchased %>
+		Category: <%= @debit.debit_category.category %>
+		Reason: <%= @debit.reason %>
+		Vendor: <%= @debit.vendor %>
+		Purchased: <%= @debit.date_purchased.strftime("%d.%m.%y") %>
+		Amount: <%= @debit.amount %>
+		Number of consumers: <%= @debit.number_of_consumers %>
+		Names of consumers: <%= @debit.names_of_consumers %>
+		

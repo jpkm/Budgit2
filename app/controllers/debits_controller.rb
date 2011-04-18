@@ -23,7 +23,7 @@ class DebitsController < ApplicationController
 	def new
 		@debit = Debit.new	
 		@debit.account_id = params[:account]
-		authorize! :create, @debit, :message => "You are not authorized"
+		authorize! :create, @debit, :message => "action is not authorized"
 		@account = Account.find(params[:account])
 		unless @account.active
 			redirect_to root_url
@@ -39,13 +39,13 @@ class DebitsController < ApplicationController
 
 	def edit
 		@debit = Debit.find(params[:id])
-		authorize! :edit, @debit, :message => "You are not authorized"
+		authorize! :edit, @debit, :message => "action is not authorized"
 	end
 
 	def create
 		@debit = Debit.new(params[:debit])
 		@debit.reimbursement_date = "null"
-		authorize! :create, @debit, :message => "You are not authorized"
+		authorize! :create, @debit, :message => "action is not authorized"
 		
 		respond_to do |format|
 		  if @debit.save 
@@ -61,7 +61,7 @@ class DebitsController < ApplicationController
 
 	def update
 		@debit = Debit.find(params[:id])
-		authorize! :update, @debit, :message => "You are not authorized"
+		authorize! :update, @debit, :message => "action is not authorized"
 		
 		respond_to do |format|
 		  if @debit.update_attributes(params[:debit])
@@ -83,12 +83,30 @@ class DebitsController < ApplicationController
 
 	def reimburse
 		@debit = Debit.find(params[:id])
-		authorize! :reimburse, @debit, :message => "no"
+		authorize! :reimburse, @debit, :message => "action is not authorized"
 		@debit.reimbursement_date = DateTime.now
 		@debit.status = "reimbursed"
 		@debit.save!
-		Notifier.reimburse_email(current_user, @debit).deliver
+		Notifier.reimburse_email(@debit.account.club.get_leader, @debit).deliver
 		redirect_to(club_path(@debit.account.club_id), :notice => 'Debit Reimbursed.')
+	end
+	
+	def ready
+		@debit = Debit.find(params[:id])
+		authorize! :ready, @debit, :message => "action is not authorized"
+		@debit.status = "ready"
+		@debit.save!
+		Notifier.ready_email(@debit.account.club.get_leader, @debit).deliver
+		redirect_to(club_path(@debit.account.club_id), :notice => "Debit Ready")
+	end
+	
+	def claim
+		@debit = Debit.find(params[:id])
+		authorize! :claim, @debit, :message => "action is not authorized"
+		@debit.status = "processing"
+		@debit.save!
+		Notifier.claimed_email(@debit.account.club.get_leader, @debit).deliver
+		redirect_to(club_path(@debit.account.club_id), :notice => "Debit Claimed")
 	end
 	  
 end

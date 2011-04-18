@@ -29,9 +29,10 @@ Budgit::Application.routes.draw do
   resources :roles
 
   resources :debits 
-   match 'reimburse' => 'debits#reimburse', :as => :reimburse
-   match 'check' => 'debits#check', :as => :check
-
+  match 'reimburse' => 'debits#reimburse', :as => :reimburse
+  match 'ready' => 'debits#ready', :as => :ready
+  match 'claim' => 'debits#claim', :as => :claim
+   
   resources :accounts
   match 'deactivate1' => 'accounts#deactivate1', :as => :deactivate1
   match 'make_account' => 'accounts#make_account', :as => :make_account

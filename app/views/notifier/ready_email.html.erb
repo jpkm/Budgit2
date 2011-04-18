@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1><%= @user.name %></h1>
+	
+	<p>The following Debit is Ready to be Reimbursed. Please visit your Student Affairs Advisor,
+     	<%= @debit.account.club.get_sa.username %>, for Reimbursement:<p>
+	
+	<table>
+		<thead>
+			<th>Item purchased</th>
+			<th>Category</th>
+			<th>Reason</th>
+			<th>Vendor</th>
+			<th>Date Purchased</th>
+			<th>Amount</th>
+			<th>Number of consumers</th>
+			<th>Names of consumers</th>
+			<th>Reimbursement</th>
+		</thead>
+
+	  <tr>
+		<td><%= @debit.item_purchased %></td>
+		<td><%= @debit.debit_category.category %></td>
+		<td><%= @debit.reason %></td>
+		<td><%= @debit.vendor %></td>
+		<td><%= @debit.date_purchased.strftime("%d.%m.%y") %></td>
+		<td><%= @debit.amount %></td>
+		<td><%= @debit.number_of_consumers %></td>
+		<td><%= @debit.names_of_consumers %></td>
+	  </tr>
+	</table>
+    
+  </body>
+</html>
