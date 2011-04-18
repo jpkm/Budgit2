@@ -105,8 +105,9 @@ class DebitsController < ApplicationController
 		authorize! :claim, @debit, :message => "action is not authorized"
 		@debit.status = "processing"
 		@debit.save!
-		Notifier.claimed_email(@debit.account.club.get_leader, @debit).deliver
-		redirect_to(club_path(@debit.account.club_id), :notice => "Debit Claimed")
+		#Notifier.claimed_email(@debit.account.club.get_leader, @debit).deliver
+		redirect_to root_url
+		#redirect_to(club_path(@debit.account.club_id), :notice => "Debit Claimed")
 	end
 	  
 end

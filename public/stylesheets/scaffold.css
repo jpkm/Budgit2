@@ -104,25 +104,33 @@ font-size: large;
 color: 	black;
 }
 
+#container{
+	overflow:auto;
+	width:relative;
+}
 
+#left, #right{
+	width:40%;
+	margin:5px;
+	padding:1em;
+}
+
+#left{float:left;}
+#right{float:right;}
 
 #your_clubs{
 	float:left;
-	background-color:black;
 }
 
 #unclaimed{
 	float:right;
-	background-color:red;
 }
 
 #processing{
 	float:left;
-	background-color:black;
 }
 
 #ready{
 	float:right;
-	background-color:red;
 }
 
