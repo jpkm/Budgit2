@@ -104,3 +104,29 @@ font-size: large;
 color: 	black;
 }
 
+#container{
+	width:relative;
+	background:red;
+}
+
+
+#your_clubs{
+	width:relative;
+	height:50px;
+}
+
+#unclaimed{
+	width:relative;
+}
+
+#processing{
+	float:right;
+	width:relative;
+	height:150px;
+}
+
+#ready{
+	width:relative;
+	height:50px;
+}
+

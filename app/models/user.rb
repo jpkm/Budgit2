@@ -147,6 +147,18 @@ class User < ActiveRecord::Base
 			end
 		end
 	end
+	
+	#gets all active accounts for club you are assigned to
+	def get_accounts
+		@accounts = []
+		for club in self.get_clubs
+			p club.current_account
+			unless club.current_account.nil?
+				@accounts << club.current_account
+			end
+		end
+		return @accounts
+	end
  
 	#Stuff it came with
 	# login can be either username or email address

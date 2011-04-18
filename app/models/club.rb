@@ -113,4 +113,13 @@ class Club < ActiveRecord::Base
 		return nil
 	end
 	
+	def has_current_account?
+		for account in accounts
+			if account.active
+				return true
+			end
+		end
+		return false
+	end
+	
 end

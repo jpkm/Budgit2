@@ -5,6 +5,8 @@
 		<%= render :partial => "system_admin" %>
 	<% elsif current_user.is_vp? %>
 		<%= render :partial => "vp" %>
+	<% elsif current_user.is_affairs? %>
+		<%= render :partial => "sa" %>
 	<% else %>
 		<%= render :partial => "other" %>
 	<% end %>

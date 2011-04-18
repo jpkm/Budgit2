@@ -37,6 +37,7 @@ thead.datagrid th {
 	font-weight: bold;
 	padding: 10px 5px 3px 5px;
 	border-bottom: gray dashed 0.25pt;
+	text-align:center;
 }
 
 td{

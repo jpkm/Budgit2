@@ -1,12 +1,10 @@
-<h2> Your Assignments </h2>
-
+<h2>Paricipations</h2>
 <table class = "datagrid">
   <thead class = "datagrid">
     <th>Club</th>
 	<th>Balance</th>
 	<th>New Debits</th>
   </thead>
-
   <!-- only shows active assignments -->
 <% for assignment in current_user.assignments %>
     <% if assignment.active %>

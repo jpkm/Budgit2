@@ -1,0 +1,31 @@
+<!-- lists all assignmend for the current_user-->
+
+<div id="container">
+	<div id="your_clubs">
+		<% unless current_user.assignments.nil? || current_user.assignments.empty? %>
+			<%= render :partial => "assignment_for_user" %>
+		<% end %>
+	</div>
+
+	<div id="unclaimed">
+		<% unless @unclaimed_debits.nil? || @unclaimed_debits.empty? %>
+			<%= render :partial => "unclaimed" %>
+		<% end %>
+	</div>
+
+	<div id="processing">
+		<% unless @processing_debits.nil? || @processing_debits.empty? %>
+			<%= render :partial => "processing" %>
+		<% end %>
+	</div>
+
+	<div id="ready">
+		<% unless @ready_debits.nil? || @ready_debits.empty? %>
+			<%= render :partial => "ready" %>
+		<% end %>
+	</div>
+</div>
+
+
+what does a student affairs advisor wanna see here?
+

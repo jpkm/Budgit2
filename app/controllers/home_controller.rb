@@ -10,6 +10,10 @@ class HomeController < ApplicationController
 					end
 				end
 			end
+	##When we include DirofStAf processing will need to be changed to mean what it should mean
+			@unclaimed_debits = Debit.get_unclaimed(current_user.get_accounts).paginate :page => params[:page], :per_page => 5
+			@processing_debits = Debit.get_processing(current_user.get_accounts).paginate :page => params[:page], :per_page => 5
+			@ready_debits = Debit.get_ready(current_user.get_accounts).paginate :page => params[:page], :per_page => 5
 		end
 	end
 	  
@@ -19,8 +23,5 @@ class HomeController < ApplicationController
 			@assignment_for_user = Assignment.for_user(current_user).all
 		end
 	end
-	  
-	def say_when
-		render :text=>"<p>The time is <b>" + DateTime.now.to_s + "</b></p>"
-	end
+	 
 end

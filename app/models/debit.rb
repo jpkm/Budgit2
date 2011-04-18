@@ -83,4 +83,42 @@ class Debit < ActiveRecord::Base
 		self.reimbursement_date = DateTime.now
 	end
 	
+	#takes an array of accounts and returns all unclaimed debits
+	def self.get_unclaimed(accounts)
+		@unclaimed = []
+		for account in accounts
+			for debit in account.debits
+				if debit.status = "unclaimed"
+					@unclaimed << debit
+				end
+			end
+		end
+		return @unclaimed
+	end
+	
+	#takes an array of accounts and returns all unclaimed debits
+	def self.get_processing(accounts)
+		@processing = []
+		for account in accounts
+			for debit in account.debits
+				if debit.status = "processing"
+					@unclaimed << debit
+				end
+			end
+		end
+		return @unclaimed
+	end
+	
+	#takes an array of accounts and returns all ready debits
+	def self.get_ready(accounts)
+		@ready = []
+		for account in accounts
+			for debit in account.debits
+				if debit.status = "ready"
+					@ready << debit
+				end
+			end
+		end
+		return @ready
+	end
 end
