@@ -15,11 +15,13 @@ class HomeController < ApplicationController
 				@processing_debits = Debit.get_processing(current_user.get_accounts).paginate :page => params[:page], :per_page => 5
 				@ready_debits = Debit.get_ready(current_user.get_accounts).paginate :page => params[:page], :per_page => 5
 			end
-			@under_250 = Club.get_all_under_250
-			@over_250 = Club.get_all_over_250
+			if current_user.is_director?
+				@under_250 = Club.get_all_under_250
+				@over_250 = Club.get_all_over_250
+				p @over_250
+			end
 		end
 	end
-	  
 	def show
 		if logged_in?
 			#list of assignments for the user

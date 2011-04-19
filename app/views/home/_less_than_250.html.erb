@@ -17,8 +17,8 @@
 			$<%= debit.amount %>
 		</td>
 		<td>
-			<% if can? :process, debit %>
-				<%= link_to "Process", :controller=>"debits", :action=>:process, :id=>debit.id %>
+			<% if can? :processed, debit %>
+				<%= link_to "Process", :controller=>"debits", :action=>:processed, :id=>debit.id %>
 			<% end %>
 		</td>
 			<% if can? :update, debit %>

@@ -1,13 +1,13 @@
 
 	<div id="container">
 		<div id="left">
-			<% unless @under_250.nil? %>
+			<% unless @under_250.nil? || @under_250.empty? %>
 				<%= render :partial => "less_than_250" %>
 			<% end %>
 		</div>
 		
 		<div id="right">
-			<% unless @over_250.nil? %>
+			<% unless @over_250.nil? || @over_250.empty? %>
 				<%= render :partial => "greater_than_250" %>
 			<% else %>
 			<% end %>

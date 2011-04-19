@@ -7,7 +7,7 @@ class Ability
 			can :manage, :all
 		elsif user.is_director?
 			can :manage, :all
-			can :process, Debit do |this_debit|
+			can :processed, Debit do |this_debit|
 				this_debit.account.active && this_debit.status.eql?("processing")
 			end
 		elsif user.is_vp?

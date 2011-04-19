@@ -29,7 +29,7 @@ Budgit::Application.routes.draw do
 
   resources :debits 
   match 'reimburse' => 'debits#reimburse', :as => :reimburse
-  match 'process' => 'debits#process', :as => :process
+  match 'processed' => 'debits#processed', :as => :processed
   match 'claim' => 'debits#claim', :as => :claim
    
   resources :accounts
