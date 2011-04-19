@@ -88,7 +88,7 @@ class Debit < ActiveRecord::Base
 		@unclaimed = []
 		for account in accounts
 			for debit in account.debits
-				if debit.status = "unclaimed"
+				if debit.status.eql?("unclaimed")
 					@unclaimed << debit
 				end
 			end
@@ -101,7 +101,7 @@ class Debit < ActiveRecord::Base
 		@processing = []
 		for account in accounts
 			for debit in account.debits
-				if debit.status = "processing"
+				if debit.status.eql?("processing")
 					@unclaimed << debit
 				end
 			end
@@ -114,7 +114,7 @@ class Debit < ActiveRecord::Base
 		@ready = []
 		for account in accounts
 			for debit in account.debits
-				if debit.status = "ready"
+				if debit.status.eql?("ready")
 					@ready << debit
 				end
 			end

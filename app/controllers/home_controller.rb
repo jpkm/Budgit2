@@ -18,10 +18,10 @@ class HomeController < ApplicationController
 			if current_user.is_director?
 				@under_250 = Club.get_all_under_250
 				@over_250 = Club.get_all_over_250
-				p @over_250
 			end
 		end
 	end
+	
 	def show
 		if logged_in?
 			#list of assignments for the user

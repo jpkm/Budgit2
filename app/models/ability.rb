@@ -7,6 +7,8 @@ class Ability
 			can :manage, :all
 		elsif user.is_director?
 			can :manage, :all
+			cannot [:create, :delete, :update], Debit
+			cannot [:create, :delete, :update], Credit 
 			can :processed, Debit do |this_debit|
 				this_debit.account.active && this_debit.status.eql?("processing")
 			end
