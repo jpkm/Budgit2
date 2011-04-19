@@ -11,7 +11,6 @@ class DebitsController < ApplicationController
 		#end
 	end
 
-	 
 	def show
 		@debit = Debit.find(params[:id])
 		respond_to do |format|
@@ -91,13 +90,14 @@ class DebitsController < ApplicationController
 		redirect_to(club_path(@debit.account.club_id), :notice => 'Debit Reimbursed.')
 	end
 	
-	def ready
+	def process
 		@debit = Debit.find(params[:id])
-		authorize! :ready, @debit, :message => "action is not authorized"
+		p @debit
+		authorize! :process, @debit, :message => "action is not authorized"
 		@debit.status = "ready"
 		@debit.save!
-		Notifier.ready_email(@debit.account.club.get_leader, @debit).deliver
-		redirect_to(club_path(@debit.account.club_id), :notice => "Debit Ready")
+		#Notifier.process_email(@debit.account.club.get_leader, @debit).deliver
+		#redirect_to(club_path(@debit.account.club_id), :notice => "Debit Reimbursement Ready for Pick Up")
 	end
 	
 	def claim

@@ -10,7 +10,6 @@ Budgit::Application.routes.draw do
   match 'login' => 'sessions#new', :as => :login
   
   root :to => 'home#index'
-  match 'say_when' => 'home#say_when', :as => :say_when
   
   resources :sessions
 
@@ -30,7 +29,7 @@ Budgit::Application.routes.draw do
 
   resources :debits 
   match 'reimburse' => 'debits#reimburse', :as => :reimburse
-  match 'ready' => 'debits#ready', :as => :ready
+  match 'process' => 'debits#process', :as => :process
   match 'claim' => 'debits#claim', :as => :claim
    
   resources :accounts

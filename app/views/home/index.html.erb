@@ -2,7 +2,7 @@
 	<!-- routes user to different page depending on role -->
 	<% if current_user.is_admin? %>
 		<%= render :partial => "system_admin" %>
-	<% elsif user.is_director %>
+	<% elsif current_user.is_director? %>
 		<%= render :partial => "director"%>
 	<% elsif current_user.is_vp? %>
 		<%= render :partial => "vp" %>

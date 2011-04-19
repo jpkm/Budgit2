@@ -122,4 +122,26 @@ class Club < ActiveRecord::Base
 		return false
 	end
 	
+	#get all debits for all current accounts from all club with amount < 250
+	def self.get_all_under_250
+		@under = []
+		for club in Club.all
+			unless club.current_account.nil?
+				@under += club.current_account.get_under_250
+			end
+		end
+		return @under
+	end
+	
+	#get all debits for all current accounts from all club with amount > 250
+	def self.get_all_over_250
+		@over = []
+		for club in Club.all
+			unless club.current_account.nil?
+				@over += club.current_account.get_over_250
+			end
+		end
+		return @over
+	end
+	
 end

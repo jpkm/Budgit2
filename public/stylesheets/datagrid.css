@@ -22,6 +22,7 @@ table.datagrid a:hover {
 
 caption.datagrid {
 	height: 45px;
+	font-size: 15px;
 	line-height: 44px;
 	color: #000000;
 	font-weight: bold;
@@ -31,7 +32,7 @@ caption.datagrid {
 	padding: 0;
 }
 thead.datagrid th {
-	font-size: 105%;
+	font-size: 13px;
 	color: black;
 	height: 28px;
 	font-weight: bold;
@@ -40,11 +41,13 @@ thead.datagrid th {
 	text-align:center;
 }
 
-td{
+.datagrid td{
 	padding: 5px 5px 10px;
 	border-bottom: gray dashed 0.25pt;
 	vertical-align: middle;
+	text-align:center;
 }
+
 
 /*	TR elements handled here (main rows only)  */
 

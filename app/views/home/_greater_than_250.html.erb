@@ -1,0 +1,33 @@
+<table class="datagrid">
+<caption class="datagrid">Over 250QAR</caption>
+	<thead class="datagrid">
+		<th>Club</th>
+		<th>Item</th>
+		<th>Purchased</th>
+		<th>Amount</th>
+		<th>Action</th>
+	</thead>
+
+<% @over_250.each do |debit| %> 
+	<tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+		<td><%= link_to debit.account.club.name, club_path(debit.account.club) %></td>
+		<td><%= link_to debit.item_purchased, debit_path(debit) %></td>
+		<td><%= debit.date_purchased.strftime("%d.%m")%></td>
+		<td>
+			$<%= debit.amount%>
+		</td>
+		<td>
+			<% if can? :process, debit %>
+				<%= link_to "Process", :controller=>"debits", :action=>:process, :id=>debit.id %>
+			<% end %>
+		</td>
+			<% if can? :update, debit %>
+				<td><%= link_to(image_tag("edit_dg.png", :border => 0), edit_debit_path(debit))%></td>
+			<% end %>
+			<% if can? :delete, debit %>
+				<td><%= link_to(image_tag("delete_dg.png", :border => 0), debit_path(debit), :confirm => 'delete?', :method => :delete) %></td>
+			<% end %>
+	</tr>
+<% end %>
+</table>
+

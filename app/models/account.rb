@@ -108,5 +108,27 @@ class Account < ActiveRecord::Base
 		end
 		return total
 	end
+	# get all debits for this account with amount > 250
+	def get_over_250
+		@over = []
+		for debit in debits
+			if debit.amount > 250
+				@over << debit
+			end
+		end
+		return @over
+	end
+	
+	# get all debits for this account with amount < 250
+	def get_under_250
+		@under = []
+		for debit in debits
+			if debit.amount < 250
+				@under << debit
+			end
+		end
+		return @under
+	end
+	
 	
 end

@@ -105,7 +105,6 @@ color: 	black;
 }
 
 #container{
-	overflow:auto;
 	width:relative;
 	font-size:10px;
 }

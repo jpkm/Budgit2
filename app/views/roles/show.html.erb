@@ -8,7 +8,7 @@
   <%= @role.name %>
 </p>
 
-<% if current_user.is_admin? %>
+<% if can? :edit Role %>
 	<%= link_to 'Edit', edit_role_path(@role) %> 
 <% end %>
 
