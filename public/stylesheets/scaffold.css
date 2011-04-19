@@ -107,12 +107,11 @@ color: 	black;
 #container{
 	overflow:auto;
 	width:relative;
+	font-size:10px;
 }
 
 #left, #right{
 	width:40%;
-	margin:5px;
-	padding:1em;
 }
 
 #left{float:left;}
@@ -122,15 +121,17 @@ color: 	black;
 	float:left;
 }
 
-#unclaimed{
-	float:right;
+#processing{
+	margin-top:5px;
+	float:left;
 }
 
-#processing{
+#unclaimed{
+	margin-top:5px;
 	float:left;
 }
 
 #ready{
-	float:right;
+	float:left;
 }
 

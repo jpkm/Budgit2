@@ -62,6 +62,16 @@ class User < ActiveRecord::Base
 		return false
 	end
 	
+	#checks if user assignments are admin  
+	def is_director?
+		assignments.each do |assignment|
+			if assignment.role.name.downcase.eql?("director")
+				return true
+			end
+		end
+		return false
+	end
+	
 	#checks if user is VP  
 	def is_vp?
 		assignments.each do |assignment|
@@ -121,7 +131,7 @@ class User < ActiveRecord::Base
 				free_users << u
 			else
 				for assignment in u.assignments
-					if assignment.club_id == club.id || assignment.role.name.downcase.eql?("system admin") || assignment.role.name.downcase.eql?("vp of finance")
+					if assignment.club_id == club.id || assignment.role.name.downcase.eql?("system admin") || assignment.role.name.downcase.eql?("vp of finance") || assignment.role.name.downcase.eql?("director")
 						should_add = false
 					end
 				end

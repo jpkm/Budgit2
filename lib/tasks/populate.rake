@@ -16,6 +16,10 @@ namespace :db do
 		rsys = Role.new
 		rsys.name = "System Admin"
 		rsys.save!
+		
+		rdsa = Role.new
+		rdsa.name = "Director"
+		rdsa.save!
 	  
 		rvp = Role.new
 		rvp.name = "VP of Finance"
@@ -67,15 +71,26 @@ namespace :db do
 	
 	
     # Step 4: add Users
+		
 		sys = User.new
-		sys.first_name = "David"
-		sys.middle_name = "Admin"
-		sys.last_name = "Stanfield"
-		sys.email = "davesta@qatar.cmu.edu"
-		sys.username = "davestan"
-		sys.password = "davestan"
-		sys.password_confirmation = "davestan"
+		sys.first_name = "sys"
+		sys.middle_name = "ad"
+		sys.last_name = "min"
+		sys.email = "sysa@qatar.cmu.edu"
+		sys.username = "system"
+		sys.password = "system"
+		sys.password_confirmation = "system"
 		sys.save!
+		
+		dsa = User.new
+		dsa.first_name = "David"
+		dsa.middle_name = "Admin"
+		dsa.last_name = "Stanfield"
+		dsa.email = "davesta@qatar.cmu.edu"
+		dsa.username = "davestan"
+		dsa.password = "davestan"
+		dsa.password_confirmation = "davestan"
+		dsa.save!
 			
 		vp = User.new
 		vp.first_name = "Muhammad"
@@ -158,6 +173,12 @@ namespace :db do
 		asys.role_id = rsys.id
 		asys.active = true
 		asys.save!
+		
+		adsa = Assignment.new
+		adsa.user_id = dsa.id
+		adsa.role_id = dsa.id
+		adsa.active = true
+		adsa.save!
 		
 		#afaculty = Assignment.new
 		#afaculty.user_id = faculty.id

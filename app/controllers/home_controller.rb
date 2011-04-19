@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 	
 	def index
 		if logged_in?
-			unless current_user.is_admin? || current_user.is_vp?
+			unless current_user.is_admin? || current_user.is_vp? || current_user.is_director?
 				unless current_user.assignments.nil? || current_user.assignments.empty?
 					if current_user.count_active_assignments == 1 
 						redirect_to club_path(current_user.assignments[0].club_id)
