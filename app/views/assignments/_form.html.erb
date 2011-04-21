@@ -31,14 +31,18 @@
         <div class="field">
             <td>
                 <%= f.label :Role %>:
+				<%= @assignment.role.name %>
+				
+				<!--
 				<% if !@assignment.club_id.nil? %>
-					<!-- get that clubs available roles -->
-					<%= f.collection_select :role_id, @assignment.club.roles_available, :id, :name, :prompt => "Select ..." %>
+					<%#= f.collection_select :role_id, @assignment.club.roles_available, :id, :name, :prompt => "Select ..." %>
 				<% elsif !@roles.nil? || !@roles.empty?%>
-					<%= f.collection_select :role_id, @roles, :id, :name, :prompt => "Select ..." %>
+					<%#= f.collection_select :role_id, @roles, :id, :name, :prompt => "Select ..." %>
 				<% else %>
 					There are no avaiable roles
 				<% end %>
+				-->
+				
             </td>
 		</div>
     </tr>
@@ -62,11 +66,4 @@
 		</div>
     </tr>
 </table>
-  
-	<!-- if assignment.club_id is not nil render this partical for reactivating users-->
-	<% unless @assignment.club_id.nil? || @assignment.club.deactivated == 0 %>
-		<p class ="supertiny">&nbsp;</p>
-		<%= render :partial => "reactivate_users" %>
-	<% end %>
-  
 <% end %>

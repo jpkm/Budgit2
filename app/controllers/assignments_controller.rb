@@ -26,11 +26,12 @@ class AssignmentsController < ApplicationController
 	def new
 		@assignment = Assignment.new
 		@assignment.club_id = params[:club]
-		authorize! :create, @assignment, :message => "no"
+		@assignment.role_id = params[:role]
+		authorize! :create, @assignment, :message => "action is not authorized"
 		
 		if !@assignment.club_id.nil?
 			@club = @assignment.club
-			@roles = @assignment.club.roles_available
+			#@roles = @assignment.club.roles_available
 		elsif !@assignment.roles_for_vp_and_sysadmin.nil? || !@assignment.roles_for_vp_and_sysadmin.empty?
 			@roles = @assignment.roles_for_vp_and_sysadmin
 			@users = @assignment.available_users

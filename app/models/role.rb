@@ -35,4 +35,14 @@ class Role < ActiveRecord::Base
 			end
 		end
 	end
+	
+	def self.get_leader
+		for role in Role.all
+			if role.name.downcase.eql?("club leader")
+				return role
+			end
+		end
+	end
+	
+	
 end

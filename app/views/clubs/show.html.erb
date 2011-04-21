@@ -2,20 +2,23 @@
 
 
 	<div id="participants">
-		<!--<% if can? :create, Assignment %>
-			<a style="text-align:right;"><%= link_to "Assign Users", new_assignment_path(:club => @club) %>
-		<% end %>
-		-->
 		Student Affairs Advisor:
-		<% unless @club.get_sa.nil? %>  
-			<%= link_to "Assign me", new_assignment_path(:club=>@club, :role=>Role.get_sa)%>
+		<% if @club.get_sa.nil? %>  
+			<% if can? :create, Assignment %>
+				<%= link_to "Assign me", new_assignment_path(:club=>@club, :role=>Role.get_sa)%>
+			<% end %>
 		<% else %>
 			<%= @club.get_sa.username %>
 		<% end %>
 			
 		<br>
-		<% unless @club.get_leader.nil? %>
-			Club Leader: <%= @club.get_leader.username %>
+		Club Leader: 
+		<% if @club.get_leader.nil? %>
+			<% if can? :create, Assignment %>
+				<%= link_to "Assign me", new_assignment_path(:club=>@club, :role=>Role.get_leader)%>
+			<% end %>
+		<% else %>
+			<%= @club.get_leader.username %>
 		<% end %>
 	</div>
 
@@ -25,7 +28,7 @@
 		<%= render :partial => "current_account" %>
 	<% end %>
 	
-
+    <!-- -------------------------------------------------------- -->
 	<!-- these buttons will never be here
 	<% if can? :create, Account %>
 		<% if @club.current_account.nil? %>
@@ -42,9 +45,6 @@
 		<% unless @inactive_accounts.nil? || @inactive_accounts.empty? %>
 			<%= render :partial => "inactive_accounts" %>
 		<% end %>
-		
-
-	<!-- club participants -->
 	
 
 

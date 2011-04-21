@@ -1,66 +1,72 @@
 <p id="notice"><%= notice %></p>
 
-<h2>Debit Info</h2>
 
-<p>
-  <b>Item purchased:</b>
-  <%= @debit.item_purchased %>
-</p>
+<table class="debit_info">
+	<caption>Debit Info</caption>
+	<tr>
+		<td>Tracking #</td>
+		<td><%= @debit.id %></td>
+	<tr>
+		<td>Item Purchased</td>
+		<td><%= @debit.item_purchased %></td>
+	</tr>	
+	<tr class="debit_info">
+		<td>Category</td>
+		<td><%= @debit.debit_category.category %></td>
+	</tr>
+	<tr class="debit_info">
+		<td>Reason</td>
+		<td><%= @debit.reason %></td>
+	</tr>
+	<tr>
+		<td>Vendor</td>
+		<td><%= @debit.vendor %></td>
+	</tr>
+	<tr>
+		<td>Number of Consumers</td>
+		<td>
+			<% if @debit.number_of_consumers.nil? %>
+				N/A
+			<% else %>
+				<%= @debit.number_of_consumers %>
+			<% end %>
+		</td>
+	</tr>
+	<tr>
+		<td>Names of Consumers</td>
+		<td>
+			<% if @debit.names_of_consumers.nil? %>
+				N/A
+			<% else %>
+				<%= @debit.names_of_consumers %>
+			<% end %>
+		</td>
+	</tr>
+	<tr>
+		<td>Purchased Date</td>
+		<td><%= @debit.date_purchased.strftime("%d.%m.%y") %></td>
+	</tr>
+	<tr>
+		<td>Account</td>
+		<td><%= link_to @debit.account.year, club_path(@debit.account.club_id) %></td>
+	</tr>
+	<tr>
+		<td>Amount</td>
+		<td>$<%= @debit.amount %></td>
+	</tr>
+	<tr>
+		<td>Status</td>
+		<td>
+			<% unless @debit.reimbursement_date.nil? %>
+				<%= @debit.reimbursement_date.strftime("%d.%m.%Y") %>
+			<% else %>
+				 <%= @debit.status %>
+			<% end %>
+		</td>
+	</tr>
+</table>
 
-<p>
-  <b>Category:</b>
-  <%= @debit.debit_category.category %>
-</p>
 
-<p>
-  Reason:
-  <%= @debit.reason %>
-</p>
-
-<p>
-	Vendor:
-	<%= @debit.vendor %>
-<p>
-  Number of consumers:
-  <%= @debit.number_of_consumers %>
-</p>
-
-<p>
-  Names of consumers:
-  <%= @debit.names_of_consumers %>
-</p>
-
-<p>
-  Purchased:
-  <%= @debit.date_purchased.strftime("%d.%m.%y") %>
-</p>
-
-<p>
-  Account:
-  <%= link_to @debit.account.year, club_path(@debit.account.club_id) %>
-</p>
-
-<p>
-	Amount:
-	$<%= @debit.amount %>
-</p>
-
-<p>
-	Reimbursement:
-	<% if @debit.reimbursement_date.nil? && @debit.account.active %>
-		<% if can? :reimburse, @debit %>
-			<%= link_to(image_tag("reimburse_dg.png", :border => 0), :confirm => 'Are you sure?', :controller => "debits", :action => :reimburse, :id => @debit.id)%>
-		<% end %>
-	<% elsif !@debit.reimbursement_date.nil? %>
-		<%= @debit.reimbursement_date.strftime("%d.%m.%Y") %>
-	<% elsif !@debit.account.active %>
-		Never Reimbursed
-	<% end %>
-</p>
-
-<% if can? :update, @debit %>
-	<%= link_to(image_tag("edit_dg.png", :border => 0), edit_debit_path(@debit))%>&nbsp;
-<% end %>
 <% if can? :delete, @debit %>
 	<%= link_to(image_tag("delete_dg.png", :border => 0), debit_path(@debit), :confirm => 'delete?', :method => :delete) %>
 <% end %>

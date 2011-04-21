@@ -100,6 +100,7 @@ class Assignment < ActiveRecord::Base
 		return free_users
 	end
 	
+	# to be used with jQuery
 	def self.assign_me(club,role)
 		assignment = Assignment.new
 		assignment.club_id = club.id

@@ -1,0 +1,20 @@
+table.debit_info {
+	font: 130% Verdana, Arial, Helvetica, sans-serif;
+	color: black;
+	text-align: left;
+	vertical-align: middle;
+	border-collapse:collapse;
+	width:400px;
+}
+
+td.debit_info {
+	border: 1px solid black;
+}
+
+tr.debit_info {
+	text-align:center;
+}
+
+caption.debit_info{
+	padding-bottom:10px;
+}
