@@ -13,14 +13,13 @@ class Role < ActiveRecord::Base
 		for r in Role.all
 			rs << r.name.downcase.strip
 		end
-		
 		unless name.nil? || name.empty?
 			if rs.include?(name.downcase.strip)
 				errors.add_to_base('Role already used')
 			else
 				test = name.strip
 				if test.blank?
-					return errors.add_to_base('Name was invalid')
+					return errors.add_to_base('Name is invalid')
 				end
 				
 			end
@@ -29,4 +28,11 @@ class Role < ActiveRecord::Base
 		end
 	end	
 	
+	def self.get_sa
+		for role in Role.all
+			if role.name.downcase.eql?("student affairs")
+				return role
+			end
+		end
+	end
 end

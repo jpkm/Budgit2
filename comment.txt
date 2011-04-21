@@ -17,6 +17,7 @@
 ::Style::
 - too much space between headers and table
 - change buttons, submit_tag is bs can be changed to button_to and stylized	
+- color code debits
 
 QUESTIONS:
 jeff

@@ -127,7 +127,7 @@ class AssignmentsController < ApplicationController
 		@assignment.active = true
 		
 		unless @assignment.save
-			redirect_to(assignments_path, :notice => 'You suck.')
+			redirect_to(assignments_path, :notice => 'Error.')
 		else
 			redirect_to((assignments_path), :notice => 'Assignment reactivated.')
 		end

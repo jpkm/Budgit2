@@ -13,7 +13,6 @@
     clear: both;
 }
 
-
 body { 
 background-image: url('/images/Money_Tree.png');
 background-position: bottom right;
@@ -133,3 +132,21 @@ color: 	black;
 	float:left;
 }
 
+#debit{ 
+	font-size:19px;
+	position:absolute;
+	margin-left:160px;
+}
+
+#credit{
+	position:absulte;
+	font-size:19px;
+	text-align:right;
+	margin-right:100px;
+}
+
+#current_balance{
+	position:absulte;
+	margin-left:380px;
+	margin-top:40px;
+}

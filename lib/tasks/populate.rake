@@ -176,7 +176,7 @@ namespace :db do
 		
 		adsa = Assignment.new
 		adsa.user_id = dsa.id
-		adsa.role_id = dsa.id
+		adsa.role_id = rdsa.id
 		adsa.active = true
 		adsa.save!
 		

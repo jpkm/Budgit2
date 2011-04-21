@@ -99,5 +99,14 @@ class Assignment < ActiveRecord::Base
 		end
 		return free_users
 	end
+	
+	def self.assign_me(club,role)
+		assignment = Assignment.new
+		assignment.club_id = club.id
+		assignment.role_id = Role.get_sa.id
+		assignment.active = true
+		assignment.save!
+	end
+	
 		
 end

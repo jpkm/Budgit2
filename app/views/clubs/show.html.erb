@@ -1,11 +1,32 @@
 <div style='font-size:140%'><%= @club.name %>'s Club:</div>
 
+
+	<div id="participants">
+		<!--<% if can? :create, Assignment %>
+			<a style="text-align:right;"><%= link_to "Assign Users", new_assignment_path(:club => @club) %>
+		<% end %>
+		-->
+		Student Affairs Advisor:
+		<% unless @club.get_sa.nil? %>  
+			<%= link_to "Assign me", new_assignment_path(:club=>@club, :role=>Role.get_sa)%>
+		<% else %>
+			<%= @club.get_sa.username %>
+		<% end %>
+			
+		<br>
+		<% unless @club.get_leader.nil? %>
+			Club Leader: <%= @club.get_leader.username %>
+		<% end %>
+	</div>
+
+
 	<!-- renders information for @club's current account-->
 	<% unless @club.current_account.nil? %>
 		<%= render :partial => "current_account" %>
 	<% end %>
 	
-	<!-- these buttons will never be here -->
+
+	<!-- these buttons will never be here
 	<% if can? :create, Account %>
 		<% if @club.current_account.nil? %>
 			<!-- should be action for make_account -->
@@ -14,6 +35,7 @@
 			<%= link_to "Deactivate Current Account", :controller => "accounts", :action => :deactivate1, :id => @club.current_account.id %>
 		<% end %>
 	<% end %>
+	-->
 	<!-- ------------------------------------------------------ -->
 	
 	<!-- all inactive accounts for this club -->
@@ -23,26 +45,6 @@
 		
 
 	<!-- club participants -->
-	
-	<div id="club_ass">
-		<% if can? :create, Assignment %>
-			<a style="text-align:right;"><%= link_to "Assign Users", new_assignment_path(:club => @club) %>
-		<% end %>
-		<br>
-		<% unless @club.get_sa.nil? %>  
-			Student Affairs Advisor: <%= @club.get_sa.name %>
-		<% end %>
-		<br>
-		<% unless @club.get_leader.nil? %>
-			Club Leader: <%= @club.get_leader.name %>
-		<% end %>
-	</div>
-	in stead make it look like:
-		Student Affairs: ijijij
-		Club Leader: ojoj
-		Faculty Advisor: jojj
-	if any of the position are vacent (record position) ->
-		link to new assignment with params[:role_id, :club_id] based on position selected 
 	
 
 
