@@ -9,42 +9,30 @@
       </ul>
     </div>
   <% end %>
-  
-  <div class="field">
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-  </div>
-  
-  <div class="field">
-	<%= f.label :first_name %> 
-	<%= f.text_field :first_name %>
-  </div>
-	
-  <div class="field">
-    <%= f.label :middle_name %> 
-	<%= f.text_field :middle_name %>
-  </div>
-	
-  <div class="field">
-    <%= f.label :last_name %>
-	<%= f.text_field :last_name %>
-  </div>
-    
-  <div class="field">	
-	<%= f.label :email, "Email Address" %>
-	<%= f.text_field :email %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm Password" %>: 
-    <%= f.password_field :password_confirmation %>
-  </div>
-  
-<%= f.submit (@user.new_record? ? "Submit" : "Update") %> <%= link_to "or Cancel", users_path %>
-  
+
+	<table>
+		<tr>
+			<td style='text-align:right;'><%= f.label :username %></td>
+			<td><%= f.text_field :username %></td>
+		</tr>
+		<tr>	
+			<td style='text-align:right;'><%= f.label :email, "Andrew Email" %></td>
+			<td><%= f.text_field :email %></td>
+		</tr>
+		<tr>
+			<td style='text-align:right;'><%= f.label :password %></td>
+			<td><%= f.password_field :password %></td>
+		</tr>
+		<tr>
+			<td style='text-align:right;'><%= f.label :password_confirmation, "Confirm Password" %>:</td> 
+			<td><%= f.password_field :password_confirmation %></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td style='text-align:right;'>
+				<%= f.submit (@user.new_record? ? "Submit" : "Update") %>
+				<%= link_to "or Cancel", :back %>
+			</td>
+		</tr>
+	</table?
 <% end %>
