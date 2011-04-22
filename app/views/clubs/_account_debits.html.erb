@@ -26,8 +26,8 @@
 				<%= debit.status %>
 			<% end %>
 		<% elsif debit.status.eql?("processing") %>
-			<% if can? :processed, debit %>
-				<%= link_to "Process", :controller=>"debits", :action=>:processed, :id=>debit.id %>
+			<% if can? :process_me, debit %>
+				<%= link_to "Process", :controller=>"debits", :action=>:process_me, :id=>debit.id %>
 			<% else %>
 				<%= debit.status %>
 			<% end %>
