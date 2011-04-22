@@ -20,7 +20,9 @@ Budgit::Application.routes.draw do
   match 'reactivate3' => 'credit_categories#reactivate3', :as => :reactivate3
 
   resources :credits
+  match 'delete_credit' => 'credits#delete_credit', :as => :delete_credit
 
+  
   resources :debit_categories
   match 'deactivate4' => 'debit_categories#deactivate4', :as => :deactivate4
   match 'reactivate4' => 'debit_categories#reactivate4', :as => :reactivate4
@@ -28,6 +30,7 @@ Budgit::Application.routes.draw do
   resources :roles
 
   resources :debits 
+  match 'delete_debit' => 'debits#delete_debit', :as => :delete_debit
   match 'reimburse' => 'debits#reimburse', :as => :reimburse
   match 'process_me' => 'debits#process_me', :as => :process_me
   match 'claim' => 'debits#claim', :as => :claim

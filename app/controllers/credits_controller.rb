@@ -84,12 +84,12 @@ class CreditsController < ApplicationController
 		end
 	end
 
-	def destroy
+	def delete_credit
 		@credit = Credit.find(params[:id])
 		
 		p @credit
 		
-		authorize! :destroy, @credit, :message => "Action Not Authorized"
+		#authorize! :destroy, @credit, :message => "Action Not Authorized"
 		@credit.destroy
 		redirect_to(@credit.account.club)
 		end

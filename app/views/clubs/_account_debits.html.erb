@@ -45,7 +45,7 @@
 		<td align="center"><%= link_to(image_tag("edit_dg.png", :border => 0), edit_debit_path(debit))%></td>
 	<% end %>
 	<% if can? :delete, debit %>
-		<td align="center"><%= link_to(image_tag("delete_dg.png", :border => 0), debit_path(debit), :confirm => 'delete?', :method => :delete) %></td>
+		<td align="center">	<%= link_to 'Destroy', :controller => :debits, :id => debit.id, :confirm => 'Are you sure?', :action => :delete_debit %></td>
 	<% end %>
   </tr>
 <% end %>

@@ -76,10 +76,10 @@ class DebitsController < ApplicationController
 	end
 
 	  
-	def destroy
+	def delete_debit
 		@debit = Debit.find(params[:id])
-		redirect_to(@debit.account.club)
 		@debit.destroy
+		redirect_to(@debit.account.club)
 	end
 
 	def reimburse

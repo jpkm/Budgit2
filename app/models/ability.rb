@@ -14,7 +14,7 @@ class Ability
 				!this_debit.account.active
 			end
 			
-			cannot :edit, Debit do |this_debit|
+			cannot :manage, Debit do |this_debit|
 				this_debit.status.eql?("reimbursed")
 			end
 			
