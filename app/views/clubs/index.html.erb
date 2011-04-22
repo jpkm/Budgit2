@@ -1,5 +1,5 @@
-<h2>Clubs</h2>
 <table class ="datagrid">
+<caption class="datagrid">Clubs</caption>
 	<thead class ="datagrid">
 		<th>Name</th>
 		<th>Balance</th>
@@ -38,8 +38,4 @@
 <% end %>
 </table>
 
-<% if can? :create, Club %>
-	<%= link_to 'New Club', new_club_path %>
-<% end %>
 
-<%= link_to "back", :back %>

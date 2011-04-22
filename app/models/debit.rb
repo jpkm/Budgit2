@@ -78,10 +78,6 @@ class Debit < ActiveRecord::Base
 	end
 	
 	#Methods
-	#sets reimbursement date to current datetime 
-	def reimburse
-		self.reimbursement_date = DateTime.now
-	end
 	
 	#takes an array of accounts and returns all unclaimed debits
 	def self.get_unclaimed(accounts)
@@ -121,4 +117,5 @@ class Debit < ActiveRecord::Base
 		end
 		return @ready
 	end
+
 end

@@ -9,7 +9,7 @@ class Ability
 			can :manage, :all
 			cannot [:create, :delete, :update], Debit
 			cannot [:create, :delete, :update], Credit 
-			can :processed, Debit do |this_debit|
+			can :process_me, Debit do |this_debit|
 				this_debit.account.active && this_debit.status.eql?("processing")
 			end
 		elsif user.is_vp?

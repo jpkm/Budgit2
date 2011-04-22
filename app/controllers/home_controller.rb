@@ -18,6 +18,9 @@ class HomeController < ApplicationController
 			if current_user.is_director?
 				@under_250 = Club.get_all_under_250
 				@over_250 = Club.get_all_over_250
+				if @over_250.nil? || @over_250.empty? && @under_250.nil? || @under_250.empty?
+					redirect_to clubs_path()
+				end
 			end
 		end
 	end

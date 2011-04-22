@@ -32,7 +32,7 @@
             <td>
                 <%= f.label :Role %>:
 				<%= @assignment.role.name %>
-				
+				<%= f.hidden_field :role_id, :value => @assignment.role_id %> 
 				<!--
 				<% if !@assignment.club_id.nil? %>
 					<%#= f.collection_select :role_id, @assignment.club.roles_available, :id, :name, :prompt => "Select ..." %>

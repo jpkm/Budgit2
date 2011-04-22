@@ -112,7 +112,7 @@ class Account < ActiveRecord::Base
 	def get_over_250
 		@over = []
 		for debit in debits
-			if debit.amount > 250
+			if debit.amount > 250 && debit.status.eql?("processing")
 				@over << debit
 			end
 		end
@@ -123,7 +123,7 @@ class Account < ActiveRecord::Base
 	def get_under_250
 		@under = []
 		for debit in debits
-			if debit.amount < 250
+			if debit.amount < 250 && debit.status.eql?("processing")
 				@under << debit
 			end
 		end
