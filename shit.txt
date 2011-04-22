@@ -1,0 +1,90 @@
+(in c:/Users/Yazan/Desktop/67-373/Budgit2)
+          home_index GET    /home/index(.:format)                 {:controller=>"home", :action=>"index"}
+   edit_current_user        /user/edit(.:format)                  {:controller=>"users", :action=>"edit"}
+              signup        /signup(.:format)                     {:action=>"new", :controller=>"users"}
+              logout        /logout(.:format)                     {:action=>"destroy", :controller=>"sessions"}
+               login        /login(.:format)                      {:action=>"new", :controller=>"sessions"}
+                root        /(.:format)                           {:controller=>"home", :action=>"index"}
+            sessions GET    /sessions(.:format)                   {:action=>"index", :controller=>"sessions"}
+                     POST   /sessions(.:format)                   {:action=>"create", :controller=>"sessions"}
+         new_session GET    /sessions/new(.:format)               {:action=>"new", :controller=>"sessions"}
+        edit_session GET    /sessions/:id/edit(.:format)          {:action=>"edit", :controller=>"sessions"}
+             session GET    /sessions/:id(.:format)               {:action=>"show", :controller=>"sessions"}
+                     PUT    /sessions/:id(.:format)               {:action=>"update", :controller=>"sessions"}
+                     DELETE /sessions/:id(.:format)               {:action=>"destroy", :controller=>"sessions"}
+               users GET    /users(.:format)                      {:action=>"index", :controller=>"users"}
+                     POST   /users(.:format)                      {:action=>"create", :controller=>"users"}
+            new_user GET    /users/new(.:format)                  {:action=>"new", :controller=>"users"}
+           edit_user GET    /users/:id/edit(.:format)             {:action=>"edit", :controller=>"users"}
+                user GET    /users/:id(.:format)                  {:action=>"show", :controller=>"users"}
+                     PUT    /users/:id(.:format)                  {:action=>"update", :controller=>"users"}
+                     DELETE /users/:id(.:format)                  {:action=>"destroy", :controller=>"users"}
+   credit_categories GET    /credit_categories(.:format)          {:action=>"index", :controller=>"credit_categories"}
+                     POST   /credit_categories(.:format)          {:action=>"create", :controller=>"credit_categories"}
+ new_credit_category GET    /credit_categories/new(.:format)      {:action=>"new", :controller=>"credit_categories"}
+edit_credit_category GET    /credit_categories/:id/edit(.:format) {:action=>"edit", :controller=>"credit_categories"}
+     credit_category GET    /credit_categories/:id(.:format)      {:action=>"show", :controller=>"credit_categories"}
+                     PUT    /credit_categories/:id(.:format)      {:action=>"update", :controller=>"credit_categories"}
+                     DELETE /credit_categories/:id(.:format)      {:action=>"destroy", :controller=>"credit_categories"}
+         deactivate3        /deactivate3(.:format)                {:action=>"deactivate3", :controller=>"credit_categories"}
+         reactivate3        /reactivate3(.:format)                {:action=>"reactivate3", :controller=>"credit_categories"}
+             credits GET    /credits(.:format)                    {:action=>"index", :controller=>"credits"}
+                     POST   /credits(.:format)                    {:action=>"create", :controller=>"credits"}
+          new_credit GET    /credits/new(.:format)                {:action=>"new", :controller=>"credits"}
+         edit_credit GET    /credits/:id/edit(.:format)           {:action=>"edit", :controller=>"credits"}
+              credit GET    /credits/:id(.:format)                {:action=>"show", :controller=>"credits"}
+                     PUT    /credits/:id(.:format)                {:action=>"update", :controller=>"credits"}
+                     DELETE /credits/:id(.:format)                {:action=>"destroy", :controller=>"credits"}
+    debit_categories GET    /debit_categories(.:format)           {:action=>"index", :controller=>"debit_categories"}
+                     POST   /debit_categories(.:format)           {:action=>"create", :controller=>"debit_categories"}
+  new_debit_category GET    /debit_categories/new(.:format)       {:action=>"new", :controller=>"debit_categories"}
+ edit_debit_category GET    /debit_categories/:id/edit(.:format)  {:action=>"edit", :controller=>"debit_categories"}
+      debit_category GET    /debit_categories/:id(.:format)       {:action=>"show", :controller=>"debit_categories"}
+                     PUT    /debit_categories/:id(.:format)       {:action=>"update", :controller=>"debit_categories"}
+                     DELETE /debit_categories/:id(.:format)       {:action=>"destroy", :controller=>"debit_categories"}
+         deactivate4        /deactivate4(.:format)                {:action=>"deactivate4", :controller=>"debit_categories"}
+         reactivate4        /reactivate4(.:format)                {:action=>"reactivate4", :controller=>"debit_categories"}
+               roles GET    /roles(.:format)                      {:action=>"index", :controller=>"roles"}
+                     POST   /roles(.:format)                      {:action=>"create", :controller=>"roles"}
+            new_role GET    /roles/new(.:format)                  {:action=>"new", :controller=>"roles"}
+           edit_role GET    /roles/:id/edit(.:format)             {:action=>"edit", :controller=>"roles"}
+                role GET    /roles/:id(.:format)                  {:action=>"show", :controller=>"roles"}
+                     PUT    /roles/:id(.:format)                  {:action=>"update", :controller=>"roles"}
+                     DELETE /roles/:id(.:format)                  {:action=>"destroy", :controller=>"roles"}
+              debits GET    /debits(.:format)                     {:action=>"index", :controller=>"debits"}
+                     POST   /debits(.:format)                     {:action=>"create", :controller=>"debits"}
+           new_debit GET    /debits/new(.:format)                 {:action=>"new", :controller=>"debits"}
+          edit_debit GET    /debits/:id/edit(.:format)            {:action=>"edit", :controller=>"debits"}
+               debit GET    /debits/:id(.:format)                 {:action=>"show", :controller=>"debits"}
+                     PUT    /debits/:id(.:format)                 {:action=>"update", :controller=>"debits"}
+                     DELETE /debits/:id(.:format)                 {:action=>"destroy", :controller=>"debits"}
+           reimburse        /reimburse(.:format)                  {:action=>"reimburse", :controller=>"debits"}
+          process_me        /process_me(.:format)                 {:action=>"process_me", :controller=>"debits"}
+               claim        /claim(.:format)                      {:action=>"claim", :controller=>"debits"}
+            accounts GET    /accounts(.:format)                   {:action=>"index", :controller=>"accounts"}
+                     POST   /accounts(.:format)                   {:action=>"create", :controller=>"accounts"}
+         new_account GET    /accounts/new(.:format)               {:action=>"new", :controller=>"accounts"}
+        edit_account GET    /accounts/:id/edit(.:format)          {:action=>"edit", :controller=>"accounts"}
+             account GET    /accounts/:id(.:format)               {:action=>"show", :controller=>"accounts"}
+                     PUT    /accounts/:id(.:format)               {:action=>"update", :controller=>"accounts"}
+                     DELETE /accounts/:id(.:format)               {:action=>"destroy", :controller=>"accounts"}
+         deactivate1        /deactivate1(.:format)                {:action=>"deactivate1", :controller=>"accounts"}
+        make_account        /make_account(.:format)               {:action=>"make_account", :controller=>"accounts"}
+               clubs GET    /clubs(.:format)                      {:action=>"index", :controller=>"clubs"}
+                     POST   /clubs(.:format)                      {:action=>"create", :controller=>"clubs"}
+            new_club GET    /clubs/new(.:format)                  {:action=>"new", :controller=>"clubs"}
+           edit_club GET    /clubs/:id/edit(.:format)             {:action=>"edit", :controller=>"clubs"}
+                club GET    /clubs/:id(.:format)                  {:action=>"show", :controller=>"clubs"}
+                     PUT    /clubs/:id(.:format)                  {:action=>"update", :controller=>"clubs"}
+                     DELETE /clubs/:id(.:format)                  {:action=>"destroy", :controller=>"clubs"}
+         deactivate5        /deactivate5(.:format)                {:action=>"deactivate5", :controller=>"clubs"}
+         reactivate5        /reactivate5(.:format)                {:action=>"reactivate5", :controller=>"clubs"}
+         assignments GET    /assignments(.:format)                {:action=>"index", :controller=>"assignments"}
+                     POST   /assignments(.:format)                {:action=>"create", :controller=>"assignments"}
+      new_assignment GET    /assignments/new(.:format)            {:action=>"new", :controller=>"assignments"}
+     edit_assignment GET    /assignments/:id/edit(.:format)       {:action=>"edit", :controller=>"assignments"}
+          assignment GET    /assignments/:id(.:format)            {:action=>"show", :controller=>"assignments"}
+                     PUT    /assignments/:id(.:format)            {:action=>"update", :controller=>"assignments"}
+                     DELETE /assignments/:id(.:format)            {:action=>"destroy", :controller=>"assignments"}
+         deactivate2        /deactivate2(.:format)                {:action=>"deactivate2", :controller=>"assignments"}
+         reactivate2        /reactivate2(.:format)                {:action=>"reactivate2", :controller=>"assignments"}

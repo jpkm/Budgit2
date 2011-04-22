@@ -4,7 +4,7 @@ class ClubsController < ApplicationController
 	
 	def index
 		@clubs = Club.all.paginate :page => params[:page], :per_page => 20
-		authorize! :read, @clubs, :message => "No no no"
+		authorize! :read, Club, :message => "Action Not Authorized"
 		
 		respond_to do |format|
 		  format.html # index.html.erb
@@ -37,7 +37,7 @@ class ClubsController < ApplicationController
 
 	def new
 		@club = Club.new
-		authorize! :read, @clubs, :message => "No no no"
+		authorize! :read, Club, :message => "Action Not Authorized"
 		
 		respond_to do |format|
 		  format.html # new.html.erb

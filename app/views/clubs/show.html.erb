@@ -1,4 +1,4 @@
-<div style='font-size:140%'><%= @club.name %>'s Club:</div>
+<div style='font-size:140%'><%= @club.name %>:</div>
 
 
 	<div id="participants">
@@ -22,24 +22,21 @@
 		<% end %>
 	</div>
 
+	<% if can? :create, Account %>
+		<% if @club.current_account.nil? %>
+		<!-- should be action for make_account -->
+			<%= link_to "New Account", :method => Account.make_account(@club.id) %>
+		<% else %>
+			<%= link_to "Deactivate Current Account", :controller => "accounts", :action => :deactivate1, :id => @club.current_account.id %>
+		<% end %>
+	<% end %>
+
 
 	<!-- renders information for @club's current account-->
 	<% unless @club.current_account.nil? %>
 		<%= render :partial => "current_account" %>
 	<% end %>
 	
-    <!-- -------------------------------------------------------- -->
-	<!-- these buttons will never be here
-	<% if can? :create, Account %>
-		<% if @club.current_account.nil? %>
-			<!-- should be action for make_account -->
-			<%= link_to "New Account", :method => Account.make_account(@club.id) %>
-		<% else %>
-			<%= link_to "Deactivate Current Account", :controller => "accounts", :action => :deactivate1, :id => @club.current_account.id %>
-		<% end %>
-	<% end %>
-	-->
-	<!-- ------------------------------------------------------ -->
 	
 	<!-- all inactive accounts for this club -->
 		<% unless @inactive_accounts.nil? || @inactive_accounts.empty? %>

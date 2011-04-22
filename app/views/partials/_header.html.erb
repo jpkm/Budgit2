@@ -2,7 +2,7 @@
 	<div id="header">
 		
 		<div id="user">
-			Signed in as <%= current_user.name %>. <%= link_to "Log out", logout_path %>
+			Signed in as <%= current_user.username %>. <%= link_to "Log out", logout_path %>
 		</div>
 		
 		<%= link_to(image_tag("Header.png", :border => 0), root_url) %>

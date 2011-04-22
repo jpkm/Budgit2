@@ -24,9 +24,9 @@ class CreditsController < ApplicationController
 		@credit = Credit.new
 		@credit.account_id = params[:account]
 		@account = Account.find(params[:account])
-		authorize! :create, @credit, :message => "NO!"
+		authorize! :create, @credit, :message => "Action Not Authorized"
 		unless @account.active
-			redirect_to root_url
+			redirect_to club_path(@credit.account.club), :notice= >"Action Not Authorized"
 		else
 			@credit.date = Date.today
 			if @account.has_initial?
@@ -44,13 +44,15 @@ class CreditsController < ApplicationController
 
 	def edit
 		@credit = Credit.find(params[:id])
-		authorize! :edit, @credit, :message => "NO!"
+		authorize! :edit, @credit, :message => "Action Not Authorized"
 	end
 
 	def create
 		@credit = Credit.new(params[:credit])
 		@credit.date = Date.today
 		@answer = @credit.account.has_initial?
+		@account  = @credit.account
+		authorize! :create, @credit, :message => "Action Not Authorized"
 		
 		respond_to do |format|
 		  if @credit.save
@@ -60,6 +62,7 @@ class CreditsController < ApplicationController
 			if @answer
 				@except = CreditCategory.except_initial
 			end
+			
 			format.html { render :action => "new" }
 			format.xml  { render :xml => @credit.errors, :status => :unprocessable_entity }
 		  end
@@ -68,10 +71,11 @@ class CreditsController < ApplicationController
 
 	def update
 		@credit = Credit.find(params[:id])
-		
+		authorize! :update, @credit, :message => "Action Not Authorized"
+
 		respond_to do |format|
 		  if @credit.update_attributes(params[:credit])
-			format.html { redirect_to(club_path(@credit.account.club_id), :notice =>'Credit was successfully updated.') }
+			format.html { redirect_to(club_path(@credit.account.club), :notice =>'Credit was successfully updated.') }
 			format.xml  { head :ok }
 		  else
 			format.html { render :action => "edit" }
@@ -82,7 +86,13 @@ class CreditsController < ApplicationController
 
 	def destroy
 		@credit = Credit.find(params[:id])
-		redirect_to(@credit.account.club)
+		
+		p @credit
+		
+		authorize! :destroy, @credit, :message => "Action Not Authorized"
 		@credit.destroy
-	  end
+		redirect_to(@credit.account.club)
+		end
+	
+	
 	end

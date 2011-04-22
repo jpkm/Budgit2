@@ -9,10 +9,8 @@ class User < ActiveRecord::Base
   has_many :clubs, :through => :assignments
   
   #Validations
-  validates_presence_of :first_name, :middle_name, :last_name
   validates_uniqueness_of :email, :allow_blank => false
   validate :un
-  validates_format_of :first_name, :middle_name, :last_name, :with => /^[A-Za-z]+$/i, :allow_blank => true, :message => "should only contain letters"
   validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
   validates_presence_of :password, :on => :create
   validates_confirmation_of :password
@@ -49,7 +47,7 @@ class User < ActiveRecord::Base
  
 	#formats user name
 	def name
-		first_name + " " + middle_name + " " + last_name
+		self.username
 	end
 	
 	#checks if user assignments are admin  

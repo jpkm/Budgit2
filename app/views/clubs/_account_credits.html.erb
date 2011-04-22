@@ -14,8 +14,9 @@
 		<% if can? :update, credit%>
 			<%= link_to(image_tag("edit_dg.png", :border => 0), edit_credit_path(credit))%>&nbsp;
 		<% end %>
-		<% if can? :delete, credit%>
-			<%= link_to(image_tag("delete_dg.png", :border => 0), credit_path(credit), :confirm => 'delete?', :method => :delete) %>
+		<% if can? :destroy, credit%>
+			<%= link_to "delete", credit_path(credit), :method => :delete, :confirm => "Are you sure?" %>
+			SHIT
 		<% end %>
 	</td>
   </tr>

@@ -5,13 +5,30 @@ class Ability
     user ||= User.new
 		if user.is_admin?
 			can :manage, :all
-		elsif user.is_director?
-			can :manage, :all
-			cannot [:create, :delete, :update], Debit
-			cannot [:create, :delete, :update], Credit 
-			can :process_me, Debit do |this_debit|
-				this_debit.account.active && this_debit.status.eql?("processing")
+			
+			cannot :edit, Credit do |this_credit|
+				!this_credit.account.active
 			end
+			
+			cannot :manage, Debit do |this_debit|
+				!this_debit.account.active
+			end
+			
+			cannot :edit, Debit do |this_debit|
+				this_debit.status.eql?("reimbursed")
+			end
+			
+		elsif user.is_director?
+			can :manage, [Assignment, User, Club, DebitCategory, CreditCategory,Account]
+			can :read, [Debit,Credit]
+			
+			#cannot [:create, :delete, :update], Debit
+			#cannot [:create, :delete, :update], Credit 
+						
+			can :process_me, Debit do |this_debit|
+				this_debit.account.active && this_debit.status.strip.downcase.eql?("processing")
+			end
+			
 		elsif user.is_vp?
 			can :create, :account
 			can :read, :all

@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 	layout "application"
 
 	def new
+		redirect_to root_url
 	end
 
 	def create
@@ -13,7 +14,7 @@ class SessionsController < ApplicationController
 				redirect_to root_url, :notice => "You don't have any active assignments right now. Check yoself."
 			else
 				session[:user_id] = user.id
-				redirect_to_target_or_default root_url, :notice => "Logged in successfully."
+				redirect_to root_url, :notice => "Logged in successfully."
 			end
 		else
 			redirect_to root_url, :notice => "Invalid login or password."
@@ -23,5 +24,6 @@ class SessionsController < ApplicationController
 	def destroy
 		session[:user_id] = nil
 		redirect_to root_url, :notice => "You have been logged out."
-		end
 	end
+
+end

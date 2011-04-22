@@ -21,11 +21,13 @@ class DebitsController < ApplicationController
 
 	def new
 		@debit = Debit.new	
-		@debit.account_id = params[:account]
-		authorize! :create, @debit, :message => "action is not authorized"
+		@debit.account_id = params[:account]		
+		
+		authorize! :create, @debit, :message => "Action Not Authorized"
+		
 		@account = Account.find(params[:account])
 		unless @account.active
-			redirect_to root_url
+			redirect_to club_path(@debit.account.club), :notice= >"Action Not Authorized"
 		else
 			@debit.reimbursement_date = "null"
 			
@@ -38,13 +40,13 @@ class DebitsController < ApplicationController
 
 	def edit
 		@debit = Debit.find(params[:id])
-		authorize! :edit, @debit, :message => "action is not authorized"
+		authorize! :edit, @debit, :message => "Action Not Authorized"
 	end
 
 	def create
 		@debit = Debit.new(params[:debit])
 		@debit.reimbursement_date = "null"
-		authorize! :create, @debit, :message => "action is not authorized"
+		authorize! :create, @debit, :message => "Action Not Authorized"
 		
 		respond_to do |format|
 		  if @debit.save 
@@ -60,11 +62,11 @@ class DebitsController < ApplicationController
 
 	def update
 		@debit = Debit.find(params[:id])
-		authorize! :update, @debit, :message => "action is not authorized"
+		authorize! :update, @debit, :message => "Action Not Authorized"
 		
 		respond_to do |format|
 		  if @debit.update_attributes(params[:debit])
-			format.html { redirect_to(@debit, :notice => 'Debit was successfully updated.') }
+			format.html { redirect_to(debit_path(@debit), :notice => 'Debit was successfully updated.') }
 			format.xml  { head :ok }
 		  else
 			format.html { render :action => "edit" }
@@ -92,7 +94,7 @@ class DebitsController < ApplicationController
 	
 	def process_me
 		@debit = Debit.find(params[:id])
-		authorize! :processed, @debit, :message => "action is not authorized"
+		authorize! :process_me, @debit, :message => "action is not authorized"
 		@debit.status = "ready"
 		@debit.save!
 		Notifier.ready_email(@debit.account.club.get_leader, @debit).deliver

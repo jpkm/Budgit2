@@ -1,4 +1,4 @@
-<div style='font-size:140%'>(<%= @account.club.club_key %>) <%= link_to @account.club.name + "'s", club_path(@account.club) %> Club:</div>
+<div style='font-size:140%'>(<%= @account.club.club_key %>) <%= link_to @account.club.name, club_path(@account.club) %>:</div>
 Year: <%= @account.date.year %>-<%= @account.date.year + 1 %>
   
 <table>

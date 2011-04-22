@@ -73,9 +73,6 @@ namespace :db do
     # Step 4: add Users
 		
 		sys = User.new
-		sys.first_name = "sys"
-		sys.middle_name = "ad"
-		sys.last_name = "min"
 		sys.email = "sysa@qatar.cmu.edu"
 		sys.username = "system"
 		sys.password = "system"
@@ -83,9 +80,6 @@ namespace :db do
 		sys.save!
 		
 		dsa = User.new
-		dsa.first_name = "David"
-		dsa.middle_name = "Admin"
-		dsa.last_name = "Stanfield"
 		dsa.email = "davesta@qatar.cmu.edu"
 		dsa.username = "davestan"
 		dsa.password = "davestan"
@@ -93,9 +87,6 @@ namespace :db do
 		dsa.save!
 			
 		vp = User.new
-		vp.first_name = "Muhammad"
-		vp.middle_name = "M"
-		vp.last_name = "Dauleh"
 		vp.email = "mmdaule@qatar.cmu.edu"
 		vp.username = "mmdauleh"
 		vp.password = "mmdauleh"
@@ -104,9 +95,6 @@ namespace :db do
 		
 		#assigned to DSO, Active Women
 		leader1 = User.new
-		leader1.first_name = "Hira"
-		leader1.middle_name = "Niyaz"
-		leader1.last_name = "Ahmed"
 		leader1.email = "hahmed@qatar.cmu.edu"
 		leader1.username = "hahmed"
 		leader1.password = "hahmed"
@@ -115,9 +103,6 @@ namespace :db do
 	
 		#assigned to Debate Club
 		leader2 = User.new
-		leader2.first_name = "Samira"
-		leader2.middle_name = "Leader"
-		leader2.last_name = "Islam"
 		leader2.email = "leader2@leader.edu"
 		leader2.username = "sislam"
 		leader2.password = "sislam"
@@ -125,9 +110,6 @@ namespace :db do
 		leader2.save!
 		
 		leader3 = User.new
-		leader3.first_name = "Muna"
-		leader3.middle_name = "Abu"
-		leader3.last_name = "Holayqa"
 		leader3.email = "mabuhol@qatar.cmu.edu"
 		leader3.username = "mabuhola"
 		leader3.password = "mabuhola"
@@ -136,9 +118,6 @@ namespace :db do
 	
 		#assigned to DSO, Debate Club, Active Women
 		sa1 = User.new
-		sa1.first_name = "Jill"
-		sa1.middle_name = "SA"
-		sa1.last_name = "Duffy"
 		sa1.email = "jaduff@qatar.cmu.edu"
 		sa1.username = "jduffy"
 		sa1.password = "jduffy"
@@ -147,9 +126,6 @@ namespace :db do
 		
 		#assigned to Gaming Club, All Around
 		sa2 = User.new
-		sa2.first_name = "Kevin"
-		sa2.middle_name = "SA"
-		sa2.last_name = "Darco"
 		sa2.email = "kdarc@qatar.cmu.edu"
 		sa2.username = "kdarco"
 		sa2.password = "kdarco"
@@ -157,9 +133,6 @@ namespace :db do
 		sa2.save!
 		
 		#faculty = User.new
-		#faculty.first_name = "Ian"
-		#faculty.middle_name = "PhD"
-		#faculty.last_name = "Lacey"
 		#faculty.email = "faculty@faculty.edu"
 		#faculty.username = "faculty"
 		#faculty.password = "faculty"
