@@ -144,4 +144,14 @@ class Club < ActiveRecord::Base
 		return @over
 	end
 	
+	#gets me a users assignment for a club (this should be scope)
+	def get_assignment(user)
+		for assignment in self.assignments
+			if assignment.user_id.eql?(user.id.to_s)
+				return assignment.id
+			end
+		end
+		return nil
+	end
+	
 end

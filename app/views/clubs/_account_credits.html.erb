@@ -1,10 +1,18 @@
-<table class = "datagrid">
-	<thead class="datagrid">
-		<th>Category</th>
-		<th>Date </th>
-		<th>Amount</th>
-	</thead>
-
+<table class="datagrid">
+	<h3>
+		<% if can? :create, Credit %>
+			<%= link_to "Create Credit", new_credit_path(:account => @club.current_account.id) %>
+		<% else %>
+			Credits
+		<% end %>
+	</h3>
+	<% unless @account_credits.empty? %>
+		<thead class="datagrid">
+			<th>Category</th>
+			<th>Date </th>
+			<th>Amount</th>
+		</thead>
+	<% end %>
 <% @account_credits.each do |credit| %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
     <td><%= credit.credit_category.category %></td>
@@ -15,14 +23,10 @@
 			<%= link_to(image_tag("edit_dg.png", :border => 0), edit_credit_path(credit))%>&nbsp;
 		<% end %>
 		<% if can? :destroy, credit%>
-			<%= link_to 'Destroy', :controller => :credits, :id => credit.id, :confirm => 'Are you sure?', :action => :delete_credit %>
-			SHIT
+			<%= link_to(image_tag("delete_dg.png", :border => 0), :controller => :credits, :id => credit.id, :action => :delete_credit) %>
 		<% end %>
 	</td>
   </tr>
 <% end %>
 </table>
 
-<span class="smtext">
-	<%= will_paginate @account_credits, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
-</span>

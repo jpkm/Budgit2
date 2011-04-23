@@ -6,13 +6,10 @@
 		</div>
 		
 		<%= link_to(image_tag("Header.png", :border => 0), root_url) %>
-			
+		Create New:	
 		<span style='text-align:right; font-size:17px;'>
 			<% if can? :create, Club %>
 				<%= link_to 'Club', new_club_path() %>
-			<% end %>
-			<% if can? :create, Assignment %>
-				:: <%= link_to 'Participant', new_assignment_path() %>
 			<% end %>
 			<% if can? :create, User %>
 				:: <%= link_to 'User', new_user_path() %>

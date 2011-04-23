@@ -83,9 +83,6 @@ ActiveRecord::Schema.define(:version => 20110219172523) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "first_name"
-    t.string   "middle_name"
-    t.string   "last_name"
     t.string   "username"
     t.string   "email"
     t.string   "password"

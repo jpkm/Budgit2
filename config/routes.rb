@@ -44,10 +44,8 @@ Budgit::Application.routes.draw do
   match 'reactivate5' => 'clubs#reactivate5', :as => :reactivate5
 
   resources :assignments
-  match 'deactivate2' => 'assignments#deactivate2', :as => :deactivate2
-  match 'reactivate2' => 'assignments#reactivate2', :as => :reactivate2
+  match 'delete' => 'assignments#delete', :as => :delete
   
- 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

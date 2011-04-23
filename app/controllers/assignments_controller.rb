@@ -68,12 +68,9 @@ class AssignmentsController < ApplicationController
 		respond_to do |format|
 		  if @assignment.save
 			if !@assignment.role.name.eql?("system admin") && should_send
-				p "i am here1"
 				Notifier.welcome_email(@assignment.user).deliver
 			end
-			p "i am here2"
 			if @assignment.role.name.eql?("system admin") || @assignment.role.name.eql?("vp of finance")
-				p "i am here3"
 				format.html { redirect_to root_url, :notice => 'Assignment created' }
 			else
 				format.html { redirect_to(club_path(@assignment.club_id), :notice => 'Assignment was successfully created.') }
@@ -101,37 +98,11 @@ class AssignmentsController < ApplicationController
 		  end
 		end
 	end
-
-	def destroy
-		@assignment = Assignment.find(params[:id])
-		@assignment.destroy!
-		
-		respond_to do |format|
-		  format.html { redirect_to(assignments_url) }
-		  format.xml  { head :ok }
-		end
-	end
 	  
-	def deactivate2
+	def delete
 		@assignment = Assignment.find(params[:id])
-		@assignment.active = false
-		@assignment.save!(:validate => false)
-		
-		unless @assignment.club.nil?
-			redirect_to((@assignment.club), :notice => 'Assignment deactivated.')
-		else
-			redirect_to root_url, :notice => 'Assignment deactivated.'
-		end
+		redirect_to club_path(@assignment.club)
+		@assignment.destroy
 	end
 	 
-	def reactivate2
-		@assignment = Assignment.find(params[:id])
-		@assignment.active = true
-		
-		unless @assignment.save
-			redirect_to(assignments_path, :notice => 'Error.')
-		else
-			redirect_to((assignments_path), :notice => 'Assignment reactivated.')
-		end
-	end
 end

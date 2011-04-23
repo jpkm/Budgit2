@@ -1,5 +1,5 @@
-<div style='font-size:140%'>(<%= @account.club.club_key %>) <%= link_to @account.club.name, club_path(@account.club) %>:</div>
-Year: <%= @account.date.year %>-<%= @account.date.year + 1 %>
+<div style='font-size:140%'><%= link_to @account.club.name, club_path(@account.club) %>:</div>
+<%= @account.date.year %>-<%= @account.date.year + 1 %>
   
 <table>
 	<tr>
@@ -31,16 +31,3 @@ Year: <%= @account.date.year %>-<%= @account.date.year + 1 %>
 		</td>
 	</tr>
 </table>
-
-
-
-
-
-
-
-
-
-
-
-
-

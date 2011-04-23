@@ -1,11 +1,23 @@
 <table class="datagrid">
-	<thead class="datagrid">
-		<th>Item</th>
-		<th>Category</th>
-		<th>Purchased</th>
-		<th>Amount</th>
-		<th>Status</th>
-	</thead>
+	<h3>
+		<% if can? :create, Debit %>
+			<%= link_to "Record Debit", new_debit_path(:account => @club.current_account.id) %>
+		<% else %>
+			Debits
+		<% end %>
+		<% if @club.current_balance == 0 %>
+			Account must be Credit before Debit can be made
+		<% end %>
+	</h3>
+	<% unless @account_debits.nil? || @account_debits.empty?%>
+		<thead class="datagrid">
+			<th>Item</th>
+			<th>Category</th>
+			<th>Purchased</th>
+			<th>Amount</th>
+			<th>Status</th>
+		</thead>
+	<% end %>
 <% @account_debits.each do |debit| %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
 	<td><%= link_to debit.item_purchased, debit_path(debit) %></td>
@@ -45,12 +57,8 @@
 		<td align="center"><%= link_to(image_tag("edit_dg.png", :border => 0), edit_debit_path(debit))%></td>
 	<% end %>
 	<% if can? :delete, debit %>
-		<td align="center">	<%= link_to 'Destroy', :controller => :debits, :id => debit.id, :confirm => 'Are you sure?', :action => :delete_debit %></td>
+		<td align="center">	<%= link_to(image_tag("delete_dg.png", :border => 0), :controller => :debits, :id => debit.id, :action => :delete_debit) %></td>
 	<% end %>
   </tr>
 <% end %>
 </table>
-
-<span class="smtext">
-	<%= will_paginate @account_debits, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
-</span>

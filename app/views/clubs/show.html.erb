@@ -1,7 +1,4 @@
-<div style='font-size:140%'><%= @club.name %>:</div>
-
-
-	<div id="participants">
+	<div id='participants'>
 		Student Affairs Advisor:
 		<% if @club.get_sa.nil? %>  
 			<% if can? :create, Assignment %>
@@ -9,8 +6,10 @@
 			<% end %>
 		<% else %>
 			<%= @club.get_sa.username %>
+			<% if can? :delete, Assignment %>
+				<%= link_to(image_tag("delete_dg.png", :border => 0), :controller=>'assignments', :action=>:delete, :id=>@club.get_assignment(@club.get_sa)) %>
+			<% end %>
 		<% end %>
-			
 		<br>
 		Club Leader: 
 		<% if @club.get_leader.nil? %>
@@ -19,9 +18,18 @@
 			<% end %>
 		<% else %>
 			<%= @club.get_leader.username %>
+			<% if can? :delete, Assignment %>
+				<%= link_to(image_tag("delete_dg.png", :border => 0), :controller=>'assignments', :id=>@club.get_assignment(@club.get_leader), :action => :delete) %>
+			<% end %>
 		<% end %>
 	</div>
 
+	<div style='font-size:140%'><%= @club.name%>:</div>
+	<% unless @club.current_account.nil? %>
+		Year: <%= @club.current_account.date.year %>-<%= @club.current_account.date.year + 1 %>
+	<% end %>
+	
+	<!--
 	<% if can? :create, Account %>
 		<% if @club.current_account.nil? %>
 		<!-- should be action for make_account -->
@@ -30,7 +38,7 @@
 			<%= link_to "Deactivate Current Account", :controller => "accounts", :action => :deactivate1, :id => @club.current_account.id %>
 		<% end %>
 	<% end %>
-
+	-->
 
 	<!-- renders information for @club's current account-->
 	<% unless @club.current_account.nil? %>
