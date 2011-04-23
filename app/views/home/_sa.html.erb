@@ -1,6 +1,6 @@
 <div id="container">
 	<div id="left">
-		<div id="your_clubs">
+		<div style="text-align:center;">
 			<% unless current_user.assignments.nil? || current_user.assignments.empty? %>
 				<%= render :partial => "assignment_for_user" %>
 			<% end %>

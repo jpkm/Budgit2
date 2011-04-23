@@ -103,7 +103,7 @@ color: 	black;
 }
 
 #container{
-	width:relative;
+	
 	font-size:10px;
 }
 
@@ -111,11 +111,11 @@ color: 	black;
 	width:40%;
 }
 
-#left{float:left;}
 #right{float:right;}
 
 #your_clubs{
-	float:left;
+	text-align:center;
+	font-size:20px;
 }
 
 #processing{

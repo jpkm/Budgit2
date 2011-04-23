@@ -32,32 +32,40 @@
 	</td>
 	<td>
 		<% if debit.status.eql?("unclaimed") %>
-			<% if can? :claim, debit %>
-				<%= link_to "Claim", :controller=>"debits", :action=>:claim, :id=>debit.id %>
-			<% else %>
-				<%= debit.status %>
-			<% end %>
+			<span style="color:red;">
+				<% if can? :claim, debit %>
+					<%= link_to "Claim", :controller=>"debits", :action=>:claim, :id=>debit.id %>
+				<% else %>
+					<%= debit.status %>
+				<% end %>
+			</span>
 		<% elsif debit.status.eql?("processing") %>
-			<% if can? :process_me, debit %>
-				<%= link_to "Process", :controller=>"debits", :action=>:process_me, :id=>debit.id %>
-			<% else %>
-				<%= debit.status %>
-			<% end %>
+			<span style="color:blue;"
+				<% if can? :process_me, debit %>
+					<%= link_to "Process", :controller=>"debits", :action=>:process_me, :id=>debit.id %>
+				<% else %>
+					<%= debit.status %>
+				<% end %>
+			</span>
 		<% elsif debit.status.eql?("ready") %>
-			<% if can? :reimburse, debit %>
-				<%= link_to(image_tag("reimburse_dg.png", :border => 0), :controller => "debits", :action => :reimburse, :id => debit.id)%>
-			<% else %>
-				<%= debit.status %>
-			<% end %>
+			<span style="color:green;">
+				<% if can? :reimburse, debit %>
+					<%= link_to(image_tag("reimburse_dg.png", :border => 0), :controller => "debits", :action => :reimburse, :id => debit.id)%>
+				<% else %>
+					<%= debit.status %>
+				<% end %>
+			</span>
 		<% else %>
-			<%= debit.reimbursement_date.strftime("%d.%m.%Y") %>
+			<span style="color:green;">
+				<%= debit.reimbursement_date.strftime("%d.%m.%Y") %>
+			</span>
 		<% end %>
 	</td>
 	<% if can? :update, debit %>
 		<td align="center"><%= link_to(image_tag("edit_dg.png", :border => 0), edit_debit_path(debit))%></td>
 	<% end %>
 	<% if can? :delete, debit %>
-		<td align="center">	<%= link_to(image_tag("delete_dg.png", :border => 0), :controller => :debits, :id => debit.id, :action => :delete_debit) %></td>
+		<td align="center">	<%= link_to(image_tag("delete_dg.png", :border => 0), :controller => :debits, :id => debit.id, :confirm => 'Are you sure?', :action => :delete_debit) %></td>
 	<% end %>
   </tr>
 <% end %>
