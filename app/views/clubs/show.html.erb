@@ -17,7 +17,7 @@
 				<%= link_to "Assign me", new_assignment_path(:club=>@club, :role=>Role.get_leader)%>
 			<% end %>
 		<% else %>
-			<%= @club.get_leader.username %>
+			<%= @club.get_leader.name %>
 			<% if can? :delete, Assignment %>
 				<%= link_to(image_tag("delete_dg.png", :border => 0), :controller=>'assignments', :id=>@club.get_assignment(@club.get_leader), :action => :delete) %>
 			<% end %>

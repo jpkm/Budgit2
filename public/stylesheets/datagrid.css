@@ -6,7 +6,7 @@ table.datagrid {
 	text-align: left;
 	vertical-align: middle;
 	border-collapse: collapse;
-		width: auto;
+	width: 500px;
 }
 
 table.datagrid a {
@@ -22,7 +22,7 @@ table.datagrid a:hover {
 
 caption.datagrid {
 	height: 45px;
-	font-size: 15px;
+	font-size: 16px;
 	line-height: 44px;
 	color: #000000;
 	font-weight: bold;
@@ -30,20 +30,23 @@ caption.datagrid {
 	padding: 0;
 }
 thead.datagrid th {
-	font-size: 13px;
+	font-size: 15px;
 	color: black;
 	height: 28px;
 	font-weight: bold;
-	padding: 10px 5px 3px 5px;
+	padding: 10px 30px 3px 30px;
 	border-bottom: gray dashed 0.25pt;
 	text-align:center;
 }
 
 .datagrid td{
-	padding: 5px 5px 10px;
+	padding: 10px 30px 10px 30px;
 	border-bottom: gray dashed 0.25pt;
 	vertical-align: middle;
 	text-align:center;
+	height:10px;
+	width:auto;
+	white-space:nowrap;
 }
 
 

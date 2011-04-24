@@ -74,6 +74,8 @@ namespace :db do
 		
 		sys = User.new
 		sys.email = "sysa@qatar.cmu.edu"
+		sys.first_name = "Larry"
+		sys.last_name = "Heimann"
 		sys.username = "system"
 		sys.password = "system"
 		sys.password_confirmation = "system"
@@ -81,6 +83,8 @@ namespace :db do
 		
 		dsa = User.new
 		dsa.email = "davesta@qatar.cmu.edu"
+		dsa.first_name = "Dave"
+		dsa.last_name = "Stanfield"
 		dsa.username = "davestan"
 		dsa.password = "davestan"
 		dsa.password_confirmation = "davestan"
@@ -88,6 +92,8 @@ namespace :db do
 			
 		vp = User.new
 		vp.email = "mmdaule@qatar.cmu.edu"
+		vp.first_name = "Vice"
+		vp.last_name = "President"
 		vp.username = "mmdauleh"
 		vp.password = "mmdauleh"
 		vp.password_confirmation = "mmdauleh"
@@ -96,6 +102,8 @@ namespace :db do
 		#assigned to DSO, Active Women
 		leader1 = User.new
 		leader1.email = "hahmed@qatar.cmu.edu"
+		leader1.first_name = "H"
+		leader1.last_name = "Ahmed"
 		leader1.username = "hahmed"
 		leader1.password = "hahmed"
 		leader1.password_confirmation = "hahmed"
@@ -104,6 +112,8 @@ namespace :db do
 		#assigned to Debate Club
 		leader2 = User.new
 		leader2.email = "leader2@leader.edu"
+		leader2.first_name = "Zaid"
+		leader2.last_name = "Haque"
 		leader2.username = "sislam"
 		leader2.password = "sislam"
 		leader2.password_confirmation = "sislam"
@@ -111,6 +121,8 @@ namespace :db do
 		
 		leader3 = User.new
 		leader3.email = "mabuhol@qatar.cmu.edu"
+		leader3.first_name = "M"
+		leader3.last_name = "Abuhol"
 		leader3.username = "mabuhola"
 		leader3.password = "mabuhola"
 		leader3.password_confirmation = "mabuhola"
@@ -119,6 +131,8 @@ namespace :db do
 		#assigned to DSO, Debate Club, Active Women
 		sa1 = User.new
 		sa1.email = "jaduff@qatar.cmu.edu"
+		sa1.first_name = "Jill"
+		sa1.last_name = "Duffy"
 		sa1.username = "jduffy"
 		sa1.password = "jduffy"
 		sa1.password_confirmation = "jduffy"
@@ -127,6 +141,8 @@ namespace :db do
 		#assigned to Gaming Club, All Around
 		sa2 = User.new
 		sa2.email = "kdarc@qatar.cmu.edu"
+		sa2.first_name = "Kevin"
+		sa2.last_name = "Darco"
 		sa2.username = "kdarco"
 		sa2.password = "kdarco"
 		sa2.password_confirmation = "kdarco"
@@ -134,6 +150,8 @@ namespace :db do
 		
 		#faculty = User.new
 		#faculty.email = "faculty@faculty.edu"
+		#faculty.first_name = "Dan"
+		#faculty.last_name = "Phelps"
 		#faculty.username = "faculty"
 		#faculty.password = "faculty"
 		#faculty.password_confirmation = "faculty"

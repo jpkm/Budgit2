@@ -1,6 +1,8 @@
 class AddDefaultUser < ActiveRecord::Migration
   def self.up
 	admin = User.new
+	admin.first_name = "Larry"
+	admin.last_name = "Heimman"
 	admin.username = "system"
 	admin.email = "system@admin.com"
 	admin.password = "system"

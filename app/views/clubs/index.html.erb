@@ -2,7 +2,7 @@
 <caption class="datagrid">Clubs</caption>
 	<thead class ="datagrid">
 		<th>Name</th>
-		<th>Balance</th>
+		<th>Balance(QR)</th>
 		<th>Leader</th>
 		<th>Student Affairs</th>
 		<th>Manage</th>
@@ -17,17 +17,20 @@
 		<td>N/A</td>
 	<% end %>
 	
-	<% if !club.get_leader.nil? %>  
-		<td><%= link_to club.get_leader.name, user_path(club.get_leader.id) %></td>
-	<% else %>
-		<td>N/A</td> <!-- Assign Me? -->
-	<% end %>
-	
-	<% if !club.get_sa.nil? %>  
-		<td><%= link_to club.get_sa.name, user_path(club.get_sa.id) %></td>
-	<% else %>
-		<td>N/A</td> <!-- Assign Me? -->
-	<% end %>
+	<td>
+		<% if !club.get_leader.nil? %>  
+			<%= link_to club.get_leader.name, user_path(club.get_leader.id) %>
+		<% else %>
+			<%= link_to "Assign me", new_assignment_path(:club=>@club, :role=>Role.get_leader)%>
+		<% end %>
+	</td>
+	<td>
+		<% if !club.get_sa.nil? %>  
+			<%= link_to club.get_sa.name, user_path(club.get_sa.id) %>
+		<% else %>
+			<%= link_to "Assign me", new_assignment_path(:club=>@club, :role=>Role.get_sa)%>
+		<% end %>
+	</td>
 	
 	<td><% if club.active %>
 		<%= link_to(image_tag("delete_dg.png", :border => 0), :confirm => "Are you sure?", :controller => "clubs", :action => :deactivate5, :id => club.id) %>

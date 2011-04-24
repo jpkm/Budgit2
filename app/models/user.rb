@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   # new columns need to be added here to be writable through mass assignment
-  attr_accessible :username, :email, :password, :password_confirmation, :first_name, :middle_name, :last_name
+  attr_accessible :username, :email, :password, :password_confirmation, :first_name, :last_name
   before_save :prepare_password
 
   #Relationships
@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email, :allow_blank => false
   validate :un
   validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
-  validates_presence_of :password, :on => :create
+  validates_presence_of :password, :first_name, :last_name, :on => :create
   validates_confirmation_of :password
   
   #Custome Validations
@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
  
 	#formats user name
 	def name
-		self.username
+		self.first_name + " " + self.last_name
 	end
 	
 	#checks if user assignments are admin  
