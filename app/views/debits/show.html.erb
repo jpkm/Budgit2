@@ -7,11 +7,11 @@
 		<td>Item Purchased</td>
 		<td><%= @debit.item_purchased %></td>
 	</tr>	
-	<tr class="debit_info">
+	<tr>
 		<td>Category</td>
 		<td><%= @debit.debit_category.category %></td>
 	</tr>
-	<tr class="debit_info">
+	<tr>
 		<td>Reason</td>
 		<td><%= @debit.reason %></td>
 	</tr>
@@ -49,7 +49,7 @@
 	</tr>
 	<tr>
 		<td>Amount</td>
-		<td>$<%= @debit.amount %></td>
+		<td>QR<%= @debit.amount %></td>
 	</tr>
 	<tr>
 		<td>Status</td>

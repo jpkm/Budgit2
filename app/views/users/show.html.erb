@@ -1,35 +1,19 @@
-<div style="position:absolute; width:50;">
-	<h2>User Info</h2>
+<br>
+	<table style="position:absolute;">
+		<tr>
+			<td style="text-align:right;">Username:</td>
+			<td style="text-align:left;"><%=h @user.username %></td>
+		</tr>
+		<tr>
+			<td style="text-align:right;">Email:</td>
+			<td style="text-align:left;"><%= mail_to @user.email, @user.email %></td>
+		</tr>
+	</table>
 
-	<p>
-	  <b>First name:</b>
-	  <%=h @user.first_name %>
-	</p>
-
-	<p>
-		<b>Middle name:</b>
-		<%=h @user.middle_name %>
-	</p>
-
-	<p>
-	  <b>Last name:</b>
-	  <%=h @user.last_name %>
-	</p>
-
-	<p>
-	 <b>Username:</b>
-		<%=h @user.username %>
-	</p>
-
-	<p>
-	  <b>Email:</b>
-	  <%= mail_to @user.email, @user.email %><br>
-	</p>
-</div>
 
 <!-- renders a table that shows all assignments for the user -->
 	<div style="position:absolute; left:500px;">
-	<% unless @user.assignments.nil? || @user.assignments.empty? || @user.is_admin? || @user.is_vp? %>
+	<% unless @user.assignments.nil? || @user.assignments.empty? %>
 		<%= render :partial => "user_assignments" %>
 	<% end %>
 	</div>

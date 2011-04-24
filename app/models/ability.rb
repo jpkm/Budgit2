@@ -21,9 +21,9 @@ class Ability
 		elsif user.is_director?
 			can :manage, [Assignment, User, Club, DebitCategory, CreditCategory,Account]
 			can :read, [Debit,Credit]
-			
-			#cannot [:create, :delete, :update], Debit
-			#cannot [:create, :delete, :update], Credit 
+			can :create, Credit do |this_credit|
+				this_credit.account.active
+			end
 						
 			can :process_me, Debit do |this_debit|
 				this_debit.account.active && this_debit.status.strip.downcase.eql?("processing")

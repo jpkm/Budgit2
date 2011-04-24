@@ -103,6 +103,7 @@ class DebitsController < ApplicationController
 	
 	def claim
 		@debit = Debit.find(params[:id])
+		p @debit
 		authorize! :claim, @debit, :message => "action is not authorized"
 		@debit.status = "processing"
 		@debit.save!

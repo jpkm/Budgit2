@@ -14,7 +14,7 @@
 			<th>Item</th>
 			<th>Category</th>
 			<th>Purchased</th>
-			<th>Amount</th>
+			<th>Amount(QR)</th>
 			<th>Status</th>
 		</thead>
 	<% end %>
@@ -25,9 +25,9 @@
     <td><%= debit.date_purchased.strftime("%d.%m.%Y")%></td>
     <td>
 		<% if debit.amount > 250 %>
-			$<%= debit.amount.to_s + "*"%>
+			<%= debit.amount.to_s + "*"%>
 		<% else %> 
-			$<%= debit.amount %>
+			<%= debit.amount %>
 		<% end %>
 	</td>
 	<td>
@@ -40,7 +40,7 @@
 				<% end %>
 			</span>
 		<% elsif debit.status.eql?("processing") %>
-			<span style="color:blue;"
+			<span style="color:blue;">
 				<% if can? :process_me, debit %>
 					<%= link_to "Process", :controller=>"debits", :action=>:process_me, :id=>debit.id %>
 				<% else %>

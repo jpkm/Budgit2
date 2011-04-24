@@ -29,9 +29,10 @@ class Notifier < ActionMailer::Base
 	  end
 	  
 	  def claimed_email(user, debit)
-		@user = user
-		@debit = debit
-		mail(:to => @user.email, :subject => "Mezaniah Debit Claimed Information")
-	  end
-  
+		unless user.nil? || debit.nil?
+			@user = user
+			@debit = debit
+			mail(:to => @user.email, :subject => "Mezaniah Debit Claimed Information")
+		end
+	end
   end

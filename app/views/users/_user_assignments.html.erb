@@ -1,5 +1,5 @@
-<h3> Participations </h3>
 <table class="datagrid">
+<caption class="datagrid">Participations</caption>
 	<thead class="datagrid">
 		<th>Club</th>
 		<th>Role</th>
@@ -8,19 +8,15 @@
 
 <% for assignment in @user.assignments %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
-	<% unless assignment.club.nil? || @user.is_admin? || @user.is_vp? %>
-		<td><%= link_to assignment.club.name, club_path(assignment.club) %></td>
-	<% else %>
-		<td>N/A</td>
-	<% end %>
-	<td><%= assignment.role.name %></td>
-	<td align="center">
-		<% if assignment.active %>
-			<%= link_to(image_tag("delete_dg.png", :border => 0), :confirm => "Are you sure?", :controller => "assignments", :action => :deactivate2, :id => assignment.id) %>
+	<td>
+		<% unless assignment.club.nil? || @user.is_admin? || @user.is_vp? ||@user.is_director? %>
+			<%= link_to assignment.club.name, club_path(assignment.club) %>
 		<% else %>
-			<%= link_to 'Reactivate', :confirm => 'Are you sure?', :controller => "assignments", :action => :reactivate2, :id => assignment.id %>
+			N/A
 		<% end %>
 	</td>
+	<td><%= assignment.role.name %></td>
+	<td align="center"><%= link_to(image_tag("delete_dg.png", :border => 0), :confirm => "Are you sure?", :controller => "assignments", :action => :delete, :id => assignment.id) %></td>
   </tr>
 <% end %>
 </table>
