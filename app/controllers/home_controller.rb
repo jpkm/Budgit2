@@ -11,9 +11,9 @@ class HomeController < ApplicationController
 				end
 			end
 			if current_user.is_affairs?
-				@unclaimed_debits = Debit.get_unclaimed(current_user.get_accounts).paginate :page => params[:page], :per_page => 5
-				@processing_debits = Debit.get_processing(current_user.get_accounts).paginate :page => params[:page], :per_page => 5
-				@ready_debits = Debit.get_ready(current_user.get_accounts).paginate :page => params[:page], :per_page => 5
+				@unclaimed_debits = Debit.get_unclaimed(current_user.get_accounts).paginate :page => params[:page], :per_page => 10
+				@processing_debits = Debit.get_processing(current_user.get_accounts).paginate :page => params[:page], :per_page => 10
+				@ready_debits = Debit.get_ready(current_user.get_accounts).paginate :page => params[:page], :per_page => 10
 			elsif current_user.is_director?
 				@under_250 = Club.get_all_under_250
 				@over_250 = Club.get_all_over_250
