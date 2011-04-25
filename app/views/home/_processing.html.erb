@@ -4,7 +4,7 @@
 		<th>Club</th>
 		<th>Item</th>
 		<th>Purchased</th>
-		<th>Amount</th>
+		<th>Amount(QR)</th>
 	</thead>
 
 <% @processing_debits.each do |debit| %>
@@ -14,9 +14,9 @@
     <td><%= debit.date_purchased.strftime("%d.%m")%></td>
     <td>
 		<% if debit.amount > 250 %>
-			$<%= debit.amount.to_s + "*"%>
+			<%= debit.amount.to_s + "*"%>
 		<% else %> 
-			$<%= debit.amount %>
+			<%= debit.amount %>
 		<% end %>
 	</td>
 	<% if can? :update, debit %>

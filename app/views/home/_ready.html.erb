@@ -4,7 +4,8 @@
 		<th>Club</th>
 		<th>Item</th>
 		<th>Purchased</th>
-		<th>Amount</th>
+		<th>Amount(QR)</th>
+		<th>Action</th>
 	</thead>
 
 <% @ready_debits.each do |debit| %>
@@ -14,9 +15,9 @@
     <td align="center"><%= debit.date_purchased.strftime("%d.%m")%></td>
     <td align="center">
 		<% if debit.amount > 250 %>
-			$<%= debit.amount.to_s + "*"%>
+			<%= debit.amount.to_s + "*"%>
 		<% else %> 
-			$<%= debit.amount %>
+			<%= debit.amount %>
 		<% end %>
 	</td>
 	<td>

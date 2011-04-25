@@ -1,4 +1,4 @@
-	<span style='font-size:150%;'><%= @club.name%>:</span>
+	<span style='font-size:150%;'><%= @club.name%></span>
 	<% unless @club.current_account.nil? %>
 		(<%= @club.current_account.date.year %>-<%= @club.current_account.date.year + 1 %>)
 	<% end %>
@@ -39,8 +39,10 @@
 			<% end %>
 		<% end %>
 	</span>	
+	
 	<br>
 	<br>
+	
 	<!--
 	<% if can? :create, Account %>
 		<% if @club.current_account.nil? %>
@@ -57,11 +59,7 @@
 		<%= render :partial => "current_account" %>
 	<% end %>
 	
-	
 	<!-- all inactive accounts for this club -->
-		<% unless @inactive_accounts.nil? || @inactive_accounts.empty? %>
-			<%= render :partial => "inactive_accounts" %>
-		<% end %>
-	
-
-
+	<% unless @inactive_accounts.nil? || @inactive_accounts.empty? %>
+		<%= render :partial => "inactive_accounts" %>
+	<% end %>
