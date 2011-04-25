@@ -1,7 +1,7 @@
 <table>
 	<tr>
-		<td width="200" valign="top"> 
-			<u>Current Balance</u><br>
+		<td style="width:200px; valign:top; text-align:center;"> 
+			<u>Current Balance(QR)</u><br>
 			<div style="font-size:315%;">
 			<% if @club.current_balance < 1000 %>
 				<div style="color:red;">
@@ -14,6 +14,8 @@
 			<% end %>
 			</div>
 		</td>
+	</tr>
+	<tr>
 		<td>
 			<!-- all credits for account -->
 			<% unless @account_credits.nil? %>
@@ -23,15 +25,7 @@
 			<!-- all debits for account -->
 			<% unless @account_debits.nil? %>
 				<%= render :partial => "account_debits" %>
-			<% end %>
-			
+			<% end %>	
 		</td>
 	</tr>
 </table>
-	
-	
-
-
-
-
-

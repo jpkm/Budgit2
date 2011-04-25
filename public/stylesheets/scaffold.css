@@ -111,6 +111,9 @@ color: 	black;
 	width:40%;
 }
 
+#left{
+	text-align:center;
+}
 #right{float:right;}
 
 #your_clubs{

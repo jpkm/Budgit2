@@ -40,11 +40,11 @@ thead.datagrid th {
 }
 
 .datagrid td{
-	padding: 10px 30px 10px 30px;
+	padding: 10px 30px 15px 30px;
 	border-bottom: gray dashed 0.25pt;
 	vertical-align: middle;
 	text-align:center;
-	height:10px;
+	height:15px;
 	width:auto;
 	white-space:nowrap;
 }
