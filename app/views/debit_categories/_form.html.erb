@@ -2,7 +2,6 @@
   <% if @debit_category.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@debit_category.errors.count, "error") %> prohibited this debit_category from being saved:</h2>
-
       <ul>
       <% @debit_category.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,13 +10,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :category %><br />
-    <%= f.text_field :category %>
-  </div>
-  
    <%= f.hidden_field :active, :value => true %>
-   
-  <br>
-    <%= f.submit %> <%= link_to "or Cancel", debit_categories_path() %>
+<table>
+	<tr>
+		<td style='text-align:right;'><%= f.label :category %></td>
+		<td><%= f.text_field :category %></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>
+			<%= f.submit %><%= link_to "or Cancel", debit_categories_path() %>
+		</td>
+	</tr>
+</table>
 <% end %>

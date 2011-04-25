@@ -3,19 +3,17 @@ class UsersController < ApplicationController
 	layout "application"
 	
 	def index
-		#@users = User.all.paginate :page => params[:page], :per_page => 20
-		
-		#respond_to do |format|
-		#  format.html  #index.html.erb
-		#  format.xml  { render :xml => @users }
-		#end
-
-		redirect_to root_url
-		
+		@users = User.all.paginate :page => params[:page], :per_page => 20
+		authorize! :read, User, :message=>"Action Not Authorized"
+		respond_to do |format|
+		  format.html 
+		format.xml  { render :xml => @users }
+		end		
 	end
 	 
 	def show
 		@user = User.find(params[:id])
+		authorize! :read, @user, :message=>"Action Not Authorized"
 		respond_to do |format|
 		  format.html # show.html.erb
 		  format.xml  { render :xml => @user }
@@ -24,12 +22,12 @@ class UsersController < ApplicationController
 		
 	def new
 		@user = User.new
-		authorize! :create, @user, :message => "Action not authorized"
+		authorize! :create, @user, :message => "Action Not Authorized"
 	end
 
 	def create
 		@user = User.new(params[:user])
-		authorize! :create, @user, :message => "Action not authorized"
+		authorize! :create, @user, :message => "Action Not Authorized"
 		respond_to do |format|
 		  if @user.save 
 			format.html { redirect_to root_url, :notice => 'New User created' }

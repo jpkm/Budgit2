@@ -5,30 +5,26 @@ class Ability
     user ||= User.new
 		if user.is_admin?
 			can :manage, :all
-			
 			cannot :edit, Credit do |this_credit|
 				!this_credit.account.active
 			end
-			
 			cannot :manage, Debit do |this_debit|
 				!this_debit.account.active
 			end
-			
 			cannot :manage, Debit do |this_debit|
 				this_debit.status.eql?("reimbursed")
 			end
-			
+			can :create, Debit
+			can :create, Credit
 		elsif user.is_director?
-			can :manage, [Assignment, User, Club, DebitCategory, CreditCategory,Account]
+			can :manage, [Assignment, User, Club, DebitCategory, CreditCategory, Account]
 			can :read, [Debit,Credit]
 			can :create, Credit do |this_credit|
 				this_credit.account.active
-			end
-						
+			end		
 			can :process_me, Debit do |this_debit|
 				this_debit.account.active && this_debit.status.strip.downcase.eql?("processing")
 			end
-			
 		elsif user.is_vp?
 			can :create, :account
 			can :read, :all
@@ -43,23 +39,23 @@ class Ability
 			end
 			can :reimburse, Debit do |this_debit|
 				assignment_clubs = user.assignments.map{|a| a.club_id if a.active}
-				(assignment_clubs.include? this_debit.account.club_id) && this_debit.account.active
+				(assignment_clubs.include? this_debit.account.club_id) && this_debit.account.active && this_debit.status.strip.downcase.eql?("ready")
 			end
 			can :ready, Debit do |this_debit|
 				assignment_clubs = user.assignments.map{|a| a.club_id if a.active}
-			    (assignment_clubs.include? this_debit.account.club_id) && this_debit.account.active
+			    (assignment_clubs.include? this_debit.account.club_id) && this_debit.account.active && this_debit.status.strip.downcase.eql?("processing")
 			end
 			can :claim, Debit do |this_debit|
 				assignment_clubs = user.assignments.map{|a| a.club_id if a.active}
-			    (assignment_clubs.include? this_debit.account.club_id) && this_debit.account.active
+			    (assignment_clubs.include? this_debit.account.club_id) && this_debit.account.active && this_debit.status.strip.downcase.eql?("unclaimed")
 			end
 		elsif user.is_leader?
 			can :read, Club do |this_club|
-				assignment_clubs = user.assignments.map{|a| a.club_id if a.active}
+				assignment_clubs = user.assignments.map{|a| a.club_id}
 				assignment_clubs.include? this_club.id
 			end
 			can :create, Debit do |this_debit|
-				assignment_clubs = user.assignments.map{|a| a.club if a.active}
+				assignment_clubs = user.assignments.map{|a| a.club}
 				clubs_active_accounts = assignment_clubs.compact.map{|c|
 					unless c.current_account.nil?
 					c.current_account.id

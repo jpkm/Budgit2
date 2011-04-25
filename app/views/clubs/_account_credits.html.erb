@@ -1,11 +1,9 @@
 <table class="datagrid">
-	<% unless @account_credits.empty? %>
-		<thead class="datagrid">
-			<th>Category</th>
-			<th>Date </th>
-			<th>Amount</th>
-		</thead>
-	<% end %>
+	<thead class="datagrid">
+		<th>Category</th>
+		<th>Date </th>
+		<th>Amount</th>
+	</thead>
 <% @account_credits.each do |credit| %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
     <td><%= credit.credit_category.category %></td>
@@ -13,7 +11,7 @@
     <td><%= credit.amount %></td>
 	<% if can? :update, :destroy, credit%>
 		<td align="center"><%= link_to(image_tag("edit_dg.png", :border => 0), edit_credit_path(credit))%></td>
-		<td align="center"><%= link_to(image_tag("delete_dg.png", :border => 0), :controller => :credits, :id => credit.id, :action => :delete_credit)%></td>>
+		<td align="center"><%= link_to(image_tag("delete_dg.png", :border => 0), :controller => :credits, :id => credit.id, :action => :delete_credit)%></td>
 	<% end %>
   </tr>
 <% end %>

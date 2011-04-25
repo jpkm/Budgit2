@@ -151,6 +151,7 @@ color: 	black;
 	margin: 0;
 }
 
+/*
 .btn-debit{
 	background-image:url('/images/hover-debit.png');
 	background-repeat:no-repeat;
@@ -170,6 +171,8 @@ color: 	black;
 	background:none;
 	text-decoration:none;
 }
+*/
+
 
 .contact a{
 	background-image:url(normal image path);

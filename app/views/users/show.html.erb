@@ -1,24 +1,19 @@
-<br>
-	<table style="position:absolute;">
+	<table style="float:left;">
 		<tr>
-			<td style="text-align:right;">Username:</td>
-			<td style="text-align:left;"><%=h @user.username %></td>
+			<td>Username:</td>
+			<td><%=h @user.username %></td>
 		</tr>
 		<tr>
-			<td style="text-align:right;">Email:</td>
-			<td style="text-align:left;"><%= mail_to @user.email, @user.email %></td>
+			<td>Email:</td>
+			<td><%= mail_to @user.email, @user.email %></td>
 		</tr>
 	</table>
+	
+	<span style="float:right; margin-left:100px;">
+		<% unless @user.assignments.nil? || @user.assignments.empty? %>
+			<%= render :partial => "user_assignments" %>
+		<% end %>
+	</span>
 
 
 <!-- renders a table that shows all assignments for the user -->
-	<div style="position:absolute; left:500px;">
-	<% unless @user.assignments.nil? || @user.assignments.empty? %>
-		<%= render :partial => "user_assignments" %>
-	<% end %>
-	</div>
-
-
-
-
-

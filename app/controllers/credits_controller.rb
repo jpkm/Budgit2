@@ -26,7 +26,7 @@ class CreditsController < ApplicationController
 		@account = Account.find(params[:account])
 		authorize! :create, @credit, :message => "Action Not Authorized"
 		unless @account.active
-			redirect_to club_path(@credit.account.club), :notice= >"Action Not Authorized"
+			redirect_to club_path(@credit.account.club), :notice=>"Action Not Authorized"
 		else
 			@credit.date = Date.today
 			if @account.has_initial?

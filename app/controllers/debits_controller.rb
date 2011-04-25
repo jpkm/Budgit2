@@ -22,12 +22,10 @@ class DebitsController < ApplicationController
 	def new
 		@debit = Debit.new	
 		@debit.account_id = params[:account]		
-		
-		authorize! :create, @debit, :message => "Action Not Authorized"
-		
+		authorize! :create, @debit, :message=> "Action Not Authorized"
 		@account = Account.find(params[:account])
 		unless @account.active
-			redirect_to club_path(@debit.account.club), :notice= >"Action Not Authorized"
+			redirect_to club_path(@debit.account.club), :notice=>"Action Not Authorized"
 		else
 			@debit.reimbursement_date = "null"
 			
@@ -84,7 +82,7 @@ class DebitsController < ApplicationController
 
 	def reimburse
 		@debit = Debit.find(params[:id])
-		authorize! :reimburse, @debit, :message => "action is not authorized"
+		authorize! :reimburse, @debit, :message => "Action Not Authorized"
 		@debit.reimbursement_date = DateTime.now
 		@debit.status = "reimbursed"
 		@debit.save!

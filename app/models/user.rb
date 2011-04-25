@@ -143,13 +143,11 @@ class User < ActiveRecord::Base
 	
 	#gets all clubs a user has an active assignment to
 	def get_clubs
-		unless self.is_admin? || self.is_vp?
+		unless self.is_admin? || self.is_vp? || self.is_director?
 			clubs = []
 			if has_active_assignment? && !assignments.nil?
 				for assignment in assignments
-					if assignment.active
-						clubs << assignment.club
-					end
+					clubs << assignment.club
 				end
 				return clubs
 			end

@@ -31,9 +31,10 @@
 			
 			<br><br>
 			
-			<div class="credits">
+			
+			<div class="credit">
 				<% if can? :create, Credit %>
-					<% link_to image_tag("btn-credit.png", :border=>0), new_credit_path(:account=>@club.current_account.id)%>
+					<%= link_to image_tag("btn-credit.png", :border=>0), new_credit_path(:account=>@club.current_account.id)%>
 				<% end %>
 			</div>
 			<% if @club.current_balance == 0 %>
@@ -41,7 +42,7 @@
 			<% end %>
 			<% unless @account_credits.nil? || @account_credits.empty? %>
 				All Credits
-				<%= render :partial => "account_credits" %>
+				<%= render :partial=>"account_credits" %>
 			<% end %>
 		</div>
 	</td>

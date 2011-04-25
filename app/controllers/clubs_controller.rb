@@ -5,10 +5,13 @@ class ClubsController < ApplicationController
 	def index
 		@clubs = Club.all.paginate :page => params[:page], :per_page => 20
 		authorize! :read, Club, :message => "Action Not Authorized"
-		
+		unless current_user.is_admin? || current_user.is_director?
+			redirect_to root_url
+		else
 		respond_to do |format|
 		  format.html # index.html.erb
 		  format.xml  { render :xml => @clubs }
+		end
 		end
 	end
 
@@ -16,7 +19,7 @@ class ClubsController < ApplicationController
 	def show  
 		#Scope Definitions
 		@club = Club.find(params[:id])
-		authorize! :read, @club, :message => "No no no"
+		authorize! :read, @club, :message => "Action Not Authorized"
 		#all accounts for @club
 		@inactive_accounts = Account.inactive_for_club(@club).paginate :page => params[:page], :per_page => 5
 		#get all assignment for @club
@@ -38,13 +41,11 @@ class ClubsController < ApplicationController
 	def new
 		@club = Club.new
 		authorize! :read, Club, :message => "Action Not Authorized"
-		
 		respond_to do |format|
 		  format.html # new.html.erb
 		  format.xml  { render :xml => @club }
 		end
 	end
-
 	  
 	def edit
 		@club = Club.find(params[:id])
