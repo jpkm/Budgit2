@@ -1,8 +1,8 @@
-	<span style='font-size:150%;'><%= @club.name%></span>
-	<% unless @club.current_account.nil? %>
-		(<%= @club.current_account.date.year %>-<%= @club.current_account.date.year + 1 %>)
-	<% end %>
-	<span id="participants">
+	<span class="club_name">
+		<%= @club.name%>
+	</span>
+	
+	<span class="participants">
 		Club Leader: 
 			<% if @club.get_leader.nil? %>
 				<% if can? :create, Assignment %>
@@ -40,8 +40,12 @@
 		<% end %>
 	</span>	
 	
-	<br>
-	<br>
+	<div>
+		<% unless @club.current_account.nil? %>
+			<%= @club.current_account.date.year %>-<%= @club.current_account.date.year + 1 %>
+		<% end %>
+	</div>
+	
 	
 	<!--
 	<% if can? :create, Account %>
@@ -53,6 +57,8 @@
 		<% end %>
 	<% end %>
 	-->
+	
+	<br><br>
 
 	<!-- renders information for @club's current account-->
 	<% unless @club.current_account.nil? %>

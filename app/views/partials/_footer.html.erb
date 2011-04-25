@@ -1,0 +1,16 @@
+<div id="footer">
+		<% if can? :create, Club %>
+			<hr></hr>
+			Create New:	
+			<%= link_to 'Club', new_club_path() %>
+		<% end %>
+		<% if can? :create, User %>
+			:: <%= link_to 'User', new_user_path() %>
+		<% end %>
+		<% if can? :create, DebitCategory %>
+			:: <%= link_to 'Debit Category', new_debit_category_path()%>
+		<% end %>
+		<% if can? :create, CreditCategory %>
+			:: <%= link_to 'Credit Category', new_credit_category_path()%>
+		<% end %>
+</div>

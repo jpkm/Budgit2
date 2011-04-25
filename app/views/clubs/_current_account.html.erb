@@ -1,31 +1,48 @@
-<table>
-	<tr>
-		<td style="width:200px; valign:top; text-align:center; padding-left:250px;"> 
-			<u>Current Balance(QR)</u><br>
-			<div style="font-size:315%;">
-			<% if @club.current_balance < 1000 %>
-				<div style="color:red;">
-				<%= @club.current_balance %>
-				</div>
-			<% else %>
-				<div style="color:green;">
-				<%= @club.current_balance %>
-				</div>
-			<% end %>
+<table width=900px>
+	<td>
+		<div id="current_balance">
+			<div style="font-size:80%;"> 
+				Current Balance(QR)
 			</div>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<!-- all credits for account -->
-			<% unless @account_credits.nil? %>
-				<%= render :partial => "account_credits" %>
+			<div style="font-size:315%;">
+				<% if @club.current_balance < 1000 %>
+					<div style="color:red;">
+						<%= @club.current_balance %>
+					</div>
+				<% else %>
+					<div style="color:green;">
+						<%= @club.current_balance %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</td>
+	<td>
+		<div id="container">
+			<div class="debit">
+				<% if can? :create, Debit %>
+					<%= link_to image_tag("btn-debit.png", :border=> 0), new_debit_path(:account=>@club.current_account.id)%>
+				<% end %>
+			</div>
+			<% unless @account_debits.nil? || @account_debits.empty? %>
+			All Debits
+				<%= render :partial => "account_debits" %>
 			<% end %>
 			
-			<!-- all debits for account -->
-			<% unless @account_debits.nil? %>
-				<%= render :partial => "account_debits" %>
-			<% end %>	
-		</td>
-	</tr>
+			<br><br>
+			
+			<div class="credits">
+				<% if can? :create, Credit %>
+					<% link_to image_tag("btn-credit.png", :border=>0), new_credit_path(:account=>@club.current_account.id)%>
+				<% end %>
+			</div>
+			<% if @club.current_balance == 0 %>
+				Account must be Credited before Debit can be made 
+			<% end %>
+			<% unless @account_credits.nil? || @account_credits.empty? %>
+				All Credits
+				<%= render :partial => "account_credits" %>
+			<% end %>
+		</div>
+	</td>
 </table>

@@ -1,17 +1,27 @@
 <div id="container">
+	<div id="left">
+		<div style="text-align:center;">
 			<% unless current_user.assignments.nil? || current_user.assignments.empty? %>
 				<%= render :partial => "assignment_for_user" %>
 			<% end %>
 		</div>
-		<br>
-			<% unless @unclaimed_debits.nil? || @unclaimed_debits.empty? %>
-				<%= render :partial => "unclaimed" %>
-			<% end %>
-		<br>
+		<div id="processing">
 			<% unless @processing_debits.nil? || @processing_debits.empty? %>
 				<%= render :partial => "processing" %>
 			<% end %>
-		<br>
+		</div>
+	</div>
+	
+	<div id="right">
+		<div id="unclaimed">
+			<% unless @unclaimed_debits.nil? || @unclaimed_debits.empty? %>
+				<%= render :partial => "unclaimed" %>
+			<% end %>
+		</div>
+		<div id="ready">
 			<% unless @ready_debits.nil? || @ready_debits.empty? %>
 				<%= render :partial => "ready" %>
 			<% end %>
+		</div>
+	</div>
+</div>

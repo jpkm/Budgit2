@@ -1,28 +1,18 @@
 <% if logged_in? %>
 	<div id="header">
-		
 		<div id="user">
-			Signed in as <%= current_user.username %>. <%= link_to "Log out", logout_path %>
+			Signed in as <%= current_user.username %><%= link_to "Log out", logout_path %>
 		</div>
-		
-		<%= link_to(image_tag("Header.png", :border => 0), root_url) %>
-		<span style='text-align:right; font-size:17px;'>
-			<% if can? :create, Club %>
-			Create New:	
-				<%= link_to 'Club', new_club_path() %>
-			<% end %>
-			<% if can? :create, User %>
-				:: <%= link_to 'User', new_user_path() %>
-			<% end %>
-			<% if can? :create, DebitCategory %>
-				:: <%= link_to 'Debit Category', new_debit_category_path()%>
-			<% end %>
-			<% if can? :create, CreditCategory %>
-				:: <%= link_to 'Credit Category', new_credit_category_path()%>
-			<% end %>
+		<div>
+			<%= link_to(image_tag("Header.png", :border => 0), root_url) %>
+		</div>
+		<span style="font-size:80%;">
+			<%= link_to "All Clubs", clubs_path() %>
+			<%= link_to "All Users", users_path() %>
+			Processing transations
 		</span>
-		<hr></hr>
 	</div>
+	<hr></hr>
 <% end %>
 
 	<%#= link_to "Assign System Admin or VP", new_assignment_path(:club => nil) %>

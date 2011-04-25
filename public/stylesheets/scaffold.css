@@ -9,17 +9,21 @@
 	text-align: right;
 }
 
-#club_ass a{
-    clear: both;
+#footer {
+	width:1000px; 
+	text-align:right; 
+	float:right; 
+	font-size:100%;
+	margin-bottom:10px;
 }
 
 body { 
-background-image: url('/images/Money_Tree.png');
-background-position: bottom right;
-background-repeat: no-repeat;
-background-attachment: fixed;
-color: #333; 
-vertical-align: baseline;
+	background-image: url('/images/Money_Tree.png');
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	color: #333; 
+	vertical-align: baseline;
 }
 
 #body {
@@ -52,11 +56,6 @@ pre {
   color: green;
   text-align: center;
   font-style: italic;
-  font-size:12px;
-  padding-left:350px;
-}
-
-#login {
 }
 
 #error_explanation {
@@ -104,56 +103,99 @@ font-size: large;
 color: 	black;
 }
 
-#container{
-	width:relative;
-	font-size:10px;
-}
+#left, #right{width:40%;}
 
-#left, #right{
-	width:40%;
-}
-
-#left{
-	text-align:center;
-}
+#left{float:left;}
 #right{float:right;}
 
-#your_clubs{
-	text-align:center;
-	font-size:20px;
+#your_clubs{float:left;}
+
+#processing{
+	margin-top:5px;
+	float:left;
 }
 
-
-#container{
-	width:100px;
-    font-size: 10px;
-	text-align:center;
+#unclaimed{
+	margin-top:5px;
+	float:left;
 }
 
-
-
-
-#debit{ 
-	font-size:19px;
-	position:absolute;
-	margin-left:160px;
+#current_balance {
+	vertical-align:top;
 }
 
-#credit{
-	position:absulte;
-	font-size:19px;
+#ready{float:left;}
+
+.debit, .credit{
+	float:right;
 	text-align:right;
-	margin-right:100px;
+	font-size:150%;
+	padding:30px 0 0 0;
 }
 
-#current_balance{
-	margin-top:40px;
+.debit_info {
+	border:0.5px;
 }
 
-#participants{
-	position:absolute;
-	padding-left:360px;
-	text-align:right;
-	white-space:nowrap;
+
+/* Buttons */
+#button{
+	padding: 50px 0 0 0;
+	margin: 0;
+	width: 115px;
+}
+
+#button li{
+	list-style:none;
+	padding: 0 0 50px 0;
+	margin: 0;
+}
+
+.btn-debit{
+	background-image:url('/images/hover-debit.png');
+	background-repeat:no-repeat;
+	height:45px;
+	width:115px;
+}
+
+.btn-debit a{
+	background-image:url('/images/btn-debit.png');
+	background-repeat: no-repeat;
+	height:45px;
+	width:115px;
+	display:block;
+}
+
+.btn-debit a:hover{
+	background:none;
 	text-decoration:none;
 }
+
+.contact a{
+	background-image:url(normal image path);
+	background-repeat:no-repeat;
+	height:75px;
+	width:200px;
+	display:block;
+}
+
+.contact a:hover{
+	background:none;
+}
+
+/* end Buttons */
+
+
+/* Club Show page */
+
+.club_name{
+	font-size:200%;
+}
+
+.participants{
+	font-size:80%;
+	float:right;
+	text-align:right;
+}
+
+/* end Club Show page */

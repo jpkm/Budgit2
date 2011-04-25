@@ -15,8 +15,8 @@ class HomeController < ApplicationController
 				@processing_debits = Debit.get_processing(current_user.get_accounts).paginate :page => params[:page], :per_page => 10
 				@ready_debits = Debit.get_ready(current_user.get_accounts).paginate :page => params[:page], :per_page => 10
 			elsif current_user.is_director?
-				@under_250 = Club.get_all_under_250
-				@over_250 = Club.get_all_over_250
+				@under_250 = Club.get_all_under_250.paginate :page => params[:page], :per_page => 10
+				@over_250 = Club.get_all_over_250.paginate :page => params[:page], :per_page => 10
 				if @over_250.nil? || @over_250.empty? && @under_250.nil? || @under_250.empty?
 					redirect_to clubs_path()
 				end

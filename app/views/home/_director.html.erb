@@ -1,15 +1,22 @@
-<div style='margin-left:400px; position:absolute;'><%= link_to "View All Clubs", clubs_path() %></div>
-<br>
-<br>
-		<% unless @under_250.nil? || @under_250.empty? %>
-			<%= render :partial => "less_than_250" %>
-		<% end %>
-
-		<br>
-		
-		<% unless @over_250.nil? || @over_250.empty? %>
-			<%= render :partial => "greater_than_250" %>
-		<% end %>
-
-
-	
+<table>
+	<tr>
+		<td>
+			<% unless Club.all.nil? || Club.all.empty? %>
+				<%= render :partial => "vp_clubs" %>
+			<% end %>
+		</td>
+		<td width="30px"></td>
+		<td>
+			<div>
+				<% unless @under_250.nil? || @under_250.empty? %>
+					<%= render :partial => "less_than_250" %>
+				<% end %>
+			</div>
+			<div>
+				<% unless @over_250.nil? || @over_250.empty? %>
+					<%= render :partial => "greater_than_250" %>
+				<% end %>
+			</div>
+		<td>
+	</tr>
+</table>	

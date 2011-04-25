@@ -1,13 +1,29 @@
-<table class = "datagrid">
-<caption class="datagrid">Paricipations</caption>
+<table class="datagrid">
+<caption class="datagrid">Your Clubs</caption>
   <thead class = "datagrid">
     <th>Club</th>
+	<% if current_user.is_leader? %>
+		<th>SA Advisor</td>
+	<% else %>
+		<th>Leader</td>
+	<% end %>
 	<th>Balance(QR)</th>
   </thead>
   <!-- only shows active assignments -->
 <% for assignment in current_user.assignments %>
 	<tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
 		<td><%= link_to(h(assignment.club.name), club_path(assignment.club)) %></td>
+		<% if current_user.is_leader? %>
+			<% unless assignment.club.get_sa.nil? %>
+				<td><%= assignment.club.get_sa.name %></td>
+			<% else %>
+				<td>Assign SA</td>
+			<% end %>
+		<% elsif !assignment.club.get_leader.nil? %>
+			<td><%= assignment.club.get_leader.name %></td>
+		<% else %>
+			<td>Assign Leader</td>
+		<% end %>
 		<td><%= assignment.club.current_account.balance %>
 	</tr>
 <% end %>

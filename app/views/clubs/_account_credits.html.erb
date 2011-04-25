@@ -1,11 +1,4 @@
 <table class="datagrid">
-	<h3>
-		<% if can? :create, Credit %>
-			<%= link_to "Create Credit", new_credit_path(:account => @club.current_account.id) %>
-		<% else %>
-			Credits
-		<% end %>
-	</h3>
 	<% unless @account_credits.empty? %>
 		<thead class="datagrid">
 			<th>Category</th>

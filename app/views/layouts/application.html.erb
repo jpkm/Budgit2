@@ -13,17 +13,15 @@
 			<%= render :partial => 'partials/header' %>
 		
 			<div id="body">
-				<span id="notice"><%= flash[:notice] %></span>
+				<p id="notice"><%= flash[:notice] %></p>
 				<table border="0">
 					<tr>                  
 						<td><%= yield %></td>
 					</tr>
 				</table>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
+				<br>
 			</div>
+			<%= render :partial => "partials/footer" %>
 		</div><!-- end of wrap div -->
     </body>
 </html>
