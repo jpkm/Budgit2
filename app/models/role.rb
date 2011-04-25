@@ -44,5 +44,12 @@ class Role < ActiveRecord::Base
 		end
 	end
 	
-	
+	def self.get_faculty
+		for role in Role.all
+			if role.name.downcase.eql?("faculty advisor")
+				return role
+			end
+		end
+	end
+
 end

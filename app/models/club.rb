@@ -96,17 +96,27 @@ class Club < ActiveRecord::Base
 	#get the active leader for this club
 	def get_leader
 		for assignment in assignments
-			if assignment.active && assignment.role.name.downcase.eql?("club leader")
+			if assignment.role.name.downcase.eql?("club leader")
 				return assignment.user
 			end
 		end
 		return nil
 	end
 	
-	#get the active sa for this club
+	#get sa for this club
 	def get_sa
 		for assignment in assignments
-			if assignment.active && assignment.role.name.downcase.eql?("student affairs")
+			if assignment.role.name.downcase.eql?("student affairs")
+				return assignment.user
+			end
+		end
+		return nil
+	end
+	
+	#get faculty advisor for this club
+	def get_faculty
+		for assignment in assignments
+			if assignment.role.name.downcase.eql?("faculty advisor")
 				return assignment.user
 			end
 		end

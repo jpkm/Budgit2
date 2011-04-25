@@ -52,6 +52,8 @@ pre {
   color: green;
   text-align: center;
   font-style: italic;
+  font-size:12px;
+  padding-left:350px;
 }
 
 #login {
@@ -154,5 +156,8 @@ color: 	black;
 
 #participants{
 	position:absolute;
-	padding-left:700px;
+	padding-left:360px;
+	text-align:right;
+	white-space:nowrap;
+	text-decoration:none;
 }
