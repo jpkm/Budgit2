@@ -29,14 +29,10 @@ class AssignmentsController < ApplicationController
 		@assignment.role_id = params[:role]
 		authorize! :create, @assignment, :message => "action is not authorized"
 		
-		#if !@assignment.club_id.nil?
-		#	@club = @assignment.club
-		#	#@roles = @assignment.club.roles_available
-		#elsif !@assignment.roles_for_vp_and_sysadmin.nil? || !@assignment.roles_for_vp_and_sysadmin.empty?
-		#	@roles = @assignment.roles_for_vp_and_sysadmin
-		#	@users = @assignment.available_users
-		if !@assignment.available_users.nil? || !@assignment.available_users.empty?
-			@users = @assignment.available_users
+		@free_users = User.free_users(@assignment.club, @assignment.role)
+		
+		if @free_users || @free_users.empty?
+			p "there are no available users"
 		end
 	
 		respond_to do |format|

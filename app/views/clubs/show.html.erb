@@ -10,11 +10,13 @@
 					<% if can? :create, Assignment %>
 						<%= link_to "Assign", new_assignment_path(:club=>@club, :role=>Role.get_leader)%>
 					<% end %>
-				<% else %>
+				<% elsif current_user.is_admin? || current_user.is_director? %>
 					<%= link_to @club.get_leader.name, user_path(@club.get_leader) %>
 						<% if can? :delete, Assignment %>
 							(<%= link_to(image_tag("delete_dg.png", :border => 0), :controller=>'assignments', :id=>@club.get_assignment(@club.get_leader), :action => :delete) %>)</td>
 						<% end %>
+				<% else %>
+					<%= mail_to @club.get_leader.email, @club.get_leader.name %>
 				<% end %>
 			</td>
 		</tr>
@@ -25,11 +27,13 @@
 					<% if can? :create, Assignment %>
 						<%= link_to "Assign", new_assignment_path(:club=>@club, :role=>Role.get_faculty)%>
 					<% end %>
-				<% else %>
+				<% elsif current_user.is_admin? || current_user.is_director? %>
 					<%= link_to @club.get_faculty.name, user_path(@club.get_faculty)%>
 					<% if can? :delete, Assignment %>
 						(<%= link_to(image_tag("delete_dg.png", :border => 0), :controller=>'assignments', :action=>:delete, :id=>@club.get_assignment(@club.get_faculty)) %>)
 					<% end %>
+				<% else %>
+					<%= mail_to @club.get_faculty.email, @club.get_faculty.name %>
 				<% end %>
 			</td>
 		</tr>
@@ -40,11 +44,13 @@
 					<% if can? :create, Assignment %>
 						<%= link_to "Assign", new_assignment_path(:club=>@club, :role=>Role.get_sa)%>
 					<% end %>
-				<% else %>
+				<% elsif current_user.is_admin? || current_user.is_director? %>
 					<%= link_to @club.get_sa.name, user_path(@club.get_sa) %>
 					<% if can? :delete, Assignment %>
 						(<%= link_to(image_tag("delete_dg.png", :border => 0), :controller=>'assignments', :action=>:delete, :id=>@club.get_assignment(@club.get_sa)) %>)
 					<% end %>
+				<% else %>
+					<%= mail_to @club.get_sa.email, @club.get_sa.name %>
 				<% end %>
 			</td>
 		</tr>

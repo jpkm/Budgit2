@@ -18,8 +18,11 @@ class ClubsController < ApplicationController
 
 	def show  
 		#Scope Definitions
+		p "asdF"
+		$stdout.flush
 		@club = Club.find(params[:id])
 		authorize! :read, @club, :message => "Action Not Authorized"
+		
 		#all accounts for @club
 		@inactive_accounts = Account.inactive_for_club(@club).paginate :page => params[:page], :per_page => 5
 		#get all assignment for @club
@@ -32,7 +35,7 @@ class ClubsController < ApplicationController
 			@account_credits = @club.current_account.credits.paginate :page => params[:page], :per_page => 20
 		end
 		
-		respond_to do |format|
+		respond_to do |format| p "asdF"
 		  format.html # show.html.erb
 		  format.xml  { render :xml => @club }
 		end

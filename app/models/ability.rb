@@ -73,7 +73,24 @@ class Ability
 				end
 				accounts.include? this_account
 			end
+		elsif user.is_faculty?
+			can :read, Club do |this_club|
+				assignment_clubs = user.assignments.map{|a| a.club_id}
+				assignment_clubs.include? this_club.id
+			end
+			can :read, Account do |this_account|
+				assignment_clubs = user.assignments.map{|a| a.club if a.active}
+				accounts = []
+				for club in assignment_clubs.compact
+					for account in club.accounts
+						accounts << account
+					end
+				end
+				accounts.include? this_account
+			end
 		end
+	end
+end		
 	
 			
 			
@@ -91,5 +108,4 @@ class Ability
     #   can :update, Article, :published => true
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
-  end
-end
+  

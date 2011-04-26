@@ -120,8 +120,10 @@ class User < ActiveRecord::Base
 		return false
 	end
 	
-	#returns users who are aren't the sys or vp 
-	def self.free_users(club)
+	#return users who are aren't the sysad, vp, or director and either have no previose assignments or have assignments with this role   
+	def self.free_users(club, role)
+		p role
+		p club
 		free_users = []
 		for u in User.all
 			should_add = true
@@ -129,7 +131,7 @@ class User < ActiveRecord::Base
 				free_users << u
 			else
 				for assignment in u.assignments
-					if assignment.club_id == club.id || assignment.role.name.downcase.eql?("system admin") || assignment.role.name.downcase.eql?("vp of finance") || assignment.role.name.downcase.eql?("director")
+					if assignment.club_id == club.id || assignment.role.name.downcase.eql?("system admin") || assignment.role.name.downcase.eql?("vp of finance") || assignment.role.name.downcase.eql?("director") || !assignment.role.name.eql?(role.name)
 						should_add = false
 					end
 				end
