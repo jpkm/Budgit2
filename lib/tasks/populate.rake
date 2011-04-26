@@ -6,8 +6,6 @@ namespace :db do
     # Need two gems to make this work: faker & populator
     # Docs at: http://populator.rubyforge.org/
     require 'populator'
-    # Docs at: http://faker.rubyforge.org/rdoc/
-    require 'faker'
     
     # Step 1: clear any old data in the db
     [Assignment, Debit, Credit, DebitCategory, CreditCategory, User, Role, Club, Account].each(&:delete_all)
@@ -112,8 +110,8 @@ namespace :db do
 		#assigned to Debate Club
 		leader2 = User.new
 		leader2.email = "leader2@leader.edu"
-		leader2.first_name = "Zaid"
-		leader2.last_name = "Haque"
+		leader2.first_name = "Sis"
+		leader2.last_name = "Lam"
 		leader2.username = "sislam"
 		leader2.password = "sislam"
 		leader2.password_confirmation = "sislam"
@@ -121,8 +119,8 @@ namespace :db do
 		
 		leader3 = User.new
 		leader3.email = "mabuhol@qatar.cmu.edu"
-		leader3.first_name = "M"
-		leader3.last_name = "Abuhol"
+		leader3.first_name = "Mab"
+		leader3.last_name = "Uhol"
 		leader3.username = "mabuhola"
 		leader3.password = "mabuhola"
 		leader3.password_confirmation = "mabuhola"
@@ -148,40 +146,36 @@ namespace :db do
 		sa2.password_confirmation = "kdarco"
 		sa2.save!
 		
-		#faculty = User.new
-		#faculty.email = "faculty@faculty.edu"
-		#faculty.first_name = "Dan"
-		#faculty.last_name = "Phelps"
-		#faculty.username = "faculty"
-		#faculty.password = "faculty"
-		#faculty.password_confirmation = "faculty"
-		#faculty.save!
+		faculty = User.new
+		faculty.email = "faculty@faculty.edu"
+		faculty.first_name = "Dan"
+		faculty.last_name = "Phelps"
+		faculty.username = "faculty"
+		faculty.password = "faculty"
+		faculty.password_confirmation = "faculty"
+		faculty.save!
 		
 
 	#Step 4.5: add Assignments
 		asys = Assignment.new
 		asys.user_id = sys.id
 		asys.role_id = rsys.id
-		asys.active = true
 		asys.save!
 		
 		adsa = Assignment.new
 		adsa.user_id = dsa.id
 		adsa.role_id = rdsa.id
-		adsa.active = true
 		adsa.save!
 		
 		#afaculty = Assignment.new
 		#afaculty.user_id = faculty.id
 		#afaculty.club_id = x.id
 		#afaculty.role_id = rfaculty.id
-		#afaculty.active = true
 		#afaculty.save!
 	
 		avp = Assignment.new
 		avp.user_id = vp.id
 		avp.role_id = rvp.id
-		avp.active = true
 		avp.save!
    
 		#DSO
@@ -189,7 +183,6 @@ namespace :db do
 		a1leader.user_id = leader1.id
 		a1leader.club_id = y.id
 		a1leader.role_id = rleader.id
-		a1leader.active = true
 		a1leader.save!
 		
 		#Active Women
@@ -197,7 +190,6 @@ namespace :db do
 		a2leader.user_id = leader1.id
 		a2leader.club_id = z.id
 		a2leader.role_id = rleader.id
-		a2leader.active = true
 		a2leader.save!
 		
 		#Debate Club
@@ -205,7 +197,6 @@ namespace :db do
 		b1leader.user_id = leader2.id
 		b1leader.club_id = j.id
 		b1leader.role_id = rleader.id
-		b1leader.active = true
 		b1leader.save!
 		
 		#kdarco for Gaming Club
@@ -213,7 +204,6 @@ namespace :db do
 		asa.user_id = sa2.id
 		asa.club_id = x.id
 		asa.role_id = rsa.id
-		asa.active = true
 		asa.save!
 		
 		#kdarco for All Around
@@ -221,7 +211,6 @@ namespace :db do
 		bsa.user_id = sa2.id
 		bsa.club_id = p.id
 		bsa.role_id = rsa.id
-		bsa.active = true
 		bsa.save!
 		
 		#jduffy for DSO
@@ -229,7 +218,6 @@ namespace :db do
 		csa.user_id = sa1.id
 		csa.club_id = y.id
 		csa.role_id = rsa.id
-		csa.active = true
 		csa.save!
 		
 		#jduffy for Debate Club
@@ -237,7 +225,6 @@ namespace :db do
 		esa.user_id = sa1.id
 		esa.club_id = j.id
 		esa.role_id = rsa.id
-		esa.active = true
 		esa.save!
 		
 		#jduffy for Active Women
@@ -245,7 +232,6 @@ namespace :db do
 		fsa.user_id = sa1.id
 		fsa.club_id = z.id
 		fsa.role_id = rsa.id
-		fsa.active = true
 		fsa.save!
 	
 	# Step 5.5: Add Account

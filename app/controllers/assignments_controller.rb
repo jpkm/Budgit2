@@ -29,12 +29,6 @@ class AssignmentsController < ApplicationController
 		@assignment.role_id = params[:role]
 		authorize! :create, @assignment, :message => "action is not authorized"
 		
-		#if !@assignment.club_id.nil?
-		#	@club = @assignment.club
-		#	#@roles = @assignment.club.roles_available
-		#elsif !@assignment.roles_for_vp_and_sysadmin.nil? || !@assignment.roles_for_vp_and_sysadmin.empty?
-		#	@roles = @assignment.roles_for_vp_and_sysadmin
-		#	@users = @assignment.available_users
 		if !@assignment.available_users.nil? || !@assignment.available_users.empty?
 			@users = @assignment.available_users
 		end
@@ -53,7 +47,6 @@ class AssignmentsController < ApplicationController
   
 	def create
 		@assignment = Assignment.new(params[:assignment])
-		@assignment.active = true
 		should_send = false
 		@user = @assignment.user
 		authorize! :create, @assignment, :message => "action not authorized"
@@ -63,7 +56,6 @@ class AssignmentsController < ApplicationController
 				should_send = true
 			end
 		end
-		p should_send
 	
 		respond_to do |format|
 		  if @assignment.save

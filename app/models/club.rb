@@ -70,9 +70,7 @@ class Club < ActiveRecord::Base
 	
 		club_roles = []
 		for assignment in assignments
-			if assignment.active?
-				club_roles << assignment.role
-			end
+			club_roles << assignment.role
 		end
 		
 		for role in club_roles
@@ -86,9 +84,7 @@ class Club < ActiveRecord::Base
 	def deactivated
 		count = 0
 		for assignment in assignments
-			unless assignment.active
-				count = count + 1
-			end
+			count = count + 1
 		end
 		count
 	end	
