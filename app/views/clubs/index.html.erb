@@ -21,24 +21,28 @@
 		<% if !club.get_leader.nil? %>  
 			<%= link_to club.get_leader.name, user_path(club.get_leader.id) %>
 		<% else %>
-			<%= link_to "Assign me", new_assignment_path(:club=>@club, :role=>Role.get_leader)%>
+			<%= link_to "Assign me", new_assignment_path(:club=>club, :role=>Role.get_leader)%>
 		<% end %>
 	</td>
 	<td>
 		<% if !club.get_sa.nil? %>  
 			<%= link_to club.get_sa.name, user_path(club.get_sa.id) %>
 		<% else %>
-			<%= link_to "Assign me", new_assignment_path(:club=>@club, :role=>Role.get_sa)%>
+			<%= link_to "Assign me", new_assignment_path(:club=>club, :role=>Role.get_sa)%>
 		<% end %>
 	</td>
 	
-	<td><% if club.active %>
-		<%= link_to(image_tag("delete_dg.png", :border => 0), :confirm => "Are you sure?", :controller => "clubs", :action => :deactivate5, :id => club.id) %>
-	<% else %>
-		<%= link_to 'Reactivate', :confirm => 'Are you sure?', :controller => "clubs", :action => :reactivate5, :id => club.id %>
-	<% end %></td>
+	<td>
+		<% if club.active %>
+			<%= link_to(image_tag("delete_dg.png", :border => 0), :confirm => "Are you sure?", :controller => "clubs", :action => :deactivate5, :id => club.id) %>
+		<% else %>
+			<%= link_to 'Reactivate', :confirm => 'Are you sure?', :controller => "clubs", :action => :reactivate5, :id => club.id %>
+		<% end %>
+	</td>
   </tr>
-<% end %>
+<% end %>	
 </table>
+<br>
+	<%= link_to "Create New Club", new_club_path %>
 
 

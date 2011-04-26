@@ -1,5 +1,5 @@
 <table width=900px>
-	<td>
+	<td style="vertical-align:top;">
 		<div id="current_balance">
 			<div style="font-size:80%;"> 
 				Current Balance(QR)
@@ -20,9 +20,11 @@
 	<td>
 		<div id="container">
 			<div class="debit">
+			<% unless @club.current_account.balance == 0 %>
 				<% if can? :create, Debit %>
 					<%= link_to image_tag("btn-debit.png", :border=> 0), new_debit_path(:account=>@club.current_account.id)%>
 				<% end %>
+			<% end %>
 			</div>
 			<% unless @account_debits.nil? || @account_debits.empty? %>
 			All Debits

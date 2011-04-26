@@ -2,51 +2,59 @@
 		<%= @club.name%>
 	</span>
 	
-	<span class="participants">
-		Club Leader: 
-			<% if @club.get_leader.nil? %>
-				<% if can? :create, Assignment %>
-					<%= link_to "Assign", new_assignment_path(:club=>@club, :role=>Role.get_leader)%>
+	<table class="participants">
+		<tr>
+			<td>Club Leader:</td> 
+			<td align='left'>
+				<% if @club.get_leader.nil? %>
+					<% if can? :create, Assignment %>
+						<%= link_to "Assign", new_assignment_path(:club=>@club, :role=>Role.get_leader)%>
+					<% end %>
+				<% else %>
+					<%= link_to @club.get_leader.name, user_path(@club.get_leader) %>
+						<% if can? :delete, Assignment %>
+							(<%= link_to(image_tag("delete_dg.png", :border => 0), :controller=>'assignments', :id=>@club.get_assignment(@club.get_leader), :action => :delete) %>)</td>
+						<% end %>
 				<% end %>
-			<% else %>
-				<%= link_to @club.get_leader.name, user_path(@club.get_leader) %>
-				<% if can? :delete, Assignment %>
-					(<%= link_to(image_tag("delete_dg.png", :border => 0), :controller=>'assignments', :id=>@club.get_assignment(@club.get_leader), :action => :delete) %>)
+			</td>
+		</tr>
+		<tr>
+			<td>Faculty Advisor:</td>
+			<td align='left'>
+				<% if @club.get_faculty.nil? %>
+					<% if can? :create, Assignment %>
+						<%= link_to "Assign", new_assignment_path(:club=>@club, :role=>Role.get_faculty)%>
+					<% end %>
+				<% else %>
+					<%= link_to @club.get_faculty.name, user_path(@club.get_faculty)%>
+					<% if can? :delete, Assignment %>
+						(<%= link_to(image_tag("delete_dg.png", :border => 0), :controller=>'assignments', :action=>:delete, :id=>@club.get_assignment(@club.get_faculty)) %>)
+					<% end %>
 				<% end %>
-			<% end %>
-			<br>
-		<b>Faculty Advisor:<b>
-		<% if @club.get_faculty.nil? %>
-			<% if can? :create, Assignment %>
-				<%= link_to "Assign", new_assignment_path(:club=>@club, :role=>Role.get_faculty)%>
-			<% end %>
-		<% else %>
-			<%= link_to @club.get_faculty.name, user_path(@club.get_faculty)%>
-			<% if can? :delete, Assignment %>
-				(<%= link_to(image_tag("delete_dg.png", :border => 0), :controller=>'assignments', :action=>:delete, :id=>@club.get_assignment(@club.get_faculty)) %>)
-			<% end %>
-		<% end %>
-		<br>
-		Student Affairs Advisor:
-		<% if @club.get_sa.nil? %>  
-			<% if can? :create, Assignment %>
-				<%= link_to "Assign", new_assignment_path(:club=>@club, :role=>Role.get_sa)%>
-			<% end %>
-		<% else %>
-			<%= link_to @club.get_sa.name, user_path(@club.get_sa) %>
-			<% if can? :delete, Assignment %>
-				(<%= link_to(image_tag("delete_dg.png", :border => 0), :controller=>'assignments', :action=>:delete, :id=>@club.get_assignment(@club.get_sa)) %>)
-			<% end %>
-		<% end %>
-	</span>	
+			</td>
+		</tr>
+		<tr>
+			<td>Student Affairs Advisor:</td>
+			<td align='left'>
+				<% if @club.get_sa.nil? %>  
+					<% if can? :create, Assignment %>
+						<%= link_to "Assign", new_assignment_path(:club=>@club, :role=>Role.get_sa)%>
+					<% end %>
+				<% else %>
+					<%= link_to @club.get_sa.name, user_path(@club.get_sa) %>
+					<% if can? :delete, Assignment %>
+						(<%= link_to(image_tag("delete_dg.png", :border => 0), :controller=>'assignments', :action=>:delete, :id=>@club.get_assignment(@club.get_sa)) %>)
+					<% end %>
+				<% end %>
+			</td>
+		</tr>
+	</table>
 	
 	<div>
 		<% unless @club.current_account.nil? %>
 			<%= @club.current_account.date.year %>-<%= @club.current_account.date.year + 1 %>
 		<% end %>
-	</div>
-	
-	
+	</div>	
 	<!--
 	<% if can? :create, Account %>
 		<% if @club.current_account.nil? %>

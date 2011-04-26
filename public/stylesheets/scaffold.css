@@ -15,6 +15,11 @@
 	float:right; 
 	font-size:100%;
 	margin-bottom:10px;
+	
+	position:absolute; 
+	position:fixed; 
+	bottom:0px; 
+	bottom:expression(window.scrollBottom + "px"); 
 }
 
 body { 
@@ -137,7 +142,6 @@ color: 	black;
 	border:0.5px;
 }
 
-
 /* Buttons */
 #button{
 	padding: 50px 0 0 0;
@@ -173,7 +177,6 @@ color: 	black;
 }
 */
 
-
 .contact a{
 	background-image:url(normal image path);
 	background-repeat:no-repeat;
@@ -200,5 +203,11 @@ color: 	black;
 	float:right;
 	text-align:right;
 }
+
+.participants td{
+	padding:0 1px 1px 1px;
+	font-size:100%;
+}
+
 
 /* end Club Show page */

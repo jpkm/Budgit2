@@ -1,20 +1,19 @@
-<h3>Credits</h3>
-<table class = "datagrid">
-	<thead class = "datagrid">
+<table class="datagrid">
+	<thead class="datagrid">
 		<th>Category</th>
 		<th>Date </th>
 		<th>Amount</th>
 	</thead>
-
-<% @account_credits.each do |credit| %>
+<% @account.credits.each do |credit| %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
     <td><%= credit.credit_category.category %></td>
-    <td><%= credit.date.strftime("%m.%d.%Y") %></td>
-    <td>$<%= credit.amount %></td>
+    <td><%= credit.date.strftime("%d.%m.%Y") %></td>
+    <td><%= credit.amount %></td>
+	<% if can? :update, :destroy, credit%>
+		<td align="center"><%#= link_to(image_tag("edit_dg.png", :border => 0), edit_credit_path(credit))%></td>
+		<td align="center"><%#= link_to(image_tag("delete_dg.png", :border => 0), :controller => :credits, :id => credit.id, :action => :delete_credit)%></td>
+	<% end %>
   </tr>
 <% end %>
 </table>
 
-<span class="smtext">
-	<%= will_paginate @account_credits, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
-</span>

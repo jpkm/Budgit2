@@ -101,7 +101,7 @@ namespace :db do
 		
 		#assigned to DSO, Active Women
 		leader1 = User.new
-		leader1.email = "hahmed@qatar.cmu.edu"
+		leader1.email = "hahme@qatar.cmu.edu"
 		leader1.first_name = "H"
 		leader1.last_name = "Ahmed"
 		leader1.username = "hahmed"
