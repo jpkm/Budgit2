@@ -129,6 +129,4 @@ class Account < ActiveRecord::Base
 		end
 		return @under
 	end
-	
-	
 end

@@ -23,3 +23,10 @@ QUESTIONS:
 jeff
 		- where do you want people to be assignmed from
 		- what should it look like (further implementation with Ajax)
+		
+For now:
+	background of footer
+		
+For later:
+	method to get_role for User
+		returns whatever role that use usually is

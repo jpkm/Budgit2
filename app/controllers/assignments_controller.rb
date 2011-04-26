@@ -27,13 +27,8 @@ class AssignmentsController < ApplicationController
 		@assignment = Assignment.new
 		@assignment.club_id = params[:club]
 		@assignment.role_id = params[:role]
-		authorize! :create, @assignment, :message => "action is not authorized"
-		
+		authorize! :create, @assignment, :message => "Action Not Authorized"
 		@free_users = User.free_users(@assignment.club, @assignment.role)
-		
-		if @free_users || @free_users.empty?
-			p "there are no available users"
-		end
 	
 		respond_to do |format|
 			format.html  #new.html.erb
@@ -52,14 +47,13 @@ class AssignmentsController < ApplicationController
 		@assignment.active = true
 		should_send = false
 		@user = @assignment.user
-		authorize! :create, @assignment, :message => "action not authorized"
+		authorize! :create, @assignment, :message => "Action Not Authorized"
 		
 		unless @user.nil?
 			if @assignment.user.assignments.nil? || @assignment.user.assignments.empty? 
 				should_send = true
 			end
 		end
-		p should_send
 	
 		respond_to do |format|
 		  if @assignment.save

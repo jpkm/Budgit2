@@ -11,6 +11,7 @@ class DebitsController < ApplicationController
 		#end
 	end
 
+	#why no Authorization
 	def show
 		@debit = Debit.find(params[:id])
 		respond_to do |format|
@@ -92,7 +93,7 @@ class DebitsController < ApplicationController
 	
 	def process_me
 		@debit = Debit.find(params[:id])
-		authorize! :process_me, @debit, :message => "action is not authorized"
+		authorize! :process_me, @debit, :message => "Action Not Authorized"
 		@debit.status = "ready"
 		@debit.save!
 		Notifier.ready_email(@debit.account.club.get_leader, @debit).deliver
@@ -102,7 +103,7 @@ class DebitsController < ApplicationController
 	def claim
 		@debit = Debit.find(params[:id])
 		p @debit
-		authorize! :claim, @debit, :message => "action is not authorized"
+		authorize! :claim, @debit, :message => "Action Not Authorized"
 		@debit.status = "processing"
 		@debit.save!
 		Notifier.claimed_email(@debit.account.club.get_leader, @debit).deliver

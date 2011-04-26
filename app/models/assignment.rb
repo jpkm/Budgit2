@@ -108,6 +108,4 @@ class Assignment < ActiveRecord::Base
 		assignment.active = true
 		assignment.save!
 	end
-	
-		
 end

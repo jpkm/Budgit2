@@ -29,12 +29,10 @@ class Club < ActiveRecord::Base
 			if names.include?(name.downcase.strip)
 				errors.add_to_base('Name already taken')
 			else
-				#validates_format_of :name, :with => /^[-\w\._@]+$/i, :allow_blank => false, :message => "should only contain letters, numbers, or .-_@"
 				test = name.strip
 				if test.blank?
 					return errors.add_to_base('Name was invalid')
 				end
-				
 			end
 			
 		else
@@ -59,7 +57,7 @@ class Club < ActiveRecord::Base
 		return nil
 	end
 	
-	#returns roles that are available for club
+	#returns roles that are available for club (NOT USED)
 	def roles_available
 		available_roles = []
 		for role in Role.all

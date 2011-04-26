@@ -40,7 +40,7 @@ class CreditCategoriesController < ApplicationController
 		
 		respond_to do |format|
 		  if @credit_category.save
-			format.html { redirect_to((credit_categories_path), :notice => 'Credit category was successfully created.') }
+			format.html { redirect_to((credit_categories_path), :notice => 'Credit Category was successfully created.') }
 		  else
 			format.html { render :action => "new" }
 			format.xml  { render :xml => @credit_category.errors, :status => :unprocessable_entity }
@@ -53,7 +53,7 @@ class CreditCategoriesController < ApplicationController
 
 		respond_to do |format|
 		  if @credit_category.update_attributes(params[:credit_category])
-			format.html { redirect_to(@credit_category, :notice => 'Credit category was successfully updated.') }
+			format.html { redirect_to(@credit_category, :notice => 'Credit Category was successfully updated.') }
 			format.xml  { head :ok }
 		  else
 			format.html { render :action => "edit" }

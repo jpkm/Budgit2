@@ -35,7 +35,7 @@ class ClubsController < ApplicationController
 			@account_credits = @club.current_account.credits.paginate :page => params[:page], :per_page => 20
 		end
 		
-		respond_to do |format| p "asdF"
+		respond_to do |format| 
 		  format.html # show.html.erb
 		  format.xml  { render :xml => @club }
 		end

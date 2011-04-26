@@ -15,11 +15,12 @@
 	float:right; 
 	font-size:100%;
 	margin-bottom:10px;
-	
+	/*
 	position:absolute; 
 	position:fixed; 
 	bottom:0px; 
 	bottom:expression(window.scrollBottom + "px"); 
+	*/
 }
 
 body { 

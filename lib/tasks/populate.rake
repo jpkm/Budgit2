@@ -6,8 +6,6 @@ namespace :db do
     # Need two gems to make this work: faker & populator
     # Docs at: http://populator.rubyforge.org/
     require 'populator'
-    # Docs at: http://faker.rubyforge.org/rdoc/
-    require 'faker'
     
     # Step 1: clear any old data in the db
     [Assignment, Debit, Credit, DebitCategory, CreditCategory, User, Role, Club, Account].each(&:delete_all)
@@ -92,8 +90,8 @@ namespace :db do
 			
 		vp = User.new
 		vp.email = "mmdaule@qatar.cmu.edu"
-		vp.first_name = "Vice"
-		vp.last_name = "President"
+		vp.first_name = "Muhammad"
+		vp.last_name = "Dauleh"
 		vp.username = "mmdauleh"
 		vp.password = "mmdauleh"
 		vp.password_confirmation = "mmdauleh"
@@ -102,7 +100,7 @@ namespace :db do
 		#assigned to DSO, Active Women
 		leader1 = User.new
 		leader1.email = "hahme@qatar.cmu.edu"
-		leader1.first_name = "H"
+		leader1.first_name = "Hira"
 		leader1.last_name = "Ahmed"
 		leader1.username = "hahmed"
 		leader1.password = "hahmed"
@@ -112,8 +110,8 @@ namespace :db do
 		#assigned to Debate Club
 		leader2 = User.new
 		leader2.email = "leader2@leader.edu"
-		leader2.first_name = "Zaid"
-		leader2.last_name = "Haque"
+		leader2.first_name = "Samira"
+		leader2.last_name = "Islam"
 		leader2.username = "sislam"
 		leader2.password = "sislam"
 		leader2.password_confirmation = "sislam"
@@ -121,8 +119,8 @@ namespace :db do
 		
 		leader3 = User.new
 		leader3.email = "mabuhol@qatar.cmu.edu"
-		leader3.first_name = "M"
-		leader3.last_name = "Abuhol"
+		leader3.first_name = "Muna"
+		leader3.last_name = "Abuholayqa"
 		leader3.username = "mabuhola"
 		leader3.password = "mabuhola"
 		leader3.password_confirmation = "mabuhola"
@@ -133,9 +131,9 @@ namespace :db do
 		sa1.email = "jaduff@qatar.cmu.edu"
 		sa1.first_name = "Jill"
 		sa1.last_name = "Duffy"
-		sa1.username = "jduffy"
-		sa1.password = "jduffy"
-		sa1.password_confirmation = "jduffy"
+		sa1.username = "jaduffy"
+		sa1.password = "jaduffy"
+		sa1.password_confirmation = "jaduffy"
 		sa1.save!
 		
 		#assigned to Gaming Club, All Around
@@ -148,14 +146,14 @@ namespace :db do
 		sa2.password_confirmation = "kdarco"
 		sa2.save!
 		
-		#faculty = User.new
-		#faculty.email = "faculty@faculty.edu"
-		#faculty.first_name = "Dan"
-		#faculty.last_name = "Phelps"
-		#faculty.username = "faculty"
-		#faculty.password = "faculty"
-		#faculty.password_confirmation = "faculty"
-		#faculty.save!
+		faculty = User.new
+		faculty.email = "faculty@faculty.edu"
+		faculty.first_name = "Dan"
+		faculty.last_name = "Phelps"
+		faculty.username = "dphelps"
+		faculty.password = "dphelps"
+		faculty.password_confirmation = "dphelps"
+		faculty.save!
 		
 
 	#Step 4.5: add Assignments
@@ -291,9 +289,14 @@ namespace :db do
 		dd.save!
 		  
 		de = DebitCategory.new
-		de.category = "Equipement"
+		de.category = "Equipment"
 		de.active = true
 		de.save!
+    
+		dp = DebitCategory.new
+		dp.category = "Printing"
+		dp.active = true
+		dp.save!
 		  
 		dt = DebitCategory.new
 		dt.category = "Other"
@@ -329,41 +332,41 @@ namespace :db do
       d.account_id = acy.id
 	  d.credit_category_id = ci.id 
       d.date = Date.today
-	  d.amount = 4000
+	  d.amount = 9500
       d.save! 
 	  
 	  d = Credit.new
       d.account_id = acz.id
 	  d.credit_category_id = ci.id 
       d.date = Date.today
-	  d.amount = 4000
+	  d.amount = 3000
       d.save! 
 	  
 	  e = Credit.new
       e.account_id = acj.id
 	  e.credit_category_id = ci.id 
       e.date = Date.today
-	  e.amount = 4000
+	  e.amount = 7000
       e.save! 
 	  
 	  f = Credit.new
       f.account_id = acp.id
 	  f.credit_category_id = ci.id
       f.date = Date.today
-	  f.amount = 4000
+	  f.amount = 4500
       f.save! 
 	  
 	    # Step 7: add some debits and assign them to account
 	  # with debit unreimbursed (unclaimed)
 	  du = Debit.new
       du.account_id = acx.id 
-      du.reason = "hunger"
-	  du.vendor = "Walmart"
-      du.number_of_consumers = 6 
+      du.reason = "Gaming Night"
+	  du.vendor = "Yellow Cab"
+      du.number_of_consumers = 30 
 	  du.names_of_consumers = nil 
-	  du.item_purchased = "hot dogs"
+	  du.item_purchased = "5 large Pizzas"
 	  du.date_purchased = Date.today
-	  du.amount = 10
+	  du.amount = 240
 	  du.debit_category_id = df.id
       du.reimbursement_date = nil
 	  du.status = "unclaimed"
@@ -372,14 +375,14 @@ namespace :db do
 	  # with debit unreimbursed (processing)
 	  dp = Debit.new
       dp.account_id = acx.id 
-      dp.reason = "hunger"
-	  dp.vendor = "Walmart"
+      dp.reason = "New games"
+	  dp.vendor = "Zen Gaming"
       dp.number_of_consumers = 6 
 	  dp.names_of_consumers = nil 
-	  dp.item_purchased = "Hot Dogs"
+	  dp.item_purchased = "Crysis Core game DVD"
 	  dp.date_purchased = Date.today
-	  dp.amount = 10
-	  dp.debit_category_id = df.id
+	  dp.amount = 230
+	  dp.debit_category_id = de.id
       dp.reimbursement_date = nil
 	  dp.status = "processing"
 	  dp.save!
@@ -387,13 +390,13 @@ namespace :db do
 	  # with debit unreimbursed (funds ready)
 	  da = Debit.new
       da.account_id = acx.id 
-      da.reason = "Hunger"
-	  da.vendor = "Walmart"
-      da.number_of_consumers = 6 
+      da.reason = "Gaming Night"
+	  da.vendor = "Carrefour"
+      da.number_of_consumers = 30 
 	  da.names_of_consumers = nil 
-	  da.item_purchased = "Hot Dogs"
+	  da.item_purchased = "40 cans of Soda"
 	  da.date_purchased = Date.today
-	  da.amount = 10
+	  da.amount = 40
 	  da.debit_category_id = df.id
       da.reimbursement_date = nil
 	  da.status = "ready"
@@ -402,13 +405,13 @@ namespace :db do
 	  #with debit reimbursed
 	  a = Debit.new
       a.account_id = acx.id 
-      a.reason = "hunger"
-      a.vendor = "Walmart"
+      a.reason = "Exec meeting"
+      a.vendor = "Hala Istanbul"
 	  a.number_of_consumers = 6 
 	  a.names_of_consumers = nil 
-	  a.item_purchased = "hot dogs"
+	  a.item_purchased = "Shawarmas"
 	  a.date_purchased = Date.today
-	  a.amount = 10
+	  a.amount = 40
 	  a.debit_category_id = df.id
       a.reimbursement_date = Date.today
 	  a.status = "reimbursed"
@@ -417,13 +420,13 @@ namespace :db do
 	  # with debit unreimbursed (unclaimed)
 	  b = Debit.new
       b.account_id = acy.id 
-      b.reason = "hunger"
-	  b.vendor = "Walmart"
-      b.number_of_consumers = 6 
+      b.reason = "Informational Session for TEDxCMUQatar"
+	  b.vendor = "Take Away"
+      b.number_of_consumers = 15 
 	  b.names_of_consumers = nil 
-	  b.item_purchased = "Hot Dogs"
+	  b.item_purchased = "Fatayers"
 	  b.date_purchased = Date.today
-	  b.amount = 10
+	  b.amount = 100
 	  b.debit_category_id = df.id
       b.reimbursement_date = nil
 	  b.status = "unclaimed"
@@ -432,14 +435,14 @@ namespace :db do
 	  # with debit unreimbursed (processing)
 	  d = Debit.new
       d.account_id = acy.id 
-      d.reason = "hunger"
-	  d.vendor = "Walmart"
-      d.number_of_consumers = 6 
+      d.reason = "Posters for publicity of TEDxCMUQatar"
+	  d.vendor = "Printec"
+      d.number_of_consumers = 6
 	  d.names_of_consumers = nil 
-	  d.item_purchased = "hot dogs"
+	  d.item_purchased = "4 large Posters"
 	  d.date_purchased = Date.today
-	  d.amount = 10
-	  d.debit_category_id = df.id
+	  d.amount = 160
+	  d.debit_category_id = dp.id
       d.reimbursement_date = nil
 	  d.status = "processing"
 	  d.save!
@@ -447,14 +450,14 @@ namespace :db do
 	  # with debit unreimbursed (funds ready)
 	  d5 = Debit.new
       d5.account_id = acy.id 
-      d5.reason = "Hunger"
-	  d5.vendor = "Walmart"
+      d5.reason = "Business Cards for Exec Board"
+	  d5.vendor = "Printec"
       d5.number_of_consumers = 6 
 	  d5.names_of_consumers = nil 
-	  d5.item_purchased = "Hot Dogs"
+	  d5.item_purchased = "Business Cards"
 	  d5.date_purchased = Date.today
-	  d5.amount = 10
-	  d5.debit_category_id = df.id
+	  d5.amount = 230
+	  d5.debit_category_id = dp.id
       d5.reimbursement_date = nil
 	  d5.status = "ready"
 	  d5.save!
@@ -462,13 +465,13 @@ namespace :db do
 	  #with debit reimbursed
 	  c = Debit.new
       c.account_id = acy.id 
-      c.reason = "hunger"
-      c.vendor = "Walmart"
-	  c.number_of_consumers = 6 
+      c.reason = "Appreciation dinner"
+      c.vendor = "Fauchon"
+	  c.number_of_consumers = 50 
 	  c.names_of_consumers = nil 
-	  c.item_purchased = "hot dogs"
+	  c.item_purchased = "Catering for 50 people"
 	  c.date_purchased = Date.today
-	  c.amount = 10
+	  c.amount = 1200
 	  c.debit_category_id = df.id
       c.reimbursement_date = Date.today
 	  c.status = "reimbursed"
@@ -477,14 +480,14 @@ namespace :db do
 	  # with debit unreimbursed(unclaimed)
 	  e = Debit.new
       e.account_id = acz.id 
-      e.reason = "hunger"
-      e.vendor = "Walmart"
+      e.reason = "Selling for pink day"
+      e.vendor = "Home Center"
 	  e.number_of_consumers = 6 
 	  e.names_of_consumers = nil 
-	  e.item_purchased = "hot dogs"
+	  e.item_purchased = "Pink Cusions"
 	  e.date_purchased = Date.today
-	  e.amount = 10
-	  e.debit_category_id = df.id
+	  e.amount = 100
+	  e.debit_category_id = de.id
       e.reimbursement_date = nil
 	  e.status = "unclaimed"
 	  e.save!
@@ -492,14 +495,14 @@ namespace :db do
 	  #with debit reimbursed(reimbursed)
 	  f = Debit.new
       f.account_id = acz.id 
-      f.reason = "hunger"
-      f.vendor = "Walmart"
+      f.reason = "Pink Day fundraiser"
+      f.vendor = "Gulf Greetings (Hallmark)"
 	  f.number_of_consumers = 6 
 	  f.names_of_consumers = nil 
-	  f.item_purchased = "hot dogs"
+	  f.item_purchased = "Pink ribbons"
 	  f.date_purchased = Date.today
-	  f.amount = 10
-	  f.debit_category_id = df.id
+	  f.amount = 25
+	  f.debit_category_id = de.id
       f.reimbursement_date = Date.today
 	  f.status = "reimbursed"
 	  f.save!
@@ -507,14 +510,14 @@ namespace :db do
 	  # with debit unreimbursed (funds ready)
 	  d7 = Debit.new
       d7.account_id = acz.id 
-      d7.reason = "Hunger"
-	  d7.vendor = "Walmart"
+      d7.reason = "to show support for Pink Day"
+	  d7.vendor = "Printec"
       d7.number_of_consumers = 6 
 	  d7.names_of_consumers = nil 
-	  d7.item_purchased = "Hot Dogs"
+	  d7.item_purchased = "40 Pink shirts"
 	  d7.date_purchased = Date.today
-	  d7.amount = 10
-	  d7.debit_category_id = df.id
+	  d7.amount = 500
+	  d7.debit_category_id = de.id
       d7.reimbursement_date = nil
 	  d7.status = "ready"
 	  d7.save!
@@ -523,13 +526,13 @@ namespace :db do
 	  # with debit unreimbursed(processing)
 	  g = Debit.new
       g.account_id = acz.id 
-      g.reason = "hunger"
-      g.vendor = "Walmart"
-	  g.number_of_consumers = 6 
+      g.reason = "Pink Day fundraiser"
+      g.vendor = "Tasmim"
+	  g.number_of_consumers = 30 
 	  g.names_of_consumers = nil 
-	  g.item_purchased = "hot dogs"
+	  g.item_purchased = "40 cupcakes"
 	  g.date_purchased = Date.today
-	  g.amount = 10
+	  g.amount = 200
 	  g.debit_category_id = df.id
       g.reimbursement_date = nil
 	  g.status = "processing"
@@ -538,14 +541,14 @@ namespace :db do
 	  #with debit reimbursed(reimbursed)
 	  h = Debit.new
       h.account_id = acp.id 
-      h.reason = "hunger"
-      h.vendor = "Walmart"
+      h.reason = "For next year's Tartan Carnival Fair"
+      h.vendor = "Sharpie"
 	  h.number_of_consumers = 6 
 	  h.names_of_consumers = nil 
-	  h.item_purchased = "hot dogs"
+	  h.item_purchased = "Markers"
 	  h.date_purchased = Date.today
-	  h.amount = 10
-	  h.debit_category_id = df.id
+	  h.amount = 249
+	  h.debit_category_id = de.id
       h.reimbursement_date = Date.today
 	  h.status = "reimbursed"
 	  h.save!
@@ -553,14 +556,14 @@ namespace :db do
 	  # with debit unreimbursed(processing)
 	  i = Debit.new
       i.account_id = acp.id 
-      i.reason = "hunger"
-      i.vendor = "Walmart"
+      i.reason = "Bi-monthly newspaper"
+      i.vendor = "Printec"
 	  i.number_of_consumers = 6 
 	  i.names_of_consumers = nil 
-	  i.item_purchased = "hot dogs"
+	  i.item_purchased = "Newspapers Vol. 26"
 	  i.date_purchased = Date.today
-	  i.amount = 10
-	  i.debit_category_id = df.id
+	  i.amount = 500
+	  i.debit_category_id = dp.id
       i.reimbursement_date = nil
 	  i.status = "processing"
 	  i.save!
@@ -568,13 +571,13 @@ namespace :db do
 	  # with debit unreimbursed (funds ready)
 	  d9 = Debit.new
       d9.account_id = acp.id 
-      d9.reason = "Hunger"
-	  d9.vendor = "Walmart"
-      d9.number_of_consumers = 6 
+      d9.reason = "Celebration"
+	  d9.vendor = "Pizza Hut"
+      d9.number_of_consumers = 20 
 	  d9.names_of_consumers = nil 
-	  d9.item_purchased = "Hot Dogs"
+	  d9.item_purchased = "4 medium Pizzas"
 	  d9.date_purchased = Date.today
-	  d9.amount = 10
+	  d9.amount = 240
 	  d9.debit_category_id = df.id
       d9.reimbursement_date = nil
 	  d9.status = "ready"
@@ -583,18 +586,17 @@ namespace :db do
 	  #with debit reimbursed (unclaimed)
 	  j = Debit.new
       j.account_id = acp.id 
-      j.reason = "hunger"
-      j.vendor = "Walmart"
-	  j.number_of_consumers = 6 
+      j.reason = "Celebration"
+      j.vendor = "Carrefour"
+	  j.number_of_consumers = 20 
 	  j.names_of_consumers = nil 
-	  j.item_purchased = "hot dogs"
+	  j.item_purchased = "30 cans of Soda"
 	  j.date_purchased = Time.now
-	  j.amount = 10
+	  j.amount = 30
 	  j.debit_category_id = df.id
       j.reimbursement_date = nil
 	  j.status = "unclaimed"
 	  j.save!
 	  
 end
-	
 end

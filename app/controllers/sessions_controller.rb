@@ -9,9 +9,9 @@ class SessionsController < ApplicationController
 		user = User.authenticate(params[:login], params[:password])
 		if user
 			if user.assignments.nil? || user.assignments.empty?
-				redirect_to root_url, :notice => "You don't have any assignments right now. Check yoself."
+				redirect_to root_url, :notice => "You don't have any assignments right now. Check with Direct of Student Affairs."
 			elsif !user.has_active_assignment?
-				redirect_to root_url, :notice => "You don't have any active assignments right now. Check yoself."
+				redirect_to root_url, :notice => "You don't have any assignments right now. Check with Direct of Student Affairs."
 			else
 				session[:user_id] = user.id
 				redirect_to root_url, :notice => "Logged in successfully."

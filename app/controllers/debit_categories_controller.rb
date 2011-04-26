@@ -40,7 +40,7 @@ class DebitCategoriesController < ApplicationController
 
 		respond_to do |format|
 		  if @debit_category.save
-			format.html { redirect_to root_url, :notice => 'Debit category was successfully created.'}
+			format.html { redirect_to root_url, :notice => 'Debit Category was successfully created.'}
 			format.xml  { render :xml => @debit_category, :status => :created, :location => @debit_category }
 		  else
 			format.html { render :action => "new" }
@@ -54,7 +54,7 @@ class DebitCategoriesController < ApplicationController
 
 		respond_to do |format|
 		  if @debit_category.update_attributes(params[:debit_category])
-			format.html { redirect_to(@debit_category, :notice => 'Debit category was successfully updated.') }
+			format.html { redirect_to(@debit_category, :notice => 'Debit Category was successfully updated.') }
 			format.xml  { head :ok }
 		  else
 			format.html { render :action => "edit" }
