@@ -7,7 +7,7 @@
 	<% else %>
 		<th>Leader</td>
 	<% end %>
-	<th>Balance(QR)</th>
+	<th>Balance</th>
   </thead>
   <!-- only shows active assignments -->
 <% for assignment in current_user.assignments %>
@@ -24,7 +24,7 @@
 		<% else %>
 			<td>Assign Leader</td>
 		<% end %>
-		<td><%= assignment.club.current_account.balance %>
+		<td><%= assignment.club.current_account.balance %>QR
 	</tr>
 <% end %>
 </table>

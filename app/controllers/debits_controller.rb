@@ -86,27 +86,33 @@ class DebitsController < ApplicationController
 		authorize! :reimburse, @debit, :message => "Action Not Authorized"
 		@debit.reimbursement_date = DateTime.now
 		@debit.status = "reimbursed"
-		@debit.save!
-		Notifier.reimburse_email(@debit.account.club.get_leader, @debit).deliver
+		@debit.save!( :validate => false )
+		unless @debit.account.club.get_leader.nil?
+			Notifier.reimburse_email(@debit.account.club.get_leader, @debit).deliver
+		end
 		redirect_to club_path(@debit.account.club), :notice=>"Debit Reimbursed"
 	end
 	
+	#think about who you send emails to. When Director processed SA should recieve email telling them to come get money from Director AND Club Leader should recieve email saying to come get money from SA
 	def process_me
 		@debit = Debit.find(params[:id])
 		authorize! :process_me, @debit, :message => "Action Not Authorized"
 		@debit.status = "ready"
-		@debit.save!
-		Notifier.ready_email(@debit.account.club.get_leader, @debit).deliver
+		@debit.save!( :validate => false )
+		unless @debit.account.club.get_leader.nil?
+			Notifier.claimed_email(@debit.account.club.get_leader, @debit).deliver
+		end
 		redirect_to club_path(@debit.account.club), :notice=>"Debit Readied"
 	end
 	
 	def claim
 		@debit = Debit.find(params[:id])
-		p @debit
 		authorize! :claim, @debit, :message => "Action Not Authorized"
 		@debit.status = "processing"
-		@debit.save!
-		Notifier.claimed_email(@debit.account.club.get_leader, @debit).deliver
+		@debit.save!( :validate => false )
+		unless @debit.account.club.get_leader.nil?
+			Notifier.claimed_email(@debit.account.club.get_leader, @debit).deliver
+		end
 		redirect_to club_path(@debit.account.club), :notice=>"Debit sent for Processing"
 	end
 	  

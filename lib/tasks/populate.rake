@@ -373,19 +373,19 @@ namespace :db do
 	  du.save!
 	  
 	  # with debit unreimbursed (processing)
-	  dp = Debit.new
-      dp.account_id = acx.id 
-      dp.reason = "New games"
-	  dp.vendor = "Zen Gaming"
-      dp.number_of_consumers = 6 
-	  dp.names_of_consumers = nil 
-	  dp.item_purchased = "Crysis Core game DVD"
-	  dp.date_purchased = Date.today
-	  dp.amount = 230
-	  dp.debit_category_id = de.id
-      dp.reimbursement_date = nil
-	  dp.status = "processing"
-	  dp.save!
+	  d2 = Debit.new
+      d2.account_id = acx.id 
+      d2.reason = "New games"
+	  d2.vendor = "Zen Gaming"
+      d2.number_of_consumers = nil
+	  d2.names_of_consumers = nil 
+	  d2.item_purchased = "Crysis Core game DVD"
+	  d2.date_purchased = Date.today
+	  d2.amount = 230
+	  d2.debit_category_id = de.id
+      d2.reimbursement_date = nil
+	  d2.status = "processing"
+	  d2.save!
 	  
 	  # with debit unreimbursed (funds ready)
 	  da = Debit.new
@@ -422,8 +422,8 @@ namespace :db do
       b.account_id = acy.id 
       b.reason = "Informational Session for TEDxCMUQatar"
 	  b.vendor = "Take Away"
-      b.number_of_consumers = 15 
-	  b.names_of_consumers = nil 
+      b.number_of_consumers = 3 
+	  b.names_of_consumers = "Yazan, Zaid, JP" 
 	  b.item_purchased = "Fatayers"
 	  b.date_purchased = Date.today
 	  b.amount = 100
@@ -437,7 +437,7 @@ namespace :db do
       d.account_id = acy.id 
       d.reason = "Posters for publicity of TEDxCMUQatar"
 	  d.vendor = "Printec"
-      d.number_of_consumers = 6
+      d.number_of_consumers = nil
 	  d.names_of_consumers = nil 
 	  d.item_purchased = "4 large Posters"
 	  d.date_purchased = Date.today
@@ -452,7 +452,7 @@ namespace :db do
       d5.account_id = acy.id 
       d5.reason = "Business Cards for Exec Board"
 	  d5.vendor = "Printec"
-      d5.number_of_consumers = 6 
+      d5.number_of_consumers = nil
 	  d5.names_of_consumers = nil 
 	  d5.item_purchased = "Business Cards"
 	  d5.date_purchased = Date.today
@@ -482,7 +482,7 @@ namespace :db do
       e.account_id = acz.id 
       e.reason = "Selling for pink day"
       e.vendor = "Home Center"
-	  e.number_of_consumers = 6 
+	  e.number_of_consumers = nil 
 	  e.names_of_consumers = nil 
 	  e.item_purchased = "Pink Cusions"
 	  e.date_purchased = Date.today
@@ -497,7 +497,7 @@ namespace :db do
       f.account_id = acz.id 
       f.reason = "Pink Day fundraiser"
       f.vendor = "Gulf Greetings (Hallmark)"
-	  f.number_of_consumers = 6 
+	  f.number_of_consumers = nil 
 	  f.names_of_consumers = nil 
 	  f.item_purchased = "Pink ribbons"
 	  f.date_purchased = Date.today
@@ -558,7 +558,7 @@ namespace :db do
       i.account_id = acp.id 
       i.reason = "Bi-monthly newspaper"
       i.vendor = "Printec"
-	  i.number_of_consumers = 6 
+	  i.number_of_consumers = nil 
 	  i.names_of_consumers = nil 
 	  i.item_purchased = "Newspapers Vol. 26"
 	  i.date_purchased = Date.today

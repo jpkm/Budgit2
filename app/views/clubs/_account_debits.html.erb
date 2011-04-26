@@ -4,7 +4,7 @@
 		<th>Vendor</th>
 		<th>Category</th>
 		<th>Purchased</th>
-		<th>Amount(QR)</th>
+		<th>Amount</th>
 		<th>Status</th>
 	</thead>
 	
@@ -16,9 +16,9 @@
     <td><%= debit.date_purchased.strftime("%d.%m.%Y")%></td>
     <td>
 		<% if debit.amount > 250 %>
-			<%= debit.amount.to_s + "*"%>
+			<%= debit.amount.to_s + "QR*"%>
 		<% else %> 
-			<%= debit.amount %>
+			<%= debit.amount %>QR
 		<% end %>
 	</td>
 	<td>

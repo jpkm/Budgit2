@@ -29,18 +29,14 @@ class Notifier < ActionMailer::Base
 	  
 	  #takes user and debit and sends an email to user sayin it has been reimbursed
 		def reimburse_email(user, debit)
-			unless user.nil? || debit.nil?
-				@user = user
-				@debit = debit
-				mail(:to => @user.email, :subject => "Mezaniah Debit Reimbursement Information")
-			end
+			@user = user
+			@debit = debit
+			mail(:to => @user.email, :subject => "Mezaniah Debit Reimbursement Information")
 		end
 	  
-	  def claimed_email(user, debit)
-		unless user.nil? || debit.nil?
+		def claimed_email(user, debit)
 			@user = user
 			@debit = debit
 			mail(:to => @user.email, :subject => "Mezaniah Debit Claimed Information")
 		end
-	  end
-  end
+	end

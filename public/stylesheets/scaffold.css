@@ -123,14 +123,14 @@ color: 	black;
 
 #unclaimed{
 	margin-top:5px;
-	float:left;
+	float:right;
 }
 
 #current_balance {
 	vertical-align:top;
 }
 
-#ready{float:left;}
+#ready{float:right;}
 
 .debit, .credit{
 	float:right;
