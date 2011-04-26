@@ -61,7 +61,7 @@
 			<%= @club.current_account.date.year %>-<%= @club.current_account.date.year + 1 %>
 		<% end %>
 	</div>	
-	<!--
+	
 	<% if can? :create, Account %>
 		<% if @club.current_account.nil? %>
 		<!-- should be action for make_account -->
@@ -70,7 +70,7 @@
 			<%= link_to "Deactivate Current Account", :controller => "accounts", :action => :deactivate1, :id => @club.current_account.id %>
 		<% end %>
 	<% end %>
-	-->
+	
 	
 	<br><br>
 

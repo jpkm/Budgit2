@@ -8,6 +8,7 @@
 		<th>Status</th>
 	</thead>
 	
+All Debits
 <% @account_debits.each do |debit| %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
 	<td><%= link_to debit.item_purchased, debit_path(debit) %></td>
@@ -16,7 +17,7 @@
     <td><%= debit.date_purchased.strftime("%d.%m.%Y")%></td>
     <td>
 		<% if debit.amount > 250 %>
-			<%= debit.amount.to_s + "QR*"%>
+			<%= debit.amount.to_s + "QR*" %>
 		<% else %> 
 			<%= debit.amount %>QR
 		<% end %>
