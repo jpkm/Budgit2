@@ -33,6 +33,16 @@
                 <%= f.label :Role %>:
 				<%= @assignment.role.name %>
 				<%= f.hidden_field :role_id, :value => @assignment.role_id %> 
+				<!--
+				<% if !@assignment.club_id.nil? %>
+					<%#= f.collection_select :role_id, @assignment.club.roles_available, :id, :name, :prompt => "Select ..." %>
+				<% elsif !@roles.nil? || !@roles.empty?%>
+					<%#= f.collection_select :role_id, @roles, :id, :name, :prompt => "Select ..." %>
+				<% else %>
+					There are no avaiable roles
+				<% end %>
+				-->
+				
             </td>
 		</div>
     </tr>
@@ -47,6 +57,7 @@
             </td>
 		</div>
     </tr>
+	<%= f.hidden_field :active, :value => true %> 
 	<tr>
 		<div class="field">
 			<td align="right">
