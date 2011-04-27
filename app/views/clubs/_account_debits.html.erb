@@ -53,9 +53,8 @@ All Debits
 			</span>
 		<% end %>
 	</td>
-	<% if can? :update, :delete, debit %>
+	<% if can? :update, debit %>
 		<td align="center"><%= link_to(image_tag("edit_dg.png", :border => 0), edit_debit_path(debit))%></td>
-		<td align="center">	<%= link_to(image_tag("delete_dg.png", :border => 0), :controller => :debits, :id => debit.id, :confirm => 'Are you sure?', :action => :delete_debit) %></td>
 	<% end %>
   </tr>
 <% end %>

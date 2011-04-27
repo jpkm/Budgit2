@@ -17,12 +17,12 @@
 			<% unless assignment.club.get_sa.nil? %>
 				<td><%= assignment.club.get_sa.name %></td>
 			<% else %>
-				<td>Assign SA</td>
+				<td>N/A</td>
 			<% end %>
 		<% elsif !assignment.club.get_leader.nil? %>
 			<td><%= assignment.club.get_leader.name %></td>
 		<% else %>
-			<td>Assign Leader</td>
+			<td>N/A</td>
 		<% end %>
 		<td><%= assignment.club.current_account.balance %>QR
 	</tr>

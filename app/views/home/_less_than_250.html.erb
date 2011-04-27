@@ -1,10 +1,10 @@
 <table class="datagrid">
-<caption class="datagrid">Debits Under 250QAR</caption>
+<caption class="datagrid">Debits Under 250QR</caption>
 	<thead class="datagrid">
 		<th>Club</th>
 		<th>Item</th>
 		<th>Purchased</th>
-		<th>Amount(QR)</th>
+		<th>Amount</th>
 		<th>Action</th>
 	</thead>
 
@@ -14,7 +14,7 @@
 		<td><%= link_to debit.item_purchased, debit_path(debit) %></td>
 		<td><%= debit.date_purchased.strftime("%d.%m")%></td>
 		<td>
-			<%= debit.amount %>
+			<%= debit.amount %>QR
 		</td>
 		<td>
 			<% if can? :process_me, debit %>

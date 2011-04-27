@@ -18,8 +18,6 @@ class ClubsController < ApplicationController
 
 	def show  
 		#Scope Definitions
-		p "asdF"
-		$stdout.flush
 		@club = Club.find(params[:id])
 		authorize! :read, @club, :message => "Action Not Authorized"
 		

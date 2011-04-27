@@ -142,10 +142,6 @@ color: 	black;
 	padding:30px 0 20px 10px;
 }
 
-.debit_info {
-	border:0.5px;
-}
-
 /* Buttons */
 #button{
 	padding: 50px 0 0 0;
@@ -198,9 +194,17 @@ color: 	black;
 
 /* Club Show page */
 
-.club_name{
+#club_name{
 	font-size:200%;
+	white-space:nowrap;
 }
+
+#club_name a{
+	white-space:nowrap;
+	text-decoration:none;
+	color:black; 
+}
+
 
 .participants{
 	font-size:80%;

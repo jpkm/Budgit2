@@ -16,7 +16,7 @@ class AccountsController < ApplicationController
 	def show
 		@account = Account.find(params[:id])
 		authorize! :read, @account, :message => "Action Not Authorized"
-	
+		@inactive_accounts = Account.inactive_for_club(@account.club)
 		# all debits for active account of @club
 		@account_debits = @account.debits.paginate :page => params[:page], :per_page => 5
 		# all credits for active account of @club

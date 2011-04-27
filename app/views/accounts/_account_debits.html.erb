@@ -4,7 +4,7 @@
 		<th>Vendor</th>
 		<th>Category</th>
 		<th>Purchased</th>
-		<th>Amount(QR)</th>
+		<th>Amount</th>
 		<th>Status</th>
 	</thead>
 	
@@ -16,9 +16,9 @@
     <td><%= debit.date_purchased.strftime("%d.%m.%Y")%></td>
     <td>
 		<% if debit.amount > 250 %>
-			<%= debit.amount.to_s + "*"%>
+			<%= debit.amount.to_s + "QR*"%>
 		<% else %> 
-			<%= debit.amount %>
+			<%= debit.amount %>QR
 		<% end %>
 	</td>
 	<td>
@@ -40,10 +40,6 @@
 			</span>
 		<% end %>
 	</td>
-	<% if can? :update, :delete, debit %>
-		<td align="center"><%#= link_to(image_tag("edit_dg.png", :border => 0), edit_debit_path(debit))%></td>
-		<td align="center">	<%#= link_to(image_tag("delete_dg.png", :border => 0), :controller => :debits, :id => debit.id, :confirm => 'Are you sure?', :action => :delete_debit) %></td>
-	<% end %>
   </tr>
 <% end %>
 </table>

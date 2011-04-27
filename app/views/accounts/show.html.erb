@@ -1,5 +1,5 @@
-<span class="club_name">
-	<%= @account.club.name %>
+<span id="club_name">
+	<%= link_to @account.club.name, club_path(@account.club) %>
 </span>
 <div>
 	<%= @account.date.year %>-<%= @account.date.year + 1 %>
@@ -41,3 +41,9 @@
 	</td>
 	</tr>
 </table>
+	
+	<!-- all inactive accounts for this club -->
+	<% unless @inactive_accounts.nil? || @inactive_accounts.empty? %>
+		<%= render :partial => "inactive_accounts" %>
+	<% end %>
+	

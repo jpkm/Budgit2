@@ -1,20 +1,24 @@
-table.debit_info {
+.debit_info {
 	font: 130% Verdana, Arial, Helvetica, sans-serif;
 	color: black;
 	text-align: left;
 	vertical-align: middle;
 	border-collapse:collapse;
-	width:400px;
+	width:auto;
+	white-space:nospan;
 }
 
-td.debit_info {
+.debit_info td {
 	border: 1px solid black;
+	padding:10px;
+	white-space:nospan;
 }
 
-tr.debit_info {
+.debit_info tr {
 	text-align:center;
+	white-space:nospan;
 }
 
-caption.debit_info{
+.debit_info caption{
 	padding-bottom:10px;
 }
