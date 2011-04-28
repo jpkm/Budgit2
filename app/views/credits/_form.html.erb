@@ -12,7 +12,7 @@
  
 <table>
 	<tr>
-		<td><%= f.label :category %>: </td>
+		<td><%= f.label :category %> </td>
 			<td><% if @account.has_initial? %>
 				<%= f.collection_select :credit_category_id, CreditCategory.except_initial, :id, :category, :prompt => "Select ..." %>
 			<% else %>
@@ -23,7 +23,7 @@
 	 <%= f.hidden_field :account_id, :value => @credit.account_id %>
 	<tr>	
 		<td>
-			<%= f.label :amount %>: 
+			<%= f.label :amount %>
 		</td>
 		<td>
 			<%= f.text_field :amount %>

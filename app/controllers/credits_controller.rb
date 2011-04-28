@@ -44,6 +44,7 @@ class CreditsController < ApplicationController
 
 	def edit
 		@credit = Credit.find(params[:id])
+		@account = @credit.account
 		authorize! :edit, @credit, :message => "Action Not Authorized"
 	end
 
@@ -71,6 +72,7 @@ class CreditsController < ApplicationController
 
 	def update
 		@credit = Credit.find(params[:id])
+		@account = @credit.account
 		authorize! :update, @credit, :message => "Action Not Authorized"
 
 		respond_to do |format|
